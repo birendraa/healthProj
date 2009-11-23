@@ -11,7 +11,7 @@ import util.*;
  *
  * @author sanja
  */
-public class PatientList {
+public class PatientList implements PatientListInterface{
 
     private ListInterface patientList;
 

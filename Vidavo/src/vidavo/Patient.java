@@ -9,7 +9,7 @@ package vidavo;
  *
  * @author sanja
  */
-public class Patient {
+public class Patient implements PatientInterface{
 
    private PersonalInfo pInfo;
    private Photos photos;
