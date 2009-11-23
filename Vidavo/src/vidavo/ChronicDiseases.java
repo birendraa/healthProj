@@ -10,5 +10,5 @@ package vidavo;
  * @author sanja
  */
 public class ChronicDiseases {
-
+    
 }

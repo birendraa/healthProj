@@ -5,7 +5,7 @@
 
 package vidavo;
 
-import util.*;
+import vidavo.util.*;
 
 /**
  *

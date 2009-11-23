@@ -5,7 +5,7 @@
 
 package vidavo;
 
-import util.ListInterface;
+import vidavo.util.*;
 
 /**
  *
