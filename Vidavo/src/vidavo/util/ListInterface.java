@@ -1,4 +1,4 @@
-package util;
+package vidavo.util;
 // Interface ListInterface for the ADT list.
 // *********************************************************
 public interface ListInterface

@@ -1,4 +1,4 @@
-package util;
+package vidavo.util;
 
 public class ReferenceBasedList implements ListInterface
 {
