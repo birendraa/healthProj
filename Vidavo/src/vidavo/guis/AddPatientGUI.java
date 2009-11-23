@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package addpatientgui;
+package vidavo.guis;
 
 import java.awt.*;
 import java.awt.event.*;
