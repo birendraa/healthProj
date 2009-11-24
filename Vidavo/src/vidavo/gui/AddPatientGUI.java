@@ -174,7 +174,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         tameioLabel = new JLabel();
         firstVisitLabel = new JLabel();
         childrenLabel = new JLabel();
-        childrenSpinner = new JSpinner();
+        childrenSpinner = new JSpinner( new SpinnerNumberModel (0,0,9999,1));
         firstVisitTextField = new JTextField();
         heightTextField = new JTextField();
         weightTextField = new JTextField();
@@ -251,7 +251,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         jPanel16.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel16.setName("jPanel16");
-
 
         ButtonGroup maleFemaleGroup =  new ButtonGroup();
         maleFemaleGroup.add(maleRadioButton);
