@@ -95,6 +95,9 @@ public class AddPatientGUI extends JFrame implements ActionListener{
     private JTextField weightTextField;
     private JLabel workLabel;
     private JTextField workTextField;
+    private JLabel ageLabel;
+    private JTextField ageTextField;
+
     //private org.jdesktop.beansbinding.BindingGroup bindingGroup;
 
     public AddPatientGUI ()
@@ -190,12 +193,14 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         mailTextField = new JTextField();
         saveButton = new JButton();
         cancelButton = new JButton();
+        ageLabel = new JLabel();
+        ageTextField = new JTextField();
 
 
-        idLabel.setText("ID *:");
-        firstNLabel.setText("First Name *:");
+        idLabel.setText("ID* :");
+        firstNLabel.setText("First Name* :");
         middleNLabel.setText("Middle Name:");
-        lastNLabel.setText("Last Name *:");
+        lastNLabel.setText("Last Name* :");
         addressLabel.setText("Address:");
         addressNumLabel.setText("Address Number:");
         cityLabel.setText("City:");
@@ -222,9 +227,9 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         singleRadioButton.setText("Single");
         birthDateLabel.setText("Birth Date:");
         profLabel.setText("Profession:");
-        insuranceLabel.setText("Insurance:");
-        amkaLabel.setText("AMKA:");
-        tameioLabel.setText("Tameio:");
+        insuranceLabel.setText("Insurance* :");
+        amkaLabel.setText("AMKA* :");
+        tameioLabel.setText("Tameio* :");
         firstVisitLabel.setText("First Visit:");
         childrenLabel.setText("Children:");
         firstVisitTextField.setText("");
@@ -235,6 +240,9 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         insuranceTextField.setText("");
         amkaTextField.setText("");
         tameioComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ageLabel.setText("Age:");
+        ageTextField.setText("");
+
         jPanel16.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel16.setName("jPanel16");
 
@@ -293,24 +301,28 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                     .addComponent(addressTextField)
                     .addComponent(addressNumTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                     .addComponent(regionTextField, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(47, 47, 47)
-                .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(birthDateLabel)
+                .addGap(42, 42, 42)
+                .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(infoPaneLayout.createSequentialGroup()
                         .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(heightLabel)
-                            .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(profLabel)
-                                .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(amkaLabel)
-                                    .addComponent(insuranceLabel)
-                                    .addComponent(tameioLabel)
-                                    .addComponent(firstVisitLabel)
-                                    .addComponent(childrenLabel)))
+                            .addComponent(amkaLabel)
+                            .addComponent(insuranceLabel)
+                            .addComponent(tameioLabel)
+                            .addComponent(firstVisitLabel)
+                            .addComponent(childrenLabel)
                             .addComponent(weightLabel)
                             .addComponent(maleRadioButton)
-                            .addComponent(marriedRadioButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(marriedRadioButton)
+                            .addComponent(ageLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(infoPaneLayout.createSequentialGroup()
+                        .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(birthDateLabel)
+                            .addComponent(profLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(infoPaneLayout.createSequentialGroup()
                         .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(weightTextField)
@@ -319,25 +331,30 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                                 .addComponent(tameioComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(amkaTextField)
                                 .addComponent(insuranceTextField)
-                                .addComponent(birthDateTextField)
                                 .addComponent(profTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                                 .addGroup(infoPaneLayout.createSequentialGroup()
                                     .addComponent(heightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addGroup(infoPaneLayout.createSequentialGroup()
+                                    .addComponent(birthDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                             .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(singleRadioButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(femaleRadioButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(infoPaneLayout.createSequentialGroup()
-                        .addGap(46, 46, 46)
+                                .addComponent(femaleRadioButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(patientPhotoLabel)
-                            .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(20, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPaneLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pictureButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94))))
+                            .addGroup(infoPaneLayout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(patientPhotoLabel)
+                                    .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(25, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPaneLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pictureButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(94, 94, 94))))
+                    .addGroup(infoPaneLayout.createSequentialGroup()
+                        .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         infoPaneLayout.setVerticalGroup(
             infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,14 +390,14 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                         .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addressLabel)
                             .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(birthDateLabel)
-                            .addComponent(birthDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(birthDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(birthDateLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addressNumLabel)
                             .addComponent(addressNumTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(profLabel)
-                            .addComponent(profTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(profTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(profLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cityLabel)
@@ -416,7 +433,11 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                         .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pictureButton)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ageLabel)
+                    .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         communicationNumPane.setBorder(javax.swing.BorderFactory.createTitledBorder("Communication Numbers")); // NOI18N
