@@ -99,6 +99,10 @@ public class AddPatientGUI extends JFrame implements ActionListener{
     public AddPatientGUI ()
     {
         pl = new PatientList();
+        JFrame addPatientFrame = new JFrame ("Add Patient");
+
+
+        addPatientFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
         this.setSize(new Dimension(817, 650));
         Dimension dim = getToolkit().getScreenSize();
@@ -106,6 +110,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         this.setLocation((dim.width - abounds.width) / 2, (dim.height - abounds.height) / 2);
         this.setResizable(false);
         this.setTitle("Add Patient");
+        this.pack();
         this.setVisible(true);
     }
 
@@ -233,6 +238,16 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         tameioComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel16.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel16.setName("jPanel16");
+
+
+        ButtonGroup maleFemaleGroup =  new ButtonGroup();
+        maleFemaleGroup.add(maleRadioButton);
+        maleFemaleGroup.add(femaleRadioButton);
+
+        ButtonGroup marriedSingleGroup =  new ButtonGroup();
+        marriedSingleGroup.add(marriedRadioButton);
+        marriedSingleGroup.add(singleRadioButton);
+
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -687,6 +702,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         );*/
     //}
     }
+
 
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
