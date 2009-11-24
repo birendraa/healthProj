@@ -717,7 +717,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
             }
             
             else
-                System.out.print("Missing info");
+                System.out.print("Missing information");
         }
     }
 
