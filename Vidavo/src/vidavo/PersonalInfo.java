@@ -9,7 +9,7 @@ package vidavo;
  *
  * @author sanja
  */
-public class PersonalInfo {
+public class PersonalInfo implements PersonalInfoInterface{
 
     private int id;
     private String fName;

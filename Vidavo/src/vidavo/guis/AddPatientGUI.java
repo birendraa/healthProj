@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.IOException;
 import javax.swing.*;
 import vidavo.*;
 
@@ -102,8 +101,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
     {
         pl = new PatientList();
         JFrame addPatientFrame = new JFrame ("Add Patient");
-
-
         addPatientFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
         this.setSize(new Dimension(817, 650));
