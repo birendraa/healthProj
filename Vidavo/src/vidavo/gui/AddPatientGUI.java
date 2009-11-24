@@ -969,7 +969,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
           con = DriverManager.getConnection(url+db, user, pass);
           try{
             Statement st = con.createStatement();
-            ResultSet res = st.executeQuery("SELECT * FROM Patients where patientId = " + patientID);
+            ResultSet res = st.executeQuery("SELECT * FROM Personal_Info where patientId = " + patientID);
             while(res.next()){
               idLabel2.setText(Integer.toString(res.getInt("patientID")));
               firstNTextField.setText(res.getString("FirstName"));
@@ -999,9 +999,9 @@ public class AddPatientGUI extends JFrame implements ActionListener{
               profTextField.setText(res.getString("Profession"));
               insuranceTextField.setText(res.getString("Insurrance"));
               amkaTextField.setText(Integer.toString(res.getInt("Insurance_Id_Number")));
-              System.out.println(res.getString("Insurance_Type"));
+  
               int selectedItem;
-              for(selectedItem = 1; selectedItem < tameioComboBox.getItemCount(); selectedItem++){
+              for(selectedItem = 0; selectedItem <= tameioComboBox.getItemCount(); selectedItem++){
                   if(res.getString("Insurance_Type").equals(tameioComboBox.getItemAt(selectedItem)))
                     break;
               }
@@ -1013,7 +1013,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
               cellTextField.setText(Integer.toString(res.getInt("CellPhone_Number")));
               faxTextField.setText(Integer.toString(res.getInt("Fax_Number")));
               mailTextField.setText(res.getString("Email"));
-              ageTextField.setText(Integer.toString(res.getInt("Age")));
             }
             con.close();
           }

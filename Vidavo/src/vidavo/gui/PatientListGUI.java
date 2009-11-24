@@ -253,9 +253,19 @@ public void loadPatientsList(){
           con = DriverManager.getConnection(url+db, user, pass);
           try{
             Statement st = con.createStatement();
-            ResultSet res = st.executeQuery("SELECT patientID, LastName, FirstName, Home_Number FROM patients;");
+            ResultSet res = st.executeQuery("SELECT patientID, LastName, FirstName, Home_Number FROM Personal_Info;");
             while(res.next()){
-
+                //patientTable
+                System.out.println(res.getString("patientID"));
+                System.out.println(res.getString("LastName"));
+                System.out.println(res.getString("FirstName"));
+                System.out.println(res.getString("Home_Number"));
+                /*
+                for(int i = 1; i < ; i++)
+                    if(i == 4)
+                        i = 1;
+                patientTable.addColumn(null);
+                 * */
             }
             con.close();
           }

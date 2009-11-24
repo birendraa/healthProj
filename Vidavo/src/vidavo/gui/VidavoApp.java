@@ -35,7 +35,9 @@ public class VidavoApp extends PatientListGUI{
                 //new MainGUI();
             java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PatientListGUI().setVisible(true);
+                PatientListGUI gui = new PatientListGUI();
+                gui.setVisible(true);
+                gui.loadPatientsList();
             }
         });
     }
