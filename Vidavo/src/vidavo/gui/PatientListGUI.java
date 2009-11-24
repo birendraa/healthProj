@@ -7,15 +7,12 @@ package vidavo.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ListResourceBundle;
 import java.util.Locale;
 import javax.swing.table.DefaultTableModel;
-import vidavo.gui.AddPatientGUI;
 
 /**
  *
