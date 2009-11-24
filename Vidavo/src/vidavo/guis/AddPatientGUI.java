@@ -7,6 +7,9 @@ package vidavo.guis;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.IOException;
 import javax.swing.*;
 import vidavo.*;
 
@@ -18,7 +21,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
 
     private PatientList pl;
-
     private JTabbedPane addPatientTabbedPane;
     private JLabel addressLabel;
     private JLabel addressNumLabel;
@@ -489,16 +491,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         saveButton.setText("Save");
         saveButton.addActionListener(this);
         cancelButton.setText("Cancel");
-
-        cancelButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelButtonActionPerformed(evt);
-            }
-
-            private void cancelButtonActionPerformed(ActionEvent evt) {
-                throw new UnsupportedOperationException("Not yet implemented");
-            }
-        });
+        cancelButton.addActionListener(this);
 
         javax.swing.GroupLayout personalInfoPaneLayout = new javax.swing.GroupLayout(personalInfoPane);
         personalInfoPane.setLayout(personalInfoPaneLayout);
@@ -731,6 +724,39 @@ public class AddPatientGUI extends JFrame implements ActionListener{
             }
  
         }
+        if (action.equals("Cancel"))
+        {
+            showCancelDialog ();
+        }
     }
-
+    
+    private void showCancelDialog()
+    {
+        final JDialog dialog = new JDialog(this, "Exit", true);
+        final JOptionPane op = new JOptionPane("Are you sure you want to exit the program?", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
+        dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        dialog.setContentPane(op);
+        dialog.setResizable(false);
+        op.addPropertyChangeListener(new PropertyChangeListener() {
+            public void propertyChange(PropertyChangeEvent e) {
+                String prop = e.getPropertyName();
+                if (dialog.isVisible() && (e.getSource() == op) && (prop.equals(JOptionPane.VALUE_PROPERTY))) {
+                    dialog.setVisible(false);
+                }
+            }
+        });
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setResizable(false);
+        dialog.setVisible(true);
+        int value = ((Integer) op.getValue()).intValue();
+        if (value == JOptionPane.NO_OPTION) 
+        {
+            dialog.dispose();
+        }
+        else if (value == JOptionPane.YES_OPTION) 
+        {
+            this.dispose();
+        } 
+    }
 }
