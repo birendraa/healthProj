@@ -52,7 +52,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         searchTextField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
 
-        ListResourceBundle resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.gui.ResourceMap", new Locale("gr"));
+        ListResourceBundle resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.gui.ResourceMap", new Locale("en"));
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         this.setTitle(resourceMap.getString("patientList.title"));
 
@@ -243,17 +243,17 @@ public void loadPatientsList(){
 
     Connection con = null;
     String url = "jdbc:mysql://localhost:3306/";
-    String db = "Vidavo";
+    String db = "vidavo";
     String driver = "com.mysql.jdbc.Driver";
     String user = "root";
-    String pass = "root";
+    String pass = "master";
 
         try{
           Class.forName(driver).newInstance();
           con = DriverManager.getConnection(url+db, user, pass);
           try{
             Statement st = con.createStatement();
-            ResultSet res = st.executeQuery("SELECT patientID, LastName, FirstName, Home_Number FROM Personal_Info;");
+            ResultSet res = st.executeQuery("SELECT patientID, LastName, FirstName, Home_Number FROM personalInfo;");
             while(res.next()){
                 //patientTable
                 System.out.println(res.getString("patientID"));
@@ -270,6 +270,7 @@ public void loadPatientsList(){
             con.close();
           }
           catch (SQLException s){
+              s.printStackTrace();
             System.out.println("SQL code does not execute.");
           }
         }

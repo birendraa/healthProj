@@ -812,34 +812,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
                 //s.executeUpdate("INSERT INTO patients VALUES " + "(4)" + ";");
 
-                System.out.println("INSERT INTO personalInfo VALUES " + "(4" + ", " +
-                       "\"" + p.getPersonalInfo().getFName() + "\", " +
-                       "\"" + p.getPersonalInfo().getMName() + "\", " +
-                       "\"" + p.getPersonalInfo().getLName() + "\", " +
-                       "\"" + p.getPersonalInfo().getAddress() + "\", " +
-                       p.getPersonalInfo().getAddressNum() + ", " +
-                       "\"" + p.getPersonalInfo().getCity() + "\", " +
-                       "\"" + p.getPersonalInfo().getState() + "\", " +
-                       "\"" + p.getPersonalInfo().getCountry() + "\", " +
-                       p.getPersonalInfo().getPostalCode() + ", " +
-                       "\"" + p.getPersonalInfo().getCitizenship() + "\", " +
-                       p.getPersonalInfo().getHeight() + ", " +
-                       p.getPersonalInfo().getWeight()+ ", " +
-                       "\"" + p.getPersonalInfo().getSex() + "\", " +
-                       "\"" + p.getPersonalInfo().getMaritalStatus() + "\", " +
-                       "\"" + p.getPersonalInfo().getBirthDate() + "\", " +
-                       "\"" + p.getPersonalInfo().getProfession() + "\", " +
-                       "\"" + p.getPersonalInfo().getInsurance() + "\", " +
-                       "\"" + p.getPersonalInfo().getTameio() + "\", " +
-                       p.getPersonalInfo().getAmka() + ", " +
-                       "\"" + p.getPersonalInfo().getFirstVisit() + "\", " +
-                       p.getPersonalInfo().getChildren() + ", " +
-                       p.getPersonalInfo().getHomeNum() + ", " +
-                       p.getPersonalInfo().getCellPhone()+ ", " +
-                       p.getPersonalInfo().getWorkNum() + ", " +
-                       p.getPersonalInfo().getFax() + ", " +
-                       "\"" + p.getPersonalInfo().getEmail() + "\");");
-
                 s.executeUpdate("INSERT INTO personalInfo VALUES " + "(4" + ", " +
                        "\"" + p.getPersonalInfo().getFName() + "\", " +
                        "\"" + p.getPersonalInfo().getMName() + "\", " +
@@ -860,7 +832,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                        "\"" + p.getPersonalInfo().getInsurance() + "\", " +
                        "\"" + p.getPersonalInfo().getTameio() + "\", " +
                        p.getPersonalInfo().getAmka() + ", " +
-                       "\"" + p.getPersonalInfo().getFirstVisit() + "\", " +
+                       p.getPersonalInfo().getFirstVisit() + ", " +
                        p.getPersonalInfo().getChildren() + ", " +
                        p.getPersonalInfo().getHomeNum() + ", " +
                        p.getPersonalInfo().getCellPhone()+ ", " +
@@ -870,10 +842,9 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                 
                 pl.addNewPatient(p);
 
-                
-
             }
             catch (SQLException ex) {
+                ex.printStackTrace();
                 JOptionPane.showMessageDialog(null,"Error saving to database", "Database error", 2);
             }
             catch (NullPointerException ex)
@@ -959,17 +930,18 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
     Connection con = null;
     String url = "jdbc:mysql://localhost:3306/";
-    String db = "Vidavo";
+    String db = "vidavo?zeroDateTimeBehavior=convertToNull";
     String driver = "com.mysql.jdbc.Driver";
     String user = "root";
-    String pass = "root";
+    String pass = "master";
 
         try{
           Class.forName(driver).newInstance();
           con = DriverManager.getConnection(url+db, user, pass);
           try{
             Statement st = con.createStatement();
-            ResultSet res = st.executeQuery("SELECT * FROM Personal_Info where patientId = " + patientID);
+            ResultSet res = st.executeQuery("SELECT * FROM personalInfo where patientId = 4");
+
             while(res.next()){
               idLabel2.setText(Integer.toString(res.getInt("patientID")));
               firstNTextField.setText(res.getString("FirstName"));
@@ -994,12 +966,22 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                   marriedRadioButton.setSelected(true);
               else
                   singleRadioButton.setSelected(true);
-
-              birthDateTextField.setText((res.getString("BirthDate")));
+//                System.out.println((res.getString("BirthDate").equals("0000-00-00")));
+//              if (res.getString("BirthDate").equals("0000-00-00"))
+//                  birthDateTextField.setText("");
+//              else
+//                  birthDateTextField.setText((res.getString("BirthDate")));
+// <Resource name="jdbc/mypool" auth="Container" type="javax.sql.DataSource?"
+//      maxActive="10" maxIdle="2" maxWait="10000"
+//      username="user" password="password" driverClassName="com.mysql.jdbc.Driver"
+//      url="jdbc:mysql://localhost/mydatabase?user=user&password=password&zeroDateTimeBehavior=convertToNull"/>
               profTextField.setText(res.getString("Profession"));
               insuranceTextField.setText(res.getString("Insurrance"));
               amkaTextField.setText(Integer.toString(res.getInt("Insurance_Id_Number")));
+
+
   
+
               int selectedItem;
               for(selectedItem = 0; selectedItem <= tameioComboBox.getItemCount(); selectedItem++){
                   if(res.getString("Insurance_Type").equals(tameioComboBox.getItemAt(selectedItem)))
@@ -1013,10 +995,14 @@ public class AddPatientGUI extends JFrame implements ActionListener{
               cellTextField.setText(Integer.toString(res.getInt("CellPhone_Number")));
               faxTextField.setText(Integer.toString(res.getInt("Fax_Number")));
               mailTextField.setText(res.getString("Email"));
+
+             // ageTextField.setText(Integer.toString(res.getInt("Age")));
+
             }
             con.close();
           }
           catch (SQLException s){
+              s.printStackTrace();
             System.out.println("SQL code does not execute.");
           }
         }
