@@ -741,37 +741,11 @@ public class AddPatientGUI extends JFrame implements ActionListener{
             try
             {
                 Statement s = db.create();
-                if (patientID < patientNumber){
-                       s.executeUpdate("DELETE FROM personalInfo WHERE patientID=" + patientID + ";");
-                       s.executeUpdate("INSERT INTO personalInfo VALUES " + "(" + patientID + ", " +
-                           "\"" + p.getPersonalInfo().getFName() + "\", " +
-                           "\"" + p.getPersonalInfo().getMName() + "\", " +
-                           "\"" + p.getPersonalInfo().getLName() + "\", " +
-                           "\"" + p.getPersonalInfo().getAddress() + "\", " +
-                           p.getPersonalInfo().getAddressNum() + ", " +
-                           "\"" + p.getPersonalInfo().getCity() + "\", " +
-                           "\"" + p.getPersonalInfo().getState() + "\", " +
-                           "\"" + p.getPersonalInfo().getCountry() + "\", " +
-                           p.getPersonalInfo().getPostalCode() + ", " +
-                           "\"" + p.getPersonalInfo().getCitizenship() + "\", " +
-                           p.getPersonalInfo().getHeight() + ", " +
-                           p.getPersonalInfo().getWeight()+ ", " +
-                           "\"" + p.getPersonalInfo().getSex() + "\", " +
-                           "\"" + p.getPersonalInfo().getMaritalStatus() + "\", " +
-                           "\"" + p.getPersonalInfo().getBirthDate() + "\", " +
-                           "\"" + p.getPersonalInfo().getProfession() + "\", " +
-                           "\"" + p.getPersonalInfo().getInsurance() + "\", " +
-                           "\"" + p.getPersonalInfo().getTameio() + "\", " +
-                           p.getPersonalInfo().getAmka() + ", " +
-                           p.getPersonalInfo().getFirstVisit() + ", " +
-                           p.getPersonalInfo().getChildren() + ", " +
-                           p.getPersonalInfo().getHomeNum() + ", " +
-                           p.getPersonalInfo().getCellPhone()+ ", " +
-                           p.getPersonalInfo().getWorkNum() + ", " +
-                           p.getPersonalInfo().getFax() + ", " +
-                           "\"" + p.getPersonalInfo().getEmail() + "\");");
-                }
-                else{
+                if (patientID < patientNumber)
+                    s.executeUpdate("DELETE FROM personalInfo WHERE patientID=" + patientID + ";");
+                else if(patientID == patientNumber)
+                    s.executeUpdate("INSERT INTO patients VALUES " + "("+ patientID +")" + ";");
+
                 p = new Patient(patientID,firstNTextField.getText(),lastNTextField.getText(),insuranceTextField.getText(),Integer.parseInt(amkaTextField.getText()),tameioComboBox.getSelectedItem().toString());
 
                 if(!middleNTextField.getText().equals(""))
@@ -845,8 +819,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
                 s = db.create();
 
-                s.executeUpdate("INSERT INTO patients VALUES " + "("+ patientID +")" + ";");
-
                 s.executeUpdate("INSERT INTO personalInfo VALUES " + "(" + patientID + ", " +
                        "\"" + p.getPersonalInfo().getFName() + "\", " +
                        "\"" + p.getPersonalInfo().getMName() + "\", " +
@@ -875,8 +847,8 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                        p.getPersonalInfo().getFax() + ", " +
                        "\"" + p.getPersonalInfo().getEmail() + "\");");
                 
-                pl.addNewPatient(p);
-                }
+//pl.addNewPatient(p);
+                
                 db.disconnect();
             }
             catch (SQLException ex) {
