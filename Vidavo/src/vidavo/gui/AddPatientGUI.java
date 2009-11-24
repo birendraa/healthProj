@@ -10,7 +10,6 @@ import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,6 +25,8 @@ import vidavo.*;
 public class AddPatientGUI extends JFrame implements ActionListener{
 
     private PatientList pl;
+    private Patient p;
+    private java.sql.Connection conn;
     private JTabbedPane addPatientTabbedPane;
     private JLabel addressLabel;
     private JLabel addressNumLabel;
@@ -118,6 +119,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                 }
             });
         initComponents();
+        databaseConnect();
         this.setSize(new Dimension(817, 650));
         Dimension dim = getToolkit().getScreenSize();
         Rectangle abounds = this.getBounds();
@@ -735,7 +737,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
             {
             int id = 0;
 
-                Patient p = new Patient(id,firstNTextField.getText(),lastNTextField.getText(),insuranceTextField.getText(),Integer.parseInt(amkaTextField.getText()),tameioComboBox.getSelectedItem().toString());
+                p = new Patient(id,firstNTextField.getText(),lastNTextField.getText(),insuranceTextField.getText(),Integer.parseInt(amkaTextField.getText()),tameioComboBox.getSelectedItem().toString());
 
                 if(!middleNTextField.getText().equals(""))
                     (p.getPersonalInfo()).setMName(middleNTextField.getText());
@@ -805,11 +807,75 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
                 if(!mailTextField.getText().equals(""))
                     (p.getPersonalInfo()).setEmail(mailTextField.getText());
+
+                java.sql.Statement s = conn.createStatement();
+
+                //s.executeUpdate("INSERT INTO patients VALUES " + "(4)" + ";");
+
+                System.out.println("INSERT INTO personalInfo VALUES " + "(4" + ", " +
+                       "\"" + p.getPersonalInfo().getFName() + "\", " +
+                       "\"" + p.getPersonalInfo().getMName() + "\", " +
+                       "\"" + p.getPersonalInfo().getLName() + "\", " +
+                       "\"" + p.getPersonalInfo().getAddress() + "\", " +
+                       p.getPersonalInfo().getAddressNum() + ", " +
+                       "\"" + p.getPersonalInfo().getCity() + "\", " +
+                       "\"" + p.getPersonalInfo().getState() + "\", " +
+                       "\"" + p.getPersonalInfo().getCountry() + "\", " +
+                       p.getPersonalInfo().getPostalCode() + ", " +
+                       "\"" + p.getPersonalInfo().getCitizenship() + "\", " +
+                       p.getPersonalInfo().getHeight() + ", " +
+                       p.getPersonalInfo().getWeight()+ ", " +
+                       "\"" + p.getPersonalInfo().getSex() + "\", " +
+                       "\"" + p.getPersonalInfo().getMaritalStatus() + "\", " +
+                       "\"" + p.getPersonalInfo().getBirthDate() + "\", " +
+                       "\"" + p.getPersonalInfo().getProfession() + "\", " +
+                       "\"" + p.getPersonalInfo().getInsurance() + "\", " +
+                       "\"" + p.getPersonalInfo().getTameio() + "\", " +
+                       p.getPersonalInfo().getAmka() + ", " +
+                       "\"" + p.getPersonalInfo().getFirstVisit() + "\", " +
+                       p.getPersonalInfo().getChildren() + ", " +
+                       p.getPersonalInfo().getHomeNum() + ", " +
+                       p.getPersonalInfo().getCellPhone()+ ", " +
+                       p.getPersonalInfo().getWorkNum() + ", " +
+                       p.getPersonalInfo().getFax() + ", " +
+                       "\"" + p.getPersonalInfo().getEmail() + "\");");
+
+                s.executeUpdate("INSERT INTO personalInfo VALUES " + "(4" + ", " +
+                       "\"" + p.getPersonalInfo().getFName() + "\", " +
+                       "\"" + p.getPersonalInfo().getMName() + "\", " +
+                       "\"" + p.getPersonalInfo().getLName() + "\", " +
+                       "\"" + p.getPersonalInfo().getAddress() + "\", " +
+                       p.getPersonalInfo().getAddressNum() + ", " +
+                       "\"" + p.getPersonalInfo().getCity() + "\", " +
+                       "\"" + p.getPersonalInfo().getState() + "\", " +
+                       "\"" + p.getPersonalInfo().getCountry() + "\", " +
+                       p.getPersonalInfo().getPostalCode() + ", " +
+                       "\"" + p.getPersonalInfo().getCitizenship() + "\", " +
+                       p.getPersonalInfo().getHeight() + ", " +
+                       p.getPersonalInfo().getWeight()+ ", " +
+                       "\"" + p.getPersonalInfo().getSex() + "\", " +
+                       "\"" + p.getPersonalInfo().getMaritalStatus() + "\", " +
+                       "\"" + p.getPersonalInfo().getBirthDate() + "\", " +
+                       "\"" + p.getPersonalInfo().getProfession() + "\", " +
+                       "\"" + p.getPersonalInfo().getInsurance() + "\", " +
+                       "\"" + p.getPersonalInfo().getTameio() + "\", " +
+                       p.getPersonalInfo().getAmka() + ", " +
+                       "\"" + p.getPersonalInfo().getFirstVisit() + "\", " +
+                       p.getPersonalInfo().getChildren() + ", " +
+                       p.getPersonalInfo().getHomeNum() + ", " +
+                       p.getPersonalInfo().getCellPhone()+ ", " +
+                       p.getPersonalInfo().getWorkNum() + ", " +
+                       p.getPersonalInfo().getFax() + ", " +
+                       "\"" + p.getPersonalInfo().getEmail() + "\");");
                 
                 pl.addNewPatient(p);
 
-            }
+                
 
+            }
+            catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,"Error saving to database", "Database error", 2);
+            }
             catch (NullPointerException ex)
             {
                 JOptionPane.showMessageDialog(null,"Missing obligatory information", "Nothing entered", 2);
@@ -856,6 +922,39 @@ public class AddPatientGUI extends JFrame implements ActionListener{
             this.dispose();
         } 
     }
+
+
+    public void databaseConnect(){
+        conn = null;
+
+           try
+           {
+               String userName = "root";
+               String password = "master";
+               String url = "jdbc:mysql://localhost:3306/vidavo";
+               Class.forName ("com.mysql.jdbc.Driver").newInstance();
+               conn = java.sql.DriverManager.getConnection (url, userName, password);
+               System.out.println ("Database connection established");
+               
+           }
+           catch (Exception e)
+           {
+               System.err.println ("Cannot connect to database server");
+           }
+           finally
+           {
+               if (conn != null)
+               {
+                   try
+                   {
+                       //conn.close ();
+                       System.out.println ("Database connection terminated");
+                   }
+                   catch (Exception e) { /* ignore close errors */ }
+               }
+           }
+       }
+
     public void loadPatientInfo(int patientID){
 
     Connection con = null;

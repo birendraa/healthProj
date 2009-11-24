@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ListResourceBundle;
 import java.util.Locale;
-import java.util.PropertyResourceBundle;
 import vidavo.gui.AddPatientGUI;
 
 /**
@@ -37,6 +36,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
 
     public PatientListGUI(){
         initComponents();
+        databaseConnect();
     }
 
     public void initComponents(){
@@ -207,6 +207,38 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
 
          }
     }
+
+    public void databaseConnect(){
+        Connection conn = null;
+
+           try
+           {
+               String userName = "root";
+               String password = "master";
+               String url = "jdbc:mysql://localhost:3306/vidavo";
+               Class.forName ("com.mysql.jdbc.Driver").newInstance();
+               conn = DriverManager.getConnection (url, userName, password);
+               System.out.println ("Database connection established");
+           }
+           catch (Exception e)
+           {
+               System.err.println ("Cannot connect to database server");
+           }
+           finally
+           {
+               if (conn != null)
+               {
+                   try
+                   {
+                       conn.close ();
+                       System.out.println ("Database connection terminated");
+                   }
+                   catch (Exception e) { /* ignore close errors */ }
+               }
+           }
+       }
+
+
 public void loadPatientsList(){
 
     Connection con = null;

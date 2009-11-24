@@ -47,7 +47,18 @@ public class PersonalInfo implements PersonalInfoInterface{
         insurance = insur;
         amka = a;
         tameio = tam;
-      
+        mName = "";
+        address = "";
+        city = "";
+        state = "";
+        country = "";
+        citizenship = "";
+        sex = "";
+        maritalStatus = "";
+        profession = "";
+        email = "";
+        birthDate = "0000-00-00";
+        firstVisit = "0000-00-00";
     }
 
     public PersonalInfo(int iD, String fn, String mn, String ln, String adrs, int adrsN, String cty, String stat, String cntry, int pc, String ctzship, int h, int w, String sx, String ms, String bd, String prof, String insur, int a, String tam, String fVisit, int child, String homeNum, String workNum, String cellPh, String fx, String em)
