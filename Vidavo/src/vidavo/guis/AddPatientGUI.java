@@ -8,13 +8,16 @@ package vidavo.guis;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import vidavo.*;
 
 /**
  *
  * @author Bosko
  */
-public class AddPatientGUI extends JFrame{
+public class AddPatientGUI extends JFrame implements ActionListener{
 
+
+    private PatientList pl;
 
     private JTabbedPane addPatientTabbedPane;
     private JLabel addressLabel;
@@ -95,6 +98,7 @@ public class AddPatientGUI extends JFrame{
 
     public AddPatientGUI ()
     {
+        pl = new PatientList();
         initComponents();
         this.setSize(new Dimension(817, 650));
         Dimension dim = getToolkit().getScreenSize();
@@ -468,6 +472,7 @@ public class AddPatientGUI extends JFrame{
         );
 
         saveButton.setText("Save");
+        saveButton.addActionListener(this);
         cancelButton.setText("Cancel");
 
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -681,6 +686,23 @@ public class AddPatientGUI extends JFrame{
             .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );*/
     //}
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        String action = e.getActionCommand();
+
+        if(action.equals("Save"))
+        {
+            int id = 0;
+            if(!((firstNTextField.getText()).equals("")) && !((lastNTextField.getText()).equals("")) && !((insuranceTextField).getText()).equals("")  && !(amkaTextField.getText()).equals(""))
+            {
+                Patient p = new Patient(id,firstNTextField.getText(),lastNTextField.getText(),insuranceTextField.getText(),Integer.parseInt(amkaTextField.getText()),tameioComboBox.getSelectedItem().toString());
+                pl.addNewPatient(p);
+            }
+            
+            else
+                System.out.print("Missing info");
+        }
     }
 
 }
