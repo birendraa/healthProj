@@ -131,7 +131,7 @@ public class PersonalInfo implements PersonalInfoInterface{
         return address;
     }
 
-    public void setAddresNum(int addN)
+    public void setAddressNum(int addN)
     {
         addressNum = addN;
     }
@@ -291,7 +291,7 @@ public class PersonalInfo implements PersonalInfoInterface{
         return firstVisit;
     }
 
-    public void setLChildren(int child)
+    public void setChildren(int child)
     {
         children = child;
     }
