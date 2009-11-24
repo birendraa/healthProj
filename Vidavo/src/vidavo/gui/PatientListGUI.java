@@ -33,10 +33,10 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextField;
     private javax.swing.JScrollPane tableScrollPane;
+    private Database db;
 
     public PatientListGUI(){
         initComponents();
-        databaseConnect();
     }
 
     public void initComponents(){
@@ -51,6 +51,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         cancelButton = new javax.swing.JButton();
         searchTextField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
+        this.db = new Database();
 
         ListResourceBundle resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.gui.ResourceMap", new Locale("en"));
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -186,7 +187,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          String c = e.getActionCommand();
 
          if(c.equals("add")){
-                new AddPatientGUI();
+                new AddPatientGUI(db);
 
          }
 
@@ -195,8 +196,8 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          }
 
          if(c.equals("edit")){
-                AddPatientGUI p = new AddPatientGUI();
-                p.loadPatientInfo(1234);
+                AddPatientGUI p = new AddPatientGUI(db);
+                p.loadPatientInfo(1);
          }
 
          if(c.equals("close")){
@@ -208,51 +209,13 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          }
     }
 
-    public void databaseConnect(){
-        Connection conn = null;
-
-           try
-           {
-               String userName = "root";
-               String password = "master";
-               String url = "jdbc:mysql://localhost:3306/vidavo";
-               Class.forName ("com.mysql.jdbc.Driver").newInstance();
-               conn = DriverManager.getConnection (url, userName, password);
-               System.out.println ("Database connection established");
-           }
-           catch (Exception e)
-           {
-               System.err.println ("Cannot connect to database server");
-           }
-           finally
-           {
-               if (conn != null)
-               {
-                   try
-                   {
-                       conn.close ();
-                       System.out.println ("Database connection terminated");
-                   }
-                   catch (Exception e) { /* ignore close errors */ }
-               }
-           }
-       }
-
-
 public void loadPatientsList(){
 
-    Connection con = null;
-    String url = "jdbc:mysql://localhost:3306/";
-    String db = "vidavo";
-    String driver = "com.mysql.jdbc.Driver";
-    String user = "root";
-    String pass = "master";
 
         try{
-          Class.forName(driver).newInstance();
-          con = DriverManager.getConnection(url+db, user, pass);
+          db.connect();
           try{
-            Statement st = con.createStatement();
+            Statement st = db.create();
             ResultSet res = st.executeQuery("SELECT patientID, LastName, FirstName, Home_Number FROM personalInfo;");
             while(res.next()){
                 //patientTable
@@ -267,7 +230,7 @@ public void loadPatientsList(){
                 patientTable.addColumn(null);
                  * */
             }
-            con.close();
+            db.disconnect();
           }
           catch (SQLException s){
               s.printStackTrace();

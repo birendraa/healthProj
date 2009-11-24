@@ -9,11 +9,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import vidavo.*;
 
@@ -26,7 +26,9 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
     private PatientList pl;
     private Patient p;
-    private java.sql.Connection conn;
+    private Database db;
+    private int patientID;
+
     private JTabbedPane addPatientTabbedPane;
     private JLabel addressLabel;
     private JLabel addressNumLabel;
@@ -107,9 +109,10 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
     //private org.jdesktop.beansbinding.BindingGroup bindingGroup;
 
-    public AddPatientGUI ()
+    public AddPatientGUI (Database db)
     {
         pl = new PatientList();
+        this.db = db;
         JFrame addPatientFrame = new JFrame ("Add Patient");
             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             this.addWindowListener(new WindowAdapter() {
@@ -119,7 +122,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                 }
             });
         initComponents();
-        databaseConnect();
         this.setSize(new Dimension(817, 650));
         Dimension dim = getToolkit().getScreenSize();
         Rectangle abounds = this.getBounds();
@@ -132,6 +134,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
     private void initComponents()
     {
+
         mainPanel = new JPanel();
         addPatientTabbedPane = new JTabbedPane();
         medicalHistoryPane = new JPanel();
@@ -232,7 +235,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         countryTextField.setText("");
         postalCTextField.setText("");
         citizenshipTextField.setText("");
-        idLabel2.setText("9999");
         heightLabel.setText("Height (cm)");
         weightLabel.setText("Weight (kg)");
         maleRadioButton.setText("Male");
@@ -259,6 +261,12 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         jPanel16.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel16.setName("jPanel16");
+        try {
+            patientID = countPatients();
+        } catch (SQLException ex) {
+             System.out.println("Problem counting patients.");
+        }
+        idLabel2.setText(Integer.toString(patientID));
 
         ButtonGroup maleFemaleGroup =  new ButtonGroup();
         maleFemaleGroup.add(maleRadioButton);
@@ -733,11 +741,13 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         if(action.equals("Save"))
         {
+
             try
             {
-            int id = 0;
 
-                p = new Patient(id,firstNTextField.getText(),lastNTextField.getText(),insuranceTextField.getText(),Integer.parseInt(amkaTextField.getText()),tameioComboBox.getSelectedItem().toString());
+                db.connect();
+
+                p = new Patient(patientID,firstNTextField.getText(),lastNTextField.getText(),insuranceTextField.getText(),Integer.parseInt(amkaTextField.getText()),tameioComboBox.getSelectedItem().toString());
 
                 if(!middleNTextField.getText().equals(""))
                     (p.getPersonalInfo()).setMName(middleNTextField.getText());
@@ -808,11 +818,12 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                 if(!mailTextField.getText().equals(""))
                     (p.getPersonalInfo()).setEmail(mailTextField.getText());
 
-                java.sql.Statement s = conn.createStatement();
 
-                //s.executeUpdate("INSERT INTO patients VALUES " + "(4)" + ";");
+                Statement s = db.create();
 
-                s.executeUpdate("INSERT INTO personalInfo VALUES " + "(4" + ", " +
+                s.executeUpdate("INSERT INTO patients VALUES " + "("+ patientID +")" + ";");
+
+                s.executeUpdate("INSERT INTO personalInfo VALUES " + "(" + patientID + ", " +
                        "\"" + p.getPersonalInfo().getFName() + "\", " +
                        "\"" + p.getPersonalInfo().getMName() + "\", " +
                        "\"" + p.getPersonalInfo().getLName() + "\", " +
@@ -867,7 +878,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
     private void showCancelDialog()
     {
         final JDialog dialog = new JDialog(this, "Exit", true);
-        final JOptionPane op = new JOptionPane("Are you sure you want to exit the program?", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
+        final JOptionPane op = new JOptionPane("Are you sure you want to close the window? ", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
         dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         dialog.setContentPane(op);
         dialog.setResizable(false);
@@ -894,53 +905,13 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         } 
     }
 
-
-    public void databaseConnect(){
-        conn = null;
-
-           try
-           {
-               String userName = "root";
-               String password = "master";
-               String url = "jdbc:mysql://localhost:3306/vidavo";
-               Class.forName ("com.mysql.jdbc.Driver").newInstance();
-               conn = java.sql.DriverManager.getConnection (url, userName, password);
-               System.out.println ("Database connection established");
-               
-           }
-           catch (Exception e)
-           {
-               System.err.println ("Cannot connect to database server");
-           }
-           finally
-           {
-               if (conn != null)
-               {
-                   try
-                   {
-                       //conn.close ();
-                       System.out.println ("Database connection terminated");
-                   }
-                   catch (Exception e) { /* ignore close errors */ }
-               }
-           }
-       }
-
     public void loadPatientInfo(int patientID){
 
-    Connection con = null;
-    String url = "jdbc:mysql://localhost:3306/";
-    String db = "vidavo?zeroDateTimeBehavior=convertToNull";
-    String driver = "com.mysql.jdbc.Driver";
-    String user = "root";
-    String pass = "master";
-
-        try{
-          Class.forName(driver).newInstance();
-          con = DriverManager.getConnection(url+db, user, pass);
           try{
-            Statement st = con.createStatement();
-            ResultSet res = st.executeQuery("SELECT * FROM personalInfo where patientId = 4");
+            
+            db.connect();
+            Statement st = db.create();
+            ResultSet res = st.executeQuery("SELECT * FROM personalInfo where patientId = " + (patientID));
 
             while(res.next()){
               idLabel2.setText(Integer.toString(res.getInt("patientID")));
@@ -966,21 +937,10 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                   marriedRadioButton.setSelected(true);
               else
                   singleRadioButton.setSelected(true);
-//                System.out.println((res.getString("BirthDate").equals("0000-00-00")));
-//              if (res.getString("BirthDate").equals("0000-00-00"))
-//                  birthDateTextField.setText("");
-//              else
-//                  birthDateTextField.setText((res.getString("BirthDate")));
-// <Resource name="jdbc/mypool" auth="Container" type="javax.sql.DataSource?"
-//      maxActive="10" maxIdle="2" maxWait="10000"
-//      username="user" password="password" driverClassName="com.mysql.jdbc.Driver"
-//      url="jdbc:mysql://localhost/mydatabase?user=user&password=password&zeroDateTimeBehavior=convertToNull"/>
+              birthDateTextField.setText((res.getString("BirthDate")));
               profTextField.setText(res.getString("Profession"));
               insuranceTextField.setText(res.getString("Insurrance"));
               amkaTextField.setText(Integer.toString(res.getInt("Insurance_Id_Number")));
-
-
-  
 
               int selectedItem;
               for(selectedItem = 0; selectedItem <= tameioComboBox.getItemCount(); selectedItem++){
@@ -999,43 +959,52 @@ public class AddPatientGUI extends JFrame implements ActionListener{
              // ageTextField.setText(Integer.toString(res.getInt("Age")));
 
             }
-            con.close();
+            db.disconnect();
           }
           catch (SQLException s){
               s.printStackTrace();
             System.out.println("SQL code does not execute.");
           }
-        }
-        catch (Exception e){
-          e.printStackTrace();
-        }
+      }
+
+    private int countPatients() throws SQLException {
+            db.connect();
+            Statement s = db.create();
+            ResultSet r = s.executeQuery("SELECT COUNT(*) AS rowcount FROM patients");
+            r.next();
+            int count = r.getInt("rowcount") ;
+            r.close() ;
+            System.out.println("Patients has " + count + " row(s).");
+            db.disconnect();
+            return count + 1;
     }
-    public void savePhoto(){
-        System.out.println("Insert Image Example!");
-            String driverName = "com.mysql.jdbc.Driver";
-            String url = "jdbc:mysql://localhost:3306/";
-            String dbName = "hibernatetutorial";
-            String userName = "root";
-            String password = "root";
-            Connection con = null;
-            try{
-              Class.forName(driverName);
-              con = DriverManager.getConnection(url+dbName,userName,password);
-              Statement st = con.createStatement();
-              File imgfile = new File("images.jpg");
-              FileInputStream fin = new FileInputStream(imgfile);
-              PreparedStatement pre = con.prepareStatement("insert into Image values(?,?,?)");
-              pre.setInt(1,5);
-              pre.setString(2,"Durga");
-              pre.setBinaryStream(3,fin,(int)imgfile.length());
-              pre.executeUpdate();
-              System.out.println("Inserting Successfully!");
-              pre.close();
-              con.close();
-            }
-            catch (Exception e){
-              System.out.println(e.getMessage());
-            }
-    }
+    
+//    public void savePhoto(){
+//        System.out.println("Insert Image Example!");
+//            String driverName = "com.mysql.jdbc.Driver";
+//            String url = "jdbc:mysql://localhost:3306/";
+//            String dbName = "hibernatetutorial";
+//            String userName = "root";
+//            String password = "root";
+//            Connection con = null;
+//            try{
+//              Class.forName(driverName);
+//              con = DriverManager.getConnection(url+dbName,userName,password);
+//              Statement st = con.createStatement();
+//              File imgfile = new File("images.jpg");
+//              FileInputStream fin = new FileInputStream(imgfile);
+//              PreparedStatement pre = con.prepareStatement("insert into Image values(?,?,?)");
+//              pre.setInt(1,5);
+//              pre.setString(2,"Durga");
+//              pre.setBinaryStream(3,fin,(int)imgfile.length());
+//              pre.executeUpdate();
+//              System.out.println("Inserting Successfully!");
+//              pre.close();
+//              con.close();
+//            }
+//            catch (Exception e){
+//              System.out.println(e.getMessage());
+//            }
+//    }
 
 }

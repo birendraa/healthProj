@@ -11,6 +11,7 @@ package vidavo;
  */
 public class Patient implements PatientInterface{
 
+   private int patientID;
    private PersonalInfo pInfo;
    private Photos photos;
    private Contacts contacts;
@@ -28,6 +29,7 @@ public class Patient implements PatientInterface{
    {
        if(!fn.equals("") && !ln.equals("") && !insur.equals(""))
         {
+       patientID = iD;
        pInfo = new PersonalInfo(iD,fn,ln,insur,a,tam);
        photos = new Photos();
        contacts = new Contacts();
@@ -46,6 +48,13 @@ public class Patient implements PatientInterface{
             throw new NullPointerException();
    }
 
+    public int getPatientID() {
+        return patientID;
+    }
+
+    public void setPatientID(int patientID) {
+        this.patientID = patientID;
+    }
 
    public void setPersonalInfo(PersonalInfo pi)
    {
