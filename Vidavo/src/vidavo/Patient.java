@@ -24,8 +24,10 @@ public class Patient implements PatientInterface{
    private SurgeryHistory surgHistory;
    private MedicalHistory medHistory;
 
-   public Patient(int iD, String fn, String ln, String insur, int a, String tam)
+   public Patient(int iD, String fn, String ln, String insur, int a, String tam) throws NullPointerException
    {
+       if(!fn.equals("") && !ln.equals("") && !insur.equals(""))
+        {
        pInfo = new PersonalInfo(iD,fn,ln,insur,a,tam);
        photos = new Photos();
        contacts = new Contacts();
@@ -38,6 +40,10 @@ public class Patient implements PatientInterface{
        famHistory = new FamilyHistory();
        surgHistory = new SurgeryHistory();
        medHistory = new MedicalHistory();
+         }
+
+        else
+            throw new NullPointerException();
    }
 
 

@@ -709,15 +709,27 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         if(action.equals("Save"))
         {
+            try
+            {
             int id = 0;
-            if(!((firstNTextField.getText()).equals("")) && !((lastNTextField.getText()).equals("")) && !((insuranceTextField).getText()).equals("")  && !(amkaTextField.getText()).equals(""))
+           // if(!((firstNTextField.getText()).equals(null)) && !((lastNTextField.getText()).equals(null)) && !((insuranceTextField).getText()).equals(null)  && !(amkaTextField.getText()).equals(null))
             {
                 Patient p = new Patient(id,firstNTextField.getText(),lastNTextField.getText(),insuranceTextField.getText(),Integer.parseInt(amkaTextField.getText()),tameioComboBox.getSelectedItem().toString());
                 pl.addNewPatient(p);
+                System.out.print("Patient added");
+            }            
             }
-            
-            else
-                System.out.print("Missing information");
+
+            catch (NullPointerException ex)
+            {
+                JOptionPane.showMessageDialog(null,"Missing obligatory information", "Nothing entered", 2);
+            }
+
+            catch (NumberFormatException ex)
+            {
+                JOptionPane.showMessageDialog(null,"Enter only digits in the amka field", "Wrong input", 2 );
+            }
+ 
         }
     }
 
