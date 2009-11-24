@@ -936,7 +936,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
             
             db.connect();
             Statement st = db.create();
-            ResultSet res = st.executeQuery("SELECT * FROM personalInfo where patientId = " + (patientID));
+            ResultSet res = st.executeQuery("SELECT * FROM personalInfo where patientId = " + patientID);
 
             while(res.next()){
               idLabel2.setText(Integer.toString(res.getInt("patientID")));
@@ -981,7 +981,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
               faxTextField.setText(Integer.toString(res.getInt("Fax_Number")));
               mailTextField.setText(res.getString("Email"));
 
-             // ageTextField.setText(Integer.toString(res.getInt("Age")));
+             // ageTextField.setText(calculateAge());
 
             }
             db.disconnect();
