@@ -12,6 +12,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ListResourceBundle;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -64,7 +67,14 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
 
         model = new DefaultTableModel(new Object [][] {}, new String [] {"", "", "", ""});
         
-        patientTable = new javax.swing.JTable(model);
+        patientTable = new javax.swing.JTable(model){
+
+            @Override
+              public boolean isCellEditable(int row,int column){
+                return false;
+              }
+        };
+
 
         patientTable.setName("patientTable"); // NOI18N
         tableScrollPane.setViewportView(patientTable);
@@ -175,7 +185,8 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          String c = e.getActionCommand();
 
          if(c.equals("add")){
-                new AddPatientGUI(db);
+                int id = countPatients();
+                new AddPatientGUI(db,id,id);
 
          }
 
@@ -184,8 +195,14 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          }
 
          if(c.equals("edit")){
-                AddPatientGUI p = new AddPatientGUI(db);
-                p.loadPatientInfo(1);
+                int id = countPatients();
+                if(patientTable.getSelectedRow() != -1){
+                    int selectedID = (Integer.parseInt((String)patientTable.getValueAt(patientTable.getSelectedRow(), 0)));
+                    AddPatientGUI p = new AddPatientGUI(db, selectedID, id);
+                    p.loadPatientInfo(selectedID);
+                }
+                else
+                    JOptionPane.showMessageDialog(null,"No patient selected", "Nothing entered", 2);
          }
 
          if(c.equals("close")){
@@ -217,6 +234,23 @@ public void loadPatientsList(){
         catch (Exception e){
           e.printStackTrace();
         }
+    }
+
+    private int countPatients(){
+        int count = 0;
+        try {
+            db.connect();
+            Statement s = db.create();
+            ResultSet r = s.executeQuery("SELECT COUNT(*) AS rowcount FROM patients");
+            r.next();
+            count = r.getInt("rowcount");
+            r.close();
+            System.out.println("Patients has " + count + " row(s).");
+            db.disconnect();
+        } catch (SQLException ex) {
+            System.out.println("Error in counting patients");
+        }
+        return count + 1;
     }
 
 }

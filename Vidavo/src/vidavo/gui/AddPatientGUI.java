@@ -26,6 +26,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
     private Patient p;
     private Database db;
     private int patientID;
+    private int patientNumber;
 
     private JTabbedPane addPatientTabbedPane;
     private JLabel addressLabel;
@@ -107,7 +108,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
     //private org.jdesktop.beansbinding.BindingGroup bindingGroup;
 
-    public AddPatientGUI (Database db)
+    public AddPatientGUI (Database db, int patientID, int patientNumber)
     {
         pl = new PatientList();
         this.db = db;
@@ -119,6 +120,8 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                     showCancelDialog();
                 }
             });
+        this.patientID = patientID;
+        this.patientNumber = patientNumber;
         initComponents();
         this.setSize(new Dimension(817, 650));
         Dimension dim = getToolkit().getScreenSize();
@@ -235,6 +238,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         citizenshipTextField.setText("");
         heightLabel.setText("Height (cm)");
         weightLabel.setText("Weight (kg)");
+        idLabel2.setText(Integer.toString(patientID));
         maleRadioButton.setText("Male");
         femaleRadioButton.setText("Female");
         marriedRadioButton.setText("Married");
@@ -259,12 +263,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         jPanel16.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel16.setName("jPanel16");
-        try {
-            patientID = countPatients();
-        } catch (SQLException ex) {
-             System.out.println("Problem counting patients.");
-        }
-        idLabel2.setText(Integer.toString(patientID));
 
         ButtonGroup maleFemaleGroup =  new ButtonGroup();
         maleFemaleGroup.add(maleRadioButton);
@@ -739,10 +737,41 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         if(action.equals("Save"))
         {
-
+                db.connect();
             try
             {
-
+                Statement s = db.create();
+                if (patientID < patientNumber){
+                       s.executeUpdate("DELETE FROM personalInfo WHERE patientID=" + patientID + ";");
+                       s.executeUpdate("INSERT INTO personalInfo VALUES " + "(" + patientID + ", " +
+                           "\"" + p.getPersonalInfo().getFName() + "\", " +
+                           "\"" + p.getPersonalInfo().getMName() + "\", " +
+                           "\"" + p.getPersonalInfo().getLName() + "\", " +
+                           "\"" + p.getPersonalInfo().getAddress() + "\", " +
+                           p.getPersonalInfo().getAddressNum() + ", " +
+                           "\"" + p.getPersonalInfo().getCity() + "\", " +
+                           "\"" + p.getPersonalInfo().getState() + "\", " +
+                           "\"" + p.getPersonalInfo().getCountry() + "\", " +
+                           p.getPersonalInfo().getPostalCode() + ", " +
+                           "\"" + p.getPersonalInfo().getCitizenship() + "\", " +
+                           p.getPersonalInfo().getHeight() + ", " +
+                           p.getPersonalInfo().getWeight()+ ", " +
+                           "\"" + p.getPersonalInfo().getSex() + "\", " +
+                           "\"" + p.getPersonalInfo().getMaritalStatus() + "\", " +
+                           "\"" + p.getPersonalInfo().getBirthDate() + "\", " +
+                           "\"" + p.getPersonalInfo().getProfession() + "\", " +
+                           "\"" + p.getPersonalInfo().getInsurance() + "\", " +
+                           "\"" + p.getPersonalInfo().getTameio() + "\", " +
+                           p.getPersonalInfo().getAmka() + ", " +
+                           p.getPersonalInfo().getFirstVisit() + ", " +
+                           p.getPersonalInfo().getChildren() + ", " +
+                           p.getPersonalInfo().getHomeNum() + ", " +
+                           p.getPersonalInfo().getCellPhone()+ ", " +
+                           p.getPersonalInfo().getWorkNum() + ", " +
+                           p.getPersonalInfo().getFax() + ", " +
+                           "\"" + p.getPersonalInfo().getEmail() + "\");");
+                }
+                else{
                 p = new Patient(patientID,firstNTextField.getText(),lastNTextField.getText(),insuranceTextField.getText(),Integer.parseInt(amkaTextField.getText()),tameioComboBox.getSelectedItem().toString());
 
                 if(!middleNTextField.getText().equals(""))
@@ -814,11 +843,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                 if(!mailTextField.getText().equals(""))
                     (p.getPersonalInfo()).setEmail(mailTextField.getText());
 
-                db.connect();
-
-                Statement s = db.create();
-
-//                if  (patientID)
+                s = db.create();
 
                 s.executeUpdate("INSERT INTO patients VALUES " + "("+ patientID +")" + ";");
 
@@ -851,7 +876,8 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                        "\"" + p.getPersonalInfo().getEmail() + "\");");
                 
                 pl.addNewPatient(p);
-
+                }
+                db.disconnect();
             }
             catch (SQLException ex) {
                 ex.printStackTrace();
@@ -965,18 +991,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
             System.out.println("SQL code does not execute.");
           }
       }
-
-    private int countPatients() throws SQLException {
-            db.connect();
-            Statement s = db.create();
-            ResultSet r = s.executeQuery("SELECT COUNT(*) AS rowcount FROM patients");
-            r.next();
-            int count = r.getInt("rowcount") ;
-            r.close() ;
-            System.out.println("Patients has " + count + " row(s).");
-            db.disconnect();
-            return count + 1;
-    }
     
 //    public void savePhoto(){
 //        System.out.println("Insert Image Example!");
