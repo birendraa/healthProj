@@ -745,8 +745,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
             try
             {
 
-                db.connect();
-
                 p = new Patient(patientID,firstNTextField.getText(),lastNTextField.getText(),insuranceTextField.getText(),Integer.parseInt(amkaTextField.getText()),tameioComboBox.getSelectedItem().toString());
 
                 if(!middleNTextField.getText().equals(""))
@@ -803,7 +801,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                 if(!childrenSpinner.getValue().equals(null))
                     (p.getPersonalInfo()).setChildren(Integer.parseInt(childrenSpinner.getValue().toString()));
 
-               if(!homeTextField.getText().equals(""))
+                if(!homeTextField.getText().equals(""))
                     (p.getPersonalInfo()).setHomeNum(homeTextField.getText());
 
                 if(!workTextField.getText().equals(""))
@@ -818,8 +816,11 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                 if(!mailTextField.getText().equals(""))
                     (p.getPersonalInfo()).setEmail(mailTextField.getText());
 
+                db.connect();
 
                 Statement s = db.create();
+
+//                if  (patientID)
 
                 s.executeUpdate("INSERT INTO patients VALUES " + "("+ patientID +")" + ";");
 

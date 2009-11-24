@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ListResourceBundle;
 import java.util.Locale;
+import javax.swing.table.DefaultTableModel;
 import vidavo.gui.AddPatientGUI;
 
 /**
@@ -34,6 +35,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
     private javax.swing.JTextField searchTextField;
     private javax.swing.JScrollPane tableScrollPane;
     private Database db;
+    private DefaultTableModel model;
 
     public PatientListGUI(){
         initComponents();
@@ -57,27 +59,16 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         this.setTitle(resourceMap.getString("patientList.title"));
 
-
         patientListPanel.setName("patientListPanel"); // NOI18N
 
         tableScrollPane.setName("tableScrollPane"); // NOI18N
 
-        patientTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-            },
-            new String [] {
-                "", "", "", ""
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
-            };
+        tableScrollPane.setName("tableScrollPane"); // NOI18N
 
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        model = new DefaultTableModel(new Object [][] {}, new String [] {"", "", "", ""});
+        
+        patientTable = new javax.swing.JTable(model);
+
         patientTable.setName("patientTable"); // NOI18N
         tableScrollPane.setViewportView(patientTable);
         patientTable.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("patientTable.columnModel.title0")); // NOI18N
@@ -211,24 +202,13 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
 
 public void loadPatientsList(){
 
-
         try{
           db.connect();
           try{
             Statement st = db.create();
             ResultSet res = st.executeQuery("SELECT patientID, LastName, FirstName, Home_Number FROM personalInfo;");
             while(res.next()){
-                //patientTable
-                System.out.println(res.getString("patientID"));
-                System.out.println(res.getString("LastName"));
-                System.out.println(res.getString("FirstName"));
-                System.out.println(res.getString("Home_Number"));
-                /*
-                for(int i = 1; i < ; i++)
-                    if(i == 4)
-                        i = 1;
-                patientTable.addColumn(null);
-                 * */
+                model.insertRow(patientTable.getRowCount(), new Object[]{res.getString("patientID"),res.getString("LastName"),res.getString("FirstName"),res.getString("Home_Number")});
             }
             db.disconnect();
           }
@@ -241,4 +221,5 @@ public void loadPatientsList(){
           e.printStackTrace();
         }
     }
+
 }
