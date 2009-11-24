@@ -21,7 +21,7 @@ public interface PersonalInfoInterface {
     public String getFName();
     public void setAddress(String add);
     public String getAddress();
-    public void setAddresNum(int addN);
+    public void setAddressNum(int addN);
     public int getAddressNum();
     public void setCity(String cit);
     public String getCity();
