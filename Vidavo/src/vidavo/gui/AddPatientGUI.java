@@ -9,15 +9,21 @@ import java.awt.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.*;
 import vidavo.*;
+
 
 /**
  *
  * @author Bosko
  */
 public class AddPatientGUI extends JFrame implements ActionListener{
-
 
     private PatientList pl;
     private JTabbedPane addPatientTabbedPane;
@@ -850,4 +856,75 @@ public class AddPatientGUI extends JFrame implements ActionListener{
             this.dispose();
         } 
     }
+    public void loadPatientInfo(int patientID){
+
+    Connection con = null;
+    String url = "jdbc:mysql://localhost:3306/";
+    String db = "Vidavo";
+    String driver = "com.mysql.jdbc.Driver";
+    String user = "root";
+    String pass = "root";
+
+        try{
+          Class.forName(driver).newInstance();
+          con = DriverManager.getConnection(url+db, user, pass);
+          try{
+            Statement st = con.createStatement();
+            ResultSet res = st.executeQuery("SELECT * FROM Patients where patientId = " + patientID);
+            while(res.next()){
+              idLabel2.setText(Integer.toString(res.getInt("patientID")));
+              firstNTextField.setText(res.getString("FirstName"));
+              middleNTextField.setText(res.getString("MiddleName"));
+              lastNTextField.setText(res.getString("LastName"));
+              addressTextField.setText(res.getString("Address"));
+              addressNumTextField.setText(Integer.toString(res.getInt("AddressNum")));
+              cityTextField.setText(res.getString("City"));
+              regionTextField.setText(res.getString("State_Region"));
+              countryTextField.setText(res.getString("Country"));
+              postalCTextField.setText(Integer.toString(res.getInt("Postal_Code")));
+              citizenshipTextField.setText(res.getString("Citizenship"));
+              heightTextField.setText(Integer.toString(res.getInt("Height")));
+              weightTextField.setText(Integer.toString(res.getInt("Weight")));
+
+              if(res.getString("Gender").equals("Male"))
+                  maleRadioButton.setSelected(true);
+              else
+                  femaleRadioButton.setSelected(true);
+
+              if(res.getString("Status").equals("Married"))
+                  marriedRadioButton.setSelected(true);
+              else
+                  singleRadioButton.setSelected(true);
+
+              birthDateTextField.setText((res.getString("BirthDate")));
+              profTextField.setText(res.getString("Profession"));
+              insuranceTextField.setText(res.getString("Insurrance"));
+              amkaTextField.setText(Integer.toString(res.getInt("Insurance_Id_Number")));
+              System.out.println(res.getString("Insurance_Type"));
+              int selectedItem;
+              for(selectedItem = 1; selectedItem < tameioComboBox.getItemCount(); selectedItem++){
+                  if(res.getString("Insurance_Type").equals(tameioComboBox.getItemAt(selectedItem)))
+                    break;
+              }
+              tameioComboBox.setSelectedIndex(selectedItem);
+              firstVisitTextField.setText((res.getString("First_Visit")));
+              childrenSpinner.setValue(res.getInt("Children"));
+              homeTextField.setText(Integer.toString(res.getInt("Home_Number")));
+              workTextField.setText(Integer.toString(res.getInt("Work_Number")));
+              cellTextField.setText(Integer.toString(res.getInt("CellPhone_Number")));
+              faxTextField.setText(Integer.toString(res.getInt("Fax_Number")));
+              mailTextField.setText(res.getString("Email"));
+              ageTextField.setText(Integer.toString(res.getInt("Age")));
+            }
+            con.close();
+          }
+          catch (SQLException s){
+            System.out.println("SQL code does not execute.");
+          }
+        }
+        catch (Exception e){
+          e.printStackTrace();
+        }
+    }
+
 }

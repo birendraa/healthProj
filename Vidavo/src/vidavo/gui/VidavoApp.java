@@ -12,7 +12,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author Serban
  */
-public class VidavoApp {
+public class VidavoApp extends PatientListGUI{
 
         public static void main(String[] args){
             try {

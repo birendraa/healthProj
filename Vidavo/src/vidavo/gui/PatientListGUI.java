@@ -7,9 +7,15 @@ package vidavo.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ListResourceBundle;
 import java.util.Locale;
 import java.util.PropertyResourceBundle;
+import vidavo.gui.AddPatientGUI;
 
 /**
  *
@@ -181,6 +187,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
 
          if(c.equals("add")){
                 new AddPatientGUI();
+
          }
 
          if(c.equals("remove")){
@@ -188,7 +195,8 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          }
 
          if(c.equals("edit")){
-                new AddPatientGUI();
+                AddPatientGUI p = new AddPatientGUI();
+                p.loadPatientInfo(1234);
          }
 
          if(c.equals("close")){
@@ -198,5 +206,33 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          if(c.equals("search")){
 
          }
+    }
+public void loadPatientsList(){
+
+    Connection con = null;
+    String url = "jdbc:mysql://localhost:3306/";
+    String db = "Vidavo";
+    String driver = "com.mysql.jdbc.Driver";
+    String user = "root";
+    String pass = "root";
+
+        try{
+          Class.forName(driver).newInstance();
+          con = DriverManager.getConnection(url+db, user, pass);
+          try{
+            Statement st = con.createStatement();
+            ResultSet res = st.executeQuery("SELECT patientID, LastName, FirstName, Home_Number FROM patients;");
+            while(res.next()){
+
+            }
+            con.close();
+          }
+          catch (SQLException s){
+            System.out.println("SQL code does not execute.");
+          }
+        }
+        catch (Exception e){
+          e.printStackTrace();
+        }
     }
 }
