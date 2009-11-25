@@ -190,8 +190,9 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
 
          }
 
-         if(c.equals("remove")){
-
+         if(c.equals("delete")){
+                deletePatient(Integer.parseInt(model.getValueAt(patientTable.getSelectedRow(), 0).toString()));
+                //loadPatientsList();
          }
 
          if(c.equals("edit")){
@@ -235,7 +236,29 @@ public void loadPatientsList(){
           e.printStackTrace();
         }
     }
+public void deletePatient(int patientID){
+        try{
+          db.connect();
+          try{
+            Statement st = db.create();
+            int delete = st.executeUpdate("DELETE FROM personalInfo where patientId = " + patientID);
 
+            if(delete == 0)
+                System.out.println("Fail");
+            else
+                System.out.println("Success");
+            
+            db.disconnect();
+          }
+          catch (SQLException s){
+              s.printStackTrace();
+            System.out.println("SQL code does not execute.");
+          }
+        }
+        catch (Exception e){
+          e.printStackTrace();
+        }
+    }
     private int countPatients(){
         int count = 0;
         try {

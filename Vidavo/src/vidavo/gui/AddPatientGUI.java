@@ -846,9 +846,9 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                        p.getPersonalInfo().getWorkNum() + ", " +
                        p.getPersonalInfo().getFax() + ", " +
                        "\"" + p.getPersonalInfo().getEmail() + "\");");
-                
+
 //pl.addNewPatient(p);
-                
+
                 db.disconnect();
             }
             catch (SQLException ex) {
@@ -864,14 +864,14 @@ public class AddPatientGUI extends JFrame implements ActionListener{
             {
                 JOptionPane.showMessageDialog(null,"Enter only digits in the amka field", "Wrong input", 2 );
             }
- 
+
         }
         if (action.equals("Cancel"))
         {
             showCancelDialog ();
         }
     }
-    
+
     private void showCancelDialog()
     {
         final JDialog dialog = new JDialog(this, "Exit", true);
@@ -892,20 +892,20 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         dialog.setResizable(false);
         dialog.setVisible(true);
         int value = ((Integer) op.getValue()).intValue();
-        if (value == JOptionPane.NO_OPTION) 
+        if (value == JOptionPane.NO_OPTION)
         {
             dialog.dispose();
         }
-        else if (value == JOptionPane.YES_OPTION) 
+        else if (value == JOptionPane.YES_OPTION)
         {
             this.dispose();
-        } 
+        }
     }
 
     public void loadPatientInfo(int patientID){
 
           try{
-            
+
             db.connect();
             Statement st = db.create();
             ResultSet res = st.executeQuery("SELECT * FROM personalInfo where patientId = " + patientID);
@@ -963,7 +963,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
             System.out.println("SQL code does not execute.");
           }
       }
-    
+
 //    public void savePhoto(){
 //        System.out.println("Insert Image Example!");
 //            String driverName = "com.mysql.jdbc.Driver";
