@@ -196,7 +196,9 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
 
          if(c.equals("delete")){
                 deletePatient(Integer.parseInt(model.getValueAt(patientTable.getSelectedRow(), 0).toString()));
-                //loadPatientsList();
+                while(model.getRowCount() != 0)
+                    model.removeRow(0);
+                this.loadPatientsList();
          }
 
          if(c.equals("edit")){
@@ -205,6 +207,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
                     int selectedID = (Integer.parseInt((String)patientTable.getValueAt(patientTable.getSelectedRow(), 0)));
                     AddPatientGUI p = new AddPatientGUI(db, selectedID, id);
                     p.loadPatientInfo(selectedID);
+                    this.dispose();
                 }
                 else
                     JOptionPane.showMessageDialog(null,"No patient selected", "Nothing entered", 2);

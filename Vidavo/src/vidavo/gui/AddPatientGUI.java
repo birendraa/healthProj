@@ -902,6 +902,8 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         else if (value == JOptionPane.YES_OPTION)
         {
             this.dispose();
+            PatientListGUI plg = new PatientListGUI();
+            plg.loadPatientsList();
         }
     }
 
