@@ -22,6 +22,7 @@ import vidavo.*;
 public class AddPatientGUI extends JFrame implements ActionListener{
 
     private PatientManager pm;
+    int patientID;
 
     private JTabbedPane addPatientTabbedPane;
     private JLabel addressLabel;
@@ -106,6 +107,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         super();
         this.pm = pm;
+        patientID = pm.getPL().size();
         initComponents();
 
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -730,13 +732,13 @@ idLabel2.setText(Integer.toString(patientID));
         {
             try
             {
-                Statement s = db.create();
-                if (patientID < patientNumber)
-                    s.executeUpdate("DELETE FROM personalInfo WHERE patientID=" + patientID + ";");
-                else if(patientID == patientNumber)
-                    s.executeUpdate("INSERT INTO patients VALUES " + "("+ patientID +")" + ";");
 
-                p = new Patient(patientID,firstNTextField.getText(),lastNTextField.getText(),insuranceTextField.getText(),Integer.parseInt(amkaTextField.getText()),tameioComboBox.getSelectedItem().toString());
+//                if (patientID < patientNumber)
+//                    s.executeUpdate("DELETE FROM personalInfo WHERE patientID=" + patientID + ";");
+//                else if(patientID == patientNumber)
+//                    s.executeUpdate("INSERT INTO patients VALUES " + "("+ patientID +")" + ";");
+
+                Patient p = new Patient(patientID,firstNTextField.getText(),lastNTextField.getText(),insuranceTextField.getText(),Integer.parseInt(amkaTextField.getText()),tameioComboBox.getSelectedItem().toString());
 
                 if(!middleNTextField.getText().equals(""))
                     (p.getPersonalInfo()).setMName(middleNTextField.getText());
@@ -807,9 +809,7 @@ idLabel2.setText(Integer.toString(patientID));
                 if(!mailTextField.getText().equals(""))
                     (p.getPersonalInfo()).setEmail(mailTextField.getText());
 
-                s = db.create();
-
-                s.executeUpdate("INSERT INTO personalInfo VALUES " + "(" + patientID + ", " +
+                pm.dbUpdate("INSERT INTO personalInfo VALUES " + "(" + patientID + ", " +
                        "\"" + p.getPersonalInfo().getFName() + "\", " +
                        "\"" + p.getPersonalInfo().getMName() + "\", " +
                        "\"" + p.getPersonalInfo().getLName() + "\", " +
@@ -840,12 +840,8 @@ idLabel2.setText(Integer.toString(patientID));
 //pl.addNewPatient(p);
 
                 this.dispose();
-                PatientListGUI plg = new PatientListGUI();
-                plg.loadPatientsList();
-            }
-            catch (SQLException ex) {
-                ex.printStackTrace();
-                JOptionPane.showMessageDialog(null,"Error saving to database", "Database error", 2);
+                PatientListGUI plg = new PatientListGUI(pm);
+//                plg.loadPatientsList();
             }
             catch (NullPointerException ex)
             {
