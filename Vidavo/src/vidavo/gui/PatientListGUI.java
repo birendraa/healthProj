@@ -185,9 +185,13 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          String c = e.getActionCommand();
 
          if(c.equals("add")){
+             
                 int id = countPatients();
                 new AddPatientGUI(db,id,id);
-
+                this.dispose();
+//                while(model.getRowCount() != 0)
+//                    model.removeRow(0);
+//                this.loadPatientsList();
          }
 
          if(c.equals("delete")){

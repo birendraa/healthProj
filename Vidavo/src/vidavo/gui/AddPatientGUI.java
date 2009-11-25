@@ -850,6 +850,9 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 //pl.addNewPatient(p);
 
                 db.disconnect();
+                this.dispose();
+                PatientListGUI plg = new PatientListGUI();
+                plg.loadPatientsList();
             }
             catch (SQLException ex) {
                 ex.printStackTrace();
