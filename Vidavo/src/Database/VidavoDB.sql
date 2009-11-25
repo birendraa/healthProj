@@ -1,9 +1,16 @@
-SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
-DROP TABLE IF EXISTS `Personal_Info`;
+DROP TABLE IF EXISTS `Patients`;
 
-CREATE TABLE `Personal_Info` (
+CREATE TABLE `Patients` (
+  `patientID` int(4) NOT NULL,
+  PRIMARY KEY (`patientID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `personalinfo`;
+
+CREATE TABLE `personalinfo` (
   `patientID` int(4) NOT NULL,
   `FirstName` varchar(30) NOT NULL,
   `MiddleName` varchar(30) DEFAULT '',
@@ -31,16 +38,6 @@ CREATE TABLE `Personal_Info` (
   `Work_Number` int(20) DEFAULT NULL,
   `Fax_Number` int(20) DEFAULT NULL,
   `Email` varchar(50) DEFAULT '',
-  PRIMARY KEY (`patientID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-insert into `Personal_Info` values('1234','FirstName','MiddleName','LastName','Address','1','City','State','Country','12345','Citizenship','176','130','Male','Single','2009-11-24','Profession','Insurance','Item 4','123456789','2009-11-28','15','987645321','987645321','987645321','987645321','aksjhds@aksjhd.com'),
- ('4321','akjsdh','aksjhd','asoudhk','asljdh','1','aksjdh','aksjhd','osaiud','12345','aslkdjg','129','060','Female','Married','2009-11-24','airugh','skldjfhgq','Item 2','1234','2009-09-06','2','6453213','645684321','654321','789565312','aslkdhj!@asd.com');
-
-DROP TABLE IF EXISTS `Patients`;
-
-CREATE TABLE `Patients` (
-  `patientID` int(4) NOT NULL,
   PRIMARY KEY (`patientID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
