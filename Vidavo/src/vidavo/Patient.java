@@ -25,6 +25,23 @@ public class Patient implements PatientInterface{
    private SurgeryHistory surgHistory;
    private MedicalHistory medHistory;
 
+   public Patient(int iD)
+   {
+       patientID = iD;
+       pInfo = new PersonalInfo();
+       photos = new Photos();
+       contacts = new Contacts();
+       prlDiseases = new ParallelDiseases();
+       chrDiseases = new ChronicDiseases();
+       chrMedications = new ChronicMedications();
+       meds = new Medications();
+       habits = new Habits();
+       immunHistory = new ImmunizationHistory();
+       famHistory = new FamilyHistory();
+       surgHistory = new SurgeryHistory();
+       medHistory = new MedicalHistory();
+   }
+
    public Patient(int iD, String fn, String ln, String insur, int a, String tam) throws NullPointerException
    {
        if(!fn.equals("") && !ln.equals("") && !insur.equals(""))

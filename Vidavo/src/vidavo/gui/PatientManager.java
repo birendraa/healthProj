@@ -7,7 +7,9 @@ package vidavo.gui;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import vidavo.Patient;
 import vidavo.PatientList;
+import vidavo.PersonalInfo;
 
 
 /**
@@ -35,19 +37,6 @@ public class PatientManager {
         this.pl = pl;
     }
 
-    void loadPatientsList(){
-          try{
-            ResultSet res = db.query("SELECT patientID, LastName, FirstName, Home_Number FROM personalInfo;");
-            while(res.next()){
-                model.insertRow(patientTable.getRowCount(), new Object[]{res.getString("patientID"),res.getString("LastName"),res.getString("FirstName"),res.getString("Home_Number")});
-            }
-          }
-          catch (SQLException s){
-            System.out.println("Error in loading patients.");
-          }
-    }
-
-
     void deletePatient(int patientID){
           try{
             db.update("DELETE FROM personalInfo where patientId = " + patientID);
@@ -72,18 +61,15 @@ public class PatientManager {
         return count + 1;
     }
 
-    void searchPatient(){
-        try {
-            ResultSet res = db.query("SELECT patientID, LastName, FirstName, Home_Number FROM personalInfo WHERE LastName like '" + searchTextField.getText() + "%';");
-            while (model.getRowCount() != 0) {
-                model.removeRow(0);
+   public PatientList searchPatient(String lName){
+            //ResultSet res = db.query("SELECT patientID, LastName, FirstName, Home_Number FROM personalInfo WHERE LastName like '" + text + "%';");
+            PatientList searchList = new PatientList();
+            for(int i = 1; i < pl.size(); i++){
+                if(((Patient)pl.getObjectAtIndex(i)).getPersonalInfo().getLName().equals(lName)){
+                    searchList.addNewPatient((Patient)pl.getObjectAtIndex(i));
+                }
             }
-            while (res.next()) {
-                model.insertRow(patientTable.getRowCount(), new Object[]{res.getString("patientID"), res.getString("LastName"), res.getString("FirstName"), res.getString("Home_Number")});
-            }
-        } catch (SQLException ex) {
-            System.out.println("Error in searching patients");
-        }
+        return searchList;
     }
 
     void dbConnect() {
@@ -111,6 +97,56 @@ public class PatientManager {
            System.out.println ("Update error");
         }
     }
+
+    public void loadPersonalInfo(){
+
+      try{
+        java.sql.ResultSet res = this.dbQuery("SELECT * FROM personalInfo");
+
+        while(res.next()){
+          PersonalInfo pInfo = new PersonalInfo();
+
+          pInfo.setID(res.getInt("patientID"));
+          pInfo.setFirstVisit(res.getString("FirstName"));
+          pInfo.setMName(res.getString("MiddleName"));
+          pInfo.setLName(res.getString("LastName"));
+          pInfo.setAddress(res.getString("Address"));
+          pInfo.setAddressNum(res.getInt("AddressNum"));
+          pInfo.setCity(res.getString("City"));
+          pInfo.setState(res.getString("State_Region"));
+          pInfo.setCountry(res.getString("Country"));
+          pInfo.setPostalCode(res.getInt("Postal_Code"));
+          pInfo.setCitizenship(res.getString("Citizenship"));
+          pInfo.setHeight(res.getInt("Height"));
+          pInfo.setWeight(res.getInt("Weight"));
+          pInfo.setSex(res.getString("Male"));
+          pInfo.setMaritalStatus(res.getString("Married"));
+
+          pInfo.setBirthDate((res.getString("BirthDate")));
+          pInfo.setProfession(res.getString("Profession"));
+          pInfo.setInsurance(res.getString("Insurrance"));
+          pInfo.setAmka(res.getInt("Insurance_Id_Number"));
+
+          pInfo.setTameio(res.getString("Insurance_Type"));
+          pInfo.setFirstVisit((res.getString("First_Visit")));
+          pInfo.setChildren(res.getInt("Children"));
+          pInfo.setHomeNum(Integer.toString(res.getInt("Home_Number")));
+          pInfo.setWorkNum(Integer.toString(res.getInt("Work_Number")));
+          pInfo.setCellPhone(Integer.toString(res.getInt("CellPhone_Number")));
+          pInfo.setFax(Integer.toString(res.getInt("Fax_Number")));
+          pInfo.setEmail(res.getString("Email"));
+
+          Patient p = new Patient(countPatients());
+          p.setPersonalInfo(pInfo);
+          pl.addNewPatient(p);
+         // ageTextField.setText(calculateAge());
+        }
+      }
+      catch (SQLException s){
+          s.printStackTrace();
+        System.out.println("SQL code does not execute.");
+      }
+  }
 }
 class Database {
 
@@ -157,5 +193,5 @@ class Database {
         java.sql.Statement st = con.createStatement();
         st.executeUpdate(q);
     }
-    
+
  }

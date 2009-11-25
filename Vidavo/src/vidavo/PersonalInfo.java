@@ -39,6 +39,28 @@ public class PersonalInfo implements PersonalInfoInterface{
     private String fax;
     private String email;
 
+    public PersonalInfo()
+    {
+        id = 0;
+        fName = "";
+        lName = "";
+        insurance = "";
+        amka = 0;
+        tameio = "";
+        mName = "";
+        address = "";
+        city = "";
+        state = "";
+        country = "";
+        citizenship = "";
+        sex = "";
+        maritalStatus = "";
+        profession = "";
+        email = "";
+        birthDate = "0000-00-00";
+        firstVisit = "0000-00-00";
+    }
+
     public PersonalInfo(int iD, String fn, String ln, String insur, int a, String tam)
     {
         id = iD;
@@ -362,61 +384,5 @@ public class PersonalInfo implements PersonalInfoInterface{
         return email;
     }
 
-    public void loadPersonalInfo(vidavo.gui.PatientManager pm){
-
-      try{
-        java.sql.ResultSet res = pm.dbQuery("SELECT * FROM personalInfo where patientId = " + patientID);
-
-        while(res.next()){
-          idLabel2.setText(Integer.toString(res.getInt("patientID")));
-          firstNTextField.setText(res.getString("FirstName"));
-          middleNTextField.setText(res.getString("MiddleName"));
-          lastNTextField.setText(res.getString("LastName"));
-          addressTextField.setText(res.getString("Address"));
-          addressNumTextField.setText(Integer.toString(res.getInt("AddressNum")));
-          cityTextField.setText(res.getString("City"));
-          regionTextField.setText(res.getString("State_Region"));
-          countryTextField.setText(res.getString("Country"));
-          postalCTextField.setText(Integer.toString(res.getInt("Postal_Code")));
-          citizenshipTextField.setText(res.getString("Citizenship"));
-          heightTextField.setText(Integer.toString(res.getInt("Height")));
-          weightTextField.setText(Integer.toString(res.getInt("Weight")));
-
-          if(res.getString("Gender").equals("Male"))
-              maleRadioButton.setSelected(true);
-          else
-              femaleRadioButton.setSelected(true);
-
-          if(res.getString("Status").equals("Married"))
-              marriedRadioButton.setSelected(true);
-          else
-              singleRadioButton.setSelected(true);
-          birthDateTextField.setText((res.getString("BirthDate")));
-          profTextField.setText(res.getString("Profession"));
-          insuranceTextField.setText(res.getString("Insurrance"));
-          amkaTextField.setText(Integer.toString(res.getInt("Insurance_Id_Number")));
-
-          int selectedItem;
-          for(selectedItem = 0; selectedItem <= tameioComboBox.getItemCount(); selectedItem++){
-              if(res.getString("Insurance_Type").equals(tameioComboBox.getItemAt(selectedItem)))
-                break;
-          }
-          tameioComboBox.setSelectedIndex(selectedItem);
-          firstVisitTextField.setText((res.getString("First_Visit")));
-          childrenSpinner.setValue(res.getInt("Children"));
-          homeTextField.setText(Integer.toString(res.getInt("Home_Number")));
-          workTextField.setText(Integer.toString(res.getInt("Work_Number")));
-          cellTextField.setText(Integer.toString(res.getInt("CellPhone_Number")));
-          faxTextField.setText(Integer.toString(res.getInt("Fax_Number")));
-          mailTextField.setText(res.getString("Email"));
-
-         // ageTextField.setText(calculateAge());
-
-        }
-      }
-      catch (SQLException s){
-          s.printStackTrace();
-        System.out.println("SQL code does not execute.");
-      }
-  }
+    
 }

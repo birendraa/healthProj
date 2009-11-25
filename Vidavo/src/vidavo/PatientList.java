@@ -29,10 +29,18 @@ public class PatientList implements PatientListInterface{
     {
         return patientList;
     }
-
+    
     public void addNewPatient(Patient p)
     {
         patientList.append(p);
+    }
+
+    public int size(){
+        return patientList.size();
+    }
+
+    public Object getObjectAtIndex(int index){
+        return patientList.get(index);
     }
 
     public void removePatient(Patient p)
