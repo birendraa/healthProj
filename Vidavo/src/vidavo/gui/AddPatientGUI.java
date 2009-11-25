@@ -124,9 +124,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         this.patientNumber = patientNumber;
         initComponents();
         this.setSize(new Dimension(817, 650));
-        Dimension dim = getToolkit().getScreenSize();
-        Rectangle abounds = this.getBounds();
-        this.setLocation((dim.width - abounds.width) / 2, (dim.height - abounds.height) / 2);
+        this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setTitle("Add Patient");
         this.pack();

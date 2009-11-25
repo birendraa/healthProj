@@ -178,6 +178,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
 
         pack();
         this.setVisible(true);
+        this.setLocationRelativeTo(null);
     }
 
     public void actionPerformed(ActionEvent e) {
