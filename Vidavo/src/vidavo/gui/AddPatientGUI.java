@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.*;
@@ -896,53 +895,53 @@ idLabel2.setText(Integer.toString(patientID));
         }
     }
 
-    public void loadPatientInfo(){
+    public void loadPatientInfo(int selectedID){
 
-        while(res.next()){
-          idLabel2.setText(Integer.toString(res.getInt("patientID")));
-          firstNTextField.setText(res.getString("FirstName"));
-          middleNTextField.setText(res.getString("MiddleName"));
-          lastNTextField.setText(res.getString("LastName"));
-          addressTextField.setText(res.getString("Address"));
-          addressNumTextField.setText(Integer.toString(res.getInt("AddressNum")));
-          cityTextField.setText(res.getString("City"));
-          regionTextField.setText(res.getString("State_Region"));
-          countryTextField.setText(res.getString("Country"));
-          postalCTextField.setText(Integer.toString(res.getInt("Postal_Code")));
-          citizenshipTextField.setText(res.getString("Citizenship"));
-          heightTextField.setText(Integer.toString(res.getInt("Height")));
-          weightTextField.setText(Integer.toString(res.getInt("Weight")));
+          PersonalInfo info = pm.getPL().getPatient(selectedID).getPersonalInfo();
+          idLabel2.setText(Integer.toString(selectedID));
+          firstNTextField.setText(info.getFName());
+          middleNTextField.setText(info.getMName());
+          lastNTextField.setText(info.getLName());
+          addressTextField.setText(info.getAddress());
+          addressNumTextField.setText(Integer.toString(info.getAddressNum()));
+          cityTextField.setText(info.getCity());
+          regionTextField.setText(info.getState());
+          countryTextField.setText(info.getCountry());
+          postalCTextField.setText(Integer.toString(info.getPostalCode()));
+          citizenshipTextField.setText(info.getCitizenship());
+          heightTextField.setText(Integer.toString(info.getHeight()));
+          weightTextField.setText(Integer.toString(info.getWeight()));
 
-          if(res.getString("Gender").equals("Male"))
+          if(info.getSex().equals("Male"))
               maleRadioButton.setSelected(true);
           else
               femaleRadioButton.setSelected(true);
 
-          if(res.getString("Status").equals("Married"))
+          if(info.getMaritalStatus().equals("Married"))
               marriedRadioButton.setSelected(true);
           else
               singleRadioButton.setSelected(true);
-          birthDateTextField.setText((res.getString("BirthDate")));
-          profTextField.setText(res.getString("Profession"));
-          insuranceTextField.setText(res.getString("Insurrance"));
-          amkaTextField.setText(Integer.toString(res.getInt("Insurance_Id_Number")));
+          birthDateTextField.setText((info.getBirthDate()));
+          profTextField.setText(info.getProfession());
+          insuranceTextField.setText(info.getInsurance());
+          amkaTextField.setText(Integer.toString(info.getAmka()));
 
           int selectedItem;
           for(selectedItem = 0; selectedItem <= tameioComboBox.getItemCount(); selectedItem++){
-              if(res.getString("Insurance_Type").equals(tameioComboBox.getItemAt(selectedItem)))
+              if(info.getTameio().equals(tameioComboBox.getItemAt(selectedItem)))
                 break;
           }
           tameioComboBox.setSelectedIndex(selectedItem);
-          firstVisitTextField.setText((res.getString("First_Visit")));
-          childrenSpinner.setValue(res.getInt("Children"));
-          homeTextField.setText(Integer.toString(res.getInt("Home_Number")));
-          workTextField.setText(Integer.toString(res.getInt("Work_Number")));
-          cellTextField.setText(Integer.toString(res.getInt("CellPhone_Number")));
-          faxTextField.setText(Integer.toString(res.getInt("Fax_Number")));
-          mailTextField.setText(res.getString("Email"));
+          firstVisitTextField.setText((info.getFirstVisit()));
+          childrenSpinner.setValue(info.getChildren());
+          homeTextField.setText(info.getHomeNum());
+          workTextField.setText(info.getWorkNum());
+          cellTextField.setText(info.getCellPhone());
+          faxTextField.setText(info.getFax());
+          mailTextField.setText(info.getEmail());
 
          // ageTextField.setText(calculateAge());
-        }
+        
       }
 
 //    public void savePhoto(){

@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import vidavo.PatientList;
 
+
 /**
  *
  * @author Serban
@@ -24,6 +25,14 @@ public class PatientManager {
     public PatientManager(){
         db = new Database();
         pl = new PatientList();
+    }
+
+    public PatientList getPL() {
+        return pl;
+    }
+
+    public void setPL(PatientList pl) {
+        this.pl = pl;
     }
 
     void loadPatientsList(){
@@ -103,7 +112,6 @@ public class PatientManager {
         }
     }
 }
-
 class Database {
 
     private java.sql.Connection con = null;

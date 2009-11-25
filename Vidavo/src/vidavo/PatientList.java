@@ -55,4 +55,8 @@ public class PatientList implements PatientListInterface{
         return null;
     }
 
+    public Patient getPatient(int selectedID) {
+        return (Patient)patientList.get(selectedID);
+    }
+
 }
