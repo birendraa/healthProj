@@ -218,7 +218,31 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          }
 
          if(c.equals("search")){
+            try{
+                db.connect();
+                try{
+                Statement st = db.create();
+                ResultSet res = st.executeQuery("SELECT patientID, LastName, FirstName, Home_Number FROM personalInfo WHERE LastName like '"+searchTextField.getText()+"%';");
+                while(model.getRowCount() != 0)
+                {
+                    model.removeRow(0);
+                }
 
+                while(res.next()){
+                    model.insertRow(patientTable.getRowCount(), new Object[]{res.getString("patientID"),res.getString("LastName"),res.getString("FirstName"),res.getString("Home_Number")});
+                }
+                db.disconnect();
+                }
+                catch (SQLException s){
+                s.printStackTrace();
+                System.out.println("SQL code does not execute.");
+                }
+            }
+
+                catch (Exception d){
+
+                  d.printStackTrace();
+                }
          }
     }
 

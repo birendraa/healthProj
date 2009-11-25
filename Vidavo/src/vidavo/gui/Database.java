@@ -19,7 +19,7 @@ public class Database {
     private Connection con = null;
     private String userName = "root";
     private String password = "root";
-    private String url = "jdbc:mysql://localhost:3306/vidavo?zeroDateTimeBehavior=convertToNull";
+    private String url = "jdbc:mysql://127.0.0.1:3306/vidavo?zeroDateTimeBehavior=convertToNull";
 
     public void connect(){
 
