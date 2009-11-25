@@ -12,7 +12,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author Serban
  */
-public class VidavoApp extends PatientListGUI{
+public class VidavoApp{
 
         public static void main(String[] args){
             try {
@@ -32,12 +32,9 @@ public class VidavoApp extends PatientListGUI{
             catch (IllegalAccessException e) {
                // handle exception
             }
-                //new MainGUI();
             java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PatientListGUI gui = new PatientListGUI();
-                gui.setVisible(true);
-                gui.loadPatientsList();
+                new AppointGUI();
             }
         });
     }

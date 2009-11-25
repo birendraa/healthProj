@@ -22,11 +22,7 @@ import vidavo.*;
  */
 public class AddPatientGUI extends JFrame implements ActionListener{
 
-    private PatientList pl;
-    private Patient p;
-    private Database db;
-    private int patientID;
-    private int patientNumber;
+    private PatientManager pm;
 
     private JTabbedPane addPatientTabbedPane;
     private JLabel addressLabel;
@@ -106,23 +102,20 @@ public class AddPatientGUI extends JFrame implements ActionListener{
     private JLabel ageLabel;
     private JTextField ageTextField;
 
-    //private org.jdesktop.beansbinding.BindingGroup bindingGroup;
-
-    public AddPatientGUI (Database db, int patientID, int patientNumber)
+    public AddPatientGUI (PatientManager pm)
     {
-        pl = new PatientList();
-        this.db = db;
-        JFrame addPatientFrame = new JFrame ("Add Patient");
-            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-            this.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    showCancelDialog();
-                }
-            });
-        this.patientID = patientID;
-        this.patientNumber = patientNumber;
+
+        super();
+        this.pm = pm;
         initComponents();
+
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                showCancelDialog();
+            }
+        });
         this.setSize(new Dimension(817, 650));
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -236,7 +229,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         citizenshipTextField.setText("");
         heightLabel.setText("Height (cm)");
         weightLabel.setText("Weight (kg)");
-        idLabel2.setText(Integer.toString(patientID));
         maleRadioButton.setText("Male");
         femaleRadioButton.setText("Female");
         marriedRadioButton.setText("Married");
@@ -258,6 +250,8 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         tameioComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ageLabel.setText("Age:");
         ageTextField.setText("");
+
+idLabel2.setText(Integer.toString(patientID));
 
         jPanel16.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel16.setName("jPanel16");
@@ -735,7 +729,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         if(action.equals("Save"))
         {
-                db.connect();
             try
             {
                 Statement s = db.create();
@@ -847,7 +840,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
 //pl.addNewPatient(p);
 
-                db.disconnect();
                 this.dispose();
                 PatientListGUI plg = new PatientListGUI();
                 plg.loadPatientsList();
@@ -900,71 +892,57 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         else if (value == JOptionPane.YES_OPTION)
         {
             this.dispose();
-            PatientListGUI plg = new PatientListGUI();
-            plg.loadPatientsList();
+            new PatientListGUI(pm);
         }
     }
 
-    public void loadPatientInfo(int patientID){
+    public void loadPatientInfo(){
 
-          try{
+        while(res.next()){
+          idLabel2.setText(Integer.toString(res.getInt("patientID")));
+          firstNTextField.setText(res.getString("FirstName"));
+          middleNTextField.setText(res.getString("MiddleName"));
+          lastNTextField.setText(res.getString("LastName"));
+          addressTextField.setText(res.getString("Address"));
+          addressNumTextField.setText(Integer.toString(res.getInt("AddressNum")));
+          cityTextField.setText(res.getString("City"));
+          regionTextField.setText(res.getString("State_Region"));
+          countryTextField.setText(res.getString("Country"));
+          postalCTextField.setText(Integer.toString(res.getInt("Postal_Code")));
+          citizenshipTextField.setText(res.getString("Citizenship"));
+          heightTextField.setText(Integer.toString(res.getInt("Height")));
+          weightTextField.setText(Integer.toString(res.getInt("Weight")));
 
-            db.connect();
-            Statement st = db.create();
-            ResultSet res = st.executeQuery("SELECT * FROM personalInfo where patientId = " + patientID);
+          if(res.getString("Gender").equals("Male"))
+              maleRadioButton.setSelected(true);
+          else
+              femaleRadioButton.setSelected(true);
 
-            while(res.next()){
-              idLabel2.setText(Integer.toString(res.getInt("patientID")));
-              firstNTextField.setText(res.getString("FirstName"));
-              middleNTextField.setText(res.getString("MiddleName"));
-              lastNTextField.setText(res.getString("LastName"));
-              addressTextField.setText(res.getString("Address"));
-              addressNumTextField.setText(Integer.toString(res.getInt("AddressNum")));
-              cityTextField.setText(res.getString("City"));
-              regionTextField.setText(res.getString("State_Region"));
-              countryTextField.setText(res.getString("Country"));
-              postalCTextField.setText(Integer.toString(res.getInt("Postal_Code")));
-              citizenshipTextField.setText(res.getString("Citizenship"));
-              heightTextField.setText(Integer.toString(res.getInt("Height")));
-              weightTextField.setText(Integer.toString(res.getInt("Weight")));
+          if(res.getString("Status").equals("Married"))
+              marriedRadioButton.setSelected(true);
+          else
+              singleRadioButton.setSelected(true);
+          birthDateTextField.setText((res.getString("BirthDate")));
+          profTextField.setText(res.getString("Profession"));
+          insuranceTextField.setText(res.getString("Insurrance"));
+          amkaTextField.setText(Integer.toString(res.getInt("Insurance_Id_Number")));
 
-              if(res.getString("Gender").equals("Male"))
-                  maleRadioButton.setSelected(true);
-              else
-                  femaleRadioButton.setSelected(true);
-
-              if(res.getString("Status").equals("Married"))
-                  marriedRadioButton.setSelected(true);
-              else
-                  singleRadioButton.setSelected(true);
-              birthDateTextField.setText((res.getString("BirthDate")));
-              profTextField.setText(res.getString("Profession"));
-              insuranceTextField.setText(res.getString("Insurrance"));
-              amkaTextField.setText(Integer.toString(res.getInt("Insurance_Id_Number")));
-
-              int selectedItem;
-              for(selectedItem = 0; selectedItem <= tameioComboBox.getItemCount(); selectedItem++){
-                  if(res.getString("Insurance_Type").equals(tameioComboBox.getItemAt(selectedItem)))
-                    break;
-              }
-              tameioComboBox.setSelectedIndex(selectedItem);
-              firstVisitTextField.setText((res.getString("First_Visit")));
-              childrenSpinner.setValue(res.getInt("Children"));
-              homeTextField.setText(Integer.toString(res.getInt("Home_Number")));
-              workTextField.setText(Integer.toString(res.getInt("Work_Number")));
-              cellTextField.setText(Integer.toString(res.getInt("CellPhone_Number")));
-              faxTextField.setText(Integer.toString(res.getInt("Fax_Number")));
-              mailTextField.setText(res.getString("Email"));
-
-             // ageTextField.setText(calculateAge());
-
-            }
-            db.disconnect();
+          int selectedItem;
+          for(selectedItem = 0; selectedItem <= tameioComboBox.getItemCount(); selectedItem++){
+              if(res.getString("Insurance_Type").equals(tameioComboBox.getItemAt(selectedItem)))
+                break;
           }
-          catch (SQLException s){
-              s.printStackTrace();
-            System.out.println("SQL code does not execute.");
-          }
+          tameioComboBox.setSelectedIndex(selectedItem);
+          firstVisitTextField.setText((res.getString("First_Visit")));
+          childrenSpinner.setValue(res.getInt("Children"));
+          homeTextField.setText(Integer.toString(res.getInt("Home_Number")));
+          workTextField.setText(Integer.toString(res.getInt("Work_Number")));
+          cellTextField.setText(Integer.toString(res.getInt("CellPhone_Number")));
+          faxTextField.setText(Integer.toString(res.getInt("Fax_Number")));
+          mailTextField.setText(res.getString("Email"));
+
+         // ageTextField.setText(calculateAge());
+        }
       }
 
 //    public void savePhoto(){

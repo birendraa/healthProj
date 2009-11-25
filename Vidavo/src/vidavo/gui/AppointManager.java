@@ -9,6 +9,6 @@ package vidavo.gui;
  *
  * @author Serban
  */
-public class MainGUI {
+class AppointManager {
 
 }

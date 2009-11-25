@@ -3,13 +3,13 @@
  * and open the template in the editor.
  */
 
-package vidavo.gui;
+package vidavo.resource;
 
 /**
  *
  * @author Serban
  */
-public class ResourceMap_en extends java.util.ListResourceBundle {
+public class ResourceMap extends java.util.ListResourceBundle {
 
     @Override
     protected Object[][] getContents() {
@@ -31,3 +31,4 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
     };
 
 }
+

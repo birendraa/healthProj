@@ -7,15 +7,8 @@ package vidavo.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ListResourceBundle;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PatientListGUI extends javax.swing.JFrame implements ActionListener{
 
+    private PatientManager pm;
     private javax.swing.JButton addButton;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton deleteButton;
@@ -34,11 +28,15 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextField;
     private javax.swing.JScrollPane tableScrollPane;
-    private Database db;
-    private DefaultTableModel model;
+    private javax.swing.table.DefaultTableModel model;
 
-    public PatientListGUI(){
+    public PatientListGUI(PatientManager pm){
+        super();
+        this.pm = pm;
         initComponents();
+        this.pack();
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
     }
 
     public void initComponents(){
@@ -53,19 +51,16 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         cancelButton = new javax.swing.JButton();
         searchTextField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
-        this.db = new Database();
 
-        ListResourceBundle resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.gui.ResourceMap", new Locale("en"));
+        ListResourceBundle resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         this.setTitle(resourceMap.getString("patientList.title"));
 
         patientListPanel.setName("patientListPanel"); // NOI18N
-
+        tableScrollPane.setName("tableScrollPane"); // NOI18N
         tableScrollPane.setName("tableScrollPane"); // NOI18N
 
-        tableScrollPane.setName("tableScrollPane"); // NOI18N
-
-        model = new DefaultTableModel(new Object [][] {}, new String [] {"", "", "", ""});
+        model = new javax.swing.table.DefaultTableModel(new Object [][] {}, new String [] {"", "", "", ""});
         
         patientTable = new javax.swing.JTable(model){
 
@@ -176,9 +171,6 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
             .addComponent(patientListPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pack();
-        this.setVisible(true);
-        this.setLocationRelativeTo(null);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -186,27 +178,22 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          String c = e.getActionCommand();
 
          if(c.equals("add")){
-             
-                int id = countPatients();
-                new AddPatientGUI(db,id,id);
+                new AddPatientGUI(pm);
                 this.dispose();
-//                while(model.getRowCount() != 0)
-//                    model.removeRow(0);
-//                this.loadPatientsList();
          }
 
          if(c.equals("delete")){
-                deletePatient(Integer.parseInt(model.getValueAt(patientTable.getSelectedRow(), 0).toString()));
+                pm.deletePatient(Integer.parseInt(model.getValueAt(patientTable.getSelectedRow(), 0).toString()));
                 while(model.getRowCount() != 0)
                     model.removeRow(0);
-                this.loadPatientsList();
+                pm.loadPatientsList();
          }
 
          if(c.equals("edit")){
-                int id = countPatients();
+                int id = pm.countPatients();
                 if(patientTable.getSelectedRow() != -1){
                     int selectedID = (Integer.parseInt((String)patientTable.getValueAt(patientTable.getSelectedRow(), 0)));
-                    AddPatientGUI p = new AddPatientGUI(db, selectedID, id);
+                    AddPatientGUI p = new AddPatientGUI(pm);
                     p.loadPatientInfo(selectedID);
                     this.dispose();
                 }
@@ -219,93 +206,9 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          }
 
          if(c.equals("search")){
-            try{
-                db.connect();
-                try{
-                Statement st = db.create();
-                ResultSet res = st.executeQuery("SELECT patientID, LastName, FirstName, Home_Number FROM personalInfo WHERE LastName like '"+searchTextField.getText()+"%';");
-                while(model.getRowCount() != 0)
-                {
-                    model.removeRow(0);
-                }
-
-                while(res.next()){
-                    model.insertRow(patientTable.getRowCount(), new Object[]{res.getString("patientID"),res.getString("LastName"),res.getString("FirstName"),res.getString("Home_Number")});
-                }
-                db.disconnect();
-                }
-                catch (SQLException s){
-                s.printStackTrace();
-                System.out.println("SQL code does not execute.");
-                }
-            }
-
-                catch (Exception d){
-
-                  d.printStackTrace();
-                }
+             pm.searchPatient();
          }
     }
 
-public void loadPatientsList(){
-
-        try{
-          db.connect();
-          try{
-            Statement st = db.create();
-            ResultSet res = st.executeQuery("SELECT patientID, LastName, FirstName, Home_Number FROM personalInfo;");
-            while(res.next()){
-                model.insertRow(patientTable.getRowCount(), new Object[]{res.getString("patientID"),res.getString("LastName"),res.getString("FirstName"),res.getString("Home_Number")});
-            }
-            db.disconnect();
-          }
-          catch (SQLException s){
-              s.printStackTrace();
-            System.out.println("SQL code does not execute.");
-          }
-        }
-        catch (Exception e){
-          e.printStackTrace();
-        }
-    }
-public void deletePatient(int patientID){
-        try{
-          db.connect();
-          try{
-            Statement st = db.create();
-            int delete = st.executeUpdate("DELETE FROM personalInfo where patientId = " + patientID);
-
-            if(delete == 0)
-                System.out.println("Fail");
-            else
-                System.out.println("Success");
-            
-            db.disconnect();
-          }
-          catch (SQLException s){
-              s.printStackTrace();
-            System.out.println("SQL code does not execute.");
-          }
-        }
-        catch (Exception e){
-          e.printStackTrace();
-        }
-    }
-    private int countPatients(){
-        int count = 0;
-        try {
-            db.connect();
-            Statement s = db.create();
-            ResultSet r = s.executeQuery("SELECT COUNT(*) AS rowcount FROM patients");
-            r.next();
-            count = r.getInt("rowcount");
-            r.close();
-            System.out.println("Patients has " + count + " row(s).");
-            db.disconnect();
-        } catch (SQLException ex) {
-            System.out.println("Error in counting patients");
-        }
-        return count + 1;
-    }
 
 }
