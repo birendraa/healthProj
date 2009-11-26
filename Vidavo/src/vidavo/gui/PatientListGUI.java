@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ListResourceBundle;
 import javax.swing.JOptionPane;
+import vidavo.Patient;
 
 /**
  *
@@ -30,10 +31,12 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
     private javax.swing.JScrollPane tableScrollPane;
     private javax.swing.table.DefaultTableModel model;
 
-    public PatientListGUI(PatientManager pm){
+    public PatientListGUI(PatientManager pM){
         super();
-        this.pm = pm;
+        this.pm = pM;
         initComponents();
+        this.pm.retrievePatientData();
+        this.displayPatientsList();
         this.pack();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -210,6 +213,11 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          }
     }
 
+    public void displayPatientsList(){
+            for(int i = 1; i <= this.pm.getPL().size(); i++){
+                this.model.insertRow(this.patientTable.getRowCount(), new Object[]{((Patient)this.pm.getPL().getObjectAtIndex(i)).getPersonalInfo().getID(),((Patient)this.pm.getPL().getObjectAtIndex(i)).getPersonalInfo().getLName(),((Patient)this.pm.getPL().getObjectAtIndex(i)).getPersonalInfo().getFName(),((Patient)this.pm.getPL().getObjectAtIndex(i)).getPersonalInfo().getHomeNum()});
+            }
+    }
 //public void loadPersonalInfo(vidavo.gui.PatientManager pm){
 //
 //      try{

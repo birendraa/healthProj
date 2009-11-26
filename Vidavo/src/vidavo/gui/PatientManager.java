@@ -7,6 +7,8 @@ package vidavo.gui;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import vidavo.Patient;
 import vidavo.PatientList;
 import vidavo.PersonalInfo;
@@ -80,14 +82,8 @@ public class PatientManager {
         db.disconnect();
     }
 
-    ResultSet dbQuery(String s){
-        ResultSet rs = null;
-        try {
-            rs = db.query(s);
-        } catch (SQLException ex) {
-            System.out.println ("Query error");
-        }
-        return rs;
+    ResultSet dbQuery(String s) throws SQLException{
+        return this.db.query(s);
     }
 
     void dbUpdate(String s){
@@ -98,16 +94,16 @@ public class PatientManager {
         }
     }
 
-    public void loadPersonalInfo(){
+    public void retrievePatientData(){
 
       try{
         java.sql.ResultSet res = this.dbQuery("SELECT * FROM personalInfo");
-
+        
         while(res.next()){
           PersonalInfo pInfo = new PersonalInfo();
 
           pInfo.setID(res.getInt("patientID"));
-          pInfo.setFirstVisit(res.getString("FirstName"));
+          pInfo.setFName(res.getString("FirstName"));
           pInfo.setMName(res.getString("MiddleName"));
           pInfo.setLName(res.getString("LastName"));
           pInfo.setAddress(res.getString("Address"));
@@ -119,8 +115,8 @@ public class PatientManager {
           pInfo.setCitizenship(res.getString("Citizenship"));
           pInfo.setHeight(res.getInt("Height"));
           pInfo.setWeight(res.getInt("Weight"));
-          pInfo.setSex(res.getString("Male"));
-          pInfo.setMaritalStatus(res.getString("Married"));
+          pInfo.setSex(res.getString("Gender"));
+          pInfo.setMaritalStatus(res.getString("Status"));
 
           pInfo.setBirthDate((res.getString("BirthDate")));
           pInfo.setProfession(res.getString("Profession"));
@@ -136,7 +132,7 @@ public class PatientManager {
           pInfo.setFax(Integer.toString(res.getInt("Fax_Number")));
           pInfo.setEmail(res.getString("Email"));
 
-          Patient p = new Patient(countPatients());
+          Patient p = new Patient(pInfo.getID());
           p.setPersonalInfo(pInfo);
           pl.addNewPatient(p);
          // ageTextField.setText(calculateAge());
@@ -185,7 +181,13 @@ class Database {
     }
 
     ResultSet query(String q) throws SQLException{
-        java.sql.Statement st = con.createStatement();
+        java.sql.Statement st = null;
+        try {
+            this.connect();
+            st = con.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return st.executeQuery(q);
     }
 
