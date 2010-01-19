@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package vidavo.gui;
 
@@ -31,6 +28,10 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
     private javax.swing.JScrollPane tableScrollPane;
     private javax.swing.table.DefaultTableModel model;
 
+    /**
+     *
+     * @param pM
+     */
     public PatientListGUI(PatientManager pM){
         super();
         this.pm = pM;
@@ -42,6 +43,9 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         this.setLocationRelativeTo(null);
     }
 
+    /**
+     *
+     */
     public void initComponents(){
         patientListPanel = new javax.swing.JPanel();
         tableScrollPane = new javax.swing.JScrollPane();
@@ -176,12 +180,16 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
 
     }
 
+    /**
+     *
+     * @param e
+     */
     public void actionPerformed(ActionEvent e) {
 
          String c = e.getActionCommand();
 
          if(c.equals("add")){
-                new AddPatientGUI(pm);
+                new AddPatientGUI(pm,pm.getPL().size() + 1);
                 this.dispose();
          }
 
@@ -193,11 +201,9 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          }
 
          if(c.equals("edit")){
-                int id = pm.countPatients();
                 if(patientTable.getSelectedRow() != -1){
                     int selectedID = (Integer.parseInt((String)patientTable.getValueAt(patientTable.getSelectedRow(), 0)));
-                    AddPatientGUI p = new AddPatientGUI(pm);
-                    p.loadPatientInfo(selectedID);
+                    AddPatientGUI p = new AddPatientGUI(pm, selectedID);
                     this.dispose();
                 }
                 else
@@ -213,9 +219,15 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          }
     }
 
+    /**
+     *
+     */
     public void displayPatientsList(){
-            for(int i = 1; i <= this.pm.getPL().size(); i++){
-                this.model.insertRow(this.patientTable.getRowCount(), new Object[]{((Patient)this.pm.getPL().getObjectAtIndex(i)).getPersonalInfo().getID(),((Patient)this.pm.getPL().getObjectAtIndex(i)).getPersonalInfo().getLName(),((Patient)this.pm.getPL().getObjectAtIndex(i)).getPersonalInfo().getFName(),((Patient)this.pm.getPL().getObjectAtIndex(i)).getPersonalInfo().getHomeNum()});
+            vidavo.PersonalInfo pi = new vidavo.PersonalInfo();
+            vidavo.PatientList pl = this.pm.getPL();
+            for(int i = 1; i <= pl.size(); i++){
+                pi = ((Patient)pl.getPatientAtIndex(i)).getPersonalInfo();
+                this.model.insertRow(this.patientTable.getRowCount(), new Object[]{pi.getID(),pi.getLName(),pi.getFName(),pi.getHomeNum()}); //addrow(pi.getID(),pi.getLName(),pi.getFName(),pi.getHomeNum())
             }
     }
 //public void loadPersonalInfo(vidavo.gui.PatientManager pm){

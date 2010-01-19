@@ -66,9 +66,11 @@ public class PatientManager {
    public PatientList searchPatient(String lName){
             //ResultSet res = db.query("SELECT patientID, LastName, FirstName, Home_Number FROM personalInfo WHERE LastName like '" + text + "%';");
             PatientList searchList = new PatientList();
+            Patient patient = new Patient();
             for(int i = 1; i < pl.size(); i++){
-                if(((Patient)pl.getObjectAtIndex(i)).getPersonalInfo().getLName().equals(lName)){
-                    searchList.addNewPatient((Patient)pl.getObjectAtIndex(i));
+                patient = ((Patient)pl.getPatientAtIndex(i));
+                if(patient.getPersonalInfo().getLName().equals(lName)){
+                    searchList.addNewPatient(patient);
                 }
             }
         return searchList;
@@ -93,7 +95,19 @@ public class PatientManager {
            System.out.println ("Update error");
         }
     }
-
+/*
+ * addPatient(pi)
+ * {
+ *    Patient p = new Patient(pi);
+ *   // checkRequiredFields();
+ *   // PersnoalInfo pi = new PersonalInfo(reg attributes);
+ *   // pi.setAttributes(optional)
+ *    pl.add(p);
+    }
+ *
+ *
+ *
+ */
     public void retrievePatientData(){
 
       try{

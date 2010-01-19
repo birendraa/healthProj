@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package vidavo;
 
@@ -39,8 +35,8 @@ public class PatientList implements PatientListInterface{
         return patientList.size();
     }
 
-    public Object getObjectAtIndex(int index){
-        return patientList.get(index);
+    public Patient getPatientAtIndex(int index){
+        return (Patient) patientList.get(index);
     }
 
     public void removePatient(Patient p)
@@ -49,6 +45,15 @@ public class PatientList implements PatientListInterface{
         {
         if((p.getPersonalInfo()).getID() == ((Patient)patientList.get(i)).getPersonalInfo().getID())
             patientList.remove(i);
+        }
+    }
+
+    public void removePatient(int patientID){
+        for(int i = 1; i <= patientList.size(); i ++)
+        {
+        if(patientID == ((Patient)patientList.get(i)).getPersonalInfo().getID())
+            patientList.remove(i);
+            break;
         }
     }
 

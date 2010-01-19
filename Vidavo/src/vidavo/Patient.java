@@ -25,6 +25,9 @@ public class Patient implements PatientInterface{
    private SurgeryHistory surgHistory;
    private MedicalHistory medHistory;
 
+   public Patient(){
+
+   }
    public Patient(int iD)
    {
        patientID = iD;

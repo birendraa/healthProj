@@ -102,13 +102,19 @@ public class AddPatientGUI extends JFrame implements ActionListener{
     private JLabel ageLabel;
     private JTextField ageTextField;
 
-    public AddPatientGUI (PatientManager pm)
+    /**
+     *
+     * @param pm
+     * @param selectedID
+     */
+    public AddPatientGUI(PatientManager pm, int selectedID)
     {
 
         super();
         this.pm = pm;
         patientID = pm.getPL().size();
         initComponents();
+        
 
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -125,6 +131,9 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         this.setVisible(true);
     }
 
+    /**
+     *
+     */
     private void initComponents()
     {
 
@@ -724,7 +733,10 @@ idLabel2.setText(Integer.toString(patientID));
     //}
     }
 
-
+    /**
+     *
+     * @param e
+     */
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
 
@@ -843,32 +855,32 @@ idLabel2.setText(Integer.toString(patientID));
                 PatientListGUI plg = new PatientListGUI(pm);
 //                plg.loadPatientsList();
             }
-            catch (NullPointerException ex)
-            {
+            catch (NullPointerException ex){
                 JOptionPane.showMessageDialog(null,"Missing obligatory information", "Nothing entered", 2);
             }
 
-            catch (NumberFormatException ex)
-            {
+            catch (NumberFormatException ex){
                 JOptionPane.showMessageDialog(null,"Enter only digits in the amka field", "Wrong input", 2 );
             }
 
         }
-        if (action.equals("Cancel"))
-        {
+        if (action.equals("Cancel")){
             showCancelDialog ();
         }
     }
 
-    private void showCancelDialog()
-    {
+    /**
+     *
+     */
+    private void showCancelDialog(){
+
         final JDialog dialog = new JDialog(this, "Exit", true);
         final JOptionPane op = new JOptionPane("Are you sure you want to close the window? ", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
         dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         dialog.setContentPane(op);
         dialog.setResizable(false);
-        op.addPropertyChangeListener(new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent e) {
+        op.addPropertyChangeListener(new PropertyChangeListener(){
+            public void propertyChange(PropertyChangeEvent e){
                 String prop = e.getPropertyName();
                 if (dialog.isVisible() && (e.getSource() == op) && (prop.equals(JOptionPane.VALUE_PROPERTY))) {
                     dialog.setVisible(false);
@@ -891,6 +903,10 @@ idLabel2.setText(Integer.toString(patientID));
         }
     }
 
+    /**
+     *
+     * @param selectedID
+     */
     public void loadPatientInfo(int selectedID){
 
           PersonalInfo info = pm.getPL().getPatient(selectedID).getPersonalInfo();
