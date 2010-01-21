@@ -112,7 +112,7 @@ public class PatientManager {
 
       try{
         java.sql.ResultSet res = this.dbQuery("SELECT * FROM personalInfo");
-        
+
         while(res.next()){
           PersonalInfo pInfo = new PersonalInfo();
 
@@ -163,7 +163,7 @@ class Database {
     private java.sql.Connection con = null;
     private String userName = "root";
     private String password = "root";
-    private String url = "jdbc:mysql://5.247.149.145:3306/vidavo?zeroDateTimeBehavior=convertToNull";
+    private String url = "jdbc:mysql://5.247.162.220:3306/vidavo";
 
     void connect(){
 
