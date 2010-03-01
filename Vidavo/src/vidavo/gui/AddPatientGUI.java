@@ -960,6 +960,7 @@ idLabel2.setText(Integer.toString(patientID));
             for(int i = 0; i < pm.getPL().size(); i++){
                 if(pm.getPL().getPatientAtIndex(i) == null){
                     patientID = i;
+                    break;
                 }
             }
             if(patientID == 0)
