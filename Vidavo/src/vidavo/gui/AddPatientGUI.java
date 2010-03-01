@@ -22,7 +22,7 @@ import vidavo.*;
 public class AddPatientGUI extends JFrame implements ActionListener{
 
     private PatientManager pm;
-    int patientID;
+    int patientID = 0;
 
     private JTabbedPane addPatientTabbedPane;
     private JLabel addressLabel;
@@ -112,7 +112,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         super();
         this.pm = pm;
-        patientID = pm.getPL().size();
+        assignIdToPatient();
         initComponents();
         
 
@@ -953,9 +953,22 @@ idLabel2.setText(Integer.toString(patientID));
           mailTextField.setText(info.getEmail());
 
          // ageTextField.setText(calculateAge());
-        
       }
 
+    private void assignIdToPatient(){
+        if(pm.getPL() != null){
+            for(int i = 0; i < pm.getPL().size(); i++){
+                if(pm.getPL().getPatientAtIndex(i) == null){
+                    patientID = i;
+                }
+            }
+            if(patientID == 0)
+                patientID = pm.getPL().size() + 1;
+        }
+        else{
+            patientID = 1;
+        }
+    }
 //    public void savePhoto(){
 //        System.out.println("Insert Image Example!");
 //            String driverName = "com.mysql.jdbc.Driver";
