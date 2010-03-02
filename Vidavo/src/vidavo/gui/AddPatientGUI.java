@@ -102,6 +102,19 @@ public class AddPatientGUI extends JFrame implements ActionListener{
     private JLabel ageLabel;
     private JTextField ageTextField;
 
+    private javax.swing.JScrollPane finalDiagnosisScrollingArea;
+    private javax.swing.JScrollPane reasonOfHospitalizationScrollingArea;
+    private javax.swing.JLabel reasonOfHospitalizationLabel;
+    private javax.swing.JLabel descriptionOfSurgeryLabel;
+    private javax.swing.JTextField descriptionOfSurgeryTextField;
+    private javax.swing.JLabel doctorsNameLabel;
+    private javax.swing.JTextField doctorsNameTextField;
+    private javax.swing.JLabel finalDiagnosisLabel;
+    private javax.swing.JTextArea finalDiagnosisTextArea;
+    private javax.swing.JLabel hospitalNameLabel;
+    private javax.swing.JTextField hospitalNameTextField;
+    private javax.swing.JTextArea reasonOfHospitalizationTextArea;
+
     /**
      *
      * @param pm
@@ -261,7 +274,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         ageLabel.setText("Age:");
         ageTextField.setText("");
 
-idLabel2.setText(Integer.toString(patientID));
+        idLabel2.setText(Integer.toString(patientID));
 
         jPanel16.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel16.setName("jPanel16");
@@ -577,16 +590,18 @@ idLabel2.setText(Integer.toString(patientID));
 
         addPatientTabbedPane.addTab("Medical history", medicalHistoryPane);
 
-        javax.swing.GroupLayout surgeryHistoryPaneLayout = new javax.swing.GroupLayout(surgeryHistoryPane);
-        surgeryHistoryPane.setLayout(surgeryHistoryPaneLayout);
-        surgeryHistoryPaneLayout.setHorizontalGroup(
-            surgeryHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 806, Short.MAX_VALUE)
-        );
-        surgeryHistoryPaneLayout.setVerticalGroup(
-            surgeryHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
-        );
+        initSurgicalHistory();
+
+//        javax.swing.GroupLayout surgeryHistoryPaneLayout = new javax.swing.GroupLayout(surgeryHistoryPane);
+//        surgeryHistoryPane.setLayout(surgeryHistoryPaneLayout);
+//        surgeryHistoryPaneLayout.setHorizontalGroup(
+//            surgeryHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGap(0, 806, Short.MAX_VALUE)
+//        );
+//        surgeryHistoryPaneLayout.setVerticalGroup(
+//            surgeryHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGap(0, 576, Short.MAX_VALUE)
+//        );
 
         addPatientTabbedPane.addTab("Surgery History", surgeryHistoryPane);
 
@@ -731,6 +746,83 @@ idLabel2.setText(Integer.toString(patientID));
             .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );*/
     //}
+    }
+
+    private void initSurgicalHistory(){
+        
+        descriptionOfSurgeryLabel = new javax.swing.JLabel();
+        hospitalNameLabel = new javax.swing.JLabel();
+        reasonOfHospitalizationLabel = new javax.swing.JLabel();
+        finalDiagnosisLabel = new javax.swing.JLabel();
+        doctorsNameLabel = new javax.swing.JLabel();
+        descriptionOfSurgeryTextField = new javax.swing.JTextField();
+        hospitalNameTextField = new javax.swing.JTextField();
+        reasonOfHospitalizationTextArea = new javax.swing.JTextArea();
+        finalDiagnosisTextArea = new javax.swing.JTextArea();
+        doctorsNameTextField = new javax.swing.JTextField();
+
+        reasonOfHospitalizationScrollingArea = new JScrollPane(reasonOfHospitalizationTextArea);
+        finalDiagnosisScrollingArea = new JScrollPane(finalDiagnosisTextArea);
+
+        descriptionOfSurgeryLabel.setText("Description Of Surgery :");
+        hospitalNameLabel.setText("Hospital Name :");
+        reasonOfHospitalizationLabel.setText("Hospitalization Reason :");
+        finalDiagnosisLabel.setText("Final Diagnosis :");
+        doctorsNameLabel.setText("Doctors Name :");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(surgeryHistoryPane);
+        surgeryHistoryPane.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(descriptionOfSurgeryLabel)
+                            .addComponent(hospitalNameLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hospitalNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                            .addComponent(descriptionOfSurgeryTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(reasonOfHospitalizationLabel)
+                            .addComponent(finalDiagnosisLabel)
+                            .addComponent(doctorsNameLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(finalDiagnosisScrollingArea, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                            .addComponent(reasonOfHospitalizationScrollingArea, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                            .addComponent(doctorsNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE))))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(10, Short.SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(descriptionOfSurgeryLabel)
+                    .addComponent(descriptionOfSurgeryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(hospitalNameLabel)
+                    .addComponent(hospitalNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(reasonOfHospitalizationLabel)
+                    .addComponent(reasonOfHospitalizationScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(finalDiagnosisLabel)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(finalDiagnosisScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(doctorsNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(doctorsNameLabel))))
+                .addContainerGap(142, Short.MAX_VALUE))
+        );
     }
 
     /**
