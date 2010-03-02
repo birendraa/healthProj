@@ -1,6 +1,7 @@
 
 package vidavo.gui;
 
+import java.util.ListResourceBundle;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -20,6 +21,8 @@ public class SurgicalHistoryPane extends JPanel{
     private javax.swing.JTextArea reasonOfHospitalizationTextArea;
 
     public SurgicalHistoryPane(){
+        ListResourceBundle resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
+
         descriptionOfSurgeryLabel = new javax.swing.JLabel();
         hospitalNameLabel = new javax.swing.JLabel();
         reasonOfHospitalizationLabel = new javax.swing.JLabel();
@@ -34,11 +37,11 @@ public class SurgicalHistoryPane extends JPanel{
         reasonOfHospitalizationScrollingArea = new JScrollPane(reasonOfHospitalizationTextArea);
         finalDiagnosisScrollingArea = new JScrollPane(finalDiagnosisTextArea);
 
-        descriptionOfSurgeryLabel.setText("Description Of Surgery :");
-        hospitalNameLabel.setText("Hospital Name :");
-        reasonOfHospitalizationLabel.setText("Hospitalization Reason :");
-        finalDiagnosisLabel.setText("Final Diagnosis :");
-        doctorsNameLabel.setText("Doctors Name :");
+        descriptionOfSurgeryLabel.setText(resourceMap.getString("descriptionOfSurgery.text"));
+        hospitalNameLabel.setText(resourceMap.getString("hospitalName.text"));
+        reasonOfHospitalizationLabel.setText(resourceMap.getString("reasonOfHospitalization.text"));
+        finalDiagnosisLabel.setText(resourceMap.getString("finalDiagnosis.text"));
+        doctorsNameLabel.setText(resourceMap.getString("doctorsName.text"));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
