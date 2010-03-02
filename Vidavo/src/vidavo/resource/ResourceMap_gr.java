@@ -14,19 +14,19 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
     @Override
     protected Object[][] getContents() {
         return new Object [][] {
-                {"patientList.title", "Πατινετ Λιστ"},
-                {"addButton.text", "Αδδ..."},
-                {"deleteButton.text", "Δελετε"},
-                {"editButton.text", "Εδιτ..."},
-                {"cancelButton.text", "Κανκελ"},
-                {"searchButton.text", "Σεαρκη"},
-                {"searchTextField.text", "Σεαρκη βυ λαστ ναμε..."},
-                {"patientNameLabel.text", "Ξοχν Σμιτη"},
-                {"patientLabel.text", "Πατιεντ Ναμε: "},
-                {"patientTable.columnModel.title3", "Τελεπχονε"},
-                {"patientTable.columnModel.title2", "Φιρστ Ναμε"},
-                {"patientTable.columnModel.title1", "Λαστ Ναμε"},
-                {"patientTable.columnModel.title0", "Πατιεντ ΙΔ"}
+                {"patientList.title", "Λίστα Ασθενών"},
+                {"addButton.text", "Προσθήκη"},
+                {"deleteButton.text", "Διαγραφή"},
+                {"editButton.text", "Επεξεργασία"},
+                {"cancelButton.text", "Ακύρωση"},
+                {"searchButton.text", "Εύρεση"},
+                {"searchTextField.text", "Εύρεση με βάση το επίθετο"},
+                {"patientNameLabel.text", "John Smith"},
+                {"patientLabel.text", "Όνομα Ασθενή: "},
+                {"patientTable.columnModel.title3", "Τηλέφωνο"},
+                {"patientTable.columnModel.title2", "Όνομα"},
+                {"patientTable.columnModel.title1", "Επίθετο"},
+                {"patientTable.columnModel.title0", "ID Ασθενή"}
             };
     };
 
