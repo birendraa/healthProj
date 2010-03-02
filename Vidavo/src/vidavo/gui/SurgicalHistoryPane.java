@@ -21,7 +21,7 @@ public class SurgicalHistoryPane extends JPanel{
     private javax.swing.JTextArea reasonOfHospitalizationTextArea;
 
     public SurgicalHistoryPane(){
-        ListResourceBundle resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
+        ListResourceBundle resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("gr"));
 
         descriptionOfSurgeryLabel = new javax.swing.JLabel();
         hospitalNameLabel = new javax.swing.JLabel();

@@ -94,7 +94,7 @@ public class FamilyHistoryPane extends JPanel{
     private javax.swing.JLabel stenosiPaxeosEnderouLabel;
 
     public FamilyHistoryPane(){
-        ListResourceBundle resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
+        ListResourceBundle resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("gr"));
 
         familyHistoryScrollPane = new javax.swing.JScrollPane();
         familyHistoryMainPane = new javax.swing.JPanel();
