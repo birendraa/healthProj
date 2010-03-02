@@ -183,7 +183,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         tameioLabel = new JLabel();
         firstVisitLabel = new JLabel();
         childrenLabel = new JLabel();
-        childrenSpinner = new JSpinner( new SpinnerNumberModel (0,0,9999,1));
+        childrenSpinner = new JSpinner(new SpinnerNumberModel (0,0,9999,1));
         firstVisitTextField = new JTextField();
         heightTextField = new JTextField();
         weightTextField = new JTextField();
@@ -738,11 +738,8 @@ public class AddPatientGUI extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
 
-        if(action.equals("Save"))
-        {
-            try
-            {
-
+        if(action.equals("Save")){
+            try{
 //                if (patientID < patientNumber)
 //                    s.executeUpdate("DELETE FROM personalInfo WHERE patientID=" + patientID + ";");
 //                else if(patientID == patientNumber)
@@ -752,70 +749,48 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
                 if(!middleNTextField.getText().equals(""))
                     (p.getPersonalInfo()).setMName(middleNTextField.getText());
-
                 if(!addressTextField.getText().equals(""))
                     (p.getPersonalInfo()).setAddress(addressTextField.getText());
-
                 if(!addressNumTextField.getText().equals(""))
                     (p.getPersonalInfo()).setAddressNum(Integer.parseInt(addressNumTextField.getText()));
-
                 if(!cityTextField.getText().equals(""))
                     (p.getPersonalInfo()).setCity(cityTextField.getText());
-
                 if(!regionTextField.getText().equals(""))
                     (p.getPersonalInfo()).setState(regionTextField.getText());
-
                 if(!countryTextField.getText().equals(""))
                     (p.getPersonalInfo()).setCountry(countryTextField.getText());
-
                 if(!postalCTextField.getText().equals(""))
                     (p.getPersonalInfo()).setPostalCode(Integer.parseInt(postalCTextField.getText()));
-
                 if(!citizenshipTextField.getText().equals(""))
                     (p.getPersonalInfo()).setCitizenship(citizenshipTextField.getText());
-
                 if(!heightTextField.getText().equals(""))
                     (p.getPersonalInfo()).setHeight(Integer.parseInt(heightTextField.getText()));
-
                 if(!weightTextField.getText().equals(""))
                     (p.getPersonalInfo()).setWeight(Integer.parseInt(weightTextField.getText()));
-
                 if(maleRadioButton.isSelected() == true)
                     (p.getPersonalInfo()).setSex(maleRadioButton.getText());
-
                 if(femaleRadioButton.isSelected() == true)
                     (p.getPersonalInfo()).setSex(femaleRadioButton.getText());
-
                 if(marriedRadioButton.isSelected() == true)
                     (p.getPersonalInfo()).setMaritalStatus(marriedRadioButton.getText());
-
                 if(singleRadioButton.isSelected() == true)
                     (p.getPersonalInfo()).setMaritalStatus(singleRadioButton.getText());
-
                 if(!birthDateTextField.getText().equals(""))
                     (p.getPersonalInfo()).setBirthDate(birthDateTextField.getText());
-
                 if(!profTextField.getText().equals(""))
                     (p.getPersonalInfo()).setProfession(profTextField.getText());
-
                 if(!firstVisitTextField.getText().equals(""))
                     (p.getPersonalInfo()).setFirstVisit(firstVisitTextField.getText());
-
                 if(!childrenSpinner.getValue().equals(null))
                     (p.getPersonalInfo()).setChildren(Integer.parseInt(childrenSpinner.getValue().toString()));
-
                 if(!homeTextField.getText().equals(""))
                     (p.getPersonalInfo()).setHomeNum(homeTextField.getText());
-
                 if(!workTextField.getText().equals(""))
                     (p.getPersonalInfo()).setWorkNum(workTextField.getText());
-
                 if(!cellTextField.getText().equals(""))
                     (p.getPersonalInfo()).setCellPhone(cellTextField.getText());
-
                 if(!faxTextField.getText().equals(""))
                     (p.getPersonalInfo()).setFax(faxTextField.getText());
-
                 if(!mailTextField.getText().equals(""))
                     (p.getPersonalInfo()).setEmail(mailTextField.getText());
 
@@ -969,6 +944,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
             patientID = 1;
         }
     }
+    
 //    public void savePhoto(){
 //        System.out.println("Insert Image Example!");
 //            String driverName = "com.mysql.jdbc.Driver";
