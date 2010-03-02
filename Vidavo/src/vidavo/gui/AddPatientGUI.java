@@ -1778,7 +1778,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
     private void assignIdToPatient(){
         if(pm.getPL() != null){
             for(int i = 1; i <= pm.getPL().size(); i++){
-                if(pm.getPL().getPatientAtIndex(i) == null){
+                if(pm.getPL().getPatientAtIndex(i).getPatientID() != i){
                     patientID = i;
                     break;
                 }
