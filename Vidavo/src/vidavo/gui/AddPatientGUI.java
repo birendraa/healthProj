@@ -69,11 +69,8 @@ public class AddPatientGUI extends JFrame implements ActionListener{
     private JPanel mainPanel;
     private JRadioButton maleRadioButton;
     private JRadioButton marriedRadioButton;
-    private JPanel medicalHistoryPane;
-    private JPanel medicationsPane;
     private JLabel middleNLabel;
     private JTextField middleNTextField;
-    private JPanel parallelDiseasesPane;
     private JLabel patientPhotoLabel;
     private JPanel personalInfoPane;
     private JPanel photosPane;
@@ -135,16 +132,13 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         mainPanel = new JPanel();
         addPatientTabbedPane = new JTabbedPane();
-        medicalHistoryPane = new JPanel();
         surgeryHistoryPane = new SurgicalHistoryPane();
         familyHistoryPane = new FamilyHistoryPane();
         immunizationHistoryPane = new JPanel();
         habitsPane = new JPanel();
-        medicationsPane = new JPanel();
         chronicMedicationsPane = new JPanel();
         chronicDiseasesPane = new JPanel();
-        parallelDiseasesPane = new JPanel();
-        contactsPane = new JPanel();
+        contactsPane = new ContactsPane();
         photosPane = new JPanel();
         personalInfoPane = new JPanel();
         infoPane = new JPanel();
@@ -560,44 +554,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         addPatientTabbedPane.addTab("Personal Info", personalInfoPane);
 
-        javax.swing.GroupLayout medicalHistoryPaneLayout = new javax.swing.GroupLayout(medicalHistoryPane);
-        medicalHistoryPane.setLayout(medicalHistoryPaneLayout);
-        medicalHistoryPaneLayout.setHorizontalGroup(
-            medicalHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 806, Short.MAX_VALUE)
-        );
-        medicalHistoryPaneLayout.setVerticalGroup(
-            medicalHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
-        );
-
-        addPatientTabbedPane.addTab("Medical history", medicalHistoryPane);
-
-//        initSurgicalHistory();
-
-//        javax.swing.GroupLayout surgeryHistoryPaneLayout = new javax.swing.GroupLayout(surgeryHistoryPane);
-//        surgeryHistoryPane.setLayout(surgeryHistoryPaneLayout);
-//        surgeryHistoryPaneLayout.setHorizontalGroup(
-//            surgeryHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 806, Short.MAX_VALUE)
-//        );
-//        surgeryHistoryPaneLayout.setVerticalGroup(
-//            surgeryHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 576, Short.MAX_VALUE)
-//        );
-
         addPatientTabbedPane.addTab("Surgery History", surgeryHistoryPane);
-
-//        javax.swing.GroupLayout familyHistoryPaneLayout = new javax.swing.GroupLayout(familyHistoryPane);
-//        familyHistoryPane.setLayout(familyHistoryPaneLayout);
-//        familyHistoryPaneLayout.setHorizontalGroup(
-//            familyHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 806, Short.MAX_VALUE)
-//        );
-//        familyHistoryPaneLayout.setVerticalGroup(
-//            familyHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 576, Short.MAX_VALUE)
-//        );
 
         addPatientTabbedPane.addTab("Family history", familyHistoryPane);
 
@@ -627,19 +584,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         addPatientTabbedPane.addTab("Habits", habitsPane);
 
-        javax.swing.GroupLayout medicationsPaneLayout = new javax.swing.GroupLayout(medicationsPane);
-        medicationsPane.setLayout(medicationsPaneLayout);
-        medicationsPaneLayout.setHorizontalGroup(
-            medicationsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 806, Short.MAX_VALUE)
-        );
-        medicationsPaneLayout.setVerticalGroup(
-            medicationsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
-        );
-
-        addPatientTabbedPane.addTab("Medications", medicationsPane);
-
         javax.swing.GroupLayout chronicMedicationsPaneLayout = new javax.swing.GroupLayout(chronicMedicationsPane);
         chronicMedicationsPane.setLayout(chronicMedicationsPaneLayout);
         chronicMedicationsPaneLayout.setHorizontalGroup(
@@ -666,30 +610,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         addPatientTabbedPane.addTab("Chronic Diseases", chronicDiseasesPane);
 
-        javax.swing.GroupLayout parallelDiseasesPaneLayout = new javax.swing.GroupLayout(parallelDiseasesPane);
-        parallelDiseasesPane.setLayout(parallelDiseasesPaneLayout);
-        parallelDiseasesPaneLayout.setHorizontalGroup(
-            parallelDiseasesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 806, Short.MAX_VALUE)
-        );
-        parallelDiseasesPaneLayout.setVerticalGroup(
-            parallelDiseasesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
-        );
-
-        addPatientTabbedPane.addTab("Parallel diseases", parallelDiseasesPane);
-
-        javax.swing.GroupLayout contactsPaneLayout = new javax.swing.GroupLayout(contactsPane);
-        contactsPane.setLayout(contactsPaneLayout);
-        contactsPaneLayout.setHorizontalGroup(
-            contactsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 806, Short.MAX_VALUE)
-        );
-        contactsPaneLayout.setVerticalGroup(
-            contactsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
-        );
-
         addPatientTabbedPane.addTab("Contacts", contactsPane);
 
         javax.swing.GroupLayout photosPaneLayout = new javax.swing.GroupLayout(photosPane);
@@ -703,7 +623,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
             .addGap(0, 576, Short.MAX_VALUE)
         );
 
-        addPatientTabbedPane.addTab("Photo", photosPane);
+        addPatientTabbedPane.addTab("Photos", photosPane);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);

@@ -7,7 +7,7 @@ import vidavo.util.*;
  *
  * @author sanja
  */
-public class PatientList implements PatientListInterface{
+public class PatientList{
 
     private ListInterface patientList;
 

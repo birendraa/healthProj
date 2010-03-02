@@ -9,21 +9,18 @@ package vidavo;
  *
  * @author sanja
  */
-public class Patient implements PatientInterface{
+public class Patient{
 
    private int patientID;
    private PersonalInfo pInfo;
    private Photos photos;
    private Contacts contacts;
-   private ParallelDiseases prlDiseases;
    private ChronicDiseases chrDiseases;
    private ChronicMedications chrMedications;
-   private Medications meds;
    private Habits habits;
    private ImmunizationHistory immunHistory;
    private FamilyHistory famHistory;
    private SurgeryHistory surgHistory;
-   private MedicalHistory medHistory;
 
    public Patient(){
 
@@ -34,15 +31,12 @@ public class Patient implements PatientInterface{
        pInfo = new PersonalInfo();
        photos = new Photos();
        contacts = new Contacts();
-       prlDiseases = new ParallelDiseases();
        chrDiseases = new ChronicDiseases();
        chrMedications = new ChronicMedications();
-       meds = new Medications();
        habits = new Habits();
        immunHistory = new ImmunizationHistory();
        famHistory = new FamilyHistory();
        surgHistory = new SurgeryHistory();
-       medHistory = new MedicalHistory();
    }
 
    public Patient(int iD, String fn, String ln, String insur, int a, String tam) throws NullPointerException
@@ -53,15 +47,12 @@ public class Patient implements PatientInterface{
        pInfo = new PersonalInfo(iD,fn,ln,insur,a,tam);
        photos = new Photos();
        contacts = new Contacts();
-       prlDiseases = new ParallelDiseases();
        chrDiseases = new ChronicDiseases();
        chrMedications = new ChronicMedications();
-       meds = new Medications();
        habits = new Habits();
        immunHistory = new ImmunizationHistory();
        famHistory = new FamilyHistory();
        surgHistory = new SurgeryHistory();
-       medHistory = new MedicalHistory();
          }
 
         else
@@ -106,16 +97,6 @@ public class Patient implements PatientInterface{
        return contacts;
    }
 
-   public void setParallelDiseases(ParallelDiseases pd)
-   {
-        prlDiseases = pd;
-   }
-
-   public ParallelDiseases getParallelDiseases()
-   {
-       return prlDiseases;
-   }
-
    public void setChronicDiseases(ChronicDiseases cd)
    {
         chrDiseases = cd;
@@ -134,16 +115,6 @@ public class Patient implements PatientInterface{
    public ChronicMedications getChronicMedications()
    {
        return chrMedications;
-   }
-
-   public void setMedications(Medications m)
-   {
-        meds = m;
-   }
-
-   public Medications getMedications()
-   {
-       return meds;
    }
 
    public void setHabits(Habits h)
@@ -184,16 +155,6 @@ public class Patient implements PatientInterface{
    public SurgeryHistory getSurgeryHistory()
    {
        return surgHistory;
-   }
-
-   public void setMedicalHistory(MedicalHistory mh)
-   {
-        medHistory = mh;
-   }
-
-   public MedicalHistory getMedicalHistory()
-   {
-       return medHistory;
    }
 
 }
