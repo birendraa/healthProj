@@ -209,4 +209,18 @@ CREATE TABLE `Surgical_History` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `Contacts`;
+
+CREATE TABLE `Contacts` (
+  `contactID` int(20) NOT NULL,
+  `Relationship` varchar(10) NOT NULL,
+  `FirstName` varchar(50) NOT NULL,
+  `LastName` varchar(50) NOT NULL,
+  `HomePhone` varchar(50) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `patientID` int(20) NOT NULL,
+  PRIMARY KEY (`contactID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
 SET FOREIGN_KEY_CHECKS = 1;
