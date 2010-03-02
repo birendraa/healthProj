@@ -115,6 +115,93 @@ public class AddPatientGUI extends JFrame implements ActionListener{
     private javax.swing.JTextField hospitalNameTextField;
     private javax.swing.JTextArea reasonOfHospitalizationTextArea;
 
+    private javax.swing.JScrollPane familyHistoryScrollpane;
+
+    private javax.swing.JLabel AllesMorfesOikogeniakouIstorikouLabel;
+    private javax.swing.JTextField AllesMorfesOikogeniakouIstorikouTextField;
+    private javax.swing.JLabel AnomaliesNefrikisPyelouLabel;
+    private javax.swing.JLabel DiamartiesDiaplasisKardiakwnDiafragmatwnLabel;
+    private javax.swing.JLabel DiamartiesDiaplasisKikloforikouSistimatosLabel;
+    private javax.swing.JLabel DiamartiesDiaplasisPneumononLabel;
+    private javax.swing.JLabel DiamartiesEnderouLabel;
+    private javax.swing.JTextField DiamartiesEnderouTextField;
+    private javax.swing.JLabel DiamartiesKardiasLabel;
+    private javax.swing.JLabel DiamartiesTraxeiasVrohouLabel;
+    private javax.swing.JTextField DiamartiesTraxeiasVrohouTextField;
+    private javax.swing.JLabel DiaplasiDermatosLabel;
+    private javax.swing.JTextField DiaplasiDermatosTextField;
+    private javax.swing.JLabel DiaplasiNefrwnLabel;
+    private javax.swing.JTextField DiaplasiNefrwnTextField;
+    private javax.swing.JLabel DiaplasiOuritiraLabel;
+    private javax.swing.JTextField DiaplasiOuropoiitikouSistimatosTextField;
+    private javax.swing.JLabel DiaplasiOuroupoiitikouSistimatosLabel;
+    private javax.swing.JLabel DiaplasiPeptikouSistimatosLabel;
+    private javax.swing.JTextField DiaplasiPeptikouSistimatosTextField;
+    private javax.swing.JLabel DiataraxesNefrouOuritiraLabel;
+    private javax.swing.JLabel DisanexiaLaktozisLabel;
+    private javax.swing.JTextField DisanexiaLaktozisTextField;
+    private javax.swing.JLabel EgefalikoEpisodioLabel;
+    private javax.swing.JLabel EleipsiLaktasisLabel;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo1;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo10;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo11;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo12;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo13;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo14;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo15;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo16;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo17;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo18;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo19;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo2;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo20;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo3;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo4;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo5;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo6;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo7;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo8;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonNo9;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes1;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes10;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes11;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes12;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes13;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes14;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes15;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes16;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes17;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes18;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes19;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes2;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes20;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes3;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes4;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes5;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes6;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes7;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes8;
+    private javax.swing.JRadioButton FamilyHistoryRadioButtonYes9;
+    private javax.swing.JLabel IstorikoAsthmatosLabel;
+    private javax.swing.JLabel IstorikoLeuxemiasLabel;
+    private javax.swing.JLabel IstorikoSarkomatwnLabel;
+    private javax.swing.JLabel KakoithiNeoplasmataLabel;
+    private javax.swing.JTextField KakoithiNeoplasmataTextField;
+    private javax.swing.JLabel KardiakiKoilotitaLabel;
+    private javax.swing.JLabel KataxrisiAlkoolLabel;
+    private javax.swing.JLabel KistikiNososNefrwnLabel;
+    private javax.swing.JLabel KlironomikiAnaimiaLabel;
+    private javax.swing.JLabel KlironomikosDiavitisLabel;
+    private javax.swing.JLabel NefrikiAgenesiaLabel;
+    private javax.swing.JTextField NefrikiAgenesiaTextField;
+    private javax.swing.JLabel PsixikesDiataraxesLabel;
+    private javax.swing.JLabel SigenisThiroeidismosLabel;
+    private javax.swing.JTextField SigenisThiroeidismosTextField;
+    private javax.swing.JLabel StenosiLeptouEnderouLabel;
+    private javax.swing.JLabel StenosiPaxeosEnderouLabel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+
     /**
      *
      * @param pm
@@ -605,16 +692,18 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         addPatientTabbedPane.addTab("Surgery History", surgeryHistoryPane);
 
-        javax.swing.GroupLayout familyHistoryPaneLayout = new javax.swing.GroupLayout(familyHistoryPane);
-        familyHistoryPane.setLayout(familyHistoryPaneLayout);
-        familyHistoryPaneLayout.setHorizontalGroup(
-            familyHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 806, Short.MAX_VALUE)
-        );
-        familyHistoryPaneLayout.setVerticalGroup(
-            familyHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
-        );
+//        javax.swing.GroupLayout familyHistoryPaneLayout = new javax.swing.GroupLayout(familyHistoryPane);
+//        familyHistoryPane.setLayout(familyHistoryPaneLayout);
+//        familyHistoryPaneLayout.setHorizontalGroup(
+//            familyHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGap(0, 806, Short.MAX_VALUE)
+//        );
+//        familyHistoryPaneLayout.setVerticalGroup(
+//            familyHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGap(0, 576, Short.MAX_VALUE)
+//        );
+
+        initFamilyHistory();
 
         addPatientTabbedPane.addTab("Family history", familyHistoryPane);
 
@@ -825,6 +914,573 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         );
     }
 
+    private void initFamilyHistory(){
+        
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        IstorikoLeuxemiasLabel = new javax.swing.JLabel();
+        FamilyHistoryRadioButtonNo19 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonYes19 = new javax.swing.JRadioButton();
+        DiaplasiPeptikouSistimatosLabel = new javax.swing.JLabel();
+        DiaplasiPeptikouSistimatosTextField = new javax.swing.JTextField();
+        FamilyHistoryRadioButtonNo9 = new javax.swing.JRadioButton();
+        DiamartiesEnderouTextField = new javax.swing.JTextField();
+        KistikiNososNefrwnLabel = new javax.swing.JLabel();
+        NefrikiAgenesiaLabel = new javax.swing.JLabel();
+        NefrikiAgenesiaTextField = new javax.swing.JTextField();
+        FamilyHistoryRadioButtonYes11 = new javax.swing.JRadioButton();
+        AnomaliesNefrikisPyelouLabel = new javax.swing.JLabel();
+        FamilyHistoryRadioButtonNo10 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonYes10 = new javax.swing.JRadioButton();
+        AllesMorfesOikogeniakouIstorikouLabel = new javax.swing.JLabel();
+        AllesMorfesOikogeniakouIstorikouTextField = new javax.swing.JTextField();
+        FamilyHistoryRadioButtonYes20 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonNo20 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonNo16 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonYes16 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonYes17 = new javax.swing.JRadioButton();
+        IstorikoSarkomatwnLabel = new javax.swing.JLabel();
+        FamilyHistoryRadioButtonNo7 = new javax.swing.JRadioButton();
+        DiamartiesTraxeiasVrohouLabel = new javax.swing.JLabel();
+        DiaplasiDermatosLabel = new javax.swing.JLabel();
+        StenosiLeptouEnderouLabel = new javax.swing.JLabel();
+        StenosiPaxeosEnderouLabel = new javax.swing.JLabel();
+        DiamartiesEnderouLabel = new javax.swing.JLabel();
+        DiamartiesTraxeiasVrohouTextField = new javax.swing.JTextField();
+        DiaplasiDermatosTextField = new javax.swing.JTextField();
+        FamilyHistoryRadioButtonYes1 = new javax.swing.JRadioButton();
+        EgefalikoEpisodioLabel = new javax.swing.JLabel();
+        FamilyHistoryRadioButtonYes8 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonNo2 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonYes2 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonYes9 = new javax.swing.JRadioButton();
+        DiamartiesDiaplasisPneumononLabel = new javax.swing.JLabel();
+        FamilyHistoryRadioButtonNo8 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonNo1 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonNo17 = new javax.swing.JRadioButton();
+        KakoithiNeoplasmataLabel = new javax.swing.JLabel();
+        FamilyHistoryRadioButtonYes3 = new javax.swing.JRadioButton();
+        KakoithiNeoplasmataTextField = new javax.swing.JTextField();
+        DiamartiesDiaplasisKikloforikouSistimatosLabel = new javax.swing.JLabel();
+        KataxrisiAlkoolLabel = new javax.swing.JLabel();
+        FamilyHistoryRadioButtonYes18 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonNo18 = new javax.swing.JRadioButton();
+        KlironomikosDiavitisLabel = new javax.swing.JLabel();
+        SigenisThiroeidismosTextField = new javax.swing.JTextField();
+        SigenisThiroeidismosLabel = new javax.swing.JLabel();
+        FamilyHistoryRadioButtonNo14 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonYes14 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonNo6 = new javax.swing.JRadioButton();
+        KlironomikiAnaimiaLabel = new javax.swing.JLabel();
+        IstorikoAsthmatosLabel = new javax.swing.JLabel();
+        FamilyHistoryRadioButtonYes6 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonYes5 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonNo5 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonNo4 = new javax.swing.JRadioButton();
+        KardiakiKoilotitaLabel = new javax.swing.JLabel();
+        DiamartiesDiaplasisKardiakwnDiafragmatwnLabel = new javax.swing.JLabel();
+        FamilyHistoryRadioButtonYes4 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonYes7 = new javax.swing.JRadioButton();
+        DiamartiesKardiasLabel = new javax.swing.JLabel();
+        DisanexiaLaktozisTextField = new javax.swing.JTextField();
+        PsixikesDiataraxesLabel = new javax.swing.JLabel();
+        FamilyHistoryRadioButtonNo15 = new javax.swing.JRadioButton();
+        DisanexiaLaktozisLabel = new javax.swing.JLabel();
+        EleipsiLaktasisLabel = new javax.swing.JLabel();
+        FamilyHistoryRadioButtonYes15 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonNo12 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonYes12 = new javax.swing.JRadioButton();
+        DiaplasiNefrwnLabel = new javax.swing.JLabel();
+        FamilyHistoryRadioButtonNo11 = new javax.swing.JRadioButton();
+        DiataraxesNefrouOuritiraLabel = new javax.swing.JLabel();
+        DiaplasiNefrwnTextField = new javax.swing.JTextField();
+        FamilyHistoryRadioButtonNo3 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonYes13 = new javax.swing.JRadioButton();
+        FamilyHistoryRadioButtonNo13 = new javax.swing.JRadioButton();
+        DiaplasiOuroupoiitikouSistimatosLabel = new javax.swing.JLabel();
+        DiaplasiOuropoiitikouSistimatosTextField = new javax.swing.JTextField();
+        DiaplasiOuritiraLabel = new javax.swing.JLabel();
+
+
+        IstorikoLeuxemiasLabel.setText("Istoriko Leuxemias :");
+
+        FamilyHistoryRadioButtonNo19.setText("No");
+
+        FamilyHistoryRadioButtonYes19.setText("Yes");
+
+        DiaplasiPeptikouSistimatosLabel.setText("Diaplasi Peptikou Sistimatos :");
+
+        FamilyHistoryRadioButtonNo9.setText("No");
+
+        KistikiNososNefrwnLabel.setText("Kistiki Nosos Nefrwn :");
+
+        NefrikiAgenesiaLabel.setText("Nefriki Agenesia :");
+
+        FamilyHistoryRadioButtonYes11.setText("Yes");
+
+        AnomaliesNefrikisPyelouLabel.setText("Anomalies Nefrikis Pyelou :");
+
+        FamilyHistoryRadioButtonNo10.setText("No");
+
+        FamilyHistoryRadioButtonYes10.setText("Yes");
+
+        AllesMorfesOikogeniakouIstorikouLabel.setText("Alles Morfes Oikogeniakou Istorikou :");
+
+        FamilyHistoryRadioButtonYes20.setText("Yes");
+
+        FamilyHistoryRadioButtonNo20.setText("No");
+
+        FamilyHistoryRadioButtonNo16.setText("No");
+
+        FamilyHistoryRadioButtonYes16.setText("Yes");
+
+        FamilyHistoryRadioButtonYes17.setText("Yes");
+
+        IstorikoSarkomatwnLabel.setText("Istoriko Sarkomatwn :");
+
+        FamilyHistoryRadioButtonNo7.setText("No");
+
+        DiamartiesTraxeiasVrohouLabel.setText("Diamarties Traxeias Vrohou :");
+
+        DiaplasiDermatosLabel.setText("Diaplasi Dermatos :");
+
+        StenosiLeptouEnderouLabel.setText("Stenosi Leptou Enderou :");
+
+        StenosiPaxeosEnderouLabel.setText("Stenosi Paxeos Enderou :");
+
+        DiamartiesEnderouLabel.setText("Diamarties Enderou :");
+
+        FamilyHistoryRadioButtonYes1.setText("Yes");
+
+        EgefalikoEpisodioLabel.setText("Egefaliko Episodio :");
+
+        FamilyHistoryRadioButtonYes8.setText("Yes");
+
+        FamilyHistoryRadioButtonNo2.setText("No");
+
+        FamilyHistoryRadioButtonYes2.setText("Yes");
+
+        FamilyHistoryRadioButtonYes9.setText("Yes");
+
+        DiamartiesDiaplasisPneumononLabel.setText("Diamarties Diaplasis Pneumonon :");
+
+        FamilyHistoryRadioButtonNo8.setText("No");
+
+        FamilyHistoryRadioButtonNo1.setText("No");
+
+        FamilyHistoryRadioButtonNo17.setText("No");
+
+        KakoithiNeoplasmataLabel.setText("Kakoithi Neoplasmata :");
+
+        FamilyHistoryRadioButtonYes3.setText("Yes");
+
+        DiamartiesDiaplasisKikloforikouSistimatosLabel.setText("Diamarties Diaplasis Kikloforikou Sistimatos :");
+
+        KataxrisiAlkoolLabel.setText("Kataxrisi Alkool :");
+
+        FamilyHistoryRadioButtonYes18.setText("Yes");
+
+        FamilyHistoryRadioButtonNo18.setText("No");
+
+        KlironomikosDiavitisLabel.setText("Klironomikos Diavitis :");
+
+        SigenisThiroeidismosLabel.setText("Sigenis Thiroeidismos :");
+
+        FamilyHistoryRadioButtonNo14.setText("No");
+
+        FamilyHistoryRadioButtonYes14.setText("Yes");
+
+        FamilyHistoryRadioButtonNo6.setText("No");
+
+        KlironomikiAnaimiaLabel.setText("Klironomiki Anaimia :");
+
+        IstorikoAsthmatosLabel.setText("Istoriko Asthmatos :");
+
+        FamilyHistoryRadioButtonYes6.setText("Yes");
+
+        FamilyHistoryRadioButtonYes5.setText("Yes");
+
+        FamilyHistoryRadioButtonNo5.setText("No");
+
+        FamilyHistoryRadioButtonNo4.setText("No");
+
+        KardiakiKoilotitaLabel.setText("Kardiaki Koilotita :");
+
+        DiamartiesDiaplasisKardiakwnDiafragmatwnLabel.setText("Diamarties Diaplasis Kardiakwn Diafragmatwn :");
+
+        FamilyHistoryRadioButtonYes4.setText("Yes");
+
+        FamilyHistoryRadioButtonYes7.setText("Yes");
+
+        DiamartiesKardiasLabel.setText("Diamarties Kardias :");
+
+        PsixikesDiataraxesLabel.setText("Psixikes Diataraxes :");
+
+        FamilyHistoryRadioButtonNo15.setText("No");
+
+        DisanexiaLaktozisLabel.setText("Disanexia Laktozis :");
+
+        EleipsiLaktasisLabel.setText("Eleipsi Laktasis :");
+
+        FamilyHistoryRadioButtonYes15.setText("Yes");
+
+        FamilyHistoryRadioButtonNo12.setText("No");
+
+        FamilyHistoryRadioButtonYes12.setText("Yes");
+
+        DiaplasiNefrwnLabel.setText("Diaplasi Nefrwn :");
+
+        FamilyHistoryRadioButtonNo11.setText("No");
+
+        DiataraxesNefrouOuritiraLabel.setText("Diataraxes Nefrou Ouritira :");
+
+        FamilyHistoryRadioButtonNo3.setText("No");
+
+        FamilyHistoryRadioButtonYes13.setText("Yes");
+
+        FamilyHistoryRadioButtonNo13.setText("No");
+
+        DiaplasiOuroupoiitikouSistimatosLabel.setText("Diaplasi Ouroupoiitikou Sistimatos :");
+
+        DiaplasiOuritiraLabel.setText("Diaplasi Ouritira :");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(EgefalikoEpisodioLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes1)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(DiamartiesKardiasLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes7)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo7))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(DiamartiesTraxeiasVrohouLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(DiamartiesTraxeiasVrohouTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(DiaplasiDermatosLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(DiaplasiDermatosTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(StenosiLeptouEnderouLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes8)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo8))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(StenosiPaxeosEnderouLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes9)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo9))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(DiamartiesEnderouLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(DiamartiesEnderouTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(DiaplasiPeptikouSistimatosLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(DiaplasiPeptikouSistimatosTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(NefrikiAgenesiaLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(NefrikiAgenesiaTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(KistikiNososNefrwnLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes10)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo10))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(AnomaliesNefrikisPyelouLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes11)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo11))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(DiaplasiNefrwnLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(DiaplasiNefrwnTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(DiataraxesNefrouOuritiraLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes12)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo12))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(DiaplasiOuritiraLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes13)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo13))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(DiaplasiOuroupoiitikouSistimatosLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(DiaplasiOuropoiitikouSistimatosTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(KlironomikiAnaimiaLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes14)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo14))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(SigenisThiroeidismosLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(SigenisThiroeidismosTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(EleipsiLaktasisLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes15)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo15))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(DisanexiaLaktozisLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(DisanexiaLaktozisTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(PsixikesDiataraxesLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes16)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo16))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(IstorikoSarkomatwnLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes17)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo17))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(KakoithiNeoplasmataLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(KakoithiNeoplasmataTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(KataxrisiAlkoolLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes18)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo18))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(KlironomikosDiavitisLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes19)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo19))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(IstorikoLeuxemiasLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes20)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo20))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(AllesMorfesOikogeniakouIstorikouLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(AllesMorfesOikogeniakouIstorikouTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(DiamartiesDiaplasisPneumononLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes2)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(DiamartiesDiaplasisKikloforikouSistimatosLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes3)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(DiamartiesDiaplasisKardiakwnDiafragmatwnLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes4)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(KardiakiKoilotitaLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes5)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo5))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(IstorikoAsthmatosLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonYes6)
+                        .addGap(18, 18, 18)
+                        .addComponent(FamilyHistoryRadioButtonNo6)))
+                .addGap(5))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EgefalikoEpisodioLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes1)
+                    .addComponent(FamilyHistoryRadioButtonNo1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DiamartiesDiaplasisPneumononLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes2)
+                    .addComponent(FamilyHistoryRadioButtonNo2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DiamartiesDiaplasisKikloforikouSistimatosLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes3)
+                    .addComponent(FamilyHistoryRadioButtonNo3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DiamartiesDiaplasisKardiakwnDiafragmatwnLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes4)
+                    .addComponent(FamilyHistoryRadioButtonNo4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(KardiakiKoilotitaLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes5)
+                    .addComponent(FamilyHistoryRadioButtonNo5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IstorikoAsthmatosLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes6)
+                    .addComponent(FamilyHistoryRadioButtonNo6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DiamartiesKardiasLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes7)
+                    .addComponent(FamilyHistoryRadioButtonNo7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DiamartiesTraxeiasVrohouLabel)
+                    .addComponent(DiamartiesTraxeiasVrohouTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DiaplasiDermatosLabel)
+                    .addComponent(DiaplasiDermatosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(StenosiLeptouEnderouLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes8)
+                    .addComponent(FamilyHistoryRadioButtonNo8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(StenosiPaxeosEnderouLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes9)
+                    .addComponent(FamilyHistoryRadioButtonNo9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DiamartiesEnderouLabel)
+                    .addComponent(DiamartiesEnderouTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DiaplasiPeptikouSistimatosLabel)
+                    .addComponent(DiaplasiPeptikouSistimatosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NefrikiAgenesiaLabel)
+                    .addComponent(NefrikiAgenesiaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(KistikiNososNefrwnLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes10)
+                    .addComponent(FamilyHistoryRadioButtonNo10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AnomaliesNefrikisPyelouLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes11)
+                    .addComponent(FamilyHistoryRadioButtonNo11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DiaplasiNefrwnLabel)
+                    .addComponent(DiaplasiNefrwnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DiataraxesNefrouOuritiraLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes12)
+                    .addComponent(FamilyHistoryRadioButtonNo12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DiaplasiOuritiraLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes13)
+                    .addComponent(FamilyHistoryRadioButtonNo13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DiaplasiOuroupoiitikouSistimatosLabel)
+                    .addComponent(DiaplasiOuropoiitikouSistimatosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(KlironomikiAnaimiaLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes14)
+                    .addComponent(FamilyHistoryRadioButtonNo14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SigenisThiroeidismosLabel)
+                    .addComponent(SigenisThiroeidismosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EleipsiLaktasisLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes15)
+                    .addComponent(FamilyHistoryRadioButtonNo15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DisanexiaLaktozisLabel)
+                    .addComponent(DisanexiaLaktozisTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PsixikesDiataraxesLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes16)
+                    .addComponent(FamilyHistoryRadioButtonNo16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IstorikoSarkomatwnLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes17)
+                    .addComponent(FamilyHistoryRadioButtonNo17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(KakoithiNeoplasmataLabel)
+                    .addComponent(KakoithiNeoplasmataTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(KataxrisiAlkoolLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes18)
+                    .addComponent(FamilyHistoryRadioButtonNo18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(KlironomikosDiavitisLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes19)
+                    .addComponent(FamilyHistoryRadioButtonNo19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IstorikoLeuxemiasLabel)
+                    .addComponent(FamilyHistoryRadioButtonYes20)
+                    .addComponent(FamilyHistoryRadioButtonNo20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AllesMorfesOikogeniakouIstorikouLabel)
+                    .addComponent(AllesMorfesOikogeniakouIstorikouTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(familyHistoryPane);
+        familyHistoryPane.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+        );
+    }
+
     /**
      *
      * @param e
@@ -1025,6 +1681,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
               marriedRadioButton.setSelected(true);
           else
               singleRadioButton.setSelected(true);
+          
           birthDateTextField.setText((info.getBirthDate()));
           profTextField.setText(info.getProfession());
           insuranceTextField.setText(info.getInsurance());
