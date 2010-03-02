@@ -131,14 +131,15 @@ public class PatientManager {
           pInfo.setWeight(res.getInt("Weight"));
           pInfo.setSex(res.getString("Gender"));
           pInfo.setMaritalStatus(res.getString("Status"));
-
-          pInfo.setBirthDate((res.getString("BirthDate")));
+//Date gives error - Incompatible data types. It tries to save a Date object to a string.
+//          pInfo.setBirthDate((res.getString("BirthDate")));
           pInfo.setProfession(res.getString("Profession"));
           pInfo.setInsurance(res.getString("Insurrance"));
           pInfo.setAmka(res.getInt("Insurance_Id_Number"));
 
           pInfo.setTameio(res.getString("Insurance_Type"));
-          pInfo.setFirstVisit((res.getString("First_Visit")));
+//Date error here as well.
+//          pInfo.setFirstVisit((res.getString("First_Visit")));
           pInfo.setChildren(res.getInt("Children"));
           pInfo.setHomeNum(Integer.toString(res.getInt("Home_Number")));
           pInfo.setWorkNum(Integer.toString(res.getInt("Work_Number")));
