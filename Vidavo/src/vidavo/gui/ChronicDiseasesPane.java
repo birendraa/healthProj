@@ -241,228 +241,142 @@ public class ChronicDiseasesPane extends JPanel{
         jScrollPane13 = new javax.swing.JScrollPane();
         allesChroniesAstheneiesTextArea = new javax.swing.JTextArea();
 
-        vactiriakesPneumoniesLabel.setText("Vactiriakes Pneumonies :");
-
         vactiriakesPneumoniesTextArea.setColumns(20);
         vactiriakesPneumoniesTextArea.setRows(5);
         jScrollPane2.setViewportView(vactiriakesPneumoniesTextArea);
 
-        pathiseisPneumonwnLabel.setText("Pathiseis Pneumonwn :");
+        pathiseisPneumonwnLabel.setText(resourceMap.getString("pathiseisPneumonwnLabel.text"));
+        chronicVroxitidaLabel.setText(resourceMap.getString("chronicVroxitidaLabel.text"));
+        aneurismaPneumonikisArtiriasLabel.setText(resourceMap.getString("aneurismaPneumonikisArtiriasLabel.text"));
+        vactiriakesPneumoniesLabel.setText(resourceMap.getString("vactiriakesPneumoniesLabel.text"));
+        diataraxesArtiriwnLabel.setText(resourceMap.getString("diataraxesArtiriwnLabel.text"));
+        allergikoAsthmaLabel.setText(resourceMap.getString("allergikoAsthmaLabel.text"));
+        anapneustikiAneparkeiaLabel.setText(resourceMap.getString("anapneustikiAneparkeiaLabel.text"));
+        anapneustirasLabel.setText(resourceMap.getString("anapneustirasLabel.text"));
+        kardiopatheiaLabel.setText(resourceMap.getString("kardiopatheiaLabel.text"));
+        aneurismaKardiasLabel.setText(resourceMap.getString("aneurismaKardiasLabel.text"));
+        kardiakiArythmiaLabel.setText(resourceMap.getString("kardiakiArythmiaLabel.text"));
+        vimatodotisLabel.setText(resourceMap.getString("vimatodotisLabel.text"));
+        emfragmaLabel.setText(resourceMap.getString("emfragmaLabel.text"));
+        egefalikoLabel.setText(resourceMap.getString("egefalikoLabel.text"));
+        thromvosiAgeiwnLabel.setText(resourceMap.getString("thromvosiAgeiwnLabel.text"));
+        stenosiAortikisValvidasLabel.setText(resourceMap.getString("stenosiAortikisValvidasLabel.text"));
+        aneparkeiaAortikisValvidasLabel.setText(resourceMap.getString("aneparkeiaAortikisValvidasLabel.text"));
+        ageiakesPathiseisLabel.setText(resourceMap.getString("ageiakesPathiseisLabel.text"));
+        ypotasiLabel.setText(resourceMap.getString("ypotasiLabel.text"));
+        ypertasiLabel.setText(resourceMap.getString("ypertasiLabel.text"));
+        allesMorfesYpotaseisLabel.setText(resourceMap.getString("allesMorfesYpotaseisLabel.text"));
+        hpatikiAneparkeiaLabel.setText(resourceMap.getString("hpatikiAneparkeiaLabel.text"));
+        nefrikiAneparkeiaLabel.setText(resourceMap.getString("nefrikiAneparkeiaLabel.text"));
+        mixanimaAimokatharsisLabel.setText(resourceMap.getString("mixanimaAimokatharsisLabel.text"));
+        elkosLabel.setText(resourceMap.getString("elkosLabel.text"));
+        diataraxesEderouLabel.setText(resourceMap.getString("diataraxesEderouLabel.text"));
+        diataraxesNeurikouSistimatosLabel.setText(resourceMap.getString("diataraxesNeurikouSistimatosLabel.text"));
+        diavitisLabel.setText(resourceMap.getString("diavitisLabel.text"));
+        leuxaimiaLabel.setText(resourceMap.getString("leuxaimiaLabel.text"));
+        eleipsiSidirouLabel.setText(resourceMap.getString("eleipsiSidirouLabel.text"));
+        poliomelitidaLabel.setText(resourceMap.getString("poliomelitidaLabel.text"));
+        thiroeidismosLabel.setText(resourceMap.getString("thiroeidismosLabel.text"));
+        morfiThiroeidiLabel.setText(resourceMap.getString("morfiThiroeidiLabel.text"));
+        erpikoEkzemaLabel.setText(resourceMap.getString("erpikoEkzemaLabel.text"));
+        erpikoEkzemaLabel.setText(resourceMap.getString("erpikoEkzemaLabel.text"));
+        ipatitidaLabel.setText(resourceMap.getString("ipatitidaLabel.text"));
+        allesChroniesAstheneiesLabel.setText(resourceMap.getString("allesChroniesAstheneiesLabel.text"));
 
         pathiseisPneumonwnTextArea.setColumns(20);
         pathiseisPneumonwnTextArea.setRows(5);
         jScrollPane3.setViewportView(pathiseisPneumonwnTextArea);
 
-        chronicVroxitidaLabel.setText("Chronic Vroxitida :");
-
-        chronicDiseasesRadioButtonYes1.setText("jRadioButton1");
-
-        chronicDiseasesRadioButtonNo1.setText("jRadioButton2");
-
-        aneurismaPneumonikisArtiriasLabel.setText("Aneurisma Pneumonikis Artirias :");
-
         aneurismaPneumonikisArtiriasTextArea.setColumns(20);
         aneurismaPneumonikisArtiriasTextArea.setRows(5);
         jScrollPane4.setViewportView(aneurismaPneumonikisArtiriasTextArea);
-
-        diataraxesArtiriwnLabel.setText("Diataraxes Artiriwn :");
 
         diataraxesArtiriwnTextArea.setColumns(20);
         diataraxesArtiriwnTextArea.setRows(5);
         jScrollPane5.setViewportView(diataraxesArtiriwnTextArea);
 
-        allergikoAsthmaLabel.setText("Allergiko Asthma :");
-
-        chronicDiseasesRadioButtonYes2.setText("jRadioButton3");
-
-        chronicDiseasesRadioButtonNo2.setText("jRadioButton4");
-
-        anapneustikiAneparkeiaLabel.setText("Anapneustiki Aneparkeia :");
-
-        chronicDiseasesRadioButtonYes3.setText("jRadioButton5");
-
-        chronicDiseasesRadioButtonNo3.setText("jRadioButton6");
-
-        anapneustirasLabel.setText("Anapneustiras :");
-
-        chronicDiseasesRadioButtonYes4.setText("jRadioButton7");
-
-        chronicDiseasesRadioButtonNo4.setText("jRadioButton8");
-
-        kardiopatheiaLabel.setText("Kardiopatheia :");
-
-        chronicDiseasesRadioButtonYes5.setText("jRadioButton9");
-
-        chronicDiseasesRadioButtonNo5.setText("jRadioButton10");
-
-        aneurismaKardiasLabel.setText("Aneurisma Kardias :");
-
-        chronicDiseasesRadioButtonYes6.setText("jRadioButton11");
-
-        chronicDiseasesRadioButtonNo6.setText("jRadioButton12");
-
-        kardiakiArythmiaLabel.setText("Kardiaki Arythmia :");
-
         kardiakiArythmiaTextArea.setColumns(20);
         kardiakiArythmiaTextArea.setRows(5);
         jScrollPane6.setViewportView(kardiakiArythmiaTextArea);
-
-        vimatodotisLabel.setText("Vimatodotis :");
-
-        chronicDiseasesRadioButtonYes7.setText("jRadioButton13");
-
-        chronicDiseasesRadioButtonNo7.setText("jRadioButton14");
-
-        emfragmaLabel.setText("Emfragma :");
-
-        chronicDiseasesRadioButtonYes8.setText("jRadioButton15");
-
-        chronicDiseasesRadioButtonNo8.setText("jRadioButton16");
-
-        egefalikoLabel.setText("Egefaliko :");
-
-        chronicDiseasesRadioButtonYes9.setText("jRadioButton17");
-
-        chronicDiseasesRadioButtonNo9.setText("jRadioButton18");
-
-        thromvosiAgeiwnLabel.setText("Thromvosi Ageiwn :");
-
-        chronicDiseasesRadioButtonYes10.setText("jRadioButton19");
-
-        chronicDiseasesRadioButtonNo10.setText("jRadioButton20");
-
-        stenosiAortikisValvidasLabel.setText("Stenosi Aortikis Valvidas :");
-
-        chronicDiseasesRadioButtonYes11.setText("jRadioButton21");
-
-        chronicDiseasesRadioButtonNo11.setText("jRadioButton22");
-
-        aneparkeiaAortikisValvidasLabel.setText("Aneparkeia Aortikis Valvidas :");
-
-        chronicDiseasesRadioButtonYes12.setText("jRadioButton23");
-
-        chronicDiseasesRadioButtonNo12.setText("jRadioButton24");
-
-        ageiakesPathiseisLabel.setText("Ageiakes Pathiseis :");
 
         ageiakesPathiseisTextArea.setColumns(20);
         ageiakesPathiseisTextArea.setRows(5);
         jScrollPane7.setViewportView(ageiakesPathiseisTextArea);
 
-        ypotasiLabel.setText("Ypotasi :");
-
-        chronicDiseasesRadioButtonYes13.setText("jRadioButton25");
-
-        chronicDiseasesRadioButtonNo13.setText("jRadioButton26");
-
-        ypertasiLabel.setText("Ypertasi :");
-
-        chronicDiseasesRadioButtonYes14.setText("jRadioButton27");
-
-        chronicDiseasesRadioButtonNo14.setText("jRadioButton28");
-
-        allesMorfesYpotaseisLabel.setText("Alles Morfes Ypotaseis :");
-
         allesMorfesYpotaseisTextArea.setColumns(20);
         allesMorfesYpotaseisTextArea.setRows(5);
         jScrollPane8.setViewportView(allesMorfesYpotaseisTextArea);
-
-        diavitisLabel.setText("Diavitis :");
-
-        chronicDiseasesRadioButtonYes15.setText("jRadioButton29");
-
-        chronicDiseasesRadioButtonNo15.setText("jRadioButton30");
-
-        nososYpatosLabel.setText("Nosos Ypatos :");
 
         nososYpatosTextArea.setColumns(20);
         nososYpatosTextArea.setRows(5);
         jScrollPane9.setViewportView(nososYpatosTextArea);
 
-        hpatikiAneparkeiaLabel.setText("Hpatiki Aneparkeia :");
-
-        chronicDiseasesRadioButtonYes16.setText("jRadioButton31");
-
-        chronicDiseasesRadioButtonNo16.setText("jRadioButton32");
-
-        nefrikiAneparkeiaLabel.setText("Nefriki Aneparkeia :");
-
-        chronicDiseasesRadioButtonYes17.setText("jRadioButton33");
-
-        chronicDiseasesRadioButtonNo17.setText("jRadioButton34");
-
-        mixanimaAimokatharsisLabel.setText("Mixanima Aimokatharsis :");
-
-        chronicDiseasesRadioButtonYes18.setText("jRadioButton35");
-
-        chronicDiseasesRadioButtonNo18.setText("jRadioButton36");
-
-        elkosLabel.setText("Elkos :");
-
-        chronicDiseasesRadioButtonYes19.setText("jRadioButton37");
-
-        chronicDiseasesRadioButtonNo19.setText("jRadioButton38");
-
-        diataraxesEderouLabel.setText("Diataraxes Ederou :");
-
-        chronicDiseasesRadioButtonYes20.setText("jRadioButton39");
-
-        chronicDiseasesRadioButtonNo20.setText("jRadioButton40");
-
-        diataraxesNeurikouSistimatosLabel.setText("Diataraxes Neurikou Sistimatos :");
-
         diataraxesNeurikouSistimatosTextArea.setColumns(20);
         diataraxesNeurikouSistimatosTextArea.setRows(5);
         jScrollPane10.setViewportView(diataraxesNeurikouSistimatosTextArea);
-
-        erpikoEkzemaLabel.setText("Erpiko Ekzema :");
-
-        chronicDiseasesRadioButtonYes21.setText("jRadioButton41");
-
-        chronicDiseasesRadioButtonNo21.setText("jRadioButton42");
-
-        ipatitidaLabel.setText("Ipatitida :");
 
         ipatitidaTextArea.setColumns(20);
         ipatitidaTextArea.setRows(5);
         jScrollPane11.setViewportView(ipatitidaTextArea);
 
-        leuxaimiaLabel.setText("Leuxaimia :");
-
-        chronicDiseasesRadioButtonYes22.setText("jRadioButton43");
-
-        chronicDiseasesRadioButtonNo22.setText("jRadioButton44");
-
-        eleipsiSidirouLabel.setText("Eleipsi Sidirou :");
-
-        chronicDiseasesRadioButtonYes23.setText("jRadioButton45");
-
-        chronicDiseasesRadioButtonNo23.setText("jRadioButton46");
-
-        poliomelitidaLabel.setText("Poliomelitida :");
-
-        chronicDiseasesRadioButtonYes24.setText("jRadioButton47");
-
-        chronicDiseasesRadioButtonNo24.setText("jRadioButton48");
-
-        thiroeidismosLabel.setText("Thiroeidismos :");
-
-        chronicDiseasesRadioButtonYes25.setText("jRadioButton49");
-
-        chronicDiseasesRadioButtonNo25.setText("jRadioButton50");
-
-        morfiThiroeidiLabel.setText("Morfi Thiroeidi :");
-
         morfiThiroeidiTextArea.setColumns(20);
         morfiThiroeidiTextArea.setRows(5);
         jScrollPane12.setViewportView(morfiThiroeidiTextArea);
-
-        allesChroniesAstheneiesLabel.setText("Alles Chronies Astheneies");
 
         allesChroniesAstheneiesTextArea.setColumns(20);
         allesChroniesAstheneiesTextArea.setRows(5);
         jScrollPane13.setViewportView(allesChroniesAstheneiesTextArea);
 
+    chronicDiseasesRadioButtonNo1.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo10.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo11.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo12.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo13.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo14.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo15.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo16.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo17.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo18.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo19.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo2.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo20.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo21.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo22.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo23.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo24.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo25.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo3.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo4.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo5.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo6.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo7.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo8.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonNo9.setText(resourceMap.getString("noRadioButton.text"));
+    chronicDiseasesRadioButtonYes1.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes10.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes11.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes12.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes13.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes14.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes15.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes16.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes17.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes18.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes19.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes2.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes20.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes21.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes22.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes23.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes24.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes25.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes3.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes4.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes5.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes6.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes7.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes8.setText(resourceMap.getString("yesRadioButton.text"));
+    chronicDiseasesRadioButtonYes9.setText(resourceMap.getString("yesRadioButton.text"));
 
         ButtonGroup YesNoGroup1 =  new ButtonGroup();
         YesNoGroup1.add(chronicDiseasesRadioButtonYes1);
