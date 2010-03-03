@@ -27,6 +27,10 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
                 {"patientTable.columnModel.title2", "First Name"},
                 {"patientTable.columnModel.title1", "Last Name"},
                 {"patientTable.columnModel.title0", "Patient ID"},
+                {"fileMenu.text", "File Menu"},
+                {"quitMenuItem.text", "Quit Menu"},
+                {"helpMenu.text", "Help Menu"},
+                {"aboutMenuItem.text", "About Menu Item"},
 
                 {"yesRadioButton.text", "Yes"},
                 {"noRadioButton.text", "No"},
@@ -84,7 +88,9 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
                 {"emailLabel.text","Email: "},
                 {"contactLabel.text","Contact 1"},
                 {"contact1Label.text","Contact 2"},
-                {"contact2Label.text","Contact 3"}
+                {"contact2Label.text","Contact 3"},
+
+
             };
     };
 
