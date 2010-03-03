@@ -87,6 +87,8 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         addPatientTabbedPane.addTab("Family history", familyHistoryPane);
         addPatientTabbedPane.addTab("Contacts", contactsPane);
         addPatientTabbedPane.addTab("Photos", photosPane);
+        addPatientTabbedPane.addTab("Chronic Medications", chronicMedicationsPane);
+        addPatientTabbedPane.addTab("Chronic Diseases", chronicDiseasesPane);
 
         javax.swing.GroupLayout immunizationHistoryPaneLayout = new javax.swing.GroupLayout(immunizationHistoryPane);
         immunizationHistoryPane.setLayout(immunizationHistoryPaneLayout);
@@ -114,31 +116,31 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         addPatientTabbedPane.addTab("Habits", habitsPane);
 
-        javax.swing.GroupLayout chronicMedicationsPaneLayout = new javax.swing.GroupLayout(chronicMedicationsPane);
-        chronicMedicationsPane.setLayout(chronicMedicationsPaneLayout);
-        chronicMedicationsPaneLayout.setHorizontalGroup(
-            chronicMedicationsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 806, Short.MAX_VALUE)
-        );
-        chronicMedicationsPaneLayout.setVerticalGroup(
-            chronicMedicationsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
-        );
-
-        addPatientTabbedPane.addTab("Chronic Medications", chronicMedicationsPane);
-
-        javax.swing.GroupLayout chronicDiseasesPaneLayout = new javax.swing.GroupLayout(chronicDiseasesPane);
-        chronicDiseasesPane.setLayout(chronicDiseasesPaneLayout);
-        chronicDiseasesPaneLayout.setHorizontalGroup(
-            chronicDiseasesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 806, Short.MAX_VALUE)
-        );
-        chronicDiseasesPaneLayout.setVerticalGroup(
-            chronicDiseasesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
-        );
-
-        addPatientTabbedPane.addTab("Chronic Diseases", chronicDiseasesPane);
+//        javax.swing.GroupLayout chronicMedicationsPaneLayout = new javax.swing.GroupLayout(chronicMedicationsPane);
+//        chronicMedicationsPane.setLayout(chronicMedicationsPaneLayout);
+//        chronicMedicationsPaneLayout.setHorizontalGroup(
+//            chronicMedicationsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGap(0, 806, Short.MAX_VALUE)
+//        );
+//        chronicMedicationsPaneLayout.setVerticalGroup(
+//            chronicMedicationsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGap(0, 576, Short.MAX_VALUE)
+//        );
+//
+//        addPatientTabbedPane.addTab("Chronic Medications", chronicMedicationsPane);
+//
+//        javax.swing.GroupLayout chronicDiseasesPaneLayout = new javax.swing.GroupLayout(chronicDiseasesPane);
+//        chronicDiseasesPane.setLayout(chronicDiseasesPaneLayout);
+//        chronicDiseasesPaneLayout.setHorizontalGroup(
+//            chronicDiseasesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGap(0, 806, Short.MAX_VALUE)
+//        );
+//        chronicDiseasesPaneLayout.setVerticalGroup(
+//            chronicDiseasesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGap(0, 576, Short.MAX_VALUE)
+//        );
+//
+//        addPatientTabbedPane.addTab("Chronic Diseases", chronicDiseasesPane);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
