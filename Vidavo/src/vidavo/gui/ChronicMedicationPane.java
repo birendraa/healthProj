@@ -92,12 +92,18 @@ public class ChronicMedicationPane extends JPanel{
     private javax.swing.JLabel thyroidikesOrmonesLabel;
     private javax.swing.JLabel vitaminesLabel;
 
+    private java.util.ListResourceBundle resourceMap;
 
 
-    public ChronicMedicationPane(){
+    public ChronicMedicationPane(java.util.ListResourceBundle rm) {
+
+        this.resourceMap = rm;
+
 
         chronicMedicationScrollPane = new javax.swing.JScrollPane();
+
         chronicMedicationMainPane = new javax.swing.JPanel();
+
         heartLabel = new javax.swing.JLabel();
         antithromvoticMedicationLabel = new javax.swing.JLabel();
         chronicMedicationRadioButton01 = new javax.swing.JRadioButton();
@@ -256,141 +262,141 @@ public class ChronicMedicationPane extends JPanel{
         YesNoGroup20.add(chronicMedicationRadioButton39);
         YesNoGroup20.add(chronicMedicationRadioButton40);
 
-        heartLabel.setText("Καρδιά");
+        heartLabel.setText(resourceMap.getString("heartLabel.text"));
 
-        antithromvoticMedicationLabel.setText("Αντιθρομβωτικά φάρμακα");
+        antithromvoticMedicationLabel.setText(resourceMap.getString("antithromvoticaFarmaka.text"));
 
-        chronicMedicationRadioButton01.setText("Ναι");
+        chronicMedicationRadioButton01.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton02.setText("Όχι");
+        chronicMedicationRadioButton02.setText(resourceMap.getString("noRadioButton.text"));
 
-        thromvoliticMedicationLabel.setText("Θρομβολυτικά φάρμακα");
+        thromvoliticMedicationLabel.setText(resourceMap.getString("thromvolitikaFarmaka.text"));
 
-        chronicMedicationRadioButton03.setText("Ναι");
+        chronicMedicationRadioButton03.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton04.setText("Όχι");
+        chronicMedicationRadioButton04.setText(resourceMap.getString("noRadioButton.text"));
 
-        antidiastaltikaTisStefaniaiasKikloforiasLabel.setText("Αγγειοδιασταλτικά της στεφανιαίας κυκλοφορίας");
+        antidiastaltikaTisStefaniaiasKikloforiasLabel.setText(resourceMap.getString("antidiastaltikaFarmaka.text"));
 
-        chronicMedicationRadioButton05.setText("Ναι");
+        chronicMedicationRadioButton05.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton06.setText("Όχι");
+        chronicMedicationRadioButton06.setText(resourceMap.getString("noRadioButton.text"));
 
-        kardiodiegertikesGlikosidesLabel.setText("Καρδιοδιεγερτικές γλυκοσίδες και φάρμακα με παρόμοια δράση");
+        kardiodiegertikesGlikosidesLabel.setText(resourceMap.getString("kariodiegertikesGlikosides.text"));
 
-        chronicMedicationRadioButton07.setText("Ναι");
+        chronicMedicationRadioButton07.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton08.setText("Όχι");
+        chronicMedicationRadioButton08.setText(resourceMap.getString("noRadioButton.text"));
 
-        antiikaFarmakaLabel.setText("Αντιϊκά φάρμακα");
+        antiikaFarmakaLabel.setText(resourceMap.getString("antiikaFarmaka.text"));
 
-        antiarrythmicaFarmakaLabel.setText("Άλλα αντιαρρυθμικά φάρμακα");
+        antiarrythmicaFarmakaLabel.setText(resourceMap.getString("antiarrythmicaFarmaka.text"));
 
-        antineoplasmatikaFarmakaLabel.setText("Αντινεοπλασματικά και ανοσοκατασταλτικά φάρμακα");
+        antineoplasmatikaFarmakaLabel.setText(resourceMap.getString("antineoplasmatikaFarmaka.text"));
 
-        chronicMedicationRadioButton09.setText("Ναι");
+        chronicMedicationRadioButton09.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton10.setText("Όχι");
+        chronicMedicationRadioButton10.setText(resourceMap.getString("noRadioButton.text"));
 
-        antireumaticaFarmakaLabel.setText("Αντιρευματικά φάρμακα");
+        antireumaticaFarmakaLabel.setText(resourceMap.getString("antireumatikaFarmaka.text"));
 
-        chronicMedicationRadioButton11.setText("Ναι");
+        chronicMedicationRadioButton11.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton12.setText("Όχι");
+        chronicMedicationRadioButton12.setText(resourceMap.getString("noRadioButton.text"));
 
-        anapenustikoLabel.setText("ΑΝΑΠΝΕΥΣΤΙΚΟ");
+        anapenustikoLabel.setText(resourceMap.getString("anapneustikoLabel.text"));
 
-        antiasthmaticaLabel.setText("Αντιασθματικά");
+        antiasthmaticaLabel.setText(resourceMap.getString("antiasthmatica.text"));
 
-        chronicMedicationRadioButton13.setText("Ναι");
+        chronicMedicationRadioButton13.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton14.setText("Όχι");
+        chronicMedicationRadioButton14.setText(resourceMap.getString("noRadioButton.text"));
 
-        antithyroidikaFarmakaLabel.setText("Αντιθυρεοειδικά φάρμακα");
+        antithyroidikaFarmakaLabel.setText(resourceMap.getString("antithyroidikaFarmaka.text"));
 
-        chronicMedicationRadioButton15.setText("Ναι");
+        chronicMedicationRadioButton15.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton16.setText("Όχι");
+        chronicMedicationRadioButton16.setText(resourceMap.getString("noRadioButton.text"));
 
-        thyroidikesOrmonesLabel.setText("Θυρεοειδικές ορμόνες και υποκατάστατα");
+        thyroidikesOrmonesLabel.setText(resourceMap.getString("thyroidikesOrmones.text"));
 
-        chronicMedicationRadioButton17.setText("Ναι");
+        chronicMedicationRadioButton17.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton18.setText("Όχι");
+        chronicMedicationRadioButton18.setText(resourceMap.getString("noRadioButton.text"));
 
-        bloodSugarLabel.setText("ΓΛΥΚΟΖΗ ΑΙΜΑΤΟΣ ");
+        bloodSugarLabel.setText(resourceMap.getString("bloodSugarLabel.text"));
 
-        insulinLabel.setText("Ινσουλίνη");
+        insulinLabel.setText(resourceMap.getString("insulini.text"));
 
-        chronicMedicationRadioButton19.setText("Ναι");
+        chronicMedicationRadioButton19.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton20.setText("Όχι");
+        chronicMedicationRadioButton20.setText(resourceMap.getString("noRadioButton.text"));
 
-        antidiabeticTabletsLabel.setText("Αντιδιαβητικά φάρμακα");
+        antidiabeticTabletsLabel.setText(resourceMap.getString("antidiabeticesTabletes.text"));
 
-        chronicMedicationRadioButton21.setText("Ναι");
+        chronicMedicationRadioButton21.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton22.setText("Όχι");
+        chronicMedicationRadioButton22.setText(resourceMap.getString("noRadioButton.text"));
 
-        antiagxwlitikaFarmakaLabel.setText("Αντιαγχολυτικά φάρμακα");
+        antiagxwlitikaFarmakaLabel.setText(resourceMap.getString("anticoagxwlitikaFarmaka.text"));
 
-        chronicMedicationRadioButton23.setText("Ναι");
+        chronicMedicationRadioButton23.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton24.setText("Όχι");
+        chronicMedicationRadioButton24.setText(resourceMap.getString("noRadioButton.text"));
 
-        antipsychotikaFarmakaLabel.setText("Αντιψυχωτικά φάρμακα");
+        antipsychotikaFarmakaLabel.setText(resourceMap.getString("antipsychoticaFarmaka.text"));
 
-        chronicMedicationRadioButton25.setText("Ναι");
+        chronicMedicationRadioButton25.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton26.setText("Όχι");
+        chronicMedicationRadioButton26.setText(resourceMap.getString("noRadioButton.text"));
 
-        antiepiliptikaFarmakaLabel.setText("Διάφορα αντιεπηληπτικά και κατασταλτικά - υπνωτικά φάρμακα");
+        antiepiliptikaFarmakaLabel.setText(resourceMap.getString("antiepiliptikaFarmaka.text"));
 
-        androgonaLabel.setText("Ανδρογόνα και άλλοι αναβολικοί παράγοντες");
+        androgonaLabel.setText(resourceMap.getString("androgona.text"));
 
-        chronicMedicationRadioButton27.setText("Ναι");
+        chronicMedicationRadioButton27.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton28.setText("Όχι");
+        chronicMedicationRadioButton28.setText(resourceMap.getString("noRadioButton.text"));
 
-        oistrogonaLabel.setText("Οιστρογόνα και προγεσταγόνα");
+        oistrogonaLabel.setText(resourceMap.getString("oistrogona.text"));
 
-        chronicMedicationRadioButton29.setText("Ναι");
+        chronicMedicationRadioButton29.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton30.setText("Όχι");
+        chronicMedicationRadioButton30.setText(resourceMap.getString("noRadioButton.text"));
 
-        antisilliptikaFarmakaLabel.setText("Αντισυλληπτικά");
+        antisilliptikaFarmakaLabel.setText(resourceMap.getString("antisilliptikaFarmaka.text"));
 
-        chronicMedicationRadioButton31.setText("Ναι");
+        chronicMedicationRadioButton31.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton32.setText("Όχι");
+        chronicMedicationRadioButton32.setText(resourceMap.getString("noRadioButton.text"));
 
-        ormonesLabel.setText("Ορμόνες και τα συνθετικά παράγωγά τους");
+        ormonesLabel.setText(resourceMap.getString("ormones.text"));
 
-        chronicMedicationRadioButton33.setText("Ναι");
+        chronicMedicationRadioButton33.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton34.setText("Όχι");
+        chronicMedicationRadioButton34.setText(resourceMap.getString("noRadioButton.text"));
 
-        vitaminesLabel.setText("Βιταμίνες");
+        vitaminesLabel.setText(resourceMap.getString("vitamines.text"));
 
-        chronicMedicationRadioButton35.setText("Ναι");
+        chronicMedicationRadioButton35.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton36.setText("Όχι");
+        chronicMedicationRadioButton36.setText(resourceMap.getString("noRadioButton.text"));
 
-        sidirosLabel.setText("Σίδηρος και ενώσεις του");
+        sidirosLabel.setText(resourceMap.getString("sidiros.text"));
 
-        chronicMedicationRadioButton37.setText("Ναι");
+        chronicMedicationRadioButton37.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton38.setText("Όχι");
+        chronicMedicationRadioButton38.setText(resourceMap.getString("noRadioButton.text"));
 
-        antiallergicaFarmakaLabel.setText("Αντιαλλεργικά και αντιεμετικά φάρμακα");
+        antiallergicaFarmakaLabel.setText(resourceMap.getString("antiallergikaFarmaka.text"));
 
-        chronicMedicationRadioButton39.setText("Ναι");
+        chronicMedicationRadioButton39.setText(resourceMap.getString("yesRadioButton.text"));
 
-        chronicMedicationRadioButton40.setText("Όχι");
+        chronicMedicationRadioButton40.setText(resourceMap.getString("noRadioButton.text"));
 
-        otherChronicMedicationLabel.setText("Άλλα χρόνια φάρμακα");
+        otherChronicMedicationLabel.setText(resourceMap.getString("otherChronicMedication.text"));
 
-        nameOfMedicationLabel.setText("Συμπληρώστε τα ονόματα των φαρμάκων που χρησιμοποιεί ο ασθενής");
+        nameOfMedicationLabel.setText(resourceMap.getString("nameOfMedication.text"));
 
 
         javax.swing.GroupLayout chronicMedicationMainPaneLayout = new javax.swing.GroupLayout(chronicMedicationMainPane);

@@ -14,7 +14,12 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
     @Override
     protected Object[][] getContents() {
         return new Object [][] {
-                {"patientList.title", "Λίστα Ασθενών"},
+                //PatientList Window
+                {"patientList.title", "Λίστα Ασθενών"},                
+                {"fileMenu.text", "Αρχείο"},
+                {"quitMenuItem.text", "Έξοδος"},
+                {"helpMenu.text", "Βοήθεια"},
+                {"aboutMenuItem.text", "Σχετικά"},
                 {"addButton.text", "Προσθήκη"},
                 {"deleteButton.text", "Διαγραφή"},
                 {"editButton.text", "Επεξεργασία"},
@@ -35,6 +40,37 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"yesRadioButton.text", "Ναι"},
                 {"noRadioButton.text", "Όχι"},
 
+                //Chronic Medication Window
+                {"heartLabel.text", "ΚΑΡΔΙΑ"},
+                {"anapneustikoLabel.text", "ΑΝΑΠΝΕΥΣΤΙΚΟ"},
+                {"bloodSugarLabel.text", "ΓΛΥΚΟΖΗ ΑΙΜΑΤΟΣ"},
+                {"antithromvoticaFarmaka.text", "Αντιθρομβωτικά φάρμακα"},
+                {"thromvolitikaFarmaka.text", "Θρομβολυτικά φάρμακα"},
+                {"antidiastaltikaFarmaka.text", "Αγγειοδιασταλτικά της στεφανιαίας κυκλοφορίας}"},
+                {"kariodiegertikesGlikosides.text", "Καρδιοδιεγερτικές γλυκοσίδες και φάρμακα με παρόμοια δράση"},
+                {"antiikaFarmaka.text", "Αντιϊκά φάρμακα"},
+                {"antiarrythmicaFarmaka.text", "Άλλα αντιαρρυθμικά φάρμακα"},
+                {"antineoplasmatikaFarmaka.text", "Αντινεοπλασματικά και ανοσοκατασταλτικά φάρμακα"},
+                {"antireumatikaFarmaka.text", "Αντιρευματικά φάρμακα"},
+                {"antiasthmatica.text", "Αντιασθματικά"},
+                {"antithyroidikaFarmaka.text", "Αντιθυρεοειδικά φάρμακα"},
+                {"thyroidikesOrmones.text", "Θυρεοειδικές ορμόνες και υποκατάστατα"},
+                {"insulini.text", "Ινσουλίνη"},
+                {"antidiabeticesTabletes.text", "Αντιδιαβητικά φάρμακα"},
+                {"anticoagxwlitikaFarmaka.text", "Αντιαγχολυτικά φάρμακα"},
+                {"antipsychoticaFarmaka.text", "Αντιψυχωτικά φάρμακα"},
+                {"antiepiliptikaFarmaka.text", "Διάφορα αντιεπηληπτικά και κατασταλτικά - υπνωτικά φάρμακα"},
+                {"androgona.text", "Ανδρογόνα και άλλοι αναβολικοί παράγοντες"},
+                {"oistrogona.text", "Οιστρογόνα και προγεσταγόνα"},
+                {"antisilliptikaFarmaka.text", "Αντισυλληπτικά"},
+                {"ormones.text", "Ορμόνες και τα συνθετικά παράγωγά τους"},
+                {"vitamines.text", "Βιταμίνες"},
+                {"sidiros.text", "Σίδηρος και ενώσεις του"},
+                {"antiallergikaFarmaka.text", "Αντιαλλεργικά και αντιεμετικά φάρμακα"},
+                {"otherChronicMedication.text", "Άλλα χρόνια φάρμακα"},
+                {"nameOfMedication.text", "Συμπληρώστε τα ονόματα των φαρμάκων που χρησιμοποιεί ο ασθενής"},
+
+                //Family History Window
                 {"egefalikoEpeisodio.text", "Οικογενειακό ιστορικό εγκεφαλικού επεισοδίου (εγκεφαλικής αποπληξίας) :"},
                 {"diamartiesDiaplasisPneumonon.text", "Συγγενείς διαμαρτίες της διάπλασης των πνευμόνων :"},
                 {"diamartiesDiaplasisKikloforikouSistimatos.text", "Συγγενείς διαμαρτίες διάπλασης του κυκλοφορικού συστήματος  :"},
@@ -67,12 +103,15 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"istorikoLeuxemias.text", "Οικογενειακό ιστορικό λευχαιμίας :"},
                 {"allesMorfesOikogeneiakouIstorikou.text", "Άλλες μορφές οικογενειακού ιστορικού :"},
 
+                
                 {"descriptionOfSurgery.text", "Περιγραφή επέμβασης :"},
                 {"hospitalName.text", "Όνομα κλινικής/νοσoκομείου :"},
                 {"reasonOfHospitalization.text", "Αιτία νοσηλείας :"},
                 {"finalDiagnosis.text", "Τελική διάγνωση :"},
                 {"doctorsName.text", "Όνομα ιατρού :"},
 
+
+                //Chronic Diseases
                 {"pathiseisPneumonwnLabel.text","Παθήσεις των πνευμόνων :"},
                 {"chronicVroxitidaLabel.text","Χρόνια Βρογχίτιδα :"},
                 {"aneurismaPneumonikisArtiriasLabel.text","Ανεύρυσμα της πνευμονικής αρτηρίας :"},
