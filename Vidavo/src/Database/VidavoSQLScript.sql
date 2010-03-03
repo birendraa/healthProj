@@ -41,8 +41,9 @@ CREATE TABLE `Chronic_Diseases` (
   `Thiroeidismos` varchar(10) DEFAULT NULL,
   `MorfiThiroeidi` varchar(100) DEFAULT NULL,
   `AllesChroniesAstheneies` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`patientID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`patientID`),
+  CONSTRAINT `chronicDiseasesFK` FOREIGN KEY (`patientID`) REFERENCES `personal_info` (`patientID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 DROP TABLE IF EXISTS `Chronic_Medication`;
@@ -74,8 +75,24 @@ CREATE TABLE `Chronic_Medication` (
   `AntiallergikaFarmaka` varchar(10) DEFAULT NULL,
   `OtherChronicMedication` varchar(50) DEFAULT NULL,
   `NameOfMedication` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`patientID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`patientID`),
+  CONSTRAINT `chronicMedicationFK` FOREIGN KEY (`patientID`) REFERENCES `personal_info` (`patientID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `Contacts`;
+
+CREATE TABLE `Contacts` (
+  `contactID` int(20) NOT NULL,
+  `Relationship` varchar(10) NOT NULL,
+  `FirstName` varchar(50) NOT NULL,
+  `LastName` varchar(50) NOT NULL,
+  `HomePhone` varchar(50) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `patientID` int(20) NOT NULL,
+  PRIMARY KEY (`contactID`),
+  CONSTRAINT `contactsFK` FOREIGN KEY (`contactID`) REFERENCES `personal_info` (`patientID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 DROP TABLE IF EXISTS `Family_History`;
@@ -112,14 +129,16 @@ CREATE TABLE `Family_History` (
   `KataxrisiAlkool` varchar(10) DEFAULT NULL,
   `KlironomikosDiavitis` varchar(10) DEFAULT NULL,
   `IstorikoLeuxemias` varchar(10) DEFAULT NULL,
-  `AllesMorfesOikogeneiakouIstorikou` varchar(200) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `AllesMorfesOikogeneiakouIstorikou` varchar(200) DEFAULT NULL,
+  KEY `patientID` (`patientID`),
+  CONSTRAINT `familyHistoryFK` FOREIGN KEY (`patientID`) REFERENCES `personal_info` (`patientID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 DROP TABLE IF EXISTS `Habits`;
 
 CREATE TABLE `Habits` (
-  `patientID` varchar(20) NOT NULL,
+  `patientID` int(20) NOT NULL,
   `Smoker` varchar(10) DEFAULT NULL,
   `HowLongSmoke` varchar(10) DEFAULT NULL,
   `Tea` varchar(10) DEFAULT NULL,
@@ -138,8 +157,9 @@ CREATE TABLE `Habits` (
   `ExerciseType` varchar(100) DEFAULT NULL,
   `ExerciseHowOften` varchar(50) DEFAULT NULL,
   `OtherHabits` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`patientID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`patientID`),
+  CONSTRAINT `habitsFK` FOREIGN KEY (`patientID`) REFERENCES `personal_info` (`patientID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 DROP TABLE IF EXISTS `Immunizations`;
@@ -158,8 +178,9 @@ CREATE TABLE `Immunizations` (
   `AllergiesToDrugs` varchar(50) DEFAULT NULL,
   `PoorCirculation` varchar(10) DEFAULT NULL,
   `Stigma` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`patientID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`patientID`),
+  CONSTRAINT `immunizationsFK` FOREIGN KEY (`patientID`) REFERENCES `personal_info` (`patientID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 DROP TABLE IF EXISTS `Personal_Info`;
@@ -193,7 +214,7 @@ CREATE TABLE `Personal_Info` (
   `Fax_Number` int(20) DEFAULT NULL,
   `Email` varchar(50) DEFAULT '',
   PRIMARY KEY (`patientID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 DROP TABLE IF EXISTS `Surgical_History`;
@@ -205,22 +226,9 @@ CREATE TABLE `Surgical_History` (
   `ReasonOfHospitalization` text,
   `FinalDiagnosis` text,
   `DoctorsName` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`patientID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-
-DROP TABLE IF EXISTS `Contacts`;
-
-CREATE TABLE `Contacts` (
-  `contactID` int(20) NOT NULL,
-  `Relationship` varchar(10) NOT NULL,
-  `FirstName` varchar(50) NOT NULL,
-  `LastName` varchar(50) NOT NULL,
-  `HomePhone` varchar(50) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `patientID` int(20) NOT NULL,
-  PRIMARY KEY (`contactID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`patientID`),
+  CONSTRAINT `surgicalHistoryFK` FOREIGN KEY (`patientID`) REFERENCES `personal_info` (`patientID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 SET FOREIGN_KEY_CHECKS = 1;
