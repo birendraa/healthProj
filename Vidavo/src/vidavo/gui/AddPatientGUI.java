@@ -6,8 +6,6 @@ import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.*;
-import vidavo.*;
-
 
 /**
  *
@@ -16,6 +14,7 @@ import vidavo.*;
 public class AddPatientGUI extends JFrame implements ActionListener{
 
     private PatientManager pm;
+    private java.util.ListResourceBundle resourceMap;
 
     private JTabbedPane addPatientTabbedPane;
     private JPanel chronicDiseasesPane;
@@ -37,13 +36,12 @@ public class AddPatientGUI extends JFrame implements ActionListener{
      * @param pm
      * @param selectedID
      */
-    public AddPatientGUI(PatientManager pm, int selectedID)
+    public AddPatientGUI(PatientManager pm, int selectedID, java.util.ListResourceBundle rm)
     {
-
         super();
         this.pm = pm;
+        this.resourceMap = rm;
         initComponents();
-
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -67,14 +65,14 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         mainPanel = new JPanel();
         addPatientTabbedPane = new JTabbedPane();
-        surgeryHistoryPane = new SurgicalHistoryPane();
-        familyHistoryPane = new FamilyHistoryPane();
+        surgeryHistoryPane = new SurgicalHistoryPane(resourceMap);
+        familyHistoryPane = new FamilyHistoryPane(resourceMap);
         immunizationHistoryPane = new JPanel();
         habitsPane = new JPanel();
         chronicMedicationsPane = new JPanel();
         chronicDiseasesPane = new JPanel();
-        contactsPane = new ContactsPane();
-        photosPane = new PhotosPane();
+        contactsPane = new ContactsPane(resourceMap);
+        photosPane = new PhotosPane(resourceMap);
         personalInfoPane = new PersonalInfoPane(pm);
         saveButton = new JButton();
         cancelButton = new JButton();

@@ -106,9 +106,12 @@ public class FamilyHistoryPane extends JPanel{
     private javax.swing.JRadioButton familyHistoryRadioButtonYes8;
     private javax.swing.JRadioButton familyHistoryRadioButtonYes9;
 
-    public FamilyHistoryPane(){
-        ListResourceBundle resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("gr"));
+    private java.util.ListResourceBundle resourceMap;
 
+    public FamilyHistoryPane(java.util.ListResourceBundle rm){
+
+        this.resourceMap = rm;
+        
         familyHistoryScrollPane = new javax.swing.JScrollPane();
         familyHistoryMainPane = new javax.swing.JPanel();
         istorikoLeuxemiasLabel = new javax.swing.JLabel();

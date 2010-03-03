@@ -68,6 +68,23 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
                 {"reasonOfHospitalization.text", "Hospitalization Reason :"},
                 {"finalDiagnosis.text", "Final Diagnosis :"},
                 {"doctorsName.text", "Doctors Name :"},
+
+                {"selectPhotoTextField.text","Select a photo..."},
+                {"browseButton.text","Browse..."},
+                {"saveButton.text","Save photo"},
+                {"listLabel.text","List of current photos: "},
+                {"openButton.text","Open..."},
+                {"removeButton.text","Remove"},
+                {"renameLabel.text","Rename photo:"},
+
+                {"firstNameLabel.text","First name:"},
+                {"lastNameLabel.text","Last name:"},
+                {"relationshipLabel.text","Relationship:"},
+                {"phoneLabel.text","Phone:"},
+                {"emailLabel.text","Email: "},
+                {"contactLabel.text","Contact 1"},
+                {"contact1Label.text","Contact 2"},
+                {"contact2Label.text","Contact 3"}
             };
     };
 

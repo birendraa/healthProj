@@ -21,6 +21,8 @@ import vidavo.Patient;
 public class PatientListGUI extends javax.swing.JFrame implements ActionListener{
 
     private PatientManager pm;
+    private ListResourceBundle resourceMap;
+
     private javax.swing.JButton addButton;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton deleteButton;
@@ -72,7 +74,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         searchTextField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
 
-        ListResourceBundle resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap_en", new java.util.Locale("en"));
+        resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         this.setTitle(resourceMap.getString("patientList.title"));
 
@@ -202,7 +204,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          String c = e.getActionCommand();
 
          if(c.equals("add")){
-                new AddPatientGUI(pm,pm.getPL().size() + 1);
+                new AddPatientGUI(pm,pm.getPL().size() + 1,resourceMap);
                 this.dispose();
          }
 
@@ -216,7 +218,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          if(c.equals("edit")){
                 if(patientTable.getSelectedRow() != -1){
                     int selectedID = (Integer.parseInt((String)patientTable.getValueAt(patientTable.getSelectedRow(), 0)));
-                    AddPatientGUI p = new AddPatientGUI(pm, selectedID);
+                    AddPatientGUI p = new AddPatientGUI(pm, selectedID,resourceMap);
                     this.dispose();
                 }
                 else

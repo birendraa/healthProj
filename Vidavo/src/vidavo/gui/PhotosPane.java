@@ -20,14 +20,18 @@ public class PhotosPane extends javax.swing.JPanel{
     private javax.swing.JLabel renameLabel;
     private javax.swing.JTextField renameTextField;
     private javax.swing.JButton saveButton;
-    private javax.swing.JTextField selectTextField;
+    private javax.swing.JTextField selectPhotoTextField;
 
-    public PhotosPane(){
+    private  java.util.ListResourceBundle resourceMap;
+
+    public PhotosPane(java.util.ListResourceBundle rm){
+        this.resourceMap = rm;
         initPane();
     }
 
     private void initPane(){
-        selectTextField = new javax.swing.JTextField();
+
+        selectPhotoTextField = new javax.swing.JTextField();
         browseButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
         listScrollPane = new javax.swing.JScrollPane();
@@ -38,21 +42,15 @@ public class PhotosPane extends javax.swing.JPanel{
         renameLabel = new javax.swing.JLabel();
         renameTextField = new javax.swing.JTextField();
 
-        selectTextField.setText("Select a photo...");
-
-        browseButton.setText("Browse...");
-
-        saveButton.setText("Save photo");
-
         listScrollPane.setViewportView(photosList);
 
-        listLabel.setText("List of current photos: ");
-
-        openButton.setText("Open...");
-
-        removeButton.setText("Remove");
-
-        renameLabel.setText("Rename it:");
+        selectPhotoTextField.setText(resourceMap.getString("selectPhotoTextField.text"));
+        browseButton.setText(resourceMap.getString("browseButton.text"));
+        saveButton.setText(resourceMap.getString("saveButton.text"));
+        listLabel.setText(resourceMap.getString("listLabel.text"));
+        openButton.setText(resourceMap.getString("openButton.text"));
+        removeButton.setText(resourceMap.getString("removeButton.text"));
+        renameLabel.setText(resourceMap.getString("renameLabel.text"));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -67,7 +65,7 @@ public class PhotosPane extends javax.swing.JPanel{
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(listScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
-                            .addComponent(selectTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                            .addComponent(selectPhotoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(renameLabel)
                                 .addGap(10, 10, 10)
@@ -86,7 +84,7 @@ public class PhotosPane extends javax.swing.JPanel{
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(browseButton)
-                    .addComponent(selectTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(selectPhotoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(saveButton)

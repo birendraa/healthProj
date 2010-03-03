@@ -200,7 +200,6 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
         idLabel2.setText(Integer.toString(patientID));
 
         picturePanel.setBorder(new javax.swing.border.MatteBorder(null));
-        picturePanel.setName("jPanel16");
 
         ButtonGroup maleFemaleGroup =  new ButtonGroup();
         maleFemaleGroup.add(maleRadioButton);
