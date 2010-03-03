@@ -4,13 +4,13 @@ package vidavo.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ListResourceBundle;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
+import javax.swing.*;
 import javax.swing.JOptionPane;
 import vidavo.Patient;
 
@@ -24,6 +24,9 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
     private ListResourceBundle resourceMap;
 
     private javax.swing.JButton addButton;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu fileMenu, quitMenu, helpMenu;
+    private javax.swing.JMenuItem aboutMenuItem, quitMenuItem;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton editButton;
@@ -62,6 +65,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
      *
      */
     public void initComponents(){
+        menuBar = new javax.swing.JMenuBar();
         patientListPanel = new javax.swing.JPanel();
         tableScrollPane = new javax.swing.JScrollPane();
         patientTable = new javax.swing.JTable();
@@ -77,7 +81,35 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("gr"));
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         this.setTitle(resourceMap.getString("patientList.title"));
+        
+        
+        // MENU
+        menuBar = new JMenuBar();
+        
+        fileMenu = new JMenu(resourceMap.getString("fileMenu.text"));
+        fileMenu.add(new JSeparator());
 
+
+        quitMenuItem = new JMenuItem(resourceMap.getString("quitMenuItem.text"),KeyEvent.VK_E);
+        quitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
+        quitMenuItem.setActionCommand("quit");
+        quitMenuItem.addActionListener(this);
+        fileMenu.add(quitMenuItem);
+
+        helpMenu = new JMenu(resourceMap.getString("helpMenu.text"));
+        
+        aboutMenuItem = new JMenuItem(resourceMap.getString("aboutMenuItem.text"));
+        aboutMenuItem.setActionCommand("about");
+        aboutMenuItem.addActionListener(this);        
+        helpMenu.add(aboutMenuItem);
+
+        menuBar.add(fileMenu);
+        menuBar.add(helpMenu);
+
+        this.setJMenuBar(menuBar);
+
+        
+        
         patientListPanel.setName("patientListPanel"); // NOI18N
         tableScrollPane.setName("tableScrollPane"); // NOI18N
         tableScrollPane.setName("tableScrollPane"); // NOI18N
@@ -202,6 +234,14 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
     public void actionPerformed(ActionEvent e) {
 
          String c = e.getActionCommand();
+
+         if (e.getActionCommand().equals("quit")) {
+            this.dispose();
+         }
+
+         if (e.getActionCommand().equals("about")) {
+            //this.showAboutDialog();
+         }
 
          if(c.equals("add")){
                 new AddPatientGUI(pm,pm.getPL().size() + 1,resourceMap);
