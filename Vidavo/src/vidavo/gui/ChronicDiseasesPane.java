@@ -3,6 +3,7 @@ package vidavo.gui;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
+import vidavo.ChronicDiseases;
 
 public class ChronicDiseasesPane extends JPanel{
     
@@ -837,7 +838,7 @@ public class ChronicDiseasesPane extends JPanel{
                 .addComponent(allesChroniesAstheneiesLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -854,4 +855,7 @@ public class ChronicDiseasesPane extends JPanel{
         );
     }
 
+    public ChronicDiseases getSurgeryHistoryInformation(){
+        return new ChronicDiseases();
+    }
 }

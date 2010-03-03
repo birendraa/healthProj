@@ -4,6 +4,7 @@ package vidavo.gui;
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import vidavo.FamilyHistory;
 
 public class FamilyHistoryPane extends JPanel{
 
@@ -709,5 +710,9 @@ public class FamilyHistoryPane extends JPanel{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(familyHistoryScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
         );
+    }
+
+    public FamilyHistory getSurgeryHistoryInformation(){
+        return new FamilyHistory();
     }
 }
