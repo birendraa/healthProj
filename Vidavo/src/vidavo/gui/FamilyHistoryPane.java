@@ -4,37 +4,67 @@ package vidavo.gui;
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import java.util.ListResourceBundle;
+import javax.swing.JScrollPane;
 
 public class FamilyHistoryPane extends JPanel{
 
     private javax.swing.JPanel familyHistoryMainPane;
     private javax.swing.JScrollPane familyHistoryScrollPane;
+    
+    private javax.swing.JScrollPane diamartiesTraxeiasVrohouScrollingArea;
+    private javax.swing.JScrollPane diaplasiDermatosScrollingArea;
+    private javax.swing.JScrollPane diaplasiPeptikouSistimatosScrollingArea;
+    private javax.swing.JScrollPane diamartiesEnderouScrollingArea;
+    private javax.swing.JScrollPane nefrikiAgenesiaScrollingArea;
+    private javax.swing.JScrollPane diaplasiNefrwnScrollingArea;
+    private javax.swing.JScrollPane diaplasiOuropoiitikouSistimatosScrollingArea;
+    private javax.swing.JScrollPane sigenisThiroeidismosScrollingArea;
+    private javax.swing.JScrollPane disanexiaLaktozisScrollingArea;
+    private javax.swing.JScrollPane kakoithiNeoplasmataScrollingArea;
+    private javax.swing.JScrollPane allesMorfesOikogeniakouIstorikouScrollingArea;
 
     private javax.swing.JLabel allesMorfesOikogeneiakouIstorikouLabel;
-    private javax.swing.JTextField allesMorfesOikogeniakouIstorikouTextField;
+    private javax.swing.JTextArea allesMorfesOikogeniakouIstorikouTextArea;
     private javax.swing.JLabel anomaliesNefrikisPyelouLabel;
     private javax.swing.JLabel diamartiesDiaplasisKardiakwnDiafragmatwnLabel;
     private javax.swing.JLabel diamartiesDiaplasisKikloforikouSistimatosLabel;
     private javax.swing.JLabel diamartiesDiaplasisPneumononLabel;
     private javax.swing.JLabel diamartiesEnderouLabel;
-    private javax.swing.JTextField diamartiesEnderouTextField;
+    private javax.swing.JTextArea diamartiesEnderouTextArea;
     private javax.swing.JLabel diamartiesKardiasLabel;
     private javax.swing.JLabel diamartiesTraxeiasVrohouLabel;
-    private javax.swing.JTextField diamartiesTraxeiasVrohouTextField;
+    private javax.swing.JTextArea diamartiesTraxeiasVrohouTextArea;
     private javax.swing.JLabel diaplasiDermatosLabel;
-    private javax.swing.JTextField diaplasiDermatosTextField;
+    private javax.swing.JTextArea diaplasiDermatosTextArea;
     private javax.swing.JLabel diaplasiNefrwnLabel;
-    private javax.swing.JTextField diaplasiNefrwnTextField;
+    private javax.swing.JTextArea diaplasiNefrwnTextArea;
     private javax.swing.JLabel diaplasiOuritiraLabel;
-    private javax.swing.JTextField diaplasiOuropoiitikouSistimatosTextField;
+    private javax.swing.JTextArea diaplasiOuropoiitikouSistimatosTextArea;
     private javax.swing.JLabel diaplasiOuroupoiitikouSistimatosLabel;
     private javax.swing.JLabel diaplasiPeptikouSistimatosLabel;
-    private javax.swing.JTextField diaplasiPeptikouSistimatosTextField;
+    private javax.swing.JTextArea diaplasiPeptikouSistimatosTextArea;
     private javax.swing.JLabel diataraxesNefrouOuritiraLabel;
     private javax.swing.JLabel disanexiaLaktozisLabel;
-    private javax.swing.JTextField disanexiaLaktozisTextField;
+    private javax.swing.JTextArea disanexiaLaktozisTextArea;
     private javax.swing.JLabel egefalikoEpeisodioLabel;
     private javax.swing.JLabel eleipsiLaktasisLabel;
+    private javax.swing.JLabel istorikoAsthmatosLabel;
+    private javax.swing.JLabel istorikoLeuxemiasLabel;
+    private javax.swing.JLabel istorikoSarkomatwnLabel;
+    private javax.swing.JLabel kakoithiNeoplasmataLabel;
+    private javax.swing.JTextArea kakoithiNeoplasmataTextArea;
+    private javax.swing.JLabel kardiakiKoilotitaLabel;
+    private javax.swing.JLabel kataxrisiAlkoolLabel;
+    private javax.swing.JLabel kistikiNososNefrwnLabel;
+    private javax.swing.JLabel klironomikiAnaimiaLabel;
+    private javax.swing.JLabel klironomikosDiavitisLabel;
+    private javax.swing.JLabel nefrikiAgenesiaLabel;
+    private javax.swing.JTextArea nefrikiAgenesiaTextArea;
+    private javax.swing.JLabel psixikesDiataraxesLabel;
+    private javax.swing.JLabel sigenisThiroeidismosLabel;
+    private javax.swing.JTextArea sigenisThiroeidismosTextArea;
+    private javax.swing.JLabel stenosiLeptouEnderouLabel;
+    private javax.swing.JLabel stenosiPaxeosEnderouLabel;
     private javax.swing.JRadioButton familyHistoryRadioButtonNo1;
     private javax.swing.JRadioButton familyHistoryRadioButtonNo10;
     private javax.swing.JRadioButton familyHistoryRadioButtonNo11;
@@ -75,23 +105,6 @@ public class FamilyHistoryPane extends JPanel{
     private javax.swing.JRadioButton familyHistoryRadioButtonYes7;
     private javax.swing.JRadioButton familyHistoryRadioButtonYes8;
     private javax.swing.JRadioButton familyHistoryRadioButtonYes9;
-    private javax.swing.JLabel istorikoAsthmatosLabel;
-    private javax.swing.JLabel istorikoLeuxemiasLabel;
-    private javax.swing.JLabel istorikoSarkomatwnLabel;
-    private javax.swing.JLabel kakoithiNeoplasmataLabel;
-    private javax.swing.JTextField kakoithiNeoplasmataTextField;
-    private javax.swing.JLabel kardiakiKoilotitaLabel;
-    private javax.swing.JLabel kataxrisiAlkoolLabel;
-    private javax.swing.JLabel kistikiNososNefrwnLabel;
-    private javax.swing.JLabel klironomikiAnaimiaLabel;
-    private javax.swing.JLabel klironomikosDiavitisLabel;
-    private javax.swing.JLabel nefrikiAgenesiaLabel;
-    private javax.swing.JTextField nefrikiAgenesiaTextField;
-    private javax.swing.JLabel psixikesDiataraxesLabel;
-    private javax.swing.JLabel sigenisThiroeidismosLabel;
-    private javax.swing.JTextField sigenisThiroeidismosTextField;
-    private javax.swing.JLabel stenosiLeptouEnderouLabel;
-    private javax.swing.JLabel stenosiPaxeosEnderouLabel;
 
     public FamilyHistoryPane(){
         ListResourceBundle resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("gr"));
@@ -102,18 +115,18 @@ public class FamilyHistoryPane extends JPanel{
         familyHistoryRadioButtonNo19 = new javax.swing.JRadioButton();
         familyHistoryRadioButtonYes19 = new javax.swing.JRadioButton();
         diaplasiPeptikouSistimatosLabel = new javax.swing.JLabel();
-        diaplasiPeptikouSistimatosTextField = new javax.swing.JTextField();
+        diaplasiPeptikouSistimatosTextArea = new javax.swing.JTextArea();
         familyHistoryRadioButtonNo9 = new javax.swing.JRadioButton();
-        diamartiesEnderouTextField = new javax.swing.JTextField();
+        diamartiesEnderouTextArea = new javax.swing.JTextArea();
         kistikiNososNefrwnLabel = new javax.swing.JLabel();
         nefrikiAgenesiaLabel = new javax.swing.JLabel();
-        nefrikiAgenesiaTextField = new javax.swing.JTextField();
+        nefrikiAgenesiaTextArea = new javax.swing.JTextArea();
         familyHistoryRadioButtonYes11 = new javax.swing.JRadioButton();
         anomaliesNefrikisPyelouLabel = new javax.swing.JLabel();
         familyHistoryRadioButtonNo10 = new javax.swing.JRadioButton();
         familyHistoryRadioButtonYes10 = new javax.swing.JRadioButton();
         allesMorfesOikogeneiakouIstorikouLabel = new javax.swing.JLabel();
-        allesMorfesOikogeniakouIstorikouTextField = new javax.swing.JTextField();
+        allesMorfesOikogeniakouIstorikouTextArea = new javax.swing.JTextArea();
         familyHistoryRadioButtonYes20 = new javax.swing.JRadioButton();
         familyHistoryRadioButtonNo20 = new javax.swing.JRadioButton();
         familyHistoryRadioButtonNo16 = new javax.swing.JRadioButton();
@@ -126,8 +139,8 @@ public class FamilyHistoryPane extends JPanel{
         stenosiLeptouEnderouLabel = new javax.swing.JLabel();
         stenosiPaxeosEnderouLabel = new javax.swing.JLabel();
         diamartiesEnderouLabel = new javax.swing.JLabel();
-        diamartiesTraxeiasVrohouTextField = new javax.swing.JTextField();
-        diaplasiDermatosTextField = new javax.swing.JTextField();
+        diamartiesTraxeiasVrohouTextArea = new javax.swing.JTextArea();
+        diaplasiDermatosTextArea = new javax.swing.JTextArea();
         familyHistoryRadioButtonYes1 = new javax.swing.JRadioButton();
         egefalikoEpeisodioLabel = new javax.swing.JLabel();
         familyHistoryRadioButtonYes8 = new javax.swing.JRadioButton();
@@ -140,13 +153,13 @@ public class FamilyHistoryPane extends JPanel{
         familyHistoryRadioButtonNo17 = new javax.swing.JRadioButton();
         kakoithiNeoplasmataLabel = new javax.swing.JLabel();
         familyHistoryRadioButtonYes3 = new javax.swing.JRadioButton();
-        kakoithiNeoplasmataTextField = new javax.swing.JTextField();
+        kakoithiNeoplasmataTextArea = new javax.swing.JTextArea();
         diamartiesDiaplasisKikloforikouSistimatosLabel = new javax.swing.JLabel();
         kataxrisiAlkoolLabel = new javax.swing.JLabel();
         familyHistoryRadioButtonYes18 = new javax.swing.JRadioButton();
         familyHistoryRadioButtonNo18 = new javax.swing.JRadioButton();
         klironomikosDiavitisLabel = new javax.swing.JLabel();
-        sigenisThiroeidismosTextField = new javax.swing.JTextField();
+        sigenisThiroeidismosTextArea = new javax.swing.JTextArea();
         sigenisThiroeidismosLabel = new javax.swing.JLabel();
         familyHistoryRadioButtonNo14 = new javax.swing.JRadioButton();
         familyHistoryRadioButtonYes14 = new javax.swing.JRadioButton();
@@ -162,7 +175,7 @@ public class FamilyHistoryPane extends JPanel{
         familyHistoryRadioButtonYes4 = new javax.swing.JRadioButton();
         familyHistoryRadioButtonYes7 = new javax.swing.JRadioButton();
         diamartiesKardiasLabel = new javax.swing.JLabel();
-        disanexiaLaktozisTextField = new javax.swing.JTextField();
+        disanexiaLaktozisTextArea = new javax.swing.JTextArea();
         psixikesDiataraxesLabel = new javax.swing.JLabel();
         familyHistoryRadioButtonNo15 = new javax.swing.JRadioButton();
         disanexiaLaktozisLabel = new javax.swing.JLabel();
@@ -173,12 +186,12 @@ public class FamilyHistoryPane extends JPanel{
         diaplasiNefrwnLabel = new javax.swing.JLabel();
         familyHistoryRadioButtonNo11 = new javax.swing.JRadioButton();
         diataraxesNefrouOuritiraLabel = new javax.swing.JLabel();
-        diaplasiNefrwnTextField = new javax.swing.JTextField();
+        diaplasiNefrwnTextArea = new javax.swing.JTextArea();
         familyHistoryRadioButtonNo3 = new javax.swing.JRadioButton();
         familyHistoryRadioButtonYes13 = new javax.swing.JRadioButton();
         familyHistoryRadioButtonNo13 = new javax.swing.JRadioButton();
         diaplasiOuroupoiitikouSistimatosLabel = new javax.swing.JLabel();
-        diaplasiOuropoiitikouSistimatosTextField = new javax.swing.JTextField();
+        diaplasiOuropoiitikouSistimatosTextArea = new javax.swing.JTextArea();
         diaplasiOuritiraLabel = new javax.swing.JLabel();
 
         ButtonGroup YesNoGroup1 =  new ButtonGroup();
@@ -256,6 +269,18 @@ public class FamilyHistoryPane extends JPanel{
         ButtonGroup YesNoGroup19 =  new ButtonGroup();
         YesNoGroup19.add(familyHistoryRadioButtonYes19);
         YesNoGroup19.add(familyHistoryRadioButtonNo19);
+
+        diamartiesTraxeiasVrohouScrollingArea = new JScrollPane(diamartiesTraxeiasVrohouTextArea);
+        diaplasiDermatosScrollingArea = new JScrollPane(diaplasiDermatosTextArea);
+        diaplasiPeptikouSistimatosScrollingArea = new JScrollPane(diaplasiPeptikouSistimatosTextArea);
+        diamartiesEnderouScrollingArea = new JScrollPane(diamartiesEnderouTextArea);
+        nefrikiAgenesiaScrollingArea = new JScrollPane(nefrikiAgenesiaTextArea);
+        diaplasiNefrwnScrollingArea = new JScrollPane(diaplasiNefrwnTextArea);
+        diaplasiOuropoiitikouSistimatosScrollingArea = new JScrollPane(diaplasiOuropoiitikouSistimatosTextArea);
+        sigenisThiroeidismosScrollingArea = new JScrollPane(sigenisThiroeidismosTextArea);
+        disanexiaLaktozisScrollingArea = new JScrollPane(disanexiaLaktozisTextArea);
+        kakoithiNeoplasmataScrollingArea = new JScrollPane(kakoithiNeoplasmataTextArea);
+        allesMorfesOikogeniakouIstorikouScrollingArea = new JScrollPane(allesMorfesOikogeniakouIstorikouTextArea);
 
         istorikoLeuxemiasLabel.setText(resourceMap.getString("istorikoLeuxemias.text"));
         familyHistoryRadioButtonNo19.setText(resourceMap.getString("noRadioButton.text"));
@@ -351,11 +376,11 @@ public class FamilyHistoryPane extends JPanel{
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(diamartiesTraxeiasVrohouLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(diamartiesTraxeiasVrohouTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
+                        .addComponent(diamartiesTraxeiasVrohouScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(diaplasiDermatosLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(diaplasiDermatosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
+                        .addComponent(diaplasiDermatosScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(stenosiLeptouEnderouLabel)
                         .addGap(18, 18, 18)
@@ -371,15 +396,15 @@ public class FamilyHistoryPane extends JPanel{
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(diamartiesEnderouLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(diamartiesEnderouTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
+                        .addComponent(diamartiesEnderouScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(diaplasiPeptikouSistimatosLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(diaplasiPeptikouSistimatosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
+                        .addComponent(diaplasiPeptikouSistimatosScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(nefrikiAgenesiaLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(nefrikiAgenesiaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
+                        .addComponent(nefrikiAgenesiaScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(kistikiNososNefrwnLabel)
                         .addGap(18, 18, 18)
@@ -395,7 +420,7 @@ public class FamilyHistoryPane extends JPanel{
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(diaplasiNefrwnLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(diaplasiNefrwnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
+                        .addComponent(diaplasiNefrwnScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(diataraxesNefrouOuritiraLabel)
                         .addGap(18, 18, 18)
@@ -411,7 +436,7 @@ public class FamilyHistoryPane extends JPanel{
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(diaplasiOuroupoiitikouSistimatosLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(diaplasiOuropoiitikouSistimatosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
+                        .addComponent(diaplasiOuropoiitikouSistimatosScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(klironomikiAnaimiaLabel)
                         .addGap(18, 18, 18)
@@ -421,7 +446,7 @@ public class FamilyHistoryPane extends JPanel{
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(sigenisThiroeidismosLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(sigenisThiroeidismosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
+                        .addComponent(sigenisThiroeidismosScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(eleipsiLaktasisLabel)
                         .addGap(18, 18, 18)
@@ -431,7 +456,7 @@ public class FamilyHistoryPane extends JPanel{
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(disanexiaLaktozisLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(disanexiaLaktozisTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
+                        .addComponent(disanexiaLaktozisScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(psixikesDiataraxesLabel)
                         .addGap(18, 18, 18)
@@ -447,7 +472,7 @@ public class FamilyHistoryPane extends JPanel{
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(kakoithiNeoplasmataLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(kakoithiNeoplasmataTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
+                        .addComponent(kakoithiNeoplasmataScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(kataxrisiAlkoolLabel)
                         .addGap(18, 18, 18)
@@ -469,7 +494,7 @@ public class FamilyHistoryPane extends JPanel{
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(allesMorfesOikogeneiakouIstorikouLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(allesMorfesOikogeniakouIstorikouTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
+                        .addComponent(allesMorfesOikogeniakouIstorikouScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(diamartiesDiaplasisPneumononLabel)
                         .addGap(18, 18, 18)
@@ -546,12 +571,12 @@ public class FamilyHistoryPane extends JPanel{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(diamartiesTraxeiasVrohouLabel)
-                    .addComponent(diamartiesTraxeiasVrohouTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(diamartiesTraxeiasVrohouScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(diaplasiDermatosLabel)
-                    .addComponent(diaplasiDermatosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(diaplasiDermatosScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -567,17 +592,17 @@ public class FamilyHistoryPane extends JPanel{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(diamartiesEnderouLabel)
-                    .addComponent(diamartiesEnderouTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(diamartiesEnderouScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(diaplasiPeptikouSistimatosLabel)
-                    .addComponent(diaplasiPeptikouSistimatosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(diaplasiPeptikouSistimatosScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nefrikiAgenesiaLabel)
-                    .addComponent(nefrikiAgenesiaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nefrikiAgenesiaScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -593,7 +618,7 @@ public class FamilyHistoryPane extends JPanel{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(diaplasiNefrwnLabel)
-                    .addComponent(diaplasiNefrwnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(diaplasiNefrwnScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -609,7 +634,7 @@ public class FamilyHistoryPane extends JPanel{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(diaplasiOuroupoiitikouSistimatosLabel)
-                    .addComponent(diaplasiOuropoiitikouSistimatosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(diaplasiOuropoiitikouSistimatosScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -619,7 +644,7 @@ public class FamilyHistoryPane extends JPanel{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sigenisThiroeidismosLabel)
-                    .addComponent(sigenisThiroeidismosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sigenisThiroeidismosScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eleipsiLaktasisLabel)
@@ -629,7 +654,7 @@ public class FamilyHistoryPane extends JPanel{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(disanexiaLaktozisLabel)
-                    .addComponent(disanexiaLaktozisTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(disanexiaLaktozisScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -645,7 +670,7 @@ public class FamilyHistoryPane extends JPanel{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(kakoithiNeoplasmataLabel)
-                    .addComponent(kakoithiNeoplasmataTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(kakoithiNeoplasmataScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -666,7 +691,7 @@ public class FamilyHistoryPane extends JPanel{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(allesMorfesOikogeneiakouIstorikouLabel)
-                    .addComponent(allesMorfesOikogeniakouIstorikouTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(allesMorfesOikogeniakouIstorikouScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
