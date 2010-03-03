@@ -69,8 +69,8 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         familyHistoryPane = new FamilyHistoryPane(resourceMap);
         immunizationHistoryPane = new JPanel();
         habitsPane = new JPanel();
-        chronicMedicationsPane = new JPanel();
-        chronicDiseasesPane = new JPanel();
+        chronicMedicationsPane = new ChronicMedicationPane();
+        chronicDiseasesPane = new ChronicDiseasesPane(resourceMap);
         contactsPane = new ContactsPane(resourceMap);
         photosPane = new PhotosPane(resourceMap);
         personalInfoPane = new PersonalInfoPane(pm);
