@@ -5,13 +5,11 @@
 
 package vidavo.gui;
 
-import javax.swing.JPanel;
-
 /**
  *
  * @author Serban
  */
-public class ContactsPane extends JPanel{
+public class ContactsPane extends javax.swing.JPanel{
 
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField emailTextField;

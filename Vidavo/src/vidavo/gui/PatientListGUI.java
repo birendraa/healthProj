@@ -4,7 +4,13 @@ package vidavo.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ListResourceBundle;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import vidavo.Patient;
 
@@ -36,6 +42,13 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         super();
         this.pm = pM;
         initComponents();
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                showCancelDialog();
+            }
+        });
         this.pm.retrievePatientData();
         this.displayPatientsList();
         this.pack();
@@ -210,8 +223,8 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
                     JOptionPane.showMessageDialog(null,"No patient selected", "Nothing entered", 2);
          }
 
-         if(c.equals("close")){
-
+         if(c.equals("cancel")){
+                showCancelDialog();
          }
 
          if(c.equals("search")){
@@ -229,6 +242,36 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
                 pi = ((Patient)pl.getPatientAtIndex(i)).getPersonalInfo();
                 this.model.insertRow(this.patientTable.getRowCount(), new Object[]{pi.getID(),pi.getLName(),pi.getFName(),pi.getHomeNum()}); //addrow(pi.getID(),pi.getLName(),pi.getFName(),pi.getHomeNum())
             }
+    }
+
+    private void showCancelDialog(){
+
+        final JDialog dialog = new JDialog(this, "Exit", true);
+        final JOptionPane op = new JOptionPane("Are you sure you want to close the window? ", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
+        dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        dialog.setContentPane(op);
+        dialog.setResizable(false);
+        op.addPropertyChangeListener(new PropertyChangeListener(){
+            public void propertyChange(PropertyChangeEvent e){
+                String prop = e.getPropertyName();
+                if (dialog.isVisible() && (e.getSource() == op) && (prop.equals(JOptionPane.VALUE_PROPERTY))) {
+                    dialog.setVisible(false);
+                }
+            }
+        });
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setResizable(false);
+        dialog.setVisible(true);
+        int value = ((Integer) op.getValue()).intValue();
+        if (value == JOptionPane.NO_OPTION)
+        {
+            dialog.dispose();
+        }
+        else if (value == JOptionPane.YES_OPTION)
+        {
+            this.dispose();
+        }
     }
 //public void loadPersonalInfo(vidavo.gui.PatientManager pm){
 //
