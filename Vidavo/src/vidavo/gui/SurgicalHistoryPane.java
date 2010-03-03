@@ -4,11 +4,12 @@ package vidavo.gui;
 import java.util.ListResourceBundle;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import vidavo.SurgeryHistory;
 
 public class SurgicalHistoryPane extends JPanel{
 
     private javax.swing.JScrollPane finalDiagnosisScrollingArea;
-    private javax.swing.JScrollPane reasonOfHospitalizationScrollingArea;
+    private javax.swing.JScrollPane surgicalHistoryScrollingArea;
     private javax.swing.JLabel reasonOfHospitalizationLabel;
     private javax.swing.JLabel descriptionOfSurgeryLabel;
     private javax.swing.JTextField descriptionOfSurgeryTextField;
@@ -34,7 +35,7 @@ public class SurgicalHistoryPane extends JPanel{
         finalDiagnosisTextArea = new javax.swing.JTextArea();
         doctorsNameTextField = new javax.swing.JTextField();
 
-        reasonOfHospitalizationScrollingArea = new JScrollPane(reasonOfHospitalizationTextArea);
+        surgicalHistoryScrollingArea = new JScrollPane(reasonOfHospitalizationTextArea);
         finalDiagnosisScrollingArea = new JScrollPane(finalDiagnosisTextArea);
 
         descriptionOfSurgeryLabel.setText(resourceMap.getString("descriptionOfSurgery.text"));
@@ -66,7 +67,7 @@ public class SurgicalHistoryPane extends JPanel{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(finalDiagnosisScrollingArea, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                            .addComponent(reasonOfHospitalizationScrollingArea, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                            .addComponent(surgicalHistoryScrollingArea, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
                             .addComponent(doctorsNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -84,7 +85,7 @@ public class SurgicalHistoryPane extends JPanel{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(reasonOfHospitalizationLabel)
-                    .addComponent(reasonOfHospitalizationScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(surgicalHistoryScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(finalDiagnosisLabel)
@@ -96,5 +97,10 @@ public class SurgicalHistoryPane extends JPanel{
                             .addComponent(doctorsNameLabel))))
                 .addContainerGap(142, Short.MAX_VALUE))
         );
+    }
+
+    public SurgeryHistory getSurgeryHistoryInformation(){
+        return new SurgeryHistory(descriptionOfSurgeryTextField.getText(), hospitalNameTextField.getText(),
+                reasonOfHospitalizationTextArea.getText(), finalDiagnosisTextArea.getText(), doctorsNameTextField.getText());
     }
 }
