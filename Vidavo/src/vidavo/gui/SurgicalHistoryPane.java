@@ -9,7 +9,7 @@ import vidavo.SurgeryHistory;
 public class SurgicalHistoryPane extends JPanel{
 
     private javax.swing.JScrollPane finalDiagnosisScrollingArea;
-    private javax.swing.JScrollPane surgicalHistoryScrollingArea;
+    private javax.swing.JScrollPane reasonOfHospitalizationScrollingArea;
     private javax.swing.JLabel reasonOfHospitalizationLabel;
     private javax.swing.JLabel descriptionOfSurgeryLabel;
     private javax.swing.JTextField descriptionOfSurgeryTextField;
@@ -35,7 +35,7 @@ public class SurgicalHistoryPane extends JPanel{
         finalDiagnosisTextArea = new javax.swing.JTextArea();
         doctorsNameTextField = new javax.swing.JTextField();
 
-        surgicalHistoryScrollingArea = new JScrollPane(reasonOfHospitalizationTextArea);
+        reasonOfHospitalizationScrollingArea = new JScrollPane(reasonOfHospitalizationTextArea);
         finalDiagnosisScrollingArea = new JScrollPane(finalDiagnosisTextArea);
 
         descriptionOfSurgeryLabel.setText(resourceMap.getString("descriptionOfSurgery.text"));
@@ -67,7 +67,7 @@ public class SurgicalHistoryPane extends JPanel{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(finalDiagnosisScrollingArea, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                            .addComponent(surgicalHistoryScrollingArea, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                            .addComponent(reasonOfHospitalizationScrollingArea, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
                             .addComponent(doctorsNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -85,7 +85,7 @@ public class SurgicalHistoryPane extends JPanel{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(reasonOfHospitalizationLabel)
-                    .addComponent(surgicalHistoryScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(reasonOfHospitalizationScrollingArea, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(finalDiagnosisLabel)
