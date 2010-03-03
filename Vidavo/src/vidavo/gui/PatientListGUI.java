@@ -78,7 +78,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         searchTextField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
 
-        resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("gr"));
+        resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         this.setTitle(resourceMap.getString("patientList.title"));
         
