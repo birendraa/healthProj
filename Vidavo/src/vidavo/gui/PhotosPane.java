@@ -19,7 +19,7 @@ public class PhotosPane extends javax.swing.JPanel{
     private javax.swing.JButton removeButton;
     private javax.swing.JLabel renameLabel;
     private javax.swing.JTextField renameTextField;
-    private javax.swing.JButton saveButton;
+    private javax.swing.JButton savePhotoButton;
     private javax.swing.JTextField selectPhotoTextField;
 
     private  java.util.ListResourceBundle resourceMap;
@@ -33,7 +33,7 @@ public class PhotosPane extends javax.swing.JPanel{
 
         selectPhotoTextField = new javax.swing.JTextField();
         browseButton = new javax.swing.JButton();
-        saveButton = new javax.swing.JButton();
+        savePhotoButton = new javax.swing.JButton();
         listScrollPane = new javax.swing.JScrollPane();
         photosList = new javax.swing.JList();
         listLabel = new javax.swing.JLabel();
@@ -46,7 +46,7 @@ public class PhotosPane extends javax.swing.JPanel{
 
         selectPhotoTextField.setText(resourceMap.getString("selectPhotoTextField.text"));
         browseButton.setText(resourceMap.getString("browseButton.text"));
-        saveButton.setText(resourceMap.getString("saveButton.text"));
+        savePhotoButton.setText(resourceMap.getString("savePhotoButton.text"));
         listLabel.setText(resourceMap.getString("listLabel.text"));
         openButton.setText(resourceMap.getString("openButton.text"));
         removeButton.setText(resourceMap.getString("removeButton.text"));
@@ -72,7 +72,7 @@ public class PhotosPane extends javax.swing.JPanel{
                                 .addComponent(renameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(saveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(savePhotoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(browseButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(openButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(removeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -87,7 +87,7 @@ public class PhotosPane extends javax.swing.JPanel{
                     .addComponent(selectPhotoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(saveButton)
+                    .addComponent(savePhotoButton)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(renameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(renameLabel)))

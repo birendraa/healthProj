@@ -14,8 +14,19 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
     @Override
     protected Object[][] getContents() {
         return new Object [][] {
+            
+                //Radio Buttons
+                {"yesRadioButton.text", "Ναι"},
+                {"noRadioButton.text", "Όχι"},
+
+
+                //Save/Cancel Buttons
+                {"saveButton.text", "Αποθήκευση"},
+                {"cancelButton.text", "Ακύρωση"},
+
+
                 //PatientList Window
-                {"patientList.title", "Λίστα Ασθενών"},                
+                {"patientList.title", "Λίστα Ασθενών"},
                 {"fileMenu.text", "Αρχείο"},
                 {"quitMenuItem.text", "Έξοδος"},
                 {"helpMenu.text", "Βοήθεια"},
@@ -36,39 +47,49 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"quitMenuItem.text", "Μενού έξοδου αντικειμένου"},
                 {"helpMenu.text", "Μενού Βοήθειας"},
                 {"aboutMenuItem.text", "Σχετικά με το αντικείμενο μενού"},
+                
 
-                {"yesRadioButton.text", "Ναι"},
-                {"noRadioButton.text", "Όχι"},
+                //Personal Info Window
+                {"idLabel.text", "ID*"},
+                {"firstNLabel.text", "Όνομα*"},
+                {"middleNLabel.text", "Μεσαίο Όνομα"},
+                {"lastNLabel.text", "Επίθετο*"},
+                {"addressLabel.text", "Διεύθυνση"},
+                {"addressNumLabel.text", "Αριθμός Διεύθυνσης"},
+                {"cityLabel.text", "Πόλη"},
+                {"regionLabel.text", "Περιοχή"},
+                {"countryLabel.text", "Χώρα"},
+                {"postalCLabel.text", "Ταχυδρομικός Κώδικας"},
+                {"citizenshipLabel.text", "Υπηκοότητα"},
+                {"heightLabel.text", "Ύψος (cm)"},
+                {"weightLabel.text", "Βάρος (kg)"},
+                {"maleRadioButton.text", "Άρρεν"},
+                {"femaleRadioButton.text", "Θήλυ"},
+                {"marriedRadioButton.text", "Έγγαμος"},
+                {"singleRadioButton.text", "Άγαμος"},
+                {"birthDateLabel.text", "Ημ/νια Γέννησης"},
+                {"profLabel.text", "Επάγγελμα"},
+                {"insuranceLabel.text", "Ασφάλιση"},
+                {"amkaLabel.text", "Α.Μ.Κ.Α"},
+                {"tameioLabel.text", "Ασφ/κο Ταμείο"},
+                {"firstVisitLabel.text", "Πρώτη Επίσκεψη"},
+                {"childrenLabel.text", "Αρθ/μος Παιδιών"},
+                {"ageLabel.text", "Ηλικία"},
+                {"patientPhotoLabel.text", "Φωτο/φία Ασθενή"},
+                {"pictureButton.text", "Λήψη Φωτο/φίας"},
+                {"communicationNumPane.title", "Τηλέφωνα Επικοινωνίας"},
+                {"homeLabel.text", "Τηλ. Οικίας"},
+                {"workLabel.text", "Τηλ. Εργασίας"},
+                {"cellLabel.text", "Κινητό Τηλ."},
 
-                //Chronic Medication Window
-                {"heartLabel.text", "ΚΑΡΔΙΑ"},
-                {"anapneustikoLabel.text", "ΑΝΑΠΝΕΥΣΤΙΚΟ"},
-                {"bloodSugarLabel.text", "ΓΛΥΚΟΖΗ ΑΙΜΑΤΟΣ"},
-                {"antithromvoticaFarmaka.text", "Αντιθρομβωτικά φάρμακα"},
-                {"thromvolitikaFarmaka.text", "Θρομβολυτικά φάρμακα"},
-                {"antidiastaltikaFarmaka.text", "Αγγειοδιασταλτικά της στεφανιαίας κυκλοφορίας}"},
-                {"kariodiegertikesGlikosides.text", "Καρδιοδιεγερτικές γλυκοσίδες και φάρμακα με παρόμοια δράση"},
-                {"antiikaFarmaka.text", "Αντιϊκά φάρμακα"},
-                {"antiarrythmicaFarmaka.text", "Άλλα αντιαρρυθμικά φάρμακα"},
-                {"antineoplasmatikaFarmaka.text", "Αντινεοπλασματικά και ανοσοκατασταλτικά φάρμακα"},
-                {"antireumatikaFarmaka.text", "Αντιρευματικά φάρμακα"},
-                {"antiasthmatica.text", "Αντιασθματικά"},
-                {"antithyroidikaFarmaka.text", "Αντιθυρεοειδικά φάρμακα"},
-                {"thyroidikesOrmones.text", "Θυρεοειδικές ορμόνες και υποκατάστατα"},
-                {"insulini.text", "Ινσουλίνη"},
-                {"antidiabeticesTabletes.text", "Αντιδιαβητικά φάρμακα"},
-                {"anticoagxwlitikaFarmaka.text", "Αντιαγχολυτικά φάρμακα"},
-                {"antipsychoticaFarmaka.text", "Αντιψυχωτικά φάρμακα"},
-                {"antiepiliptikaFarmaka.text", "Διάφορα αντιεπηληπτικά και κατασταλτικά - υπνωτικά φάρμακα"},
-                {"androgona.text", "Ανδρογόνα και άλλοι αναβολικοί παράγοντες"},
-                {"oistrogona.text", "Οιστρογόνα και προγεσταγόνα"},
-                {"antisilliptikaFarmaka.text", "Αντισυλληπτικά"},
-                {"ormones.text", "Ορμόνες και τα συνθετικά παράγωγά τους"},
-                {"vitamines.text", "Βιταμίνες"},
-                {"sidiros.text", "Σίδηρος και ενώσεις του"},
-                {"antiallergikaFarmaka.text", "Αντιαλλεργικά και αντιεμετικά φάρμακα"},
-                {"otherChronicMedication.text", "Άλλα χρόνια φάρμακα"},
-                {"nameOfMedication.text", "Συμπληρώστε τα ονόματα των φαρμάκων που χρησιμοποιεί ο ασθενής"},
+
+                //Surgery History Window
+                {"descriptionOfSurgery.text", "Περιγραφή επέμβασης :"},
+                {"hospitalName.text", "Όνομα κλινικής/νοσoκομείου :"},
+                {"reasonOfHospitalization.text", "Αιτία νοσηλείας :"},
+                {"finalDiagnosis.text", "Τελική διάγνωση :"},
+                {"doctorsName.text", "Όνομα ιατρού :"},
+
 
                 //Family History Window
                 {"egefalikoEpeisodio.text", "Οικογενειακό ιστορικό εγκεφαλικού επεισοδίου (εγκεφαλικής αποπληξίας) :"},
@@ -103,13 +124,47 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"istorikoLeuxemias.text", "Οικογενειακό ιστορικό λευχαιμίας :"},
                 {"allesMorfesOikogeneiakouIstorikou.text", "Άλλες μορφές οικογενειακού ιστορικού :"},
 
-                
-                {"descriptionOfSurgery.text", "Περιγραφή επέμβασης :"},
-                {"hospitalName.text", "Όνομα κλινικής/νοσoκομείου :"},
-                {"reasonOfHospitalization.text", "Αιτία νοσηλείας :"},
-                {"finalDiagnosis.text", "Τελική διάγνωση :"},
-                {"doctorsName.text", "Όνομα ιατρού :"},
 
+                //Photos Window
+                {"selectPhotoTextField.text", "Επιλέξτε Φωτογραφία"},
+                {"browseButton.text", "Επιλογή Φωτο/φίας"},
+                {"savePhotoButton.text", "Αποθήκευση Φωτο/φίας"},
+                {"listLabel.text", "Λίστα Φωτογραφιών Ασθενών"},
+                {"openButton.text", "Άνοιγμα"},
+                {"removeButton.text", "Αφαίρεση Φωτο/φίας"},
+                {"renameLabel.text", "Μετονομασία Φωτο/φίας"},
+                
+                                
+                //Chronic Medication Window
+                {"heartLabel.text", "ΚΑΡΔΙΑ"},
+                {"anapneustikoLabel.text", "ΑΝΑΠΝΕΥΣΤΙΚΟ"},
+                {"bloodSugarLabel.text", "ΓΛΥΚΟΖΗ ΑΙΜΑΤΟΣ"},
+                {"antithromvoticaFarmaka.text", "Αντιθρομβωτικά φάρμακα"},
+                {"thromvolitikaFarmaka.text", "Θρομβολυτικά φάρμακα"},
+                {"antidiastaltikaFarmaka.text", "Αγγειοδιασταλτικά της στεφανιαίας κυκλοφορίας}"},
+                {"kariodiegertikesGlikosides.text", "Καρδιοδιεγερτικές γλυκοσίδες και φάρμακα με παρόμοια δράση"},
+                {"antiikaFarmaka.text", "Αντιϊκά φάρμακα"},
+                {"antiarrythmicaFarmaka.text", "Άλλα αντιαρρυθμικά φάρμακα"},
+                {"antineoplasmatikaFarmaka.text", "Αντινεοπλασματικά και ανοσοκατασταλτικά φάρμακα"},
+                {"antireumatikaFarmaka.text", "Αντιρευματικά φάρμακα"},
+                {"antiasthmatica.text", "Αντιασθματικά"},
+                {"antithyroidikaFarmaka.text", "Αντιθυρεοειδικά φάρμακα"},
+                {"thyroidikesOrmones.text", "Θυρεοειδικές ορμόνες και υποκατάστατα"},
+                {"insulini.text", "Ινσουλίνη"},
+                {"antidiabeticesTabletes.text", "Αντιδιαβητικά φάρμακα"},
+                {"anticoagxwlitikaFarmaka.text", "Αντιαγχολυτικά φάρμακα"},
+                {"antipsychoticaFarmaka.text", "Αντιψυχωτικά φάρμακα"},
+                {"antiepiliptikaFarmaka.text", "Διάφορα αντιεπηληπτικά και κατασταλτικά - υπνωτικά φάρμακα"},
+                {"androgona.text", "Ανδρογόνα και άλλοι αναβολικοί παράγοντες"},
+                {"oistrogona.text", "Οιστρογόνα και προγεσταγόνα"},
+                {"antisilliptikaFarmaka.text", "Αντισυλληπτικά"},
+                {"ormones.text", "Ορμόνες και τα συνθετικά παράγωγά τους"},
+                {"vitamines.text", "Βιταμίνες"},
+                {"sidiros.text", "Σίδηρος και ενώσεις του"},
+                {"antiallergikaFarmaka.text", "Αντιαλλεργικά και αντιεμετικά φάρμακα"},
+                {"otherChronicMedication.text", "Άλλα χρόνια φάρμακα"},
+                {"nameOfMedication.text", "Συμπληρώστε τα ονόματα των φαρμάκων που χρησιμοποιεί ο ασθενής"},
+                                
 
                 //Chronic Diseases
                 {"pathiseisPneumonwnLabel.text","Παθήσεις των πνευμόνων :"},
@@ -149,6 +204,7 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"erpikoEkzemaLabel.text","Ερπητικό έκζεμα :"},
                 {"ipatitidaLabel.text","Χρόνια ηπατίτιδα :"},
                 {"allesChroniesAstheneiesLabel.text","Άλλες χρόνιες ασθένειες :"},
+                
             };
     };
 
