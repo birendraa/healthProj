@@ -231,4 +231,36 @@ CREATE TABLE `Surgical_History` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `Patients`;
+
+CREATE TABLE `Patients` (
+  `patientID` int(20) NOT NULL,
+  `chronicDiseasesID` int(20) NOT NULL,
+  `chronicMedicationID` int(20) NOT NULL,
+  `contactsID` int(20) NOT NULL,
+  `familyHistoryID` int(20) NOT NULL,
+  `habitsID` int(20) NOT NULL,
+  `immunizationsID` int(20) NOT NULL,
+  `personalInfoID` int(20) NOT NULL,
+  `surgicalHistoryID` int(20) NOT NULL,
+  PRIMARY KEY (`patientID`),
+  KEY `chronicDiseasesID` (`chronicDiseasesID`),
+  KEY `chronicMedicationID` (`chronicMedicationID`),
+  KEY `contactsID` (`contactsID`),
+  KEY `familyHistoryID` (`familyHistoryID`),
+  KEY `habitsID` (`habitsID`),
+  KEY `immunizationsID` (`immunizationsID`),
+  KEY `personalInfoID` (`personalInfoID`),
+  KEY `surgicalHistoryID` (`surgicalHistoryID`),
+  CONSTRAINT `familyHistoryIDFK` FOREIGN KEY (`familyHistoryID`) REFERENCES `family_history` (`patientID`),
+  CONSTRAINT `habitsIDFK` FOREIGN KEY (`habitsID`) REFERENCES `habits` (`patientID`),
+  CONSTRAINT `immunizationsIDFK` FOREIGN KEY (`immunizationsID`) REFERENCES `immunizations` (`patientID`),
+  CONSTRAINT `personalInfoIDFK` FOREIGN KEY (`personalInfoID`) REFERENCES `personal_info` (`patientID`),
+  CONSTRAINT `surgicalHistoryIDFK` FOREIGN KEY (`surgicalHistoryID`) REFERENCES `surgical_history` (`patientID`),
+  CONSTRAINT `chronicDiseasesIDFK` FOREIGN KEY (`chronicDiseasesID`) REFERENCES `chronic_diseases` (`patientID`),
+  CONSTRAINT `chronicMedicationIDFK` FOREIGN KEY (`chronicMedicationID`) REFERENCES `chronic_medication` (`patientID`),
+  CONSTRAINT `contactsIDFK` FOREIGN KEY (`contactsID`) REFERENCES `contacts` (`contactID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 SET FOREIGN_KEY_CHECKS = 1;
