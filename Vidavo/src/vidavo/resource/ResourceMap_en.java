@@ -14,11 +14,53 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
     @Override
     protected Object[][] getContents() {
         return new Object [][] {
+
+                //Radio Buttons
+                {"yesRadioButton.text", "Yes"},
+                {"noRadioButton.text", "No"},
+
+                //Save/Cancel Buttons
+                {"cancelButton.text", "Cancel"},
+                {"saveButton.text", "Save"},
+
+                //Personal Info Window
+                {"idLabel.text", "ID*"},
+                {"firstNLabel.text", "Όνομα*"},
+                {"middleNLabel.text", "Μεσαίο Όνομα"},
+                {"lastNLabel.text", "Επίθετο*"},
+                {"addressLabel.text", "Διεύθυνση"},
+                {"addressNumLabel.text", "Αριθμός Διεύθυνσης"},
+                {"cityLabel.text", "Πόλη"},
+                {"regionLabel.text", "Περιοχή"},
+                {"countryLabel.text", "Χώρα"},
+                {"postalCLabel.text", "Ταχυδρομικός Κώδικας"},
+                {"citizenshipLabel.text", "Υπηκοότητα"},
+                {"heightLabel.text", "Ύψος (cm)"},
+                {"weightLabel.text", "Βάρος (kg)"},
+                {"maleRadioButton.text", "Άρρεν"},
+                {"femaleRadioButton.text", "Θήλυ"},
+                {"marriedRadioButton.text", "Έγγαμος"},
+                {"singleRadioButton.text", "Άγαμος"},
+                {"birthDateLabel.text", "Ημ/νια Γέννησης"},
+                {"profLabel.text", "Επάγγελμα"},
+                {"insuranceLabel.text", "Ασφάλιση"},
+                {"amkaLabel.text", "Α.Μ.Κ.Α"},
+                {"tameioLabel.text", "Ασφ/κο Ταμείο"},
+                {"firstVisitLabel.text", "Πρώτη Επίσκεψη"},
+                {"childrenLabel.text", "Αρθ/μος Παιδιών"},
+                {"ageLabel.text", "Ηλικία"},
+                {"patientPhotoLabel.text", "Φωτο/φία Ασθενή"},
+                {"pictureButton.text", "Λήψη Φωτο/φίας"},
+                {"communicationNumPane.title", "Τηλέφωνα Επικοινωνίας"},
+                {"homeLabel.text", "Τηλ. Οικίας"},
+                {"workLabel.text", "Τηλ. Εργασίας"},
+                {"cellLabel.text", "Κινητό Τηλ."},
+
+                //PatientList Window
                 {"patientList.title", "Patient List"},
                 {"addButton.text", "Add..."},
                 {"deleteButton.text", "Delete"},
                 {"editButton.text", "Edit..."},
-                {"cancelButton.text", "Cancel"},
                 {"searchButton.text", "Search"},
                 {"searchTextField.text", "Search by last name..."},
                 {"patientNameLabel.text", "John Smith"},
@@ -32,9 +74,7 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
                 {"helpMenu.text", "Help Menu"},
                 {"aboutMenuItem.text", "About Menu Item"},
 
-                {"yesRadioButton.text", "Yes"},
-                {"noRadioButton.text", "No"},
-
+                //Family History Window
                 {"egefalikoEpeisodio.text", "Egefaliko Epeisodio :"},
                 {"diamartiesDiaplasisPneumonon.text", "Diamarties Diaplasis Pneumonon :"},
                 {"diamartiesDiaplasisKikloforikouSistimatos.text", "Diamarties Diaplasis Kikloforikou Sistimatos :"},
@@ -67,20 +107,23 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
                 {"istorikoLeuxemias.text", "Istoriko Leuxemias :"},
                 {"allesMorfesOikogeneiakouIstorikou.text", "Alles Morfes Oikogeniakou Istorikou :"},
 
+                //Surgery History Window
                 {"descriptionOfSurgery.text", "Description Of Surgery :"},
                 {"hospitalName.text", "Hospital Name :"},
                 {"reasonOfHospitalization.text", "Hospitalization Reason :"},
                 {"finalDiagnosis.text", "Final Diagnosis :"},
                 {"doctorsName.text", "Doctors Name :"},
 
+                //Photos Window
                 {"selectPhotoTextField.text","Select a photo..."},
                 {"browseButton.text","Browse..."},
-                {"saveButton.text","Save photo"},
+                {"savePhotoButton.text","Save photo"},
                 {"listLabel.text","List of current photos: "},
                 {"openButton.text","Open..."},
                 {"removeButton.text","Remove"},
                 {"renameLabel.text","Rename photo:"},
 
+                //Contacts
                 {"firstNameLabel.text","First name:"},
                 {"lastNameLabel.text","Last name:"},
                 {"relationshipLabel.text","Relationship:"},
@@ -90,6 +133,37 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
                 {"contact1Label.text","Contact 2"},
                 {"contact2Label.text","Contact 3"},
 
+                //Chronic Medication Window
+                {"heartLabel.text", "ΚΑΡΔΙΑ"},
+                {"anapneustikoLabel.text", "ΑΝΑΠΝΕΥΣΤΙΚΟ"},
+                {"bloodSugarLabel.text", "ΓΛΥΚΟΖΗ ΑΙΜΑΤΟΣ"},
+                {"antithromvoticaFarmaka.text", "Αντιθρομβωτικά φάρμακα"},
+                {"thromvolitikaFarmaka.text", "Θρομβολυτικά φάρμακα"},
+                {"antidiastaltikaFarmaka.text", "Αγγειοδιασταλτικά της στεφανιαίας κυκλοφορίας}"},
+                {"kariodiegertikesGlikosides.text", "Καρδιοδιεγερτικές γλυκοσίδες και φάρμακα με παρόμοια δράση"},
+                {"antiikaFarmaka.text", "Αντιϊκά φάρμακα"},
+                {"antiarrythmicaFarmaka.text", "Άλλα αντιαρρυθμικά φάρμακα"},
+                {"antineoplasmatikaFarmaka.text", "Αντινεοπλασματικά και ανοσοκατασταλτικά φάρμακα"},
+                {"antireumatikaFarmaka.text", "Αντιρευματικά φάρμακα"},
+                {"antiasthmatica.text", "Αντιασθματικά"},
+                {"antithyroidikaFarmaka.text", "Αντιθυρεοειδικά φάρμακα"},
+                {"thyroidikesOrmones.text", "Θυρεοειδικές ορμόνες και υποκατάστατα"},
+                {"insulini.text", "Ινσουλίνη"},
+                {"antidiabeticesTabletes.text", "Αντιδιαβητικά φάρμακα"},
+                {"anticoagxwlitikaFarmaka.text", "Αντιαγχολυτικά φάρμακα"},
+                {"antipsychoticaFarmaka.text", "Αντιψυχωτικά φάρμακα"},
+                {"antiepiliptikaFarmaka.text", "Διάφορα αντιεπηληπτικά και κατασταλτικά - υπνωτικά φάρμακα"},
+                {"androgona.text", "Ανδρογόνα και άλλοι αναβολικοί παράγοντες"},
+                {"oistrogona.text", "Οιστρογόνα και προγεσταγόνα"},
+                {"antisilliptikaFarmaka.text", "Αντισυλληπτικά"},
+                {"ormones.text", "Ορμόνες και τα συνθετικά παράγωγά τους"},
+                {"vitamines.text", "Βιταμίνες"},
+                {"sidiros.text", "Σίδηρος και ενώσεις του"},
+                {"antiallergikaFarmaka.text", "Αντιαλλεργικά και αντιεμετικά φάρμακα"},
+                {"otherChronicMedication.text", "Άλλα χρόνια φάρμακα"},
+                {"nameOfMedication.text", "Συμπληρώστε τα ονόματα των φαρμάκων που χρησιμοποιεί ο ασθενής"},
+
+                //Chronic Diseases
                 {"pathiseisPneumonwnLabel.text","Pathiseis Pneumonwn :"},
                 {"chronicVroxitidaLabel.text","Chronic Vroxitida :"},
                 {"aneurismaPneumonikisArtiriasLabel.text","Aneurisma Pneumonikis Artirias :"},

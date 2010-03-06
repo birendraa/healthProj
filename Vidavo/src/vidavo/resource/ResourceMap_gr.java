@@ -43,10 +43,6 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"patientTable.columnModel.title2", "Όνομα"},
                 {"patientTable.columnModel.title1", "Επίθετο"},
                 {"patientTable.columnModel.title0", "ID Ασθενή"},
-                {"fileMenu.text", "Μενού Φακέλων"},
-                {"quitMenuItem.text", "Μενού έξοδου αντικειμένου"},
-                {"helpMenu.text", "Μενού Βοήθειας"},
-                {"aboutMenuItem.text", "Σχετικά με το αντικείμενο μενού"},
                 
 
                 //Personal Info Window
@@ -204,6 +200,8 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"erpikoEkzemaLabel.text","Ερπητικό έκζεμα :"},
                 {"ipatitidaLabel.text","Χρόνια ηπατίτιδα :"},
                 {"allesChroniesAstheneiesLabel.text","Άλλες χρόνιες ασθένειες :"},
+
+                //Contacts
                 
             };
     };
