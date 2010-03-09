@@ -111,94 +111,94 @@ public class ImmunizationsPane extends JPanel{
 
 
         bloodTypeLabel.setText(resourceMap.getString("bloodTypeLabel.text")); // NOI18N
-        bloodTypeLabel.setName("bloodTypeLabel"); // NOI18N
+        
 
         bloodDonorLabel.setText(resourceMap.getString("bloodDonorLabel.text")); // NOI18N
-        bloodDonorLabel.setName("bloodDonorLabel"); // NOI18N
+        
 
         bloodBankLabel.setText(resourceMap.getString("bloodBankLabel.text")); // NOI18N
-        bloodBankLabel.setName("bloodBankLabel"); // NOI18N
+        
 
         bloodCDLabel.setText(resourceMap.getString("bloodCDLabel.text")); // NOI18N
-        bloodCDLabel.setName("bloodCDLabel"); // NOI18N
+        
 
         bleedingProblemsLabel.setText(resourceMap.getString("bleedingProblemsLabel.text")); // NOI18N
-        bleedingProblemsLabel.setName("bleedingProblemsLabel"); // NOI18N
+        
 
         doritisMOLabel.setText(resourceMap.getString("doritisMOLabel.text")); // NOI18N
-        doritisMOLabel.setName("doritisMOLabel"); // NOI18N
+        
 
         kidneyDonorLabel.setText(resourceMap.getString("kidneyDonorLabel.text")); // NOI18N
-        kidneyDonorLabel.setName("kidneyDonorLabel"); // NOI18N
+        
 
         doritisAOLabel.setText(resourceMap.getString("doritisAOLabel.text")); // NOI18N
-        doritisAOLabel.setName("doritisAOLabel"); // NOI18N
+        
 
         allergiesLabel.setText(resourceMap.getString("allergiesLabel.text")); // NOI18N
-        allergiesLabel.setName("allergiesLabel"); // NOI18N
+        
 
         allergiesToDrugsLabel.setText(resourceMap.getString("allergiesToDrugsLabel.text")); // NOI18N
-        allergiesToDrugsLabel.setName("allergiesToDrugsLabel"); // NOI18N
+        
 
         circulationLabel.setText(resourceMap.getString("circulationLabel.text")); // NOI18N
-        circulationLabel.setName("circulationLabel"); // NOI18N
+        
 
         stigmaLabel.setText(resourceMap.getString("stigmaLabel.text")); // NOI18N
-        stigmaLabel.setName("stigmaLabel"); // NOI18N
+        
 
 //        bloodTypeTextField.setText(resourceMap.getString("bloodTypeTextField.text")); // NOI18N
-        bloodTypeTextField.setName("bloodTypeTextField"); // NOI18N
         
-        yesBloodDonorRadioButton.setText(resourceMap.getString("yesBloodDonorRadioButton.text")); // NOI18N
-        yesBloodDonorRadioButton.setName("yesBloodDonorRadioButton"); // NOI18N
+        
+        yesBloodDonorRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
+        
 
-        noBloodDonorRadioButton.setText(resourceMap.getString("noBloodDonorRadioButton.text")); // NOI18N
-        noBloodDonorRadioButton.setName("noBloodDonorRadioButton"); // NOI18N
+        noBloodDonorRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
+        
 
 //        bloodBankTextField.setText(resourceMap.getString("bloodBankTextField.text")); // NOI18N
-        bloodBankTextField.setName("bloodBankTextField"); // NOI18N
+        
 
 //        bloodCDTextField.setText(resourceMap.getString("bloodCDTextField.text")); // NOI18N
-        bloodCDTextField.setName("bloodCDTextField"); // NOI18N
+        
 
-        yesBleedingRadioButton.setText(resourceMap.getString("yesBleedingRadioButton.text")); // NOI18N
-        yesBleedingRadioButton.setName("yesBleedingRadioButton"); // NOI18N
+        yesBleedingRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
+        
 
-        noBleedingRadioButton.setText(resourceMap.getString("noBleedingRadioButton.text")); // NOI18N
-        noBleedingRadioButton.setName("noBleedingRadioButton"); // NOI18N
+        noBleedingRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
+        
 
-        yesDoritisMORadioButton.setText(resourceMap.getString("yesDoritisMORadioButton.text")); // NOI18N
-        yesDoritisMORadioButton.setName("yesDoritisMORadioButton"); // NOI18N
+        yesDoritisMORadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
+        
 
-        noDoritisMORadioButton.setText(resourceMap.getString("noDoritisMORadioButton.text")); // NOI18N
-        noDoritisMORadioButton.setName("noDoritisMORadioButton"); // NOI18N
+        noDoritisMORadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
+        
 
-        yesKidneyDonorRadioButton.setText(resourceMap.getString("yesKidneyDonorRadioButton.text")); // NOI18N
-        yesKidneyDonorRadioButton.setName("yesKidneyDonorRadioButton"); // NOI18N
+        yesKidneyDonorRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
+        
 
-        noKidneyDonorRadioButton.setText(resourceMap.getString("noKidneyDonorRadioButton.text")); // NOI18N
-        noKidneyDonorRadioButton.setName("noKidneyDonorRadioButton"); // NOI18N
+        noKidneyDonorRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
+        
 
 //        doritisAOTextField.setText(resourceMap.getString("doritisAOTextField.text")); // NOI18N
-        doritisAOTextField.setName("doritisAOTextField"); // NOI18N
+        
 
 //        allergiesTextField.setText(resourceMap.getString("allergiesTextField.text")); // NOI18N
-        allergiesTextField.setName("allergiesTextField"); // NOI18N
+        
 
 //        allergiesToDrugsTextField.setText(resourceMap.getString("allergiesToDrugsTextField.text")); // NOI18N
-        allergiesToDrugsTextField.setName("allergiesToDrugsTextField"); // NOI18N
+        
 
-        yesCirculationRadioButton.setText(resourceMap.getString("yesCirculationRadioButton.text")); // NOI18N
-        yesCirculationRadioButton.setName("yesCirculationRadioButton"); // NOI18N
+        yesCirculationRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
+        
 
-        noCirculationRadioButton.setText(resourceMap.getString("noCirculationRadioButton.text")); // NOI18N
-        noCirculationRadioButton.setName("noCirculationRadioButton"); // NOI18N
+        noCirculationRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
+        
 
-        yesStigmaRadioButton.setText(resourceMap.getString("yesStigmaRadioButton.text")); // NOI18N
-        yesStigmaRadioButton.setName("yesStigmaRadioButton"); // NOI18N
+        yesStigmaRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
+        
 
-        noStigmaRadioButton.setText(resourceMap.getString("noStigmaRadioButton.text")); // NOI18N
-        noStigmaRadioButton.setName("noStigmaRadioButton"); // NOI18N
+        noStigmaRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
+        
 
 javax.swing.GroupLayout immunizationsPaneLayout = new javax.swing.GroupLayout(this);
         this.setLayout(immunizationsPaneLayout);
