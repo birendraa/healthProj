@@ -15,7 +15,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
     private javax.swing.JButton selectButton;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem exitMenuItem;
+    private javax.swing.JMenuItem quitMenuItem;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JScrollPane tableScrollPane;
     private javax.swing.JScrollPane patientNoteScrollPane;
@@ -52,7 +52,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
         printButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        exitMenuItem = new javax.swing.JMenuItem();
+        quitMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
 
@@ -89,7 +89,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
 
         patientNoteScrollPane.setViewportView(patientNotesTextArea);
 
-        fileMenu.add(exitMenuItem);
+        fileMenu.add(quitMenuItem);
         helpMenu.add(aboutMenuItem);
         menuBar.add(fileMenu);
         menuBar.add(helpMenu);
@@ -97,7 +97,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
 
         patientNotesLabel.setText((resourceMap.getString("patientNotesLabel.text")));
         fileMenu.setText((resourceMap.getString("fileMenu.text")));
-        exitMenuItem.setText((resourceMap.getString("quitMenuItem.text")));
+        quitMenuItem.setText((resourceMap.getString("quitMenuItem.text")));
         helpMenu.setText((resourceMap.getString("helpMenu.text")));
         selectButton.setText((resourceMap.getString("selectButton.text")));
         addAppointmentButton.setText((resourceMap.getString("addAppointmentButton.text")));
@@ -112,6 +112,13 @@ public class AppointmentGUI extends javax.swing.JFrame{
                 aboutMenuItemActionPerformed(evt);
             }
         });
+
+        quitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quitMenuItemActionPerformed(evt);
+            }
+        });
+
         selectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goButtonActionPerformed(evt);
@@ -212,6 +219,10 @@ public class AppointmentGUI extends javax.swing.JFrame{
     }
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void quitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
     
