@@ -89,32 +89,30 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         addPatientTabbedPane.addTab("Photos", photosPane);
         addPatientTabbedPane.addTab("Chronic Medications", chronicMedicationsPane);
         addPatientTabbedPane.addTab("Chronic Diseases", chronicDiseasesPane);
-
-        javax.swing.GroupLayout immunizationHistoryPaneLayout = new javax.swing.GroupLayout(immunizationHistoryPane);
-        immunizationHistoryPane.setLayout(immunizationHistoryPaneLayout);
-        immunizationHistoryPaneLayout.setHorizontalGroup(
-            immunizationHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 806, Short.MAX_VALUE)
-        );
-        immunizationHistoryPaneLayout.setVerticalGroup(
-            immunizationHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
-        );
-
+        addPatientTabbedPane.addTab("Habits", habitsPane);
         addPatientTabbedPane.addTab("Immunization History", immunizationHistoryPane);
 
-        javax.swing.GroupLayout habitsPaneLayout = new javax.swing.GroupLayout(habitsPane);
-        habitsPane.setLayout(habitsPaneLayout);
-        habitsPaneLayout.setHorizontalGroup(
-            habitsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 806, Short.MAX_VALUE)
-        );
-        habitsPaneLayout.setVerticalGroup(
-            habitsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
-        );
 
-        addPatientTabbedPane.addTab("Habits", habitsPane);
+//        javax.swing.GroupLayout immunizationHistoryPaneLayout = new javax.swing.GroupLayout(immunizationHistoryPane);
+//        immunizationHistoryPane.setLayout(immunizationHistoryPaneLayout);
+//        immunizationHistoryPaneLayout.setHorizontalGroup(
+//            immunizationHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGap(0, 806, Short.MAX_VALUE)
+//        );
+//        immunizationHistoryPaneLayout.setVerticalGroup(
+//            immunizationHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGap(0, 576, Short.MAX_VALUE)
+//        );
+//        javax.swing.GroupLayout habitsPaneLayout = new javax.swing.GroupLayout(habitsPane);
+//        habitsPane.setLayout(habitsPaneLayout);
+//        habitsPaneLayout.setHorizontalGroup(
+//            habitsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGap(0, 806, Short.MAX_VALUE)
+//        );
+//        habitsPaneLayout.setVerticalGroup(
+//            habitsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//            .addGap(0, 576, Short.MAX_VALUE)
+//        );
 
 //        javax.swing.GroupLayout chronicMedicationsPaneLayout = new javax.swing.GroupLayout(chronicMedicationsPane);
 //        chronicMedicationsPane.setLayout(chronicMedicationsPaneLayout);
