@@ -1,7 +1,13 @@
 
 package vidavo.gui;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ListResourceBundle;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 public class AppointmentGUI extends javax.swing.JFrame{
 
@@ -30,6 +36,12 @@ public class AppointmentGUI extends javax.swing.JFrame{
     public AppointmentGUI(ManagerHolder mh){
         initComponents();
         this.mh = mh;
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                showCloseDialog();
+            }
+        });
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -245,5 +257,33 @@ public class AppointmentGUI extends javax.swing.JFrame{
 
     private void removePatientButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+    }
+
+    private void showCloseDialog(){
+        final JDialog dialog = new JDialog(this, "Exit", true);
+        final JOptionPane op = new JOptionPane("Are you sure you want to close the window? ", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
+        dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        dialog.setContentPane(op);
+        dialog.setResizable(false);
+        op.addPropertyChangeListener(new PropertyChangeListener(){
+            public void propertyChange(PropertyChangeEvent e){
+                String prop = e.getPropertyName();
+                if (dialog.isVisible() && (e.getSource() == op) && (prop.equals(JOptionPane.VALUE_PROPERTY))) {
+                    dialog.setVisible(false);
+                }
+            }
+        });
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setResizable(false);
+        dialog.setVisible(true);
+        int value = ((Integer) op.getValue()).intValue();
+        if (value == JOptionPane.NO_OPTION){
+            dialog.dispose();
+        }
+        else if (value == JOptionPane.YES_OPTION){
+            //Save data
+            this.dispose();
+        }
     }
 }
