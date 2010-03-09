@@ -14,7 +14,25 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
     @Override
     protected Object[][] getContents() {
         return new Object [][] {
-            
+
+                //Window Titles / Tab Titles
+                {"addPatientTab.title", "Προσθήκη Ασθενή"},
+                {"personalInfoTab.title", "Προσωπικά Στοιχεία"},
+                {"surgeryHistoryTab.title", "Ιστορικό Εγχειρήσεων"},
+                {"familyHistoryTab.title", "Οικογενειακό Ιστορικό"},
+                {"contactsTab.title", "Επαφές Ασθενή"},
+                {"photosTab.title", "Φώτογραφίες Ασθενή"},
+                {"chronicMedicationTab.title", "Χρόνια Φαρμακευτική Αγωγή"},
+                {"chronicDiseasesTab.title", "Χρόνιες Παθήσεις"},
+                {"habitsTab.title", "Καθημερινές Συνήθειες"},
+                {"immunizationHistoryTab.title", "Ιστορικό Ανοσοποιητικού"},
+
+
+                //Save/Cancel Buttons
+                {"saveButton.text", "Αποθύκευση"},
+                {"cancelButton.text", "Ακύρωση"},
+                
+
                 //Radio Buttons
                 {"yesRadioButton.text", "Ναι"},
                 {"noRadioButton.text", "Όχι"},
@@ -167,7 +185,7 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"chronicVroxitidaLabel.text","Χρόνια Βρογχίτιδα :"},
                 {"aneurismaPneumonikisArtiriasLabel.text","Ανεύρυσμα της πνευμονικής αρτηρίας :"},
                 {"vactiriakesPneumoniesLabel.text","Διάφορες βακτηριακές πνευμονίες :"},
-                {"diataraxesArtiriwnLabel.text","Diataraxes Artiriwn :"},
+                {"diataraxesArtiriwnLabel.text","Διαταραχές Αρτηριών :"},
                 {"allergikoAsthmaLabel.text","Αλλεργικό άσθμα :"},
                 {"anapneustikiAneparkeiaLabel.text","Χρόνια αναπνευστική ανεπάρκεια :"},
                 {"anapneustirasLabel.text","Εξάρτηση από αναπνευστήρα :"},
@@ -202,12 +220,59 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"allesChroniesAstheneiesLabel.text","Άλλες χρόνιες ασθένειες :"},
 
                 //Contacts
+                {"contactLabel.text","Επαφή 1"},
+                {"contact1Label.text","Επαφή 2"},
+                {"contact2Label.text","Επαφή 3"},
+                {"firstNameLabel.text", "Όνομα"},
+                {"lastNameLabel.text", "Επίθετο"},
+                {"relationshipLabel.text", "Σχέση"},
+                {"phoneLabel.text", "Τηλέφωνο"},
+                {"emailLabel.text", "E-mail"},
+                {"firstNameLabel1.text", "Όνομα"},
+                {"lastNameLabel1.text", "Επίθετο"},
+                {"relationshipLabel1.text", "Σχέση"},
+                {"phoneLabel1.text", "Τηλέφωνο"},
+                {"emailLabel1.text", "E-mail"},
+                {"firstNameLabel2.text", "Όνομα"},
+                {"lastNameLabel2.text", "Επίθετο"},
+                {"relationshipLabel2.text", "Σχέση"},
+                {"phoneLabel2.text", "Τηλέφωνο"},
+                {"emailLabel2.text", "E-mail"},
 
 
                 //Immunization History
-
+                {"bloodTypeLabel.text", "Ομάδα Αίματος"},
+                {"bloodDonorLabel.text", "Αιμοδότης"},
+                {"bloodBankLabel.text", "Τράπεζα Αίματος"},
+                {"bloodCDLabel.text", "Μεταδιδόμενες Ασθένειες Αίματος"},
+                {"bleedingProblemsLabel.text", "Προβλήματα Αιμορραγίας"},
+                {"doritisMOLabel.text", "Δωρητής Μυελού των Οστών"},
+                {"kidneyDonorLabel.text", "Δότης Νεφρού"},
+                {"doritisAOLabel.text", "Δωρητής άλλων Οργάνων"},
+                {"allergiesLabel.text", "Αλλεργίες"},
+                {"allergiesToDrugsLabel.text", "Αλλεργίες σε Φάρμακα"},
+                {"circulationLabel.text", "Κυκλοφοριακή Ανεπάρκεια"},
+                {"stigmaLabel.text", "Στίγμα"},
 
                 //Habits
+                {"smokerLabel.text", "Καπνιστής"},
+                {"smokeLongLabel.text", "Διάστημα που Καπνίζει"},
+                {"teaLabel.text", "Τσάι"},
+                {"coffeeLabel.text", "Καφές"},
+                {"softDrinksLabel.text", "Αναψυκτικά"},
+                {"caffeinePDLabel.text", "Καφεϊνη ανα μέρα"},
+                {"saltUsageLabel.text", "Χρήση Αλατιού"},
+                {"sugarUsageLabel.text", "Χρήση Ζάχαρης"},
+                {"dietLabel.text", "Δίαιτα"},
+                {"foodHabitsLabel.text", "Διατροφικές Συνήθειες"},
+                {"alcoholPDLabel.text", "Αλκοόλ ανα μέρα"},
+                {"alcoholPWLabel.text", "Αλκοόλ ανα εβδομάδα"},
+                {"useDrugsLabel.text", "Χρήση Ναρκωτικών"},
+                {"useMedicationLabel.text", "Χρήση Φαρμάκων"},
+                {"excerciseLabel.text", "Γυμναστική"},
+                {"excerciseHabitsLabel.text", "Είδος Γυμναστικής"},
+                {"howOftenLabel.text", "Συχνότητα Γυμναστικής"},
+                {"otherHabitsLabel.text", "Άλλες Συνήθειες"},
                 
 
                 //Appointments Window
