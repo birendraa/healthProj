@@ -8,6 +8,7 @@ import java.beans.PropertyChangeListener;
 import java.util.ListResourceBundle;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class AppointmentGUI extends javax.swing.JFrame{
 
@@ -32,6 +33,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
     private javax.swing.JButton removeAppointmentButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextField;
+    private DefaultTableModel model;
     
     public AppointmentGUI(ManagerHolder mh){
         initComponents();
@@ -69,9 +71,9 @@ public class AppointmentGUI extends javax.swing.JFrame{
         helpMenu = new javax.swing.JMenu();
 
 //        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
+        resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));     
         
-        appointmentTable.setModel(new javax.swing.table.DefaultTableModel(
+        model = new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"08:00", null},
                 {"09:00", null},
@@ -92,7 +94,13 @@ public class AppointmentGUI extends javax.swing.JFrame{
             new String [] {
                 "Hour", "Description"
             }
-        ));
+        );
+        appointmentTable = new javax.swing.JTable(model){
+            @Override
+              public boolean isCellEditable(int row,int column){
+                return false;
+              }
+        };
         appointmentTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         tableScrollPane.setViewportView(appointmentTable);
 
@@ -257,6 +265,15 @@ public class AppointmentGUI extends javax.swing.JFrame{
 
     private void removePatientButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+    }
+
+    public void displayAppointments(java.sql.Date date){
+            vidavo.Appointment ap = new vidavo.Appointment();
+            vidavo.AppointmentList al = this.mh.getAm().getAl();
+            for(int i = 1; i <= al.size(); i++){
+//                if()
+//                    this.model.insertRow(this.appointmentTable.getRowCount(), new Object[]{});
+            }
     }
 
     private void showCloseDialog(){

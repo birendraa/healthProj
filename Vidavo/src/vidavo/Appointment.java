@@ -1,6 +1,7 @@
 
 package vidavo;
 
+import java.sql.Date;
 import java.sql.Time;
 
 public class Appointment {
@@ -9,6 +10,24 @@ public class Appointment {
     private int patientLName;
     private int patientFName;
     private Time time;
+    private Date date;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public Time getTime() {
         return time;

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-class DatabaseManager {
+public class DatabaseManager {
 
     private java.sql.Connection con = null;
     private String userName = "root";

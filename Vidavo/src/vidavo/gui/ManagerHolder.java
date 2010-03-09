@@ -2,19 +2,19 @@
 package vidavo.gui;
 
 public class ManagerHolder {
-    private AppointManager am;
+    private AppointmentManager am;
     private PatientManager pm;
 
-    public ManagerHolder(AppointManager am, PatientManager pm) {
+    public ManagerHolder(AppointmentManager am, PatientManager pm) {
         this.am = am;
         this.pm = pm;
     }
 
-    public AppointManager getAm() {
+    public AppointmentManager getAm() {
         return am;
     }
 
-    public void setAm(AppointManager am) {
+    public void setAm(AppointmentManager am) {
         this.am = am;
     }
 
