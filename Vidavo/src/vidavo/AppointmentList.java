@@ -19,43 +19,43 @@ public class AppointmentList {
         return appointmentList;
     }
 
-    public void addNewAppointment(Patient p){
-        appointmentList.append(p);
+    public void addNewAppointment(Appointment ap){
+        appointmentList.append(ap);
     }
 
     public int size(){
         return appointmentList.size();
     }
 
-    public Patient getAppointmentAtIndex(int index){
-        return (Patient) appointmentList.get(index);
+    public Appointment getAppointmentAtIndex(int index){
+        return (Appointment) appointmentList.get(index);
     }
 
-    public void removeAppointment(Patient p){
+    public void removeAppointment(Appointment ap){
         for(int i = 1; i <= appointmentList.size(); i ++){
-            if((p.getPersonalInfo()).getID() == ((Patient)appointmentList.get(i)).getPersonalInfo().getID())
+            if((ap.getId() == ((Appointment)appointmentList.get(i)).getId()))
                 appointmentList.remove(i);
         }
     }
 
-    public void removeAppointment(int patientID){
-        for(int i = 1; i <= appointmentList.size(); i ++){
-            if(patientID == ((Patient)appointmentList.get(i)).getPersonalInfo().getID())
-                appointmentList.remove(i);
-            break;
-        }
-    }
+//    public void removeAppointment(int patientID){
+//        for(int i = 1; i <= appointmentList.size(); i ++){
+//            if(patientID == ((Patient)appointmentList.get(i)).getPersonalInfo().getID())
+//                appointmentList.remove(i);
+//            break;
+//        }
+//    }
 
-    public Patient getAppointment(String lName){
-        for(int i = 1; i <= appointmentList.size(); i++){
-            if(lName.equals(((((Patient)appointmentList.get(i)).getPersonalInfo())).getLName()));
-            return (Patient)appointmentList.get(i);
-        }
+//    public Patient getAppointment(String lName){
+//        for(int i = 1; i <= appointmentList.size(); i++){
+//            if(lName.equals(((((Patient)appointmentList.get(i)).getPersonalInfo())).getLName()));
+//            return (Patient)appointmentList.get(i);
+//        }
+//
+//        return null;
+//    }
 
-        return null;
-    }
-
-    public Patient getAppointment(int selectedID) {
-        return (Patient)appointmentList.get(selectedID);
+    public Appointment getAppointment(int selectedID) {
+        return (Appointment)appointmentList.get(selectedID);
     }
 }
