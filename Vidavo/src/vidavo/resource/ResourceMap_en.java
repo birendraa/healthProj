@@ -72,9 +72,9 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
 
                 //Menu
                 {"fileMenu.text", "File Menu"},
-                {"quitMenuItem.text", "Quit Menu"},
+                {"quitMenuItem.text", "Quit"},
                 {"helpMenu.text", "Help Menu"},
-                {"aboutMenuItem.text", "About Menu Item"},
+                {"aboutMenuItem.text", "About"},
 
                 //Family History Window
                 {"egefalikoEpeisodio.text", "Egefaliko Epeisodio :"},
