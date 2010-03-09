@@ -5,6 +5,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
 
     public AddAppointmentGUI() {
         initComponents();
+        this.setVisible(true);
     }
 
     private void initComponents() {
@@ -233,16 +234,6 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
         pack();
     }
 
-    /**
-    * @param args the command line arguments
-    */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddAppointmentGUI().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify
     private javax.swing.JButton jButton2;

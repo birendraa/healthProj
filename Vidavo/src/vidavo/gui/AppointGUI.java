@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package vidavo.gui;
 
@@ -17,7 +13,7 @@ public class AppointGUI {
         public AppointGUI(){
             pm = new PatientManager();
             am = new AppointManager();
-            new PatientListGUI(pm);
+            new AppointmentGUI(am, pm);
         }
 
 }
