@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  */
 public class ChronicMedicationPane extends JPanel{
 
-     private javax.swing.JLabel anapenustikoLabel;
+    private javax.swing.JLabel anapenustikoLabel;
     private javax.swing.JLabel androgonaLabel;
     private javax.swing.JLabel antiagxwlitikaFarmakaLabel;
     private javax.swing.JLabel antiallergicaFarmakaLabel;
@@ -73,15 +73,18 @@ public class ChronicMedicationPane extends JPanel{
     private javax.swing.JRadioButton chronicMedicationRadioButton39;
     private javax.swing.JRadioButton chronicMedicationRadioButton40;
     private javax.swing.JScrollPane chronicMedicationScrollPane;
-    private javax.swing.JSeparator chronicMedicationSeparator2;
-    private javax.swing.JSeparator chronicMedicationSeparator3;
-    private javax.swing.JTextField chronicMedicationTextField01;
-    private javax.swing.JTextField chronicMedicationTextField02;
-    private javax.swing.JTextField chronicMedicationTextField03;
-    private javax.swing.JTextField chronicMedicationTextField04;
-    private javax.swing.JTextField chronicMedicationTextField05;
     private javax.swing.JLabel heartLabel;
     private javax.swing.JLabel insulinLabel;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTextArea jTextArea5;
     private javax.swing.JLabel kardiodiegertikesGlikosidesLabel;
     private javax.swing.JLabel nameOfMedicationLabel;
     private javax.swing.JLabel oistrogonaLabel;
@@ -91,7 +94,6 @@ public class ChronicMedicationPane extends JPanel{
     private javax.swing.JLabel thromvoliticMedicationLabel;
     private javax.swing.JLabel thyroidikesOrmonesLabel;
     private javax.swing.JLabel vitaminesLabel;
-
     private java.util.ListResourceBundle resourceMap;
 
 
@@ -99,11 +101,8 @@ public class ChronicMedicationPane extends JPanel{
 
         this.resourceMap = rm;
 
-
         chronicMedicationScrollPane = new javax.swing.JScrollPane();
-
         chronicMedicationMainPane = new javax.swing.JPanel();
-
         heartLabel = new javax.swing.JLabel();
         antithromvoticMedicationLabel = new javax.swing.JLabel();
         chronicMedicationRadioButton01 = new javax.swing.JRadioButton();
@@ -117,10 +116,8 @@ public class ChronicMedicationPane extends JPanel{
         kardiodiegertikesGlikosidesLabel = new javax.swing.JLabel();
         chronicMedicationRadioButton07 = new javax.swing.JRadioButton();
         chronicMedicationRadioButton08 = new javax.swing.JRadioButton();
-        chronicMedicationTextField01 = new javax.swing.JTextField();
         antiikaFarmakaLabel = new javax.swing.JLabel();
         antiarrythmicaFarmakaLabel = new javax.swing.JLabel();
-        chronicMedicationTextField02 = new javax.swing.JTextField();
         antineoplasmatikaFarmakaLabel = new javax.swing.JLabel();
         chronicMedicationRadioButton09 = new javax.swing.JRadioButton();
         chronicMedicationRadioButton10 = new javax.swing.JRadioButton();
@@ -151,7 +148,6 @@ public class ChronicMedicationPane extends JPanel{
         chronicMedicationRadioButton25 = new javax.swing.JRadioButton();
         chronicMedicationRadioButton26 = new javax.swing.JRadioButton();
         antiepiliptikaFarmakaLabel = new javax.swing.JLabel();
-        chronicMedicationTextField03 = new javax.swing.JTextField();
         androgonaLabel = new javax.swing.JLabel();
         chronicMedicationRadioButton27 = new javax.swing.JRadioButton();
         chronicMedicationRadioButton28 = new javax.swing.JRadioButton();
@@ -174,15 +170,19 @@ public class ChronicMedicationPane extends JPanel{
         chronicMedicationRadioButton39 = new javax.swing.JRadioButton();
         chronicMedicationRadioButton40 = new javax.swing.JRadioButton();
         otherChronicMedicationLabel = new javax.swing.JLabel();
-        chronicMedicationTextField04 = new javax.swing.JTextField();
         nameOfMedicationLabel = new javax.swing.JLabel();
-        chronicMedicationTextField05 = new javax.swing.JTextField();
-        chronicMedicationSeparator2 = new javax.swing.JSeparator();
-        chronicMedicationSeparator3 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea4 = new javax.swing.JTextArea();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea5 = new javax.swing.JTextArea();
 
-
-
-        ButtonGroup YesNoGroup1 = new ButtonGroup();
+         ButtonGroup YesNoGroup1 = new ButtonGroup();
         YesNoGroup1.add(chronicMedicationRadioButton01);
         YesNoGroup1.add(chronicMedicationRadioButton02);
 
@@ -398,315 +398,321 @@ public class ChronicMedicationPane extends JPanel{
 
         nameOfMedicationLabel.setText(resourceMap.getString("nameOfMedication.text"));
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+
+        jTextArea3.setColumns(20);
+        jTextArea3.setRows(5);
+        jScrollPane3.setViewportView(jTextArea3);
+
+        jTextArea4.setColumns(20);
+        jTextArea4.setRows(5);
+        jScrollPane4.setViewportView(jTextArea4);
+
+        jTextArea5.setColumns(20);
+        jTextArea5.setRows(5);
+        jScrollPane5.setViewportView(jTextArea5);
 
         javax.swing.GroupLayout chronicMedicationMainPaneLayout = new javax.swing.GroupLayout(chronicMedicationMainPane);
         chronicMedicationMainPane.setLayout(chronicMedicationMainPaneLayout);
         chronicMedicationMainPaneLayout.setHorizontalGroup(
             chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(antithromvoticMedicationLabel)
+                    .addComponent(thromvoliticMedicationLabel)
                     .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(chronicMedicationRadioButton01)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chronicMedicationRadioButton02))
+                    .addComponent(heartLabel)
+                    .addComponent(bloodSugarLabel)
+                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
                         .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane2)
+                                .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
+                                    .addComponent(chronicMedicationRadioButton05)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(chronicMedicationRadioButton06))
+                                .addComponent(kardiodiegertikesGlikosidesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(antidiastaltikaTisStefaniaiasKikloforiasLabel)
+                                .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
+                                    .addComponent(chronicMedicationRadioButton03)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(chronicMedicationRadioButton04)))
                             .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(kardiodiegertikesGlikosidesLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationTextField01, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(thromvoliticMedicationLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationRadioButton03)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chronicMedicationRadioButton04))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(antiikaFarmakaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationRadioButton07)
+                                .addComponent(chronicMedicationRadioButton23)
                                 .addGap(6, 6, 6)
-                                .addComponent(chronicMedicationRadioButton08))
+                                .addComponent(chronicMedicationRadioButton24))
+                            .addComponent(antipsychotikaFarmakaLabel)
                             .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(antiarrythmicaFarmakaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationTextField02, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(antireumaticaFarmakaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationRadioButton11)
+                                .addComponent(chronicMedicationRadioButton25)
                                 .addGap(6, 6, 6)
-                                .addComponent(chronicMedicationRadioButton12))
+                                .addComponent(chronicMedicationRadioButton26))
+                            .addComponent(insulinLabel)
+                            .addComponent(antiagxwlitikaFarmakaLabel)
+                            .addComponent(antidiabeticTabletsLabel)
                             .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                        .addComponent(antidiastaltikaTisStefaniaiasKikloforiasLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(chronicMedicationRadioButton05))
-                                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                        .addComponent(antithromvoticMedicationLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(chronicMedicationRadioButton01)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(chronicMedicationRadioButton02)
-                                        .addGap(97, 97, 97))
-                                    .addComponent(heartLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chronicMedicationRadioButton06))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(insulinLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(chronicMedicationRadioButton19)
                                 .addGap(6, 6, 6)
                                 .addComponent(chronicMedicationRadioButton20))
                             .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(antidiabeticTabletsLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(chronicMedicationRadioButton21)
                                 .addGap(6, 6, 6)
                                 .addComponent(chronicMedicationRadioButton22))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(antiagxwlitikaFarmakaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationRadioButton23)
-                                .addGap(6, 6, 6)
-                                .addComponent(chronicMedicationRadioButton24))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(antipsychotikaFarmakaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationRadioButton25)
-                                .addGap(6, 6, 6)
-                                .addComponent(chronicMedicationRadioButton26))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(androgonaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationRadioButton27)
-                                .addGap(6, 6, 6)
-                                .addComponent(chronicMedicationRadioButton28))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(oistrogonaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationRadioButton29)
-                                .addGap(6, 6, 6)
-                                .addComponent(chronicMedicationRadioButton30))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(antisilliptikaFarmakaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationRadioButton31)
-                                .addGap(6, 6, 6)
-                                .addComponent(chronicMedicationRadioButton32))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(ormonesLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationRadioButton33)
-                                .addGap(6, 6, 6)
-                                .addComponent(chronicMedicationRadioButton34))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(vitaminesLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationRadioButton35)
-                                .addGap(6, 6, 6)
-                                .addComponent(chronicMedicationRadioButton36))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(sidirosLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationRadioButton37)
-                                .addGap(6, 6, 6)
-                                .addComponent(chronicMedicationRadioButton38))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(antiallergicaFarmakaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationRadioButton39)
-                                .addGap(6, 6, 6)
-                                .addComponent(chronicMedicationRadioButton40))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(otherChronicMedicationLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationTextField04, javax.swing.GroupLayout.DEFAULT_SIZE, 846, Short.MAX_VALUE))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(nameOfMedicationLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationTextField05, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(antineoplasmatikaFarmakaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationRadioButton09)
-                                .addGap(6, 6, 6)
-                                .addComponent(chronicMedicationRadioButton10))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(bloodSugarLabel)
-                                    .addComponent(antiepiliptikaFarmakaLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationTextField03, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE))))
-                    .addComponent(chronicMedicationSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 1011, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chronicMedicationMainPaneLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(chronicMedicationSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 1005, Short.MAX_VALUE))
-                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                        .addContainerGap()
+                            .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(androgonaLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, chronicMedicationMainPaneLayout.createSequentialGroup()
+                                    .addComponent(chronicMedicationRadioButton27)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(chronicMedicationRadioButton28))
+                                .addComponent(oistrogonaLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, chronicMedicationMainPaneLayout.createSequentialGroup()
+                                    .addComponent(chronicMedicationRadioButton29)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(chronicMedicationRadioButton30)))
+                            .addComponent(antiepiliptikaFarmakaLabel)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
                         .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(antiasthmaticaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationRadioButton13)
-                                .addGap(6, 6, 6)
-                                .addComponent(chronicMedicationRadioButton14))
+                                .addGap(2, 2, 2)
+                                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ormonesLabel)
+                                    .addComponent(antisilliptikaFarmakaLabel)
+                                    .addComponent(vitaminesLabel)
+                                    .addComponent(sidirosLabel)
+                                    .addComponent(antiallergicaFarmakaLabel)
+                                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
+                                        .addComponent(chronicMedicationRadioButton35)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(chronicMedicationRadioButton36))
+                                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
+                                        .addComponent(chronicMedicationRadioButton37)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(chronicMedicationRadioButton38))
+                                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
+                                        .addComponent(chronicMedicationRadioButton39)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(chronicMedicationRadioButton40))
+                                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
+                                        .addComponent(chronicMedicationRadioButton33)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(chronicMedicationRadioButton34))
+                                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
+                                        .addComponent(chronicMedicationRadioButton31)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(chronicMedicationRadioButton32))
+                                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
+                                        .addGap(2, 2, 2)
+                                        .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(otherChronicMedicationLabel)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(antiarrythmicaFarmakaLabel)
+                            .addComponent(antiikaFarmakaLabel)
                             .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(antithyroidikaFarmakaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationRadioButton15)
+                                .addComponent(chronicMedicationRadioButton07)
                                 .addGap(6, 6, 6)
-                                .addComponent(chronicMedicationRadioButton16))
-                            .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                                .addComponent(thyroidikesOrmonesLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chronicMedicationRadioButton17)
-                                .addGap(6, 6, 6)
-                                .addComponent(chronicMedicationRadioButton18)
-                                .addGap(28, 28, 28))))
+                                .addComponent(chronicMedicationRadioButton08))
+                            .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, chronicMedicationMainPaneLayout.createSequentialGroup()
+                                    .addComponent(antireumaticaFarmakaLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, chronicMedicationMainPaneLayout.createSequentialGroup()
+                                    .addComponent(chronicMedicationRadioButton11)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(chronicMedicationRadioButton12)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(antineoplasmatikaFarmakaLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, chronicMedicationMainPaneLayout.createSequentialGroup()
+                                    .addComponent(chronicMedicationRadioButton09)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(chronicMedicationRadioButton10))
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(antiasthmaticaLabel)
                     .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                        .addGap(332, 332, 332)
-                        .addComponent(anapenustikoLabel)))
-                .addContainerGap())
+                        .addComponent(chronicMedicationRadioButton13)
+                        .addGap(6, 6, 6)
+                        .addComponent(chronicMedicationRadioButton14))
+                    .addComponent(antithyroidikaFarmakaLabel)
+                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
+                        .addComponent(chronicMedicationRadioButton15)
+                        .addGap(6, 6, 6)
+                        .addComponent(chronicMedicationRadioButton16))
+                    .addComponent(thyroidikesOrmonesLabel)
+                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
+                        .addComponent(chronicMedicationRadioButton17)
+                        .addGap(6, 6, 6)
+                        .addComponent(chronicMedicationRadioButton18))
+                    .addComponent(anapenustikoLabel)
+                    .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane4)
+                        .addComponent(nameOfMedicationLabel)))
+                .addContainerGap(329, Short.MAX_VALUE))
         );
         chronicMedicationMainPaneLayout.setVerticalGroup(
             chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                        .addComponent(heartLabel)
-                        .addGap(29, 29, 29))
-                    .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(antithromvoticMedicationLabel)
-                        .addComponent(chronicMedicationRadioButton01)
-                        .addComponent(chronicMedicationRadioButton02)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(thromvoliticMedicationLabel)
-                    .addComponent(chronicMedicationRadioButton03)
-                    .addComponent(chronicMedicationRadioButton04))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(antidiastaltikaTisStefaniaiasKikloforiasLabel)
-                    .addComponent(chronicMedicationRadioButton05)
-                    .addComponent(chronicMedicationRadioButton06))
-                .addGap(18, 18, 18)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kardiodiegertikesGlikosidesLabel)
-                    .addComponent(chronicMedicationTextField01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addComponent(heartLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(antiikaFarmakaLabel)
-                    .addComponent(chronicMedicationRadioButton07)
-                    .addComponent(chronicMedicationRadioButton08))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(antiarrythmicaFarmakaLabel)
-                    .addComponent(chronicMedicationTextField02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(antineoplasmatikaFarmakaLabel)
-                    .addComponent(chronicMedicationRadioButton09)
-                    .addComponent(chronicMedicationRadioButton10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(antireumaticaFarmakaLabel)
-                    .addComponent(chronicMedicationRadioButton11)
-                    .addComponent(chronicMedicationRadioButton12))
-                .addGap(36, 36, 36)
-                .addComponent(chronicMedicationSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(anapenustikoLabel)
-                .addGap(14, 14, 14)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(antiasthmaticaLabel)
-                    .addComponent(chronicMedicationRadioButton13)
-                    .addComponent(chronicMedicationRadioButton14))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(antithyroidikaFarmakaLabel)
-                    .addComponent(chronicMedicationRadioButton15)
-                    .addComponent(chronicMedicationRadioButton16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(thyroidikesOrmonesLabel)
-                    .addComponent(chronicMedicationRadioButton17)
-                    .addComponent(chronicMedicationRadioButton18))
-                .addGap(42, 42, 42)
-                .addComponent(chronicMedicationSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(insulinLabel)
-                            .addComponent(chronicMedicationRadioButton19)
-                            .addComponent(chronicMedicationRadioButton20))
+                        .addComponent(antithromvoticMedicationLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(antidiabeticTabletsLabel)
+                            .addComponent(chronicMedicationRadioButton01)
+                            .addComponent(chronicMedicationRadioButton02))
+                        .addGap(12, 12, 12)
+                        .addComponent(thromvoliticMedicationLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chronicMedicationRadioButton03)
+                            .addComponent(chronicMedicationRadioButton04))
+                        .addGap(12, 12, 12)
+                        .addComponent(antidiastaltikaTisStefaniaiasKikloforiasLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chronicMedicationRadioButton05)
+                            .addComponent(chronicMedicationRadioButton06))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(kardiodiegertikesGlikosidesLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
+                        .addComponent(antiikaFarmakaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chronicMedicationRadioButton07)
+                            .addComponent(chronicMedicationRadioButton08))
+                        .addGap(18, 18, 18)
+                        .addComponent(antiarrythmicaFarmakaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(antineoplasmatikaFarmakaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chronicMedicationRadioButton09)
+                            .addComponent(chronicMedicationRadioButton10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(antireumaticaFarmakaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chronicMedicationRadioButton11)
+                            .addComponent(chronicMedicationRadioButton12))))
+                .addGap(42, 42, 42)
+                .addComponent(bloodSugarLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
+                        .addComponent(insulinLabel)
+                        .addGap(3, 3, 3)
+                        .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chronicMedicationRadioButton19)
+                            .addComponent(chronicMedicationRadioButton20))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(antidiabeticTabletsLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(chronicMedicationRadioButton21)
                             .addComponent(chronicMedicationRadioButton22))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(antiagxwlitikaFarmakaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(antiagxwlitikaFarmakaLabel)
                             .addComponent(chronicMedicationRadioButton23)
                             .addComponent(chronicMedicationRadioButton24))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(antipsychotikaFarmakaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chronicMedicationRadioButton25)
+                            .addComponent(chronicMedicationRadioButton26))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(antiepiliptikaFarmakaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
+                        .addComponent(antisilliptikaFarmakaLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(antipsychotikaFarmakaLabel)
-                            .addComponent(chronicMedicationRadioButton25)
-                            .addComponent(chronicMedicationRadioButton26)))
-                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
+                            .addComponent(chronicMedicationRadioButton31)
+                            .addComponent(chronicMedicationRadioButton32))
+                        .addGap(9, 9, 9)
+                        .addComponent(ormonesLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chronicMedicationRadioButton33)
+                            .addComponent(chronicMedicationRadioButton34))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bloodSugarLabel)))
+                        .addComponent(vitaminesLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chronicMedicationRadioButton35)
+                            .addComponent(chronicMedicationRadioButton36))
+                        .addGap(12, 12, 12)
+                        .addComponent(sidirosLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chronicMedicationRadioButton37)
+                            .addComponent(chronicMedicationRadioButton38))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(antiallergicaFarmakaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chronicMedicationRadioButton39)
+                            .addComponent(chronicMedicationRadioButton40))))
+                .addGap(24, 24, 24)
+                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
+                        .addComponent(androgonaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chronicMedicationRadioButton27)
+                            .addComponent(chronicMedicationRadioButton28))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(oistrogonaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chronicMedicationRadioButton29)
+                            .addComponent(chronicMedicationRadioButton30)))
+                    .addGroup(chronicMedicationMainPaneLayout.createSequentialGroup()
+                        .addComponent(otherChronicMedicationLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(nameOfMedicationLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(antiepiliptikaFarmakaLabel)
-                    .addComponent(chronicMedicationTextField03, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(androgonaLabel)
-                    .addComponent(chronicMedicationRadioButton27)
-                    .addComponent(chronicMedicationRadioButton28))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(oistrogonaLabel)
-                    .addComponent(chronicMedicationRadioButton29)
-                    .addComponent(chronicMedicationRadioButton30))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(antisilliptikaFarmakaLabel)
-                    .addComponent(chronicMedicationRadioButton31)
-                    .addComponent(chronicMedicationRadioButton32))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ormonesLabel)
-                    .addComponent(chronicMedicationRadioButton33)
-                    .addComponent(chronicMedicationRadioButton34))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(vitaminesLabel)
-                    .addComponent(chronicMedicationRadioButton35)
-                    .addComponent(chronicMedicationRadioButton36))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sidirosLabel)
-                    .addComponent(chronicMedicationRadioButton37)
-                    .addComponent(chronicMedicationRadioButton38))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(antiallergicaFarmakaLabel)
-                    .addComponent(chronicMedicationRadioButton39)
-                    .addComponent(chronicMedicationRadioButton40))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(otherChronicMedicationLabel)
-                    .addComponent(chronicMedicationTextField04, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(anapenustikoLabel)
+                .addGap(10, 10, 10)
+                .addComponent(antiasthmaticaLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameOfMedicationLabel)
-                    .addComponent(chronicMedicationTextField05, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(67, Short.MAX_VALUE))
+                    .addComponent(chronicMedicationRadioButton13)
+                    .addComponent(chronicMedicationRadioButton14))
+                .addGap(10, 10, 10)
+                .addComponent(antithyroidikaFarmakaLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chronicMedicationRadioButton15)
+                    .addComponent(chronicMedicationRadioButton16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(thyroidikesOrmonesLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chronicMedicationRadioButton17)
+                    .addComponent(chronicMedicationRadioButton18))
+                .addGap(115, 115, 115))
         );
 
         chronicMedicationScrollPane.setViewportView(chronicMedicationMainPane);
@@ -715,12 +721,13 @@ public class ChronicMedicationPane extends JPanel{
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(chronicMedicationScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+            .addComponent(chronicMedicationScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(chronicMedicationScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1052, Short.MAX_VALUE)
+            .addComponent(chronicMedicationScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
         );
+
 
     }
 
