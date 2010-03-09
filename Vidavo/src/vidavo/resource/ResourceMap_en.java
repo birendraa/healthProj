@@ -69,6 +69,8 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
                 {"patientTable.columnModel.title2", "First Name"},
                 {"patientTable.columnModel.title1", "Last Name"},
                 {"patientTable.columnModel.title0", "Patient ID"},
+
+                //Menu
                 {"fileMenu.text", "File Menu"},
                 {"quitMenuItem.text", "Quit Menu"},
                 {"helpMenu.text", "Help Menu"},
@@ -201,6 +203,15 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
                 {"erpikoEkzemaLabel.text","Erpiko Ekzema :"},
                 {"ipatitidaLabel.text","Ipatitida :"},
                 {"allesChroniesAstheneiesLabel.text","Alles Chronies Astheneies :"},
+
+                //Appointments Window
+                {"patientNotesLabel.text","Patient Notes :"},
+                {"goButton.text","Go"},
+                {"addAppointmentButton.text","Add Appointment"},
+                {"searchButton.text","Search"},
+                {"patientsButton.text","My Patients"},
+                {"removeAppointmentButton.text","Remove Appointment"},
+                {"printButton.text","Print"},
             };
     };
 

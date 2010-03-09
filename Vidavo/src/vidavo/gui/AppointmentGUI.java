@@ -57,7 +57,8 @@ public class AppointmentGUI extends javax.swing.JFrame{
         helpMenu = new javax.swing.JMenu();
 
 //        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+        resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
+        
         appointmentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"08:00", null},
@@ -81,64 +82,59 @@ public class AppointmentGUI extends javax.swing.JFrame{
             }
         ));
         appointmentTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        
         tableScrollPane.setViewportView(appointmentTable);
-
-        patientNotesLabel.setText("Patient Notes :");
 
         patientNotesTextArea.setColumns(20);
         patientNotesTextArea.setRows(5);
 
         patientNoteScrollPane.setViewportView(patientNotesTextArea);
 
-        fileMenu.setText("File");
-
-        exitMenuItem.setText("Exit");
         fileMenu.add(exitMenuItem);
-
         menuBar.add(fileMenu);
-
-        helpMenu.setText("Help");
         menuBar.add(helpMenu);
-
         setJMenuBar(menuBar);
-        
-        goButton.setText("Go");
+
+        patientNotesLabel.setText((resourceMap.getString("patientNotesLabel.text")));
+        fileMenu.setText((resourceMap.getString("fileMenu.text")));
+        exitMenuItem.setText((resourceMap.getString("quitMenuItem.text")));
+        helpMenu.setText((resourceMap.getString("helpMenu.text")));
+        goButton.setText((resourceMap.getString("goButton.text")));
+        addAppointmentButton.setText((resourceMap.getString("addAppointmentButton.text")));
+        searchButton.setText((resourceMap.getString("searchButton.text")));
+        patientsButton.setText((resourceMap.getString("patientsButton.text")));
+        removeAppointmentButton.setText((resourceMap.getString("removeAppointmentButton.text")));
+        printButton.setText((resourceMap.getString("printButton.text")));
+
         goButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goButtonActionPerformed(evt);
             }
         });
 
-        addAppointmentButton.setText("Add Appointment");
         addAppointmentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addAppointmentButtonActionPerformed(evt);
             }
         });
 
-        searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
             }
         });
 
-        patientsButton.setText("My Patients");
         patientsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 patientsButtonActionPerformed(evt);
             }
         });
 
-        removeAppointmentButton.setText("Remove Appointment");
         removeAppointmentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removePatientButtonActionPerformed(evt);
             }
         });
 
-        printButton.setText("Print");
         printButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 printButtonActionPerformed(evt);
