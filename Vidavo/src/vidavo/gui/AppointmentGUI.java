@@ -5,8 +5,7 @@ import java.util.ListResourceBundle;
 
 public class AppointmentGUI extends javax.swing.JFrame{
 
-    private AppointManager am;
-    private PatientManager pm;
+    private ManagerHolder mh;
     private ListResourceBundle resourceMap;
 
     private javax.swing.JButton addAppointmentButton;
@@ -27,10 +26,9 @@ public class AppointmentGUI extends javax.swing.JFrame{
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextField;
     
-    public AppointmentGUI(AppointManager am, PatientManager pm){
+    public AppointmentGUI(ManagerHolder mh){
         initComponents();
-        this.am = am;
-        this.pm = pm;
+        this.mh = mh;
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -209,7 +207,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
     }
 
     private void patientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        new PatientListGUI(this.pm);
+        new PatientListGUI(this.mh);
         this.dispose();
     }
 

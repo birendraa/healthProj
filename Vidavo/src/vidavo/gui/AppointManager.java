@@ -4,11 +4,11 @@ package vidavo.gui;
 import vidavo.AppointmentList;
 
 public class AppointManager {
-    private AppointmentList pl;
+    private AppointmentList al;
     private DatabaseManager db;
 
     public AppointManager(){
         db = new DatabaseManager();
-        pl = new AppointmentList();
+        al = new AppointmentList();
     }
 }

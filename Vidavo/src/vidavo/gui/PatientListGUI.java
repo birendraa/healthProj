@@ -20,7 +20,7 @@ import vidavo.Patient;
  */
 public class PatientListGUI extends javax.swing.JFrame implements ActionListener{
 
-    private PatientManager pm;
+    private ManagerHolder mh;
     private ListResourceBundle resourceMap;
 
     private javax.swing.JButton addButton;
@@ -39,13 +39,10 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
     private javax.swing.JScrollPane tableScrollPane;
     private javax.swing.table.DefaultTableModel model;
 
-    /**
-     *
-     * @param pM
-     */
-    public PatientListGUI(PatientManager pM){
+
+    public PatientListGUI(ManagerHolder mh){
         super();
-        this.pm = pM;
+        this.mh = mh;
         initComponents();
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -54,16 +51,14 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
                 showCancelDialog();
             }
         });
-        this.pm.retrievePatientData();
+        this.mh.getPm().retrievePatientData();
         this.displayPatientsList();
         this.pack();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
     }
 
-    /**
-     *
-     */
+
     public void initComponents(){
         menuBar = new javax.swing.JMenuBar();
         patientListPanel = new javax.swing.JPanel();
@@ -244,12 +239,12 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          }
 
          if(c.equals("add")){
-                new AddPatientGUI(pm,pm.getPL().size() + 1,resourceMap);
+                new AddPatientGUI(mh, mh.getPm().getPL().size() + 1,resourceMap);
                 this.dispose();
          }
 
          if(c.equals("delete")){
-                pm.deletePatient(Integer.parseInt(model.getValueAt(patientTable.getSelectedRow(), 0).toString()));
+                mh.getPm().deletePatient(Integer.parseInt(model.getValueAt(patientTable.getSelectedRow(), 0).toString()));
                 while(model.getRowCount() != 0)
                     model.removeRow(0);
  //               pm.loadPatientsList();
@@ -258,7 +253,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          if(c.equals("edit")){
                 if(patientTable.getSelectedRow() != -1){
                     int selectedID = (Integer.parseInt((String)patientTable.getValueAt(patientTable.getSelectedRow(), 0)));
-                    AddPatientGUI p = new AddPatientGUI(pm, selectedID,resourceMap);
+                    AddPatientGUI p = new AddPatientGUI(mh, selectedID,resourceMap);
                     this.dispose();
                 }
                 else
@@ -270,7 +265,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          }
 
          if(c.equals("search")){
-             pm.searchPatient((String)patientTable.getValueAt(patientTable.getSelectedRow(), 1));
+             mh.getPm().searchPatient((String)patientTable.getValueAt(patientTable.getSelectedRow(), 1));
          }
     }
 
@@ -279,7 +274,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
      */
     public void displayPatientsList(){
             vidavo.PersonalInfo pi = new vidavo.PersonalInfo();
-            vidavo.PatientList pl = this.pm.getPL();
+            vidavo.PatientList pl = this.mh.getPm().getPL();
             for(int i = 1; i <= pl.size(); i++){
                 pi = ((Patient)pl.getPatientAtIndex(i)).getPersonalInfo();
                 this.model.insertRow(this.patientTable.getRowCount(), new Object[]{pi.getID(),pi.getLName(),pi.getFName(),pi.getHomeNum()}); //addrow(pi.getID(),pi.getLName(),pi.getFName(),pi.getHomeNum())
@@ -312,6 +307,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         }
         else if (value == JOptionPane.YES_OPTION)
         {
+            new AppointmentGUI(mh);
             this.dispose();
         }
     }

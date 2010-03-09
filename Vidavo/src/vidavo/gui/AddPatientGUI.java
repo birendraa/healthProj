@@ -13,7 +13,7 @@ import javax.swing.*;
  */
 public class AddPatientGUI extends JFrame implements ActionListener{
 
-    private PatientManager pm;
+    private ManagerHolder mh;
     private java.util.ListResourceBundle resourceMap;
 
     private JTabbedPane addPatientTabbedPane;
@@ -36,10 +36,10 @@ public class AddPatientGUI extends JFrame implements ActionListener{
      * @param pm
      * @param selectedID
      */
-    public AddPatientGUI(PatientManager pm, int selectedID, java.util.ListResourceBundle rm)
+    public AddPatientGUI(ManagerHolder mh, int selectedID, java.util.ListResourceBundle rm)
     {
         super();
-        this.pm = pm;
+        this.mh = mh;
         this.resourceMap = rm;
         initComponents();
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -73,7 +73,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         chronicDiseasesPane = new ChronicDiseasesPane(resourceMap);
         contactsPane = new ContactsPane(resourceMap);
         photosPane = new PhotosPane(resourceMap);
-        personalInfoPane = new PersonalInfoPane(pm);
+        personalInfoPane = new PersonalInfoPane(mh);
         saveButton = new JButton();
         cancelButton = new JButton();
 
@@ -204,7 +204,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         else if (value == JOptionPane.YES_OPTION)
         {
             this.dispose();
-            new PatientListGUI(pm);
+            new PatientListGUI(mh);
         }
     }
 }

@@ -1,19 +1,13 @@
 
 package vidavo.gui;
 
-/**
- *
- * @author Serban
- */
 public class AppointGUI {
 
-        PatientManager pm;
-        AppointManager am;
+        ManagerHolder mh;
 
         public AppointGUI(){
-            pm = new PatientManager();
-            am = new AppointManager();
-            new AppointmentGUI(am, pm);
+            mh = new ManagerHolder(new AppointManager(), new PatientManager());
+            new AppointmentGUI(mh);
         }
 
 }

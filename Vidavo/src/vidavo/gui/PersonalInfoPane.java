@@ -79,11 +79,11 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
     private JTextField ageTextField;
 
     int patientID = 0;
-    private PatientManager pm;
+    private ManagerHolder mh;
 
-    public PersonalInfoPane(PatientManager pm){
+    public PersonalInfoPane(ManagerHolder mh){
         super();
-        this.pm = pm;
+        this.mh = mh;
         assignIdToPatient();
         initPane();
     }
@@ -484,15 +484,15 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
     }
 
     private void assignIdToPatient(){
-        if(pm.getPL() != null){
-            for(int i = 1; i <= pm.getPL().size(); i++){
-                if(pm.getPL().getPatientAtIndex(i).getPatientID() != i){
+        if(mh.getPm().getPL() != null){
+            for(int i = 1; i <= mh.getPm().getPL().size(); i++){
+                if(mh.getPm().getPL().getPatientAtIndex(i).getPatientID() != i){
                     patientID = i;
                     break;
                 }
             }
             if(patientID == 0)
-                patientID = pm.getPL().size() + 1;
+                patientID = mh.getPm().getPL().size() + 1;
         }
         else{
             patientID = 1;
@@ -505,7 +505,7 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
 
     public void loadPersonalInfo(int selectedID){
 
-          PersonalInfo info = pm.getPL().getPatient(selectedID).getPersonalInfo();
+          PersonalInfo info = mh.getPm().getPL().getPatient(selectedID).getPersonalInfo();
           idLabel2.setText(Integer.toString(selectedID));
           firstNTextField.setText(info.getFName());
           middleNTextField.setText(info.getMName());
