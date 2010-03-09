@@ -202,7 +202,24 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"allesChroniesAstheneiesLabel.text","Άλλες χρόνιες ασθένειες :"},
 
                 //Contacts
+
+
+                //Immunization History
+
+
+                //Habits
                 
+
+                //Appointments Window
+                {"patientNotesLabel.text","Σημειώσεις Ασθενή :"},
+                {"selectButton.text","Επιλογή"},
+                {"addAppointmentButton.text","Προσθήκη Ραντεβού"},
+                {"searchButton.text","Έρευνα"},
+                {"patientsButton.text","Ασθενείς"},
+                {"removeAppointmentButton.text","Αφαίρεση Ραντεβού"},
+                {"printButton.text","Εκτύπωση"},
+
+                //Add Appointment Window
             };
     };
 

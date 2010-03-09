@@ -204,9 +204,21 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
                 {"ipatitidaLabel.text","Ipatitida :"},
                 {"allesChroniesAstheneiesLabel.text","Alles Chronies Astheneies :"},
 
+                //Contacts
+
+
+                //Immunization History
+                
+
+                //Habits
+                
+
+                //Add Appointment Window
+                
+
                 //Appointments Window
                 {"patientNotesLabel.text","Patient Notes :"},
-                {"goButton.text","Go"},
+                {"selectButton.text","Select"},
                 {"addAppointmentButton.text","Add Appointment"},
                 {"searchButton.text","Search"},
                 {"patientsButton.text","My Patients"},

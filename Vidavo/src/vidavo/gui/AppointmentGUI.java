@@ -13,7 +13,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
     private javax.swing.JTable appointmentTable;
     private com.toedter.calendar.JDateChooser dateChooser;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JButton goButton;
+    private javax.swing.JButton selectButton;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem exitMenuItem;
@@ -39,7 +39,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
     private void initComponents() {
         
         dateChooser = new com.toedter.calendar.JDateChooser();
-        goButton = new javax.swing.JButton();
+        selectButton = new javax.swing.JButton();
         addAppointmentButton = new javax.swing.JButton();
         searchTextField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
@@ -57,7 +57,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
         helpMenu = new javax.swing.JMenu();
 
 //        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
+        resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("gr"));
         
         appointmentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -98,14 +98,14 @@ public class AppointmentGUI extends javax.swing.JFrame{
         fileMenu.setText((resourceMap.getString("fileMenu.text")));
         exitMenuItem.setText((resourceMap.getString("quitMenuItem.text")));
         helpMenu.setText((resourceMap.getString("helpMenu.text")));
-        goButton.setText((resourceMap.getString("goButton.text")));
+        selectButton.setText((resourceMap.getString("selectButton.text")));
         addAppointmentButton.setText((resourceMap.getString("addAppointmentButton.text")));
         searchButton.setText((resourceMap.getString("searchButton.text")));
         patientsButton.setText((resourceMap.getString("patientsButton.text")));
         removeAppointmentButton.setText((resourceMap.getString("removeAppointmentButton.text")));
         printButton.setText((resourceMap.getString("printButton.text")));
 
-        goButton.addActionListener(new java.awt.event.ActionListener() {
+        selectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goButtonActionPerformed(evt);
             }
@@ -157,7 +157,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(goButton, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE))
+                            .addComponent(selectButton, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(patientsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -177,7 +177,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
                     .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(addAppointmentButton)
-                        .addComponent(goButton)))
+                        .addComponent(selectButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
