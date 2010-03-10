@@ -244,6 +244,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
             cm.setCmId(p.getPatientId());
             cd.setChId(p.getPatientId());
             habits.setHabitsId(p.getPatientId());
+            immun.setImmunId(p.getPatientId());
             pm.editPatient(p,pi,sh,fh,contacts,cm,cd,habits,immun);
             this.dispose();
             new PatientListGUI(mh);
