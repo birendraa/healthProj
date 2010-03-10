@@ -4,9 +4,11 @@ package vidavo.gui;
 import java.util.ListResourceBundle;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import vidavo.SurgeryHistory;
+import vidavo.pojos.*;
 
 public class SurgicalHistoryPane extends JPanel{
+
+    private SurgicalHistory sh;
 
     private javax.swing.JScrollPane finalDiagnosisScrollingArea;
     private javax.swing.JScrollPane reasonOfHospitalizationScrollingArea;
@@ -23,7 +25,7 @@ public class SurgicalHistoryPane extends JPanel{
 
     private java.util.ListResourceBundle resourceMap;
 
-    public SurgicalHistoryPane(java.util.ListResourceBundle rm){
+    public SurgicalHistoryPane(java.util.ListResourceBundle rm,String mode,SurgicalHistory sh){
 
         this.resourceMap = rm;
         
@@ -100,10 +102,30 @@ public class SurgicalHistoryPane extends JPanel{
                             .addComponent(doctorsNameLabel))))
                 .addContainerGap(142, Short.MAX_VALUE))
         );
+        if(mode.equals("edit"))
+        {
+            this.sh = sh;
+            loadSurgicalHistory(sh);
+        }
     }
 
-    public SurgeryHistory getSurgeryHistoryInformation(){
-        return new SurgeryHistory(descriptionOfSurgeryTextField.getText(), hospitalNameTextField.getText(),
+    public SurgicalHistory getSurgeryHistoryInformation(){
+        return new SurgicalHistory(descriptionOfSurgeryTextField.getText(), hospitalNameTextField.getText(),
                 reasonOfHospitalizationTextArea.getText(), finalDiagnosisTextArea.getText(), doctorsNameTextField.getText());
+    }
+
+    public void loadSurgicalHistory(SurgicalHistory sh)
+    {
+        descriptionOfSurgeryTextField.setText(sh.getDescriptionOfSurgery());
+        hospitalNameTextField.setText(sh.getHospitalName());
+        reasonOfHospitalizationTextArea.setText(sh.getReasonOfHospitalization());
+        finalDiagnosisTextArea.setText(sh.getFinalDiagnosis());
+        doctorsNameTextField.setText(sh.getDoctorsName());
+
+//        descriptionOfSurgeryTextField.setText("aaa");
+//        hospitalNameTextField.setText("bbb");
+//        reasonOfHospitalizationTextArea.setText("ccc");
+//        finalDiagnosisTextArea.setText("ddd");
+//        doctorsNameTextField.setText("eee");
     }
 }

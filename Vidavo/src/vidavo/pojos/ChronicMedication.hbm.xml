@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 9.3.2010 22:42: by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="vidavo" name="vidavo.pojos.ChronicMedication" table="chronic_medication">
+    <id name="cmId" type="int">
+      <column name="cmID"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="vidavo.pojos.Patients" fetch="select" insert="false" name="patients" update="false">
+      <column name="cmID" not-null="true" unique="true"/>
+    </many-to-one>
+    <property name="antithromvotikaFarmaka" type="string">
+      <column length="10" name="AntithromvotikaFarmaka"/>
+    </property>
+    <property name="thromvolitikaFarmaka" type="string">
+      <column length="10" name="ThromvolitikaFarmaka"/>
+    </property>
+    <property name="antidiastaltikaTisStefaniaiasKikloforias" type="string">
+      <column length="10" name="AntidiastaltikaTisStefaniaiasKikloforias"/>
+    </property>
+    <property name="kardiodiegertikesGlikosides" type="string">
+      <column length="50" name="KardiodiegertikesGlikosides"/>
+    </property>
+    <property name="antiikaFarmaka" type="string">
+      <column length="10" name="AntiikaFarmaka"/>
+    </property>
+    <property name="antiarrythmikaFarmaka" type="string">
+      <column length="50" name="AntiarrythmikaFarmaka"/>
+    </property>
+    <property name="antineoplasmatikaFarmaka" type="string">
+      <column length="10" name="AntineoplasmatikaFarmaka"/>
+    </property>
+    <property name="antireumatikaFarmaka" type="string">
+      <column length="10" name="AntireumatikaFarmaka"/>
+    </property>
+    <property name="antiasthmatikaFarmaka" type="string">
+      <column length="10" name="AntiasthmatikaFarmaka"/>
+    </property>
+    <property name="antithyroidikaFarmaka" type="string">
+      <column length="10" name="AntithyroidikaFarmaka"/>
+    </property>
+    <property name="thyroidikesOrmones" type="string">
+      <column length="10" name="ThyroidikesOrmones"/>
+    </property>
+    <property name="insulin" type="string">
+      <column length="10" name="Insulin"/>
+    </property>
+    <property name="antidiabeticTablets" type="string">
+      <column length="10" name="AntidiabeticTablets"/>
+    </property>
+    <property name="anticoagulantMedication" type="string">
+      <column length="10" name="AnticoagulantMedication"/>
+    </property>
+    <property name="antipsychoticMedication" type="string">
+      <column length="10" name="AntipsychoticMedication"/>
+    </property>
+    <property name="antiepilipticMedication" type="string">
+      <column length="50" name="AntiepilipticMedication"/>
+    </property>
+    <property name="androgona" type="string">
+      <column length="10" name="Androgona"/>
+    </property>
+    <property name="oistrogona" type="string">
+      <column length="10" name="Oistrogona"/>
+    </property>
+    <property name="antisilliptikaFarmaka" type="string">
+      <column length="10" name="AntisilliptikaFarmaka"/>
+    </property>
+    <property name="ormones" type="string">
+      <column length="10" name="Ormones"/>
+    </property>
+    <property name="vitamines" type="string">
+      <column length="10" name="Vitamines"/>
+    </property>
+    <property name="sidiros" type="string">
+      <column length="10" name="Sidiros"/>
+    </property>
+    <property name="antiallergikaFarmaka" type="string">
+      <column length="10" name="AntiallergikaFarmaka"/>
+    </property>
+    <property name="otherChronicMedication" type="string">
+      <column length="50" name="OtherChronicMedication"/>
+    </property>
+    <property name="nameOfMedication" type="string">
+      <column length="50" name="NameOfMedication"/>
+    </property>
+  </class>
+</hibernate-mapping>

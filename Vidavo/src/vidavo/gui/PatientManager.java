@@ -7,11 +7,18 @@ package vidavo.gui;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import vidavo.Patient;
-import vidavo.PatientList;
-import vidavo.PersonalInfo;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Vector;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import vidavo.pojos.*;
+import vidavo.util.HibernateUtil;
 
 
 /**
@@ -20,142 +27,369 @@ import vidavo.PersonalInfo;
  */
 public class PatientManager {
 
-    private PatientList pl;
-    private DatabaseManager db;
     private int patientID;
     private int patientNumber;
+    private Patients p;
+    private PersonalInfo pi;
+    private SurgicalHistory sh;
+    private FamilyHistory fh;
+    private Contacts contacts;
+    private ChronicMedication cm;
+    private ChronicDiseases cd;
+    private Habits habits;
+    private Immunizations immun;
+    private Session s;
+    private Transaction tx;
+    final static Logger logger = LoggerFactory.getLogger(PatientManager.class);
 
 
     public PatientManager(){
-        db = new DatabaseManager();
-        pl = new PatientList();
+
     }
 
-    public PatientList getPL() {
-        return pl;
-    }
+    public void createPatient(PersonalInfo pi,SurgicalHistory sh,FamilyHistory fh,Contacts contacts,ChronicMedication cm,ChronicDiseases cd,Habits habits,Immunizations immun){
+        tx = null;
+        s = HibernateUtil.getSessionFactory().openSession();
+    try {
+        tx = s.beginTransaction();
+        Patients p = new Patients();
+        s.save(p);
+        s.flush();
+        
+        p.setPersonalInfos(new HashSet());
+        pi.setPiId(p.getPatientId());
+        p.getPersonalInfos().add(pi);
 
-    public void setPL(PatientList pl) {
-        this.pl = pl;
-    }
+        p.setSurgicalHistories(new HashSet());
+        sh.setShId(p.getPatientId());
+        p.getSurgicalHistories().add(sh);
 
-    void deletePatient(int patientID){
-          try{
-            db.update("DELETE FROM personalInfo where patientId = " + patientID);
-          }
-          catch (SQLException s){
-              s.printStackTrace();
-            System.out.println("Error in deleting patient");
-          }
-    }
+        p.setFamilyHistories(new HashSet());
+        fh.setFhId(p.getPatientId());
+        p.getFamilyHistories().add(fh);
 
-    int countPatients(){
-        int count = 0;
+        p.setContactses(new HashSet());
+        contacts.setContactId(p.getPatientId());
+        p.getContactses().add(contacts);
+
+        p.setChronicMedications(new HashSet());
+        cm.setCmId(p.getPatientId());
+        p.getChronicMedications().add(cm);
+
+        p.setChronicDiseaseses(new HashSet());
+        cd.setChId(p.getPatientId());
+        p.getChronicDiseaseses().add(cd);
+
+        p.setHabitses(new HashSet());
+        habits.setHabitsId(p.getPatientId());
+        p.getHabitses().add(habits);
+
+        p.setImmunizationses(new HashSet());
+        immun.setImmunId(p.getPatientId());
+        p.getImmunizationses().add(immun);
+
+        s.save(p);
+        s.flush();
+
+      tx.commit();
+        s.close();
+    } catch (RuntimeException e) {
+      if (tx != null && tx.isActive()) {
         try {
-            ResultSet r = db.query("SELECT COUNT(*) AS rowcount FROM patients");
-            r.next();
-            count = r.getInt("rowcount");
-            r.close();
-            System.out.println("Patients has " + count + " row(s).");
-        } catch (SQLException ex) {
-            System.out.println("Error in counting patients");
+          tx.rollback();
+        } catch (HibernateException e1) {
+          logger.debug("Error rolling back transaction");
         }
-        return count + 1;
+        throw e;
+      }
     }
 
-   public PatientList searchPatient(String lName){
-            //ResultSet res = db.query("SELECT patientID, LastName, FirstName, Home_Number FROM personalInfo WHERE LastName like '" + text + "%';");
-            PatientList searchList = new PatientList();
-            Patient patient = new Patient();
-            for(int i = 1; i < pl.size(); i++){
-                patient = ((Patient)pl.getPatientAtIndex(i));
-                if(patient.getPersonalInfo().getLName().equals(lName)){
-                    searchList.addNewPatient(patient);
-                }
-            }
-        return searchList;
     }
 
-    void dbConnect() {
-        db.connect();
-    }
+   public void deletePatient(int id)
+   {
+        s = HibernateUtil.getSessionFactory().openSession();
+        tx = s.beginTransaction();
 
-    void dbDisconnect(){
-        db.disconnect();
-    }
-
-    ResultSet dbQuery(String s) throws SQLException{
-        return this.db.query(s);
-    }
-
-    void dbUpdate(String s){
+        List person = s.createQuery("from Patients p where p.patientId = " + id).list();
+        p = (Patients) person.get(0);
         try {
-            db.update(s);
-        } catch (SQLException ex) {
-           System.out.println ("Update error");
+      s.delete(p);
+      tx.commit();
+    } catch (RuntimeException e) {
+      if (tx != null && tx.isActive()) {
+        try {
+          tx.rollback();
+        } catch (HibernateException e1) {
+          logger.debug("Error rolling back transaction");
         }
+        throw e;
+      }
     }
-/*
- * addPatient(pi)
- * {
- *    Patient p = new Patient(pi);
- *   // checkRequiredFields();
- *   // PersnoalInfo pi = new PersonalInfo(reg attributes);
- *   // pi.setAttributes(optional)
- *    pl.add(p);
-    }
- *
- *
- *
- */
-    public void retrievePatientData(){
+   }
 
+    Vector displayPatients() {
+        s = HibernateUtil.getSessionFactory().openSession();
+        tx = s.beginTransaction();
+
+        List patients =
+            s.createQuery("from PersonalInfo as personalinfo order by personalinfo.piId").list();
+        tx.commit();
+        s.close();
+        return displayResult(patients);
+    }
+
+    private Vector displayResult(List patients) {
+        Vector <Object> oneRow = new Vector<Object>();
+        for(int i = 0; i < patients.size(); i++) {
+        pi = (PersonalInfo)patients.get(i);
+        oneRow.add(pi.getPiId());
+        oneRow.add(pi.getLastName());
+        oneRow.add(pi.getFirstName());
+        oneRow.add(pi.getHomeNumber());
+    }
+        return oneRow;
+    }
+
+    PersonalInfo getSelectedPatient(int id) {
+        s = HibernateUtil.getSessionFactory().openSession();
+        tx = s.beginTransaction();
+
+        List person = s.createQuery("from PersonalInfo p where p.piId = " + id).list();
+        pi = (PersonalInfo) person.get(0);
+        try {
+      tx.commit();
+      s.close();
+    } catch (RuntimeException e) {
+      if (tx != null && tx.isActive()) {
+        try {
+          tx.rollback();
+        } catch (HibernateException e1) {
+          logger.debug("Error rolling back transaction");
+        }
+        throw e;
+      }
+    }
+        return pi;
+    }
+
+    public void editPatient(Patients p,PersonalInfo pi,SurgicalHistory sh,FamilyHistory fh,Contacts contacts,ChronicMedication cm,ChronicDiseases cd,Habits habits,Immunizations immun)
+    {
+            tx = null;
+            s = HibernateUtil.getSessionFactory().openSession();
+    try {
+      tx = s.beginTransaction();
+      p = (Patients) s.load(Patients.class, p.getPatientId());
+
+      p.getPersonalInfos().add(pi);
+      p.getSurgicalHistories().add(sh);
+      p.getFamilyHistories().add(fh);
+      p.getContactses().add(contacts);
+      p.getChronicMedications().add(cm);
+      p.getChronicDiseaseses().add(cd);
+      p.getHabitses().add(habits);
+      p.getImmunizationses().add(immun);
+
+      s.merge(p);
+      s.update(p);
+      tx.commit();
+        s.close();
+    } catch (RuntimeException e) {
+      if (tx != null && tx.isActive()) {
+        try {
+          tx.rollback();
+        } catch (HibernateException e1) {
+          logger.debug("Error rolling back transaction");
+        }
+        throw e;
+      }
+    }
+    }
+
+    public Vector searchPatient(String string) {
+        s = HibernateUtil.getSessionFactory().openSession();
+        tx = s.beginTransaction();
+
+        List patients = s.createQuery("from PersonalInfo p where p.lastName like '" + string+ "%' order by p.piId").list();
+        tx.commit();
+        s.close();
+        return displayResult(patients);
+    }
+
+    SurgicalHistory getSelectedPatientSH(int id) {
+        s = HibernateUtil.getSessionFactory().openSession();
+        tx = s.beginTransaction();
+
+        List person = s.createQuery("from SurgicalHistory sh where sh.shId = " + id).list();
+        sh = (SurgicalHistory) person.get(0);
+        try {
+      tx.commit();
+      s.close();
+    } catch (RuntimeException e) {
+      if (tx != null && tx.isActive()) {
+        try {
+          tx.rollback();
+        } catch (HibernateException e1) {
+          logger.debug("Error rolling back transaction");
+        }
+        throw e;
+      }
+    }
+        return sh;
+    }
+
+    public Patients getPatient(int piId) {
+        s = HibernateUtil.getSessionFactory().openSession();
+        tx = s.beginTransaction();
       try{
-        java.sql.ResultSet res = this.dbQuery("SELECT * FROM personal_info");
-
-        while(res.next()){
-          PersonalInfo pInfo = new PersonalInfo();
-
-          pInfo.setID(res.getInt("patientID"));
-          pInfo.setFName(res.getString("FirstName"));
-          pInfo.setMName(res.getString("MiddleName"));
-          pInfo.setLName(res.getString("LastName"));
-          pInfo.setAddress(res.getString("Address"));
-          pInfo.setAddressNum(res.getInt("AddressNum"));
-          pInfo.setCity(res.getString("City"));
-          pInfo.setState(res.getString("State_Region"));
-          pInfo.setCountry(res.getString("Country"));
-          pInfo.setPostalCode(res.getInt("Postal_Code"));
-          pInfo.setCitizenship(res.getString("Citizenship"));
-          pInfo.setHeight(res.getInt("Height"));
-          pInfo.setWeight(res.getInt("Weight"));
-          pInfo.setSex(res.getString("Gender"));
-          pInfo.setMaritalStatus(res.getString("Status"));
-//Date gives error - Incompatible data types. It tries to save a Date object to a string.
-//          pInfo.setBirthDate((res.getString("BirthDate")));
-          pInfo.setProfession(res.getString("Profession"));
-          pInfo.setInsurance(res.getString("Insurrance"));
-          pInfo.setAmka(res.getInt("Insurance_Id_Number"));
-
-          pInfo.setTameio(res.getString("Insurance_Type"));
-//Date error here as well.
-//          pInfo.setFirstVisit((res.getString("First_Visit")));
-          pInfo.setChildren(res.getInt("Children"));
-          pInfo.setHomeNum(Integer.toString(res.getInt("Home_Number")));
-          pInfo.setWorkNum(Integer.toString(res.getInt("Work_Number")));
-          pInfo.setCellPhone(Integer.toString(res.getInt("CellPhone_Number")));
-          pInfo.setFax(Integer.toString(res.getInt("Fax_Number")));
-          pInfo.setEmail(res.getString("Email"));
-
-          Patient p = new Patient(pInfo.getID());
-          p.setPersonalInfo(pInfo);
-          pl.addNewPatient(p);
-         // ageTextField.setText(calculateAge());
+        List person = s.createQuery("from Patients p where p.patientId = " + piId).list();
+        p = (Patients) person.get(0);
+      tx.commit();
+      s.close();
+    } catch (RuntimeException e) {
+      if (tx != null && tx.isActive()) {
+        try {
+          tx.rollback();
+        } catch (HibernateException e1) {
+          logger.debug("Error rolling back transaction");
         }
+        throw e;
       }
-      catch (SQLException s){
-          s.printStackTrace();
-        System.out.println("SQL code does not execute.");
+    }
+        return p;
+
+    }
+
+    FamilyHistory getSelectedPatientFH(int id) {
+        s = HibernateUtil.getSessionFactory().openSession();
+        tx = s.beginTransaction();
+
+        List person = s.createQuery("from FamilyHistory fh where fh.fhId = " + id).list();
+        fh = (FamilyHistory) person.get(0);
+        try {
+      tx.commit();
+      s.close();
+    } catch (RuntimeException e) {
+      if (tx != null && tx.isActive()) {
+        try {
+          tx.rollback();
+        } catch (HibernateException e1) {
+          logger.debug("Error rolling back transaction");
+        }
+        throw e;
       }
-  }
+    }
+        return fh;
+    }
+
+    Contacts getSelectedContacts(int id) {
+        s = HibernateUtil.getSessionFactory().openSession();
+        tx = s.beginTransaction();
+
+        List person = s.createQuery("from Contacts c where c.contactId = " + id).list();
+        contacts = (Contacts) person.get(0);
+        try {
+      tx.commit();
+      s.close();
+    } catch (RuntimeException e) {
+      if (tx != null && tx.isActive()) {
+        try {
+          tx.rollback();
+        } catch (HibernateException e1) {
+          logger.debug("Error rolling back transaction");
+        }
+        throw e;
+      }
+    }
+        return contacts;
+    }
+
+    ChronicMedication getSelectedCM(int id) {
+        s = HibernateUtil.getSessionFactory().openSession();
+        tx = s.beginTransaction();
+
+        List person = s.createQuery("from ChronicMedication cm where cm.cmId = " + id).list();
+        cm = (ChronicMedication) person.get(0);
+        try {
+      tx.commit();
+      s.close();
+    } catch (RuntimeException e) {
+      if (tx != null && tx.isActive()) {
+        try {
+          tx.rollback();
+        } catch (HibernateException e1) {
+          logger.debug("Error rolling back transaction");
+        }
+        throw e;
+      }
+    }
+        return cm;
+    }
+
+    ChronicDiseases getSelectedCD(int id) {
+        s = HibernateUtil.getSessionFactory().openSession();
+        tx = s.beginTransaction();
+
+        List person = s.createQuery("from ChronicDiseases cd where cd.chId = " + id).list();
+        cd = (ChronicDiseases) person.get(0);
+        try {
+      tx.commit();
+      s.close();
+    } catch (RuntimeException e) {
+      if (tx != null && tx.isActive()) {
+        try {
+          tx.rollback();
+        } catch (HibernateException e1) {
+          logger.debug("Error rolling back transaction");
+        }
+        throw e;
+      }
+    }
+        return cd;
+    }
+
+    Habits getSelectedHabits(int id) {
+        s = HibernateUtil.getSessionFactory().openSession();
+        tx = s.beginTransaction();
+
+        List person = s.createQuery("from Habits h where h.habitsId = " + id).list();
+        habits = (Habits) person.get(0);
+        try {
+      tx.commit();
+      s.close();
+    } catch (RuntimeException e) {
+      if (tx != null && tx.isActive()) {
+        try {
+          tx.rollback();
+        } catch (HibernateException e1) {
+          logger.debug("Error rolling back transaction");
+        }
+        throw e;
+      }
+    }
+        return habits;
+    }
+
+    Immunizations getSelectedImmun(int id) {
+        s = HibernateUtil.getSessionFactory().openSession();
+        tx = s.beginTransaction();
+
+        List person = s.createQuery("from Immunizations i where i.immunId = " + id).list();
+        immun = (Immunizations) person.get(0);
+        try {
+      tx.commit();
+      s.close();
+    } catch (RuntimeException e) {
+      if (tx != null && tx.isActive()) {
+        try {
+          tx.rollback();
+        } catch (HibernateException e1) {
+          logger.debug("Error rolling back transaction");
+        }
+        throw e;
+      }
+    }
+        return immun;
+    }
+
 }

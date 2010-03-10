@@ -5,7 +5,12 @@ import java.awt.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.*;
+import vidavo.pojos.*;
 
 /**
  *
@@ -14,6 +19,17 @@ import javax.swing.*;
 public class AddPatientGUI extends JFrame implements ActionListener{
 
     private ManagerHolder mh;
+    private PatientManager pm;
+    private PersonalInfo pi;
+    private SurgicalHistory sh;
+    private FamilyHistory fh;
+    private Contacts contacts;
+    private ChronicMedication cm;
+    private ChronicDiseases cd;
+    private Habits habits;
+    private Immunizations immun;
+    private int patientId = 0;
+    private String mode;
     private java.util.ListResourceBundle resourceMap;
 
     private JTabbedPane addPatientTabbedPane;
@@ -21,6 +37,12 @@ public class AddPatientGUI extends JFrame implements ActionListener{
     private JPanel chronicMedicationsPane;
     private JPanel contactsPane;
     private JPanel familyHistoryPane;
+    private JLabel faxLabel;
+    private JTextField faxTextField;
+    private JRadioButton femaleRadioButton;
+    private ButtonGroup maleFemaleGroup;
+    private JLabel firstNLabel;
+    private JTextField firstNTextField;
     private JPanel habitsPane;
     private JPanel photosPane;
     private JPanel immunizationHistoryPane;
@@ -36,11 +58,25 @@ public class AddPatientGUI extends JFrame implements ActionListener{
      * @param pm
      * @param selectedID
      */
-    public AddPatientGUI(ManagerHolder mh, int selectedID, java.util.ListResourceBundle rm)
-    {
+    public AddPatientGUI(ManagerHolder mh, String mode,int id, java.util.ListResourceBundle rm){
+
         super();
         this.mh = mh;
+        this.pm = pm;
         this.resourceMap = rm;
+        this.mode = mode;
+        patientId = id;
+        if(mode.equals("edit"))
+        {
+            pi = (this.pm).getSelectedPatient(id);
+            sh = (this.pm).getSelectedPatientSH(id);
+            fh = (this.pm).getSelectedPatientFH(id);
+            contacts = (this.pm).getSelectedContacts(id);
+            cm = (this.pm).getSelectedCM(id);
+            cd = (this.pm).getSelectedCD(id);
+            habits = (this.pm).getSelectedHabits(id);
+            immun = (this.pm).getSelectedImmun(id);
+        }
         initComponents();
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -52,9 +88,14 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         this.setSize(new Dimension(817, 650));
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        if(mode.equals("add"))
         this.setTitle("Add Patient");
+        else
+        this.setTitle("Edit Patient");
         this.pack();
         this.setVisible(true);
+
+        
     }
 
     /**
@@ -65,17 +106,35 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         mainPanel = new JPanel();
         addPatientTabbedPane = new JTabbedPane();
-        surgeryHistoryPane = new SurgicalHistoryPane(resourceMap);
-        familyHistoryPane = new FamilyHistoryPane(resourceMap);
-        immunizationHistoryPane = new ImmunizationsPane(resourceMap);
-        habitsPane = new HabitsPane(resourceMap);
-        chronicMedicationsPane = new ChronicMedicationPane(resourceMap);
-        chronicDiseasesPane = new ChronicDiseasesPane(resourceMap);
-        contactsPane = new ContactPane(resourceMap);
+        surgeryHistoryPane = new SurgicalHistoryPane(resourceMap,mode,sh);
+        familyHistoryPane = new FamilyHistoryPane(resourceMap,mode,fh);
+        immunizationHistoryPane = new JPanel();
+        habitsPane = new HabitsPane(resourceMap,mode,habits);
+        chronicMedicationsPane = new JPanel();
+        chronicDiseasesPane = new JPanel();
+        contactsPane = new JPanel();
+        photosPane = new JPanel();
+        personalInfoPane = new JPanel();
+        firstNLabel = new JLabel();
+        firstNTextField = new JTextField();
+        femaleRadioButton = new JRadioButton();
+        maleFemaleGroup =  new ButtonGroup();
+        faxLabel = new JLabel();
+        faxTextField = new JTextField();
+        chronicMedicationsPane = new ChronicMedicationPane(resourceMap,mode,cm);
+        chronicDiseasesPane = new ChronicDiseasesPane(resourceMap,mode,cd);
+        contactsPane = new ContactPane(resourceMap,mode,contacts);
         photosPane = new PhotosPane(resourceMap);
-        personalInfoPane = new PersonalInfoPane(mh);
+
+        immunizationHistoryPane = new ImmunizationsPane(resourceMap,mode,immun);
+        personalInfoPane = new PersonalInfoPane(mode,pi);
         saveButton = new JButton();
         cancelButton = new JButton();
+
+        firstNLabel.setText("First Name* :");
+        firstNTextField.setText("");
+        femaleRadioButton.setText("Female");
+        maleFemaleGroup.add(femaleRadioButton);
 
         saveButton.setText("Save");
         saveButton.addActionListener(this);
@@ -123,6 +182,76 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
+        if(action.equals("Save")){
+        PersonalInfoPane pi1 = (PersonalInfoPane) personalInfoPane;
+        SurgicalHistoryPane sh1 = (SurgicalHistoryPane) surgeryHistoryPane;
+        FamilyHistoryPane fh1 = (FamilyHistoryPane) familyHistoryPane;
+        ContactPane contacts1 = (ContactPane) contactsPane;
+        ChronicMedicationPane cm1 = (ChronicMedicationPane) chronicMedicationsPane;
+        ChronicDiseasesPane cd1 = (ChronicDiseasesPane) chronicDiseasesPane;
+        HabitsPane habits1 = (HabitsPane) habitsPane;
+        ImmunizationsPane immun1 = (ImmunizationsPane) immunizationHistoryPane;
+
+        try
+        {
+        pi = pi1.getPersonalinfo();
+        sh = sh1.getSurgeryHistoryInformation();
+        fh = fh1.getFamilyHistory();
+        contacts = contacts1.getContacts();
+        cm = cm1.getChronicMedications();
+        cd = cd1.getChronicDiseases();
+        habits = habits1.getHabits();
+        immun = immun1.getImmunizations();
+
+        if(pi.getFirstName().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Missing mandatory information! Please Enter patient's first name!","Error message", 2);
+        }
+
+        else if(pi.getLastName().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Missing mandatory information! Please Enter patient's last name!","Error message", 2);
+        }
+
+        else if(pi.getInsuranceIdNumber() == 0)
+        {
+            JOptionPane.showMessageDialog(null, "Missing mandatory information! Please Enter patient's AMKA!","Error message", 2);
+        }
+
+        else if(pi.getInsurrance().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Missing mandatory information! Please Enter patient's insurance!","Error message", 2);
+        }
+
+        else if(pi.getInsuranceType().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Missing mandatory information! Please Enter patient's Tameio!","Error message", 2);
+        }
+
+        else{
+        if(mode.equals("add"))
+        {
+            pm.createPatient(pi,sh,fh,contacts,cm,cd,habits,immun);
+        }
+        else
+        {
+            Patients p = pm.getPatient(patientId);
+            pi.setPiId(p.getPatientId());
+            sh.setShId(p.getPatientId());
+            fh.setFhId(p.getPatientId());
+            contacts.setContactId(p.getPatientId());
+            cm.setCmId(p.getPatientId());
+            cd.setChId(p.getPatientId());
+            habits.setHabitsId(p.getPatientId());
+            pm.editPatient(p,pi,sh,fh,contacts,cm,cd,habits,immun);
+        }
+        }
+        }
+        catch(NumberFormatException nfe)
+        {
+            JOptionPane.showMessageDialog(null, "Enter only digits!","Error message", 2);
+        }}
+
         if (action.equals("Cancel")){
             showCancelDialog ();
         }
@@ -157,110 +286,5 @@ public class AddPatientGUI extends JFrame implements ActionListener{
             new PatientListGUI(mh);
         }
     }
-}
-//        String action = e.getActionCommand();
-//
-//        if(action.equals("Save")){
-//            try{
-////                if (patientID < patientNumber)
-////                    s.executeUpdate("DELETE FROM personalInfo WHERE patientID=" + patientID + ";");
-////                else if(patientID == patientNumber)
-////                    s.executeUpdate("INSERT INTO patients VALUES " + "("+ patientID +")" + ";");
-//
-//                Patient p = new Patient(patientID,firstNTextField.getText(),lastNTextField.getText(),insuranceTextField.getText(),Integer.parseInt(amkaTextField.getText()),tameioComboBox.getSelectedItem().toString());
-//
-//                if(!middleNTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setMName(middleNTextField.getText());
-//                if(!addressTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setAddress(addressTextField.getText());
-//                if(!addressNumTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setAddressNum(Integer.parseInt(addressNumTextField.getText()));
-//                if(!cityTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setCity(cityTextField.getText());
-//                if(!regionTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setState(regionTextField.getText());
-//                if(!countryTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setCountry(countryTextField.getText());
-//                if(!postalCTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setPostalCode(Integer.parseInt(postalCTextField.getText()));
-//                if(!citizenshipTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setCitizenship(citizenshipTextField.getText());
-//                if(!heightTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setHeight(Integer.parseInt(heightTextField.getText()));
-//                if(!weightTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setWeight(Integer.parseInt(weightTextField.getText()));
-//                if(maleRadioButton.isSelected() == true)
-//                    (p.getPersonalInfo()).setSex(maleRadioButton.getText());
-//                if(femaleRadioButton.isSelected() == true)
-//                    (p.getPersonalInfo()).setSex(femaleRadioButton.getText());
-//                if(marriedRadioButton.isSelected() == true)
-//                    (p.getPersonalInfo()).setMaritalStatus(marriedRadioButton.getText());
-//                if(singleRadioButton.isSelected() == true)
-//                    (p.getPersonalInfo()).setMaritalStatus(singleRadioButton.getText());
-//                if(!birthDateTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setBirthDate(birthDateTextField.getText());
-//                if(!profTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setProfession(profTextField.getText());
-//                if(!firstVisitTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setFirstVisit(firstVisitTextField.getText());
-//                if(!childrenSpinner.getValue().equals(null))
-//                    (p.getPersonalInfo()).setChildren(Integer.parseInt(childrenSpinner.getValue().toString()));
-//                if(!homeTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setHomeNum(homeTextField.getText());
-//                if(!workTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setWorkNum(workTextField.getText());
-//                if(!cellTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setCellPhone(cellTextField.getText());
-//                if(!faxTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setFax(faxTextField.getText());
-//                if(!mailTextField.getText().equals(""))
-//                    (p.getPersonalInfo()).setEmail(mailTextField.getText());
-//
-//                pm.dbUpdate("INSERT INTO personalInfo VALUES " + "(" + patientID + ", " +
-//                       "\"" + p.getPersonalInfo().getFName() + "\", " +
-//                       "\"" + p.getPersonalInfo().getMName() + "\", " +
-//                       "\"" + p.getPersonalInfo().getLName() + "\", " +
-//                       "\"" + p.getPersonalInfo().getAddress() + "\", " +
-//                       p.getPersonalInfo().getAddressNum() + ", " +
-//                       "\"" + p.getPersonalInfo().getCity() + "\", " +
-//                       "\"" + p.getPersonalInfo().getState() + "\", " +
-//                       "\"" + p.getPersonalInfo().getCountry() + "\", " +
-//                       p.getPersonalInfo().getPostalCode() + ", " +
-//                       "\"" + p.getPersonalInfo().getCitizenship() + "\", " +
-//                       p.getPersonalInfo().getHeight() + ", " +
-//                       p.getPersonalInfo().getWeight()+ ", " +
-//                       "\"" + p.getPersonalInfo().getSex() + "\", " +
-//                       "\"" + p.getPersonalInfo().getMaritalStatus() + "\", " +
-//                       "\"" + p.getPersonalInfo().getBirthDate() + "\", " +
-//                       "\"" + p.getPersonalInfo().getProfession() + "\", " +
-//                       "\"" + p.getPersonalInfo().getInsurance() + "\", " +
-//                       "\"" + p.getPersonalInfo().getTameio() + "\", " +
-//                       p.getPersonalInfo().getAmka() + ", " +
-//                       p.getPersonalInfo().getFirstVisit() + ", " +
-//                       p.getPersonalInfo().getChildren() + ", " +
-//                       p.getPersonalInfo().getHomeNum() + ", " +
-//                       p.getPersonalInfo().getCellPhone()+ ", " +
-//                       p.getPersonalInfo().getWorkNum() + ", " +
-//                       p.getPersonalInfo().getFax() + ", " +
-//                       "\"" + p.getPersonalInfo().getEmail() + "\");");
-//
-////pl.addNewPatient(p);
-//
-//                this.dispose();
-//                PatientListGUI plg = new PatientListGUI(pm);
-////                plg.loadPatientsList();
-//            }
-//            catch (NullPointerException ex){
-//                JOptionPane.showMessageDialog(null,"Missing obligatory information", "Nothing entered", 2);
-//            }
-//
-//            catch (NumberFormatException ex){
-//                JOptionPane.showMessageDialog(null,"Enter only digits in the amka field", "Wrong input", 2 );
-//            }
-//
-//        }
-//        if (action.equals("Cancel")){
-//            showCancelDialog ();
-//        }
-//
 
+}

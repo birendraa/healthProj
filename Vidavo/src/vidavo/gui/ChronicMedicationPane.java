@@ -7,6 +7,7 @@ package vidavo.gui;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
+import vidavo.pojos.ChronicMedication;
 
 /**
  *
@@ -80,11 +81,11 @@ public class ChronicMedicationPane extends JPanel{
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
+    private javax.swing.JTextArea chronicMedicationTextField01;
+    private javax.swing.JTextArea chronicMedicationTextField02;
+    private javax.swing.JTextArea chronicMedicationTextField03;
+    private javax.swing.JTextArea chronicMedicationTextField04;
+    private javax.swing.JTextArea chronicMedicationTextField05;
     private javax.swing.JLabel kardiodiegertikesGlikosidesLabel;
     private javax.swing.JLabel nameOfMedicationLabel;
     private javax.swing.JLabel oistrogonaLabel;
@@ -95,9 +96,9 @@ public class ChronicMedicationPane extends JPanel{
     private javax.swing.JLabel thyroidikesOrmonesLabel;
     private javax.swing.JLabel vitaminesLabel;
     private java.util.ListResourceBundle resourceMap;
+    private ChronicMedication cm;
 
-
-    public ChronicMedicationPane(java.util.ListResourceBundle rm) {
+    public ChronicMedicationPane(java.util.ListResourceBundle rm, String mode,ChronicMedication cm){
 
         this.resourceMap = rm;
 
@@ -172,15 +173,15 @@ public class ChronicMedicationPane extends JPanel{
         otherChronicMedicationLabel = new javax.swing.JLabel();
         nameOfMedicationLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        chronicMedicationTextField01 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        chronicMedicationTextField02 = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        chronicMedicationTextField03 = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        chronicMedicationTextField04 = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
+        chronicMedicationTextField05 = new javax.swing.JTextArea();
 
          ButtonGroup YesNoGroup1 = new ButtonGroup();
         YesNoGroup1.add(chronicMedicationRadioButton01);
@@ -398,25 +399,25 @@ public class ChronicMedicationPane extends JPanel{
 
         nameOfMedicationLabel.setText(resourceMap.getString("nameOfMedication.text"));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        chronicMedicationTextField01.setColumns(20);
+        chronicMedicationTextField01.setRows(5);
+        jScrollPane1.setViewportView(chronicMedicationTextField01);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        chronicMedicationTextField02.setColumns(20);
+        chronicMedicationTextField02.setRows(5);
+        jScrollPane2.setViewportView(chronicMedicationTextField02);
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        chronicMedicationTextField03.setColumns(20);
+        chronicMedicationTextField03.setRows(5);
+        jScrollPane3.setViewportView(chronicMedicationTextField03);
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
+        chronicMedicationTextField04.setColumns(20);
+        chronicMedicationTextField04.setRows(5);
+        jScrollPane4.setViewportView(chronicMedicationTextField04);
 
-        jTextArea5.setColumns(20);
-        jTextArea5.setRows(5);
-        jScrollPane5.setViewportView(jTextArea5);
+        chronicMedicationTextField05.setColumns(20);
+        chronicMedicationTextField05.setRows(5);
+        jScrollPane5.setViewportView(chronicMedicationTextField05);
 
         javax.swing.GroupLayout chronicMedicationMainPaneLayout = new javax.swing.GroupLayout(chronicMedicationMainPane);
         chronicMedicationMainPane.setLayout(chronicMedicationMainPaneLayout);
@@ -728,7 +729,285 @@ public class ChronicMedicationPane extends JPanel{
             .addComponent(chronicMedicationScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
         );
 
+        if(mode.equals("edit"))
+        {
+            this.cm = cm;
+            loadChronicMedications(cm);
+        }
 
+    }
+
+    private void loadChronicMedications(ChronicMedication cm) {
+
+                if(cm.getAntithromvotikaFarmaka().equals("Yes"))
+                chronicMedicationRadioButton01.setSelected(true);
+                else
+                chronicMedicationRadioButton02.setSelected(true);
+
+                if(cm.getThromvolitikaFarmaka().equals("Yes"))
+                chronicMedicationRadioButton03.setSelected(true);
+                else
+                chronicMedicationRadioButton04.setSelected(true);
+
+                if (cm.getAntidiastaltikaTisStefaniaiasKikloforias().equals("Yes"))
+                chronicMedicationRadioButton05.setSelected(true);
+                else
+                chronicMedicationRadioButton06.setSelected(true);
+
+                //String kardiodiegertikesGlikosides,
+                chronicMedicationTextField01.setText(cm.getKardiodiegertikesGlikosides());
+
+                if (cm.getAntiikaFarmaka().equals("Yes"))
+                chronicMedicationRadioButton07.setSelected(true);
+                else
+                chronicMedicationRadioButton08.setSelected(true);
+
+                //String antiarrythmikaFarmaka,
+                chronicMedicationTextField02.setText(cm.getAntiarrythmikaFarmaka());
+
+                if (cm.getAntineoplasmatikaFarmaka().equals("Yes"))
+                chronicMedicationRadioButton09.setSelected(true);
+                else
+                chronicMedicationRadioButton10.setSelected(true);
+
+                if (cm.getAntireumatikaFarmaka().equals("Yes"))
+                chronicMedicationRadioButton11.setSelected(true);
+                else
+                chronicMedicationRadioButton12.setSelected(true);
+
+                if(cm.getAntiasthmatikaFarmaka().equals("Yes"))
+                chronicMedicationRadioButton13.setSelected(true);
+                else
+                chronicMedicationRadioButton14.setSelected(true);
+
+                if(cm.getAntithyroidikaFarmaka().equals("Yes"))
+                chronicMedicationRadioButton15.setSelected(true);
+                else
+                chronicMedicationRadioButton16.setSelected(true);
+
+                if(cm.getThyroidikesOrmones().equals("Yes"))
+                chronicMedicationRadioButton17.setSelected(true);
+                else
+                chronicMedicationRadioButton18.setSelected(true);
+
+                if(cm.getInsulin().equals("Yes"))
+                chronicMedicationRadioButton19.setSelected(true);
+                else
+                chronicMedicationRadioButton20.setSelected(true);
+
+                if(cm.getAntidiabeticTablets().equals("Yes"))
+                chronicMedicationRadioButton21.setSelected(true);
+                else
+                chronicMedicationRadioButton22.setSelected(true);
+
+                if(cm.getAnticoagulantMedication().equals("Yes"))
+                chronicMedicationRadioButton23.setSelected(true);
+                else
+                chronicMedicationRadioButton24.setSelected(true);
+
+                if(cm.getAntipsychoticMedication().equals("Yes"))
+                chronicMedicationRadioButton25.setSelected(true);
+                else
+                chronicMedicationRadioButton26.setSelected(true);
+
+                //String antiepilipticMedication,
+                chronicMedicationTextField03.setText(cm.getAntiepilipticMedication());
+
+                if(cm.getAndrogona().equals("Yes"))
+                chronicMedicationRadioButton27.setSelected(true);
+                else
+                chronicMedicationRadioButton28.setSelected(true);
+
+                if(cm.getOistrogona().equals("Yes"))
+                chronicMedicationRadioButton29.setSelected(true);
+                else
+                chronicMedicationRadioButton30.setSelected(true);
+
+                if(cm.getAntisilliptikaFarmaka().equals("Yes"))
+                chronicMedicationRadioButton31.setSelected(true);
+                else
+                chronicMedicationRadioButton32.setSelected(true);
+
+                if(cm.getOrmones().equals("Yes"))
+                chronicMedicationRadioButton33.setSelected(true);
+                else
+                chronicMedicationRadioButton34.setSelected(true);
+
+                if (cm.getVitamines().equals("Yes"))
+                chronicMedicationRadioButton35.setSelected(true);
+                else
+                chronicMedicationRadioButton36.setSelected(true);
+
+                if(cm.getSidiros().equals("Yes"))
+                chronicMedicationRadioButton37.setSelected(true);
+                else
+                chronicMedicationRadioButton38.setSelected(true);
+
+                if(cm.getAntiallergikaFarmaka().equals("Yes"))
+                chronicMedicationRadioButton39.setSelected(true);
+                else
+                chronicMedicationRadioButton40.setSelected(true);
+
+                //String otherChronicMedication,
+                chronicMedicationTextField04.setText(cm.getOtherChronicMedication());
+
+                //String nameOfMedication
+                chronicMedicationTextField05.setText(cm.getNameOfMedication());
+    }
+
+    public ChronicMedication getChronicMedications()
+    {
+        String antithromvotikaFarmaka;
+                if(chronicMedicationRadioButton01.isSelected() == true)
+                antithromvotikaFarmaka = "Yes";
+                else
+                antithromvotikaFarmaka = "No";
+
+        String thromvolitikaFarmaka;
+                if(chronicMedicationRadioButton03.isSelected() == true)
+                thromvolitikaFarmaka = "Yes";
+                else
+                thromvolitikaFarmaka = "No";
+
+        String antidiastaltikaTisStefaniaiasKikloforias;
+                if (chronicMedicationRadioButton05.isSelected() == true)
+                antidiastaltikaTisStefaniaiasKikloforias = "Yes";
+                else
+                antidiastaltikaTisStefaniaiasKikloforias = "No";
+
+                //String kardiodiegertikesGlikosides,
+                //chronicMedicationTextField01.setText(cm.getKardiodiegertikesGlikosides());
+
+                String antiikaFarmaka;
+                if (chronicMedicationRadioButton07.isSelected() == true)
+                antiikaFarmaka="Yes";
+                else
+                antiikaFarmaka="No";
+
+                //String antiarrythmikaFarmaka,
+                //chronicMedicationTextField02.setText(cm.getAntiarrythmikaFarmaka());
+
+                String antineoplasmatikaFarmaka;
+                if (chronicMedicationRadioButton09.isSelected() == true)
+                antineoplasmatikaFarmaka="Yes";
+                else
+                antineoplasmatikaFarmaka="No";
+
+                String antireumatikaFarmaka;
+                if (chronicMedicationRadioButton11.isSelected() == true)
+                antireumatikaFarmaka = "Yes";
+                else
+                antireumatikaFarmaka = "No";
+
+                String antiasthmatikaFarmaka;
+                if(chronicMedicationRadioButton13.isSelected() == true)
+                antiasthmatikaFarmaka = "Yes";
+                else
+                antiasthmatikaFarmaka = "No";
+
+                String antithyroidikaFarmaka;
+                if(chronicMedicationRadioButton15.isSelected() == true)
+                antithyroidikaFarmaka = "Yes";
+                else
+                antithyroidikaFarmaka = "No";
+
+                String thyroidikesOrmones;
+                if(chronicMedicationRadioButton17.isSelected() == true)
+                thyroidikesOrmones = "Yes";
+                else
+                thyroidikesOrmones = "No";
+
+                String insulin;
+                if(chronicMedicationRadioButton19.isSelected() == true)
+                insulin = "Yes";
+                else
+                insulin = "No";
+
+                String antidiabeticTablets;
+                if(chronicMedicationRadioButton21.isSelected() == true)
+                antidiabeticTablets = "Yes";
+                else
+                antidiabeticTablets = "No";
+
+                String anticoagulantMedication;
+                if(chronicMedicationRadioButton23.isSelected() == true)
+                anticoagulantMedication = "Yes";
+                else
+                anticoagulantMedication = "No";
+
+                String antipsychoticMedication;
+                if(chronicMedicationRadioButton25.isSelected() == true)
+                antipsychoticMedication = "Yes";
+                else
+                antipsychoticMedication = "No";
+
+                //String antiepilipticMedication,
+                //chronicMedicationTextField03.setText(cm.getAntiepilipticMedication());
+
+                String androgona;
+                if(chronicMedicationRadioButton27.isSelected() == true)
+                androgona = "Yes";
+                else
+                androgona = "No";
+
+                String oistrogona;
+                if(chronicMedicationRadioButton29.isSelected() == true)
+                oistrogona = "Yes";
+                else
+                oistrogona = "No";
+
+                String antisilliptikaFarmaka;
+                if(chronicMedicationRadioButton31.isSelected() == true)
+                antisilliptikaFarmaka = "Yes";
+                else
+                antisilliptikaFarmaka = "No";
+
+                String ormones;
+                if(chronicMedicationRadioButton33.isSelected() == true)
+                ormones = "Yes";
+                else
+                ormones = "No";
+
+                String vitamines;
+                if (chronicMedicationRadioButton35.isSelected() == true)
+                vitamines = "Yes";
+                else
+                vitamines = "No";
+
+                String sidiros;
+                if(chronicMedicationRadioButton37.isSelected() == true)
+                sidiros = "Yes";
+                else
+                sidiros = "No";
+
+                String antiallergikaFarmaka;
+                if(chronicMedicationRadioButton39.isSelected() == true)
+                antiallergikaFarmaka = "Yes";
+                else
+                antiallergikaFarmaka = "No";
+
+                //String otherChronicMedication,
+                //chronicMedicationTextField04.setText(cm.getOtherChronicMedication());
+
+                //String nameOfMedication
+                //chronicMedicationTextField05.setText(cm.getNameOfMedication());
+
+                return new ChronicMedication (antithromvotikaFarmaka,thromvolitikaFarmaka,
+                        antidiastaltikaTisStefaniaiasKikloforias,
+                        chronicMedicationTextField01.getText(),
+                        antiikaFarmaka,chronicMedicationTextField02.getText(),
+                        antineoplasmatikaFarmaka,antireumatikaFarmaka,
+                        antiasthmatikaFarmaka,antithyroidikaFarmaka,
+                        thyroidikesOrmones,insulin, antidiabeticTablets,
+                        anticoagulantMedication,antipsychoticMedication,
+                        chronicMedicationTextField03.getText(),
+                        androgona,oistrogona,antisilliptikaFarmaka,
+                        ormones,vitamines,sidiros,antiallergikaFarmaka,
+                        chronicMedicationTextField04.getText(),
+                        chronicMedicationTextField05.getText()
+
+
+                        );
     }
 
 }

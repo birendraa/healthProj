@@ -4,7 +4,8 @@ package vidavo.gui;
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import vidavo.FamilyHistory;
+import vidavo.pojos.FamilyHistory;
+
 
 public class FamilyHistoryPane extends JPanel{
 
@@ -107,9 +108,10 @@ public class FamilyHistoryPane extends JPanel{
     private javax.swing.JRadioButton familyHistoryRadioButtonYes9;
 
     private java.util.ListResourceBundle resourceMap;
+    private FamilyHistory fh;
 
-    public FamilyHistoryPane(java.util.ListResourceBundle rm){
-
+    public FamilyHistoryPane(java.util.ListResourceBundle rm,String mode,FamilyHistory fh)
+    {
         this.resourceMap = rm;
         
         familyHistoryScrollPane = new javax.swing.JScrollPane();
@@ -272,6 +274,10 @@ public class FamilyHistoryPane extends JPanel{
         ButtonGroup YesNoGroup19 =  new ButtonGroup();
         YesNoGroup19.add(familyHistoryRadioButtonYes19);
         YesNoGroup19.add(familyHistoryRadioButtonNo19);
+
+        ButtonGroup YesNoGroup20 =  new ButtonGroup();
+        YesNoGroup20.add(familyHistoryRadioButtonYes20);
+        YesNoGroup20.add(familyHistoryRadioButtonNo20);
 
         diamartiesTraxeiasVrohouScrollingArea = new JScrollPane(diamartiesTraxeiasVrohouTextArea);
         diaplasiDermatosScrollingArea = new JScrollPane(diaplasiDermatosTextArea);
@@ -671,9 +677,307 @@ public class FamilyHistoryPane extends JPanel{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(familyHistoryScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
         );
+
+        if(mode.equals("edit"))
+        {
+            this.fh = fh;
+            loadFamilyHistory(fh);
+        }
     }
 
-    public FamilyHistory getSurgeryHistoryInformation(){
-        return new FamilyHistory();
+    public FamilyHistory getFamilyHistory() {
+
+        String egefalikoEpeisodio;
+                if(familyHistoryRadioButtonYes1.isSelected() == true)
+                    egefalikoEpeisodio = "Yes";
+                else
+                    egefalikoEpeisodio = "No";
+
+                String diamartiesDiaplasisPneumonon;
+                if(familyHistoryRadioButtonYes2.isSelected() == true)
+                    diamartiesDiaplasisPneumonon = "Yes";
+                else
+                    diamartiesDiaplasisPneumonon = "No";
+
+                String diamartiesDiaplasisKikloforikouSistimatos;
+                if(familyHistoryRadioButtonYes3.isSelected() == true)
+                    diamartiesDiaplasisKikloforikouSistimatos = "Yes";
+                else
+                    diamartiesDiaplasisKikloforikouSistimatos = "No";
+
+                String diamartiesDiaplasisKardiakwnDiafragmatwn;
+                if(familyHistoryRadioButtonYes4.isSelected() == true)
+                    diamartiesDiaplasisKardiakwnDiafragmatwn = "Yes";
+                else
+                    diamartiesDiaplasisKardiakwnDiafragmatwn = "No";
+
+                String kardiakiKoilotita;
+                if(familyHistoryRadioButtonYes5.isSelected() == true)
+                    kardiakiKoilotita = "Yes";
+                else
+                    kardiakiKoilotita = "No";
+
+                String istorikoAsthmatos;
+                if(familyHistoryRadioButtonYes6.isSelected() == true)
+                    istorikoAsthmatos = "Yes";
+                else
+                    istorikoAsthmatos = "No";
+
+                String diamartiesKardias;
+                if(familyHistoryRadioButtonYes7.isSelected() == true)
+                    diamartiesKardias = "Yes";
+                else
+                    diamartiesKardias = "No";
+
+                //String diamartiesTraxeiasVrohou,
+                
+
+                //String diaplasiDermatos,
+                
+
+                String stenosiLeptouEnderou;
+                if(familyHistoryRadioButtonYes8.isSelected() == true)
+                    stenosiLeptouEnderou = "Yes";
+                else
+                    stenosiLeptouEnderou = "No";
+
+                String stenosiPaxeosEnderou;
+                if(familyHistoryRadioButtonYes9.isSelected() == true)
+                    stenosiPaxeosEnderou = "Yes";
+                else
+                    stenosiPaxeosEnderou = "No";
+
+               // String diamartiesEnderou,
+                
+
+               // String diaplasiPeptikouSistimatos,
+                
+
+                //String nefrikiAgenesia,
+                
+
+                String kistikiNososNefrwn;
+                if(familyHistoryRadioButtonYes10.isSelected() == true)
+                    kistikiNososNefrwn = "Yes";
+                else
+                    kistikiNososNefrwn = "No";
+
+                String anomaliesNefrikisPyelou;
+                if(familyHistoryRadioButtonYes11.isSelected() == true)
+                    anomaliesNefrikisPyelou = "Yes";
+                else
+                    anomaliesNefrikisPyelou = "No";
+
+                //String diaplasiNeftwn,
+                
+
+                String diataraxesNefrouOuritira;
+                if(familyHistoryRadioButtonYes12.isSelected() == true)
+                    diataraxesNefrouOuritira = "Yes";
+                else
+                    diataraxesNefrouOuritira = "No";
+
+                String diaplasiOuritira;
+                if(familyHistoryRadioButtonYes13.isSelected() == true)
+                    diaplasiOuritira = "Yes";
+                else
+                    diaplasiOuritira = "No";
+
+                //String diaplasiOuropoiitikouSistimatos,
+                
+
+                String klironomikiAnaimia;
+                if(familyHistoryRadioButtonYes14.isSelected() == true)
+                    klironomikiAnaimia = "Yes";
+                else
+                    klironomikiAnaimia = "No";
+
+                //String sigenisThiroeidismos,
+                
+
+                String eleipsiLaktasis;
+                if(familyHistoryRadioButtonYes15.isSelected() == true)
+                    eleipsiLaktasis = "Yes";
+                else
+                    eleipsiLaktasis = "No";
+
+                //String disanexiaLaktozis,
+                
+
+                String psixikesDiataraxes;
+                if(familyHistoryRadioButtonYes16.isSelected() == true)
+                    psixikesDiataraxes = "Yes";
+                else
+                    psixikesDiataraxes = "No";
+
+                String istorikoSarkomatwn;
+                if(familyHistoryRadioButtonYes17.isSelected() == true)
+                    istorikoSarkomatwn = "Yes";
+                else
+                    istorikoSarkomatwn = "No";
+
+                //String kakoithiNeoplasmata,
+                
+
+                String kataxrisiAlkool;
+                if(familyHistoryRadioButtonYes18.isSelected() == true)
+                    kataxrisiAlkool = "Yes";
+                else
+                    kataxrisiAlkool = "No";
+
+                String klironomikosDiavitis;
+                if(familyHistoryRadioButtonYes19.isSelected() == true)
+                    klironomikosDiavitis = "Yes";
+                else
+                    klironomikosDiavitis = "No";
+
+                String istorikoLeuxemias;
+                if(familyHistoryRadioButtonYes20.isSelected() == true)
+                    istorikoLeuxemias = "Yes";
+                else
+                    istorikoLeuxemias = "No";
+
+                //String allesMorfesOikogeneiakouIstorikou
+
+
+                        return new FamilyHistory(egefalikoEpeisodio,diamartiesDiaplasisPneumonon,
+                        diamartiesDiaplasisKikloforikouSistimatos,diamartiesDiaplasisKardiakwnDiafragmatwn,
+                        kardiakiKoilotita,istorikoAsthmatos,diamartiesKardias,diamartiesTraxeiasVrohouTextArea.getText(),
+                        diaplasiDermatosTextArea.getText(),stenosiLeptouEnderou,stenosiPaxeosEnderou,
+                        diamartiesEnderouTextArea.getText(),diaplasiPeptikouSistimatosTextArea.getText(),
+                        nefrikiAgenesiaTextArea.getText(),kistikiNososNefrwn,anomaliesNefrikisPyelou,
+                        diaplasiNefrwnTextArea.getText(),diataraxesNefrouOuritira,diaplasiOuritira,
+                        diaplasiOuropoiitikouSistimatosTextArea.getText(),klironomikiAnaimia,
+                        sigenisThiroeidismosTextArea.getText(),eleipsiLaktasis,disanexiaLaktozisTextArea.getText(),
+                        psixikesDiataraxes,istorikoSarkomatwn,kakoithiNeoplasmataTextArea.getText(),kataxrisiAlkool,
+                        klironomikosDiavitis,istorikoLeuxemias, allesMorfesOikogeneiakouIstorikouTextArea.getText());
     }
+
+    private void loadFamilyHistory(FamilyHistory fh) {
+
+                if(fh.getEgefalikoEpeisodio().equals("Yes"))
+                    familyHistoryRadioButtonYes1.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo1.setSelected(true);
+
+                if(fh.getDiamartiesDiaplasisPneumonon().equals("Yes"))
+                    familyHistoryRadioButtonYes2.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo2.setSelected(true);
+
+                if(fh.getDiamartiesDiaplasisKikloforikouSistimatos().equals("Yes"))
+                    familyHistoryRadioButtonYes3.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo3.setSelected(true);
+
+                if(fh.getDiamartiesDiaplasisKardiakwnDiafragmatwn().equals("Yes"))
+                     familyHistoryRadioButtonYes4.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo4.setSelected(true);
+
+                if(fh.getKardiakiKoilotita().equals("Yes"))
+                    familyHistoryRadioButtonYes5.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo5.setSelected(true);
+
+                if(fh.getIstorikoAsthmatos().equals("Yes"))
+                     familyHistoryRadioButtonYes6.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo6.setSelected(true);
+
+                if(fh.getDiamartiesKardias().equals("Yes"))
+                    familyHistoryRadioButtonYes7.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo7.setSelected(true);
+
+                diamartiesTraxeiasVrohouTextArea.setText(fh.getDiamartiesTraxeiasVrohou());
+
+                diaplasiDermatosTextArea.setText(fh.getDiaplasiDermatos());
+
+                if(fh.getStenosiLeptouEnderou().equals("Yes"))
+                    familyHistoryRadioButtonYes8.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo8.setSelected(true);
+
+                if(fh.getStenosiPaxeosEnderou().equals("Yes"))
+                    familyHistoryRadioButtonYes9.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo9.setSelected(true);
+
+                diamartiesEnderouTextArea.setText(fh.getDiamartiesEnderou());
+
+
+                diaplasiPeptikouSistimatosTextArea.setText(fh.getDiaplasiPeptikouSistimatos());
+
+
+                nefrikiAgenesiaTextArea.setText(fh.getNefrikiAgenesia());
+
+                if(fh.getKistikiNososNefrwn().equals("Yes"))
+                    familyHistoryRadioButtonYes10.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo10.setSelected(true);
+
+                if(fh.getAnomaliesNefrikisPyelou().equals("Yes"))
+                     familyHistoryRadioButtonYes11.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo11.setSelected(true);
+
+                diaplasiNefrwnTextArea.setText(fh.getDiaplasiNeftwn());
+
+                if(fh.getDiataraxesNefrouOuritira().equals("Yes"))
+                     familyHistoryRadioButtonYes12.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo12.setSelected(true);
+
+                if(fh.getDiaplasiOuritira().equals("Yes"))
+                    familyHistoryRadioButtonYes13.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo13.setSelected(true);
+
+                diaplasiOuropoiitikouSistimatosTextArea.setText(fh.getDiaplasiOuropoiitikouSistimatos());
+                
+                if(fh.getKlironomikiAnaimia().equals("Yes"))
+                     familyHistoryRadioButtonYes14.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo14.setSelected(true);
+
+                sigenisThiroeidismosTextArea.setText(fh.getSigenisThiroeidismos());
+
+                if(fh.getEleipsiLaktasis().equals("Yes"))
+                    familyHistoryRadioButtonYes15.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo15.setSelected(true);
+
+                disanexiaLaktozisTextArea.setText(fh.getDisanexiaLaktozis());
+
+                if(fh.getPsixikesDiataraxes().equals("Yes"))
+                     familyHistoryRadioButtonYes16.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo16.setSelected(true);
+
+                if(fh.getIstorikoSarkomatwn().equals("Yes"))
+                     familyHistoryRadioButtonYes17.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo17.setSelected(true);
+
+                kakoithiNeoplasmataTextArea.setText(fh.getKakoithiNeoplasmata());
+
+                if(fh.getKataxrisiAlkool().equals("Yes"))
+                    familyHistoryRadioButtonYes18.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo18.setSelected(true);
+
+                if(fh.getKlironomikosDiavitis().equals("Yes"))
+                     familyHistoryRadioButtonYes19.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo19.setSelected(true);
+
+                if(fh.getIstorikoLeuxemias().equals("Yes"))
+                     familyHistoryRadioButtonYes20.setSelected(true);
+                else
+                    familyHistoryRadioButtonNo20.setSelected(true);
+
+                allesMorfesOikogeneiakouIstorikouTextArea.setText(fh.getAllesMorfesOikogeneiakouIstorikou());
+    }
+
 }

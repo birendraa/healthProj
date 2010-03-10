@@ -10,9 +10,10 @@ import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ListResourceBundle;
+import java.util.Vector;
 import javax.swing.*;
 import javax.swing.JOptionPane;
-import vidavo.Patient;
+import vidavo.pojos.*;
 
 /**
  *
@@ -21,6 +22,7 @@ import vidavo.Patient;
 public class PatientListGUI extends javax.swing.JFrame implements ActionListener{
 
     private ManagerHolder mh;
+    private PatientManager pm;
     private ListResourceBundle resourceMap;
 
     private javax.swing.JButton addButton;
@@ -43,6 +45,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
     public PatientListGUI(ManagerHolder mh){
         super();
         this.mh = mh;
+        this.pm = mh.getPm();
         initComponents();
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -51,7 +54,6 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
                 showCancelDialog();
             }
         });
-        this.mh.getPm().retrievePatientData();
         this.displayPatientsList();
         this.pack();
         this.setVisible(true);
@@ -239,25 +241,35 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          }
 
          if(c.equals("add")){
-                new AddPatientGUI(mh, mh.getPm().getPL().size() + 1,resourceMap);
+                new AddPatientGUI(mh,c,-1,resourceMap);
+
                 this.dispose();
          }
 
          if(c.equals("delete")){
-                mh.getPm().deletePatient(Integer.parseInt(model.getValueAt(patientTable.getSelectedRow(), 0).toString()));
-                while(model.getRowCount() != 0)
-                    model.removeRow(0);
- //               pm.loadPatientsList();
+            if(patientTable.getSelectedRow() != -1){
+             pm.deletePatient(Integer.parseInt(model.getValueAt(patientTable.getSelectedRow(), 0).toString()));
+             reloadTable();
+               displayPatientsList();
+            }
+            else
+                    JOptionPane.showMessageDialog(null,"No patient was selected!", "Error Message", 2);
+
          }
 
          if(c.equals("edit")){
                 if(patientTable.getSelectedRow() != -1){
                     int selectedID = (Integer.parseInt((String)patientTable.getValueAt(patientTable.getSelectedRow(), 0)));
-                    AddPatientGUI p = new AddPatientGUI(mh, selectedID,resourceMap);
+                    AddPatientGUI p = new AddPatientGUI(mh,c, selectedID,resourceMap);
+
                     this.dispose();
                 }
                 else
                     JOptionPane.showMessageDialog(null,"No patient selected", "Nothing entered", 2);
+         }
+
+         if(c.equals("close")){
+             this.dispose();
          }
 
          if(c.equals("cancel")){
@@ -265,21 +277,34 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          }
 
          if(c.equals("search")){
-             mh.getPm().searchPatient((String)patientTable.getValueAt(patientTable.getSelectedRow(), 1));
+             Vector v = pm.searchPatient(searchTextField.getText());
+             if(v.size() == 0)
+                JOptionPane.showMessageDialog(null, "No patient with " + searchTextField.getText() + " last name found!","Error message", 2);
+             else
+             {
+                 reloadTable();
+                printResults(v);
+             }
          }
     }
 
-    /**
-     *
-     */
-    public void displayPatientsList(){
-            vidavo.PersonalInfo pi = new vidavo.PersonalInfo();
-            vidavo.PatientList pl = this.mh.getPm().getPL();
-            for(int i = 1; i <= pl.size(); i++){
-                pi = ((Patient)pl.getPatientAtIndex(i)).getPersonalInfo();
-                this.model.insertRow(this.patientTable.getRowCount(), new Object[]{pi.getID(),pi.getLName(),pi.getFName(),pi.getHomeNum()}); //addrow(pi.getID(),pi.getLName(),pi.getFName(),pi.getHomeNum())
+    public void displayPatientsList()
+    {
+            Vector v = pm.displayPatients();
+            printResults(v);
+
             }
+    public void printResults(Vector v)
+    {
+        for(int i = 0; i < v.size()/4; i++)
+                this.model.insertRow(i,new Object[]{v.get(i * 4).toString(),v.get(i * 4 +1).toString(),v.get(i * 4 +2).toString(),v.get(i * 4 +3).toString()});
     }
+
+    private void reloadTable() {
+        while(model.getRowCount() != 0)
+                    model.removeRow(0);
+    }
+
 
     private void showCancelDialog(){
 
@@ -311,60 +336,4 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
             this.dispose();
         }
     }
-//public void loadPersonalInfo(vidavo.gui.PatientManager pm){
-//
-//      try{
-//        java.sql.ResultSet res = pm.dbQuery("SELECT * FROM personalInfo where patientId = " + patientID);
-//
-//        while(res.next()){
-//          idLabel2.setText(Integer.toString(res.getInt("patientID")));
-//          firstNTextField.setText(res.getString("FirstName"));
-//          middleNTextField.setText(res.getString("MiddleName"));
-//          lastNTextField.setText(res.getString("LastName"));
-//          addressTextField.setText(res.getString("Address"));
-//          addressNumTextField.setText(Integer.toString(res.getInt("AddressNum")));
-//          cityTextField.setText(res.getString("City"));
-//          regionTextField.setText(res.getString("State_Region"));
-//          countryTextField.setText(res.getString("Country"));
-//          postalCTextField.setText(Integer.toString(res.getInt("Postal_Code")));
-//          citizenshipTextField.setText(res.getString("Citizenship"));
-//          heightTextField.setText(Integer.toString(res.getInt("Height")));
-//          weightTextField.setText(Integer.toString(res.getInt("Weight")));
-//
-//          if(res.getString("Gender").equals("Male"))
-//              maleRadioButton.setSelected(true);
-//          else
-//              femaleRadioButton.setSelected(true);
-//
-//          if(res.getString("Status").equals("Married"))
-//              marriedRadioButton.setSelected(true);
-//          else
-//              singleRadioButton.setSelected(true);
-//          birthDateTextField.setText((res.getString("BirthDate")));
-//          profTextField.setText(res.getString("Profession"));
-//          insuranceTextField.setText(res.getString("Insurrance"));
-//          amkaTextField.setText(Integer.toString(res.getInt("Insurance_Id_Number")));
-//
-//          int selectedItem;
-//          for(selectedItem = 0; selectedItem <= tameioComboBox.getItemCount(); selectedItem++){
-//              if(res.getString("Insurance_Type").equals(tameioComboBox.getItemAt(selectedItem)))
-//                break;
-//          }
-//          tameioComboBox.setSelectedIndex(selectedItem);
-//          firstVisitTextField.setText((res.getString("First_Visit")));
-//          childrenSpinner.setValue(res.getInt("Children"));
-//          homeTextField.setText(Integer.toString(res.getInt("Home_Number")));
-//          workTextField.setText(Integer.toString(res.getInt("Work_Number")));
-//          cellTextField.setText(Integer.toString(res.getInt("CellPhone_Number")));
-//          faxTextField.setText(Integer.toString(res.getInt("Fax_Number")));
-//          mailTextField.setText(res.getString("Email"));
-//
-//         // ageTextField.setText(calculateAge());
-//        }
-//      }
-//      catch (SQLException s){
-//          s.printStackTrace();
-//        System.out.println("SQL code does not execute.");
-//      }
-//  }
 }

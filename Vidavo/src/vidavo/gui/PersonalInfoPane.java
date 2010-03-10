@@ -7,8 +7,12 @@ package vidavo.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.*;
-import vidavo.PersonalInfo;
+import vidavo.pojos.*;
 
 /**
  *
@@ -78,14 +82,19 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
     private JLabel ageLabel;
     private JTextField ageTextField;
 
-    int patientID = 0;
-    private ManagerHolder mh;
+    private int patientID = 0;
+    private String mode;
+    private PersonalInfo pi;
 
-    public PersonalInfoPane(ManagerHolder mh){
+    public PersonalInfoPane(String mode,PersonalInfo pi){
         super();
-        this.mh = mh;
-        assignIdToPatient();
+        this.mode = mode;
         initPane();
+        if(mode.equals("edit"))
+        {
+            this.pi = pi;
+            loadPatientInfo(pi);
+        }
     }
 
     private void initPane(){
@@ -483,72 +492,150 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
         );
     }
 
-    private void assignIdToPatient(){
-        if(mh.getPm().getPL() != null){
-            for(int i = 1; i <= mh.getPm().getPL().size(); i++){
-                if(mh.getPm().getPL().getPatientAtIndex(i).getPatientID() != i){
-                    patientID = i;
-                    break;
-                }
-            }
-            if(patientID == 0)
-                patientID = mh.getPm().getPL().size() + 1;
-        }
-        else{
-            patientID = 1;
-        }
-    }
-
     public void actionPerformed(ActionEvent e) {
-        String action = e.getActionCommand();
-    }
+        String action = e.getActionCommand();}
 
-    public void loadPersonalInfo(int selectedID){
+   public void loadPatientInfo(PersonalInfo pi){
 
-          PersonalInfo info = mh.getPm().getPL().getPatient(selectedID).getPersonalInfo();
-          idLabel2.setText(Integer.toString(selectedID));
-          firstNTextField.setText(info.getFName());
-          middleNTextField.setText(info.getMName());
-          lastNTextField.setText(info.getLName());
-          addressTextField.setText(info.getAddress());
-          addressNumTextField.setText(Integer.toString(info.getAddressNum()));
-          cityTextField.setText(info.getCity());
-          regionTextField.setText(info.getState());
-          countryTextField.setText(info.getCountry());
-          postalCTextField.setText(Integer.toString(info.getPostalCode()));
-          citizenshipTextField.setText(info.getCitizenship());
-          heightTextField.setText(Integer.toString(info.getHeight()));
-          weightTextField.setText(Integer.toString(info.getWeight()));
+          idLabel2.setText(Integer.toString(pi.getPiId()));
+          firstNTextField.setText(pi.getFirstName());
+          middleNTextField.setText(pi.getMiddleName());
+          lastNTextField.setText(pi.getLastName());
+          addressTextField.setText(pi.getAddress());
+          addressNumTextField.setText(Integer.toString(pi.getAddressNum()));
+          cityTextField.setText(pi.getCity());
+          regionTextField.setText(pi.getStateRegion());
+          countryTextField.setText(pi.getCountry());
+          postalCTextField.setText(Integer.toString(pi.getPostalCode()));
+          citizenshipTextField.setText(pi.getCitizenship());
+          heightTextField.setText(Integer.toString(pi.getHeight()));
+          weightTextField.setText(Float.toString(pi.getWeight()));
 
-          if(info.getSex().equals("Male"))
+          if(pi.getGender().equals("Male"))
               maleRadioButton.setSelected(true);
           else
               femaleRadioButton.setSelected(true);
 
-          if(info.getMaritalStatus().equals("Married"))
+          if(pi.getStatus().equals("Married"))
               marriedRadioButton.setSelected(true);
           else
               singleRadioButton.setSelected(true);
 
-          birthDateTextField.setText((info.getBirthDate()));
-          profTextField.setText(info.getProfession());
-          insuranceTextField.setText(info.getInsurance());
-          amkaTextField.setText(Integer.toString(info.getAmka()));
+          birthDateTextField.setText(pi.getBirthDate().toString());
+          profTextField.setText(pi.getProfession());
+          insuranceTextField.setText(pi.getInsurrance());
+          amkaTextField.setText(Integer.toString(pi.getInsuranceIdNumber()));
 
           int selectedItem;
           for(selectedItem = 0; selectedItem <= tameioComboBox.getItemCount(); selectedItem++){
-              if(info.getTameio().equals(tameioComboBox.getItemAt(selectedItem)))
+              if(pi.getInsuranceType().equals(tameioComboBox.getItemAt(selectedItem)))
                 break;
           }
           tameioComboBox.setSelectedIndex(selectedItem);
-          firstVisitTextField.setText((info.getFirstVisit()));
-          childrenSpinner.setValue(info.getChildren());
-          homeTextField.setText(info.getHomeNum());
-          workTextField.setText(info.getWorkNum());
-          cellTextField.setText(info.getCellPhone());
-          faxTextField.setText(info.getFax());
-          mailTextField.setText(info.getEmail());
+          firstVisitTextField.setText((pi.getFirstVisit()).toString());
+          childrenSpinner.setValue(pi.getChildren());
+          homeTextField.setText(Integer.toString(pi.getHomeNumber()));
+          workTextField.setText(Integer.toString(pi.getWorkNumber()));
+          cellTextField.setText(Integer.toString(pi.getCellPhoneNumber()));
+          faxTextField.setText(Integer.toString(pi.getFaxNumber()));
+          mailTextField.setText(pi.getEmail());
 
          // ageTextField.setText(calculateAge());
       }
-}
+   public PersonalInfo getPersonalinfo()throws NumberFormatException
+   {
+       String sex;
+            if(maleRadioButton.isSelected() == true)
+                sex = "Male";
+            else
+                sex = "Female";
+            String marital;
+            if(marriedRadioButton.isSelected() == true)
+                marital = "Married";
+            else
+                marital = "Single";
+
+            if(addressNumTextField.getText().equals(""))
+            {
+                addressNumTextField.setText("0");
+                System.out.println(addressNumTextField.getText());
+            }
+            if(postalCTextField.getText().equals(""))
+            {
+                postalCTextField.setText("0");
+                System.out.println(postalCTextField.getText());
+            }
+            if(heightTextField.getText().equals(""))
+            {
+                heightTextField.setText("0");
+                System.out.println(heightTextField.getText());
+            }
+            if(weightTextField.getText().equals(""))
+            {
+                weightTextField.setText("0");
+                System.out.println(weightTextField.getText());
+            }
+            if(amkaTextField.getText().equals(""))
+            {
+                amkaTextField.setText("0");
+                System.out.println(amkaTextField.getText());
+            }
+            if(childrenSpinner.getValue().toString().equals(""))
+            {
+                childrenSpinner.setValue("0");
+                System.out.println(childrenSpinner.getValue().toString());
+            }
+
+             if(homeTextField.getText().equals(""))
+            {
+                homeTextField.setText("0");
+            }
+            if(cellTextField.getText().equals(""))
+            {
+                cellTextField.setText("0");
+            }
+            if(faxTextField.getText().equals(""))
+            {
+                faxTextField.setText("0");
+            }
+
+            if(workTextField.getText().equals(""))
+            {
+                workTextField.setText("0");
+            }
+
+
+            DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            Date birthD = new Date();
+            Date firstV = new Date();
+            try
+        {
+             if(birthDateTextField.getText().equals(""))
+                 birthD = df.parse("0000-00-00");
+             else
+             birthD = df.parse(birthDateTextField.getText());
+             if(firstVisitTextField.getText().equals(""))
+                 firstV = df.parse("0000-00-00");
+             else
+             firstV = df.parse(firstVisitTextField.getText());
+
+
+        } catch (ParseException ex)
+        {
+            ex.printStackTrace();
+        }
+
+       return new PersonalInfo(firstNTextField.getText(),middleNTextField.getText(),
+               lastNTextField.getText(),addressTextField.getText(),Integer.parseInt(addressNumTextField.getText()),cityTextField.getText(),
+               regionTextField.getText(),countryTextField.getText(),
+               Integer.parseInt(postalCTextField.getText()),citizenshipTextField.getText(),
+               Integer.parseInt(heightTextField.getText()),Float.parseFloat(weightTextField.getText()),
+               sex,marital,birthD,profTextField.getText(),insuranceTextField.getText(),
+               tameioComboBox.getSelectedItem().toString(),Integer.parseInt(amkaTextField.getText()),
+               firstV,Integer.parseInt(childrenSpinner.getValue().toString()),
+               Integer.parseInt(homeTextField.getText()),Integer.parseInt(cellTextField.getText()),
+               Integer.parseInt(workTextField.getText()),
+               Integer.parseInt(faxTextField.getText()),
+               mailTextField.getText());
+            }
+   }

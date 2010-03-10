@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 9.3.2010 22:42: by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="vidavo" name="vidavo.pojos.PersonalInfo" table="personal_info">
+    <id name="piId" type="int">
+      <column name="piID"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="vidavo.pojos.Patients" fetch="select" insert="false" name="patients" update="false">
+      <column name="piID" not-null="true" unique="true"/>
+    </many-to-one>
+    <property name="firstName" type="string">
+      <column length="30" name="FirstName" not-null="true"/>
+    </property>
+    <property name="middleName" type="string">
+      <column length="30" name="MiddleName"/>
+    </property>
+    <property name="lastName" type="string">
+      <column length="30" name="LastName" not-null="true"/>
+    </property>
+    <property name="address" type="string">
+      <column length="50" name="Address"/>
+    </property>
+    <property name="addressNum" type="java.lang.Integer">
+      <column name="AddressNum"/>
+    </property>
+    <property name="city" type="string">
+      <column length="50" name="City"/>
+    </property>
+    <property name="stateRegion" type="string">
+      <column length="50" name="State_Region"/>
+    </property>
+    <property name="country" type="string">
+      <column length="50" name="Country"/>
+    </property>
+    <property name="postalCode" type="java.lang.Integer">
+      <column name="Postal_Code"/>
+    </property>
+    <property name="citizenship" type="string">
+      <column length="50" name="Citizenship"/>
+    </property>
+    <property name="height" type="java.lang.Integer">
+      <column name="Height"/>
+    </property>
+    <property name="weight" type="java.lang.Float">
+      <column name="Weight" precision="3" scale="0"/>
+    </property>
+    <property name="gender" type="string">
+      <column length="20" name="Gender"/>
+    </property>
+    <property name="status" type="string">
+      <column length="20" name="Status"/>
+    </property>
+    <property name="birthDate" type="date">
+      <column length="10" name="BirthDate"/>
+    </property>
+    <property name="profession" type="string">
+      <column length="50" name="Profession"/>
+    </property>
+    <property name="insurrance" type="string">
+      <column length="50" name="Insurrance" not-null="true"/>
+    </property>
+    <property name="insuranceType" type="string">
+      <column length="20" name="Insurance_Type" not-null="true"/>
+    </property>
+    <property name="insuranceIdNumber" type="int">
+      <column name="Insurance_Id_Number" not-null="true"/>
+    </property>
+    <property name="firstVisit" type="date">
+      <column length="10" name="First_Visit"/>
+    </property>
+    <property name="children" type="java.lang.Integer">
+      <column name="Children"/>
+    </property>
+    <property name="homeNumber" type="java.lang.Integer">
+      <column name="Home_Number"/>
+    </property>
+    <property name="cellPhoneNumber" type="java.lang.Integer">
+      <column name="CellPhone_Number"/>
+    </property>
+    <property name="workNumber" type="java.lang.Integer">
+      <column name="Work_Number"/>
+    </property>
+    <property name="faxNumber" type="java.lang.Integer">
+      <column name="Fax_Number"/>
+    </property>
+    <property name="email" type="string">
+      <column length="50" name="Email"/>
+    </property>
+  </class>
+</hibernate-mapping>

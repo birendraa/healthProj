@@ -3,7 +3,7 @@ package vidavo.gui;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
-import vidavo.ChronicDiseases;
+import vidavo.pojos.ChronicDiseases;
 
 public class ChronicDiseasesPane extends JPanel{
     
@@ -124,8 +124,9 @@ public class ChronicDiseasesPane extends JPanel{
     private javax.swing.JRadioButton chronicDiseasesRadioButtonYes9;
 
     private java.util.ListResourceBundle resourceMap;
+    private ChronicDiseases cd;
 
-    public ChronicDiseasesPane(java.util.ListResourceBundle rm){
+    public ChronicDiseasesPane(java.util.ListResourceBundle rm,String mode,ChronicDiseases cd){
         this.resourceMap = rm;
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -853,9 +854,359 @@ public class ChronicDiseasesPane extends JPanel{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 2401, Short.MAX_VALUE)
         );
+
+        if(mode.equals("edit"))
+        {
+            this.cd = cd;
+            loadChronicDiseases(cd);
+        }
     }
 
-    public ChronicDiseases getSurgeryHistoryInformation(){
-        return new ChronicDiseases();
+    public void loadChronicDiseases(ChronicDiseases cd)
+    {
+
+            vactiriakesPneumoniesTextArea.setText(cd.getVactiriakesPneumonies());
+
+            pathiseisPneumonwnTextArea.setText(cd.getPathiseisPneumonwn());
+
+            if(cd.getChroniaVroxitida().equals("Yes"))
+            chronicDiseasesRadioButtonYes1.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo1.setSelected(true);
+
+            aneurismaPneumonikisArtiriasTextArea.setText(cd.getAneurismaPneumonikisArtirias());
+
+            diataraxesArtiriwnTextArea.setText(cd.getDiataraxesArtiriwn());
+
+            if(cd.getAllergikoAsthma().equals("Yes"))
+            chronicDiseasesRadioButtonYes2.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo2.setSelected(true);
+
+            if(cd.getAnapneustikiAneparkeia().equals("Yes"))
+            chronicDiseasesRadioButtonYes3.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo3.setSelected(true);
+
+            if(cd.getAnapneustiras().equals("Yes"))
+            chronicDiseasesRadioButtonYes4.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo4.setSelected(true);
+
+            if(cd.getKardiopatheia().equals("Yes"))
+            chronicDiseasesRadioButtonYes5.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo5.setSelected(true);
+
+            if(cd.getAneurismaKardias().equals("Yes"))
+            chronicDiseasesRadioButtonYes6.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo6.setSelected(true);
+
+            kardiakiArythmiaTextArea.setText(cd.getKardiakiArithmia());
+
+            if(cd.getVimatodotis().equals("Yes"))
+            chronicDiseasesRadioButtonYes7.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo7.setSelected(true);
+
+            if(cd.getEmfragma().equals("Yes"))
+            chronicDiseasesRadioButtonYes8.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo8.setSelected(true);
+
+            if(cd.getEgefaliko().equals("Yes"))
+            chronicDiseasesRadioButtonYes9.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo9.setSelected(true);
+
+            if(cd.getThromvosiAgeiwn().equals("Yes"))
+            chronicDiseasesRadioButtonYes10.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo10.setSelected(true);
+
+            if(cd.getStenosiAortikisValvidas().equals("Yes"))
+            chronicDiseasesRadioButtonYes11.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo11.setSelected(true);
+
+            if(cd.getAneparkeiaAortikisValvidas().equals("Yes"))
+            chronicDiseasesRadioButtonYes12.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo12.setSelected(true);
+
+            ageiakesPathiseisTextArea.setText(cd.getAgeiakesPathiseis());
+
+            if(cd.getYpotasi().equals("Yes"))
+            chronicDiseasesRadioButtonYes13.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo13.setSelected(true);
+
+            if(cd.getYpertasi().equals("Yes"))
+            chronicDiseasesRadioButtonYes14.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo14.setSelected(true);
+
+            allesMorfesYpotaseisTextArea.setText(cd.getAllesMorfesYpotasis());
+
+            if(cd.getDiavitis().equals("Yes"))
+            chronicDiseasesRadioButtonYes15.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo15.setSelected(true);
+
+            nososYpatosTextArea.setText(cd.getNososYpatos());
+
+            if(cd.getIpatikiAneparkeia().equals("Yes"))
+            chronicDiseasesRadioButtonYes16.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo16.setSelected(true);
+
+            if(cd.getNefrikiAneparkeia().equals("Yes"))
+            chronicDiseasesRadioButtonYes17.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo17.setSelected(true);
+
+            if(cd.getMixanimaAimokatharsis().equals("Yes"))
+            chronicDiseasesRadioButtonYes18.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo18.setSelected(true);
+
+            if(cd.getElkos().equals("Yes"))
+            chronicDiseasesRadioButtonYes19.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo19.setSelected(true);
+
+            if(cd.getDiataraxesEderou().equals("Yes"))
+            chronicDiseasesRadioButtonYes20.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo20.setSelected(true);
+
+            diataraxesNeurikouSistimatosTextArea.setText(cd.getDiataraxesNeurikouSistimatos());
+
+            if(cd.getErpitikoEkzema().equals("Yes"))
+            chronicDiseasesRadioButtonYes21.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo21.setSelected(true);
+
+            ipatitidaTextArea.setText(cd.getIpatitida());
+
+            if(cd.getLeuxaimia().equals("Yes"))
+            chronicDiseasesRadioButtonYes22.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo22.setSelected(true);
+
+            if(cd.getEleipsiSidirou().equals("Yes"))
+            chronicDiseasesRadioButtonYes23.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo23.setSelected(true);
+
+            if(cd.getPoliomuelitida().equals("Yes"))
+            chronicDiseasesRadioButtonYes24.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo24.setSelected(true);
+
+            if(cd.getThiroeidismos().equals("Yes"))
+            chronicDiseasesRadioButtonYes25.setSelected(true);
+            else
+            chronicDiseasesRadioButtonNo25.setSelected(true);
+
+            morfiThiroeidiTextArea.setText(cd.getMorfiThiroeidi());
+
+            allesChroniesAstheneiesTextArea.setText(cd.getAllesChroniesAstheneies());
+
+    }
+    public ChronicDiseases getChronicDiseases ()
+    {
+        //vactiriakesPneumoniesTextArea.setText(cd.getVactiriakesPneumonies());
+
+        //pathiseisPneumonwnTextArea.setText(cd.getPathiseisPneumonwn());
+
+        String chroniaVroxitida;
+        if(chronicDiseasesRadioButtonYes1.isSelected() == true )
+        chroniaVroxitida = "Yes";
+        else
+        chroniaVroxitida = "No";
+
+        //aneurismaPneumonikisArtiriasTextArea.setText(cd.getAneurismaPneumonikisArtirias());
+
+        //diataraxesArtiriwnTextArea.setText(cd.getDiataraxesArtiriwn());
+
+        String allergikoAsthma;
+        if(chronicDiseasesRadioButtonYes2.isSelected() == true )
+        allergikoAsthma = "Yes";
+        else
+        allergikoAsthma = "No";
+
+        String anapneustikiAneparkeia;
+        if(chronicDiseasesRadioButtonYes3.isSelected() == true )
+        anapneustikiAneparkeia = "Yes";
+        else
+        anapneustikiAneparkeia = "No";
+
+        String anapneustiras;
+        if(chronicDiseasesRadioButtonYes4.isSelected() == true )
+        anapneustiras = "Yes";
+        else
+        anapneustiras = "No";
+
+        String kardiopatheia;
+        if(chronicDiseasesRadioButtonYes5.isSelected() == true )
+        kardiopatheia = "Yes";
+        else
+        kardiopatheia = "No";
+
+        String aneurismaKardias;
+        if(chronicDiseasesRadioButtonYes6.isSelected() == true )
+        aneurismaKardias = "Yes";
+        else
+        aneurismaKardias = "No";
+
+        //kardiakiArythmiaTextArea.setText(cd.getKardiakiArithmia());
+
+        String vimatodotis;
+        if(chronicDiseasesRadioButtonYes7.isSelected() == true)
+        vimatodotis = "Yes";
+        else
+        vimatodotis = "No";
+
+        String emfragma;
+        if( chronicDiseasesRadioButtonYes8.isSelected() == true)
+        emfragma = "Yes";
+        else
+        emfragma = "No";
+
+        String egefaliko;
+        if(chronicDiseasesRadioButtonYes9.isSelected() == true)
+        egefaliko = "Yes";
+        else
+        egefaliko = "No";
+
+        String thromvosiAgeiwn;
+        if(chronicDiseasesRadioButtonYes10.isSelected() == true)
+        thromvosiAgeiwn = "Yes";
+        else
+        thromvosiAgeiwn = "No";
+
+        String stenosiAortikisValvidas;
+        if(chronicDiseasesRadioButtonYes11.isSelected() == true)
+        stenosiAortikisValvidas = "Yes";
+        else
+        stenosiAortikisValvidas = "No";
+
+        String aneparkeiaAortikisValvidas;
+        if(chronicDiseasesRadioButtonYes12.isSelected() == true)
+        aneparkeiaAortikisValvidas = "Yes";
+        else
+        aneparkeiaAortikisValvidas = "No";
+
+        //ageiakesPathiseisTextArea.setText(cd.getAgeiakesPathiseis());
+
+        String ypotasi;
+        if(chronicDiseasesRadioButtonYes13.isSelected() == true)
+        ypotasi = "Yes";
+        else
+        ypotasi = "No";
+
+        String ypertasi;
+        if(chronicDiseasesRadioButtonYes14.isSelected() == true)
+        ypertasi = "Yes";
+        else
+        ypertasi = "No";
+
+        //allesMorfesYpotaseisTextArea.setText(cd.getAllesMorfesYpotasis());
+
+        String diavitis;
+        if(chronicDiseasesRadioButtonYes15.isSelected() == true)
+        diavitis = "Yes";
+        else
+        diavitis = "No";
+
+        //nososYpatosTextArea.setText(cd.getNososYpatos());
+
+        String ipatikiAneparkeia;
+        if(chronicDiseasesRadioButtonYes16.isSelected() == true)
+        ipatikiAneparkeia = "Yes";
+        else
+        ipatikiAneparkeia = "No";
+
+        String nefrikiAneparkeia;
+        if(chronicDiseasesRadioButtonYes17.isSelected() == true)
+        nefrikiAneparkeia = "Yes";
+        else
+        nefrikiAneparkeia = "No";
+
+        String mixanimaAimokatharsis;
+        if(chronicDiseasesRadioButtonYes18.isSelected() == true)
+        mixanimaAimokatharsis = "Yes";
+        else
+        mixanimaAimokatharsis = "No";
+
+        String elkos;
+        if(chronicDiseasesRadioButtonYes19.isSelected() == true)
+        elkos = "Yes";
+        else
+        elkos = "No";
+
+        String diataraxesEderou;
+        if(chronicDiseasesRadioButtonYes20.isSelected() == true)
+        diataraxesEderou = "Yes";
+        else
+        diataraxesEderou = "No";
+
+        //diataraxesNeurikouSistimatosTextArea.setText(cd.getDiataraxesNeurikouSistimatos());
+
+        String erpitikoEkzema;
+        if(chronicDiseasesRadioButtonYes21.isSelected() == true)
+        erpitikoEkzema = "Yes";
+        else
+        erpitikoEkzema = "No";
+
+        //ipatitidaTextArea.setText(cd.getIpatitida());
+
+        String leuxaimia;
+        if(chronicDiseasesRadioButtonYes22.isSelected() == true)
+        leuxaimia = "Yes";
+        else
+        leuxaimia = "No";
+
+        String eleipsiSidirou;
+        if(chronicDiseasesRadioButtonYes23.isSelected() == true)
+        eleipsiSidirou = "Yes";
+        else
+        eleipsiSidirou = "No";
+
+        String poliomuelitida;
+        if(chronicDiseasesRadioButtonYes24.isSelected() == true)
+        poliomuelitida = "Yes";
+        else
+        poliomuelitida = "No";
+
+        String thiroeidismos;
+        if(chronicDiseasesRadioButtonYes25.isSelected() == true)
+        thiroeidismos = "Yes";
+        else
+        thiroeidismos = "No";
+
+        //morfiThiroeidiTextArea.setText(cd.getMorfiThiroeidi());
+
+        //allesChroniesAstheneiesTextArea.setText(cd.getAllesChroniesAstheneies());
+
+        return new ChronicDiseases (chroniaVroxitida, vactiriakesPneumoniesTextArea.getText(),
+                pathiseisPneumonwnTextArea.getText(),
+                aneurismaPneumonikisArtiriasTextArea.getText(),
+                diataraxesArtiriwnTextArea.getText(), allergikoAsthma,
+                anapneustikiAneparkeia,anapneustiras,kardiopatheia,
+                aneurismaKardias, kardiakiArythmiaTextArea.getText(),
+                vimatodotis,emfragma,egefaliko,thromvosiAgeiwn,
+                stenosiAortikisValvidas,aneparkeiaAortikisValvidas,
+                ageiakesPathiseisTextArea.getText(),ypotasi,ypertasi,
+                allesMorfesYpotaseisTextArea.getText(), diavitis,
+                nososYpatosTextArea.getText(),ipatikiAneparkeia,
+                nefrikiAneparkeia,mixanimaAimokatharsis,elkos,
+                diataraxesEderou,diataraxesNeurikouSistimatosTextArea.getText(),
+                erpitikoEkzema,ipatitidaTextArea.getText(),leuxaimia,eleipsiSidirou,
+                poliomuelitida, thiroeidismos, morfiThiroeidiTextArea.getText(),
+                allesChroniesAstheneiesTextArea.getText()
+                );
     }
 }
