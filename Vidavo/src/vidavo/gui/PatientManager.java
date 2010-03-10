@@ -111,7 +111,7 @@ public class PatientManager {
     public void retrievePatientData(){
 
       try{
-        java.sql.ResultSet res = this.dbQuery("SELECT * FROM personalInfo");
+        java.sql.ResultSet res = this.dbQuery("SELECT * FROM personal_info");
 
         while(res.next()){
           PersonalInfo pInfo = new PersonalInfo();

@@ -71,7 +71,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         habitsPane = new HabitsPane(resourceMap);
         chronicMedicationsPane = new ChronicMedicationPane(resourceMap);
         chronicDiseasesPane = new ChronicDiseasesPane(resourceMap);
-        contactsPane = new ContactsPane(resourceMap);
+        contactsPane = new ContactPane(resourceMap);
         photosPane = new PhotosPane(resourceMap);
         personalInfoPane = new PersonalInfoPane(mh);
         saveButton = new JButton();
@@ -85,60 +85,12 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         addPatientTabbedPane.addTab("Personal Info", personalInfoPane);
         addPatientTabbedPane.addTab("Surgery History", surgeryHistoryPane);
         addPatientTabbedPane.addTab("Family history", familyHistoryPane);
-        addPatientTabbedPane.addTab("Contacts", contactsPane);
-        addPatientTabbedPane.addTab("Photos", photosPane);
+        addPatientTabbedPane.addTab("Immunization History", immunizationHistoryPane);
         addPatientTabbedPane.addTab("Chronic Medications", chronicMedicationsPane);
         addPatientTabbedPane.addTab("Chronic Diseases", chronicDiseasesPane);
         addPatientTabbedPane.addTab("Habits", habitsPane);
-        addPatientTabbedPane.addTab("Immunization History", immunizationHistoryPane);
-
-
-//        javax.swing.GroupLayout immunizationHistoryPaneLayout = new javax.swing.GroupLayout(immunizationHistoryPane);
-//        immunizationHistoryPane.setLayout(immunizationHistoryPaneLayout);
-//        immunizationHistoryPaneLayout.setHorizontalGroup(
-//            immunizationHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 806, Short.MAX_VALUE)
-//        );
-//        immunizationHistoryPaneLayout.setVerticalGroup(
-//            immunizationHistoryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 576, Short.MAX_VALUE)
-//        );
-//        javax.swing.GroupLayout habitsPaneLayout = new javax.swing.GroupLayout(habitsPane);
-//        habitsPane.setLayout(habitsPaneLayout);
-//        habitsPaneLayout.setHorizontalGroup(
-//            habitsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 806, Short.MAX_VALUE)
-//        );
-//        habitsPaneLayout.setVerticalGroup(
-//            habitsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 576, Short.MAX_VALUE)
-//        );
-
-//        javax.swing.GroupLayout chronicMedicationsPaneLayout = new javax.swing.GroupLayout(chronicMedicationsPane);
-//        chronicMedicationsPane.setLayout(chronicMedicationsPaneLayout);
-//        chronicMedicationsPaneLayout.setHorizontalGroup(
-//            chronicMedicationsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 806, Short.MAX_VALUE)
-//        );
-//        chronicMedicationsPaneLayout.setVerticalGroup(
-//            chronicMedicationsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 576, Short.MAX_VALUE)
-//        );
-//
-//        addPatientTabbedPane.addTab("Chronic Medications", chronicMedicationsPane);
-//
-//        javax.swing.GroupLayout chronicDiseasesPaneLayout = new javax.swing.GroupLayout(chronicDiseasesPane);
-//        chronicDiseasesPane.setLayout(chronicDiseasesPaneLayout);
-//        chronicDiseasesPaneLayout.setHorizontalGroup(
-//            chronicDiseasesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 806, Short.MAX_VALUE)
-//        );
-//        chronicDiseasesPaneLayout.setVerticalGroup(
-//            chronicDiseasesPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//            .addGap(0, 576, Short.MAX_VALUE)
-//        );
-//
-//        addPatientTabbedPane.addTab("Chronic Diseases", chronicDiseasesPane);
+        addPatientTabbedPane.addTab("Photos", photosPane);
+        addPatientTabbedPane.addTab("Contact", contactsPane);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
