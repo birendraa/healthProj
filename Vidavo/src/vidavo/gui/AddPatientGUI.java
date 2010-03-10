@@ -62,7 +62,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         super();
         this.mh = mh;
-        this.pm = pm;
+        this.pm = mh.getPm();
         this.resourceMap = rm;
         this.mode = mode;
         patientId = id;
@@ -183,25 +183,24 @@ public class AddPatientGUI extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
         if(action.equals("Save")){
-        PersonalInfoPane pi1 = (PersonalInfoPane) personalInfoPane;
-        SurgicalHistoryPane sh1 = (SurgicalHistoryPane) surgeryHistoryPane;
-        FamilyHistoryPane fh1 = (FamilyHistoryPane) familyHistoryPane;
-        ContactPane contacts1 = (ContactPane) contactsPane;
-        ChronicMedicationPane cm1 = (ChronicMedicationPane) chronicMedicationsPane;
-        ChronicDiseasesPane cd1 = (ChronicDiseasesPane) chronicDiseasesPane;
-        HabitsPane habits1 = (HabitsPane) habitsPane;
-        ImmunizationsPane immun1 = (ImmunizationsPane) immunizationHistoryPane;
-
+            PersonalInfoPane pi1 = (PersonalInfoPane) personalInfoPane;
+            SurgicalHistoryPane sh1 = (SurgicalHistoryPane) surgeryHistoryPane;
+            FamilyHistoryPane fh1 = (FamilyHistoryPane) familyHistoryPane;
+            ContactPane contacts1 = (ContactPane) contactsPane;
+            ChronicMedicationPane cm1 = (ChronicMedicationPane) chronicMedicationsPane;
+            ChronicDiseasesPane cd1 = (ChronicDiseasesPane) chronicDiseasesPane;
+            HabitsPane habits1 = (HabitsPane) habitsPane;
+            ImmunizationsPane immun1 = (ImmunizationsPane) immunizationHistoryPane;
         try
         {
-        pi = pi1.getPersonalinfo();
-        sh = sh1.getSurgeryHistoryInformation();
-        fh = fh1.getFamilyHistory();
-        contacts = contacts1.getContacts();
-        cm = cm1.getChronicMedications();
-        cd = cd1.getChronicDiseases();
-        habits = habits1.getHabits();
-        immun = immun1.getImmunizations();
+            pi = pi1.getPersonalinfo();
+            sh = sh1.getSurgeryHistoryInformation();
+            fh = fh1.getFamilyHistory();
+            contacts = contacts1.getContacts();
+            cm = cm1.getChronicMedications();
+            cd = cd1.getChronicDiseases();
+            habits = habits1.getHabits();
+            immun = immun1.getImmunizations();
 
         if(pi.getFirstName().equals(""))
         {
@@ -232,6 +231,8 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         if(mode.equals("add"))
         {
             pm.createPatient(pi,sh,fh,contacts,cm,cd,habits,immun);
+            this.dispose();
+            new PatientListGUI(mh);
         }
         else
         {
@@ -244,6 +245,8 @@ public class AddPatientGUI extends JFrame implements ActionListener{
             cd.setChId(p.getPatientId());
             habits.setHabitsId(p.getPatientId());
             pm.editPatient(p,pi,sh,fh,contacts,cm,cd,habits,immun);
+            this.dispose();
+            new PatientListGUI(mh);
         }
         }
         }

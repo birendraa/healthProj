@@ -5,6 +5,8 @@
 
 package vidavo.gui;
 
+import vidavo.pojos.Contacts;
+
 /**
  *
  * @author Serban
@@ -12,6 +14,8 @@ package vidavo.gui;
 public class ContactPane extends javax.swing.JPanel{
 
     private java.util.ListResourceBundle resourceMap;
+    private Contacts contacts;
+    private String mode;
 
     private javax.swing.JLabel contactLabel;
     private javax.swing.JLabel emailLabel;
@@ -25,10 +29,17 @@ public class ContactPane extends javax.swing.JPanel{
     private javax.swing.JLabel relationshipLabel;
     private javax.swing.JTextField relationshipTextField;
 
- 
-    public ContactPane(java.util.ListResourceBundle rm){
+
+
+    public ContactPane(java.util.ListResourceBundle rm,String mode,Contacts contacts){
         this.resourceMap = rm;
+        this.mode = mode;
         initPane();
+        if(mode.equals("edit"))
+        {
+            this.contacts = contacts;
+            loadContacts(contacts);
+        }
     }
 
     private void initPane(){
@@ -105,5 +116,22 @@ public class ContactPane extends javax.swing.JPanel{
                     .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>
-    
+
+    private void loadContacts(Contacts contacts) {
+        firstNameTextField.setText(contacts.getFirstName());
+        lastNameTextField.setText(contacts.getLastName());
+        relationshipTextField.setText(contacts.getRelationship());
+        phoneTextField.setText(contacts.getHomePhone());
+        emailTextField.setText(contacts.getEmail());
+    }
+
+    public Contacts getContacts()
+    {
+        return new Contacts(relationshipTextField.getText(),
+        firstNameTextField.getText(),
+        lastNameTextField.getText(),
+        phoneTextField.getText(),
+        emailTextField.getText());
+    }
+
 }
