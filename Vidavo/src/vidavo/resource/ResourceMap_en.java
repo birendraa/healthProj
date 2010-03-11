@@ -22,6 +22,7 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
                 //Save/Cancel Buttons
                 {"cancelButton.text", "Cancel"},
                 {"saveButton.text", "Save"},
+                {"okButton.text", "OK"},
 
                 //Personal Info Window
                 {"idLabel.text", "ID*"},
@@ -63,8 +64,8 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
                 {"editButton.text", "Edit..."},
                 {"searchButton.text", "Search"},
                 {"searchTextField.text", "Search by last name..."},
-                {"patientNameLabel.text", "John Smith"},
-                {"patientLabel.text", "Patient Name: "},
+                {"patientNameLabel.text", "Select a patient from the table..."},
+                {"patientLabel.text.in.list", "Selected Patient: "},
                 {"patientTable.columnModel.title3", "Telephone"},
                 {"patientTable.columnModel.title2", "First Name"},
                 {"patientTable.columnModel.title1", "Last Name"},

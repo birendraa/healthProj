@@ -13,6 +13,8 @@ import java.util.ListResourceBundle;
 import java.util.Vector;
 import javax.swing.*;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import vidavo.pojos.*;
 
 /**
@@ -26,12 +28,14 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
     private ListResourceBundle resourceMap;
 
     private javax.swing.JButton addButton;
+    private javax.swing.JButton refreshButton;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu fileMenu, quitMenu, helpMenu;
     private javax.swing.JMenuItem aboutMenuItem, quitMenuItem;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton editButton;
+    private javax.swing.JButton okButton;
     private javax.swing.JLabel patientLabel;
     private javax.swing.JPanel patientListPanel;
     private javax.swing.JLabel patientNameLabel;
@@ -72,6 +76,8 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         deleteButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        okButton = new javax.swing.JButton();
+        refreshButton = new javax.swing.JButton();
         searchTextField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
 
@@ -121,7 +127,6 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
               }
         };
 
-
         patientTable.setName("patientTable"); // NOI18N
         tableScrollPane.setViewportView(patientTable);
         patientTable.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("patientTable.columnModel.title0")); // NOI18N
@@ -129,7 +134,22 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         patientTable.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("patientTable.columnModel.title2")); // NOI18N
         patientTable.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("patientTable.columnModel.title3")); // NOI18N
 
-        patientLabel.setText(resourceMap.getString("patientLabel.text")); // NOI18N
+        ListSelectionModel listSelectionModel = patientTable.getSelectionModel();
+        listSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        listSelectionModel.addListSelectionListener(new ListSelectionListener() {
+
+            public void valueChanged(ListSelectionEvent e) {
+                    ListSelectionModel lsm = (ListSelectionModel)e.getSource();
+                    int position = lsm.getAnchorSelectionIndex();
+                    String fname = (String)model.getValueAt(position, 2);
+                    String lname = (String)model.getValueAt(position, 1);
+                    patientNameLabel.setText(lname + " " + fname);
+
+            }
+        });
+	patientTable.setSelectionModel(listSelectionModel);
+
+        patientLabel.setText(resourceMap.getString("patientLabel.text.in.list")); // NOI18N
         patientLabel.setName("patientLabel"); // NOI18N
 
         patientNameLabel.setText(resourceMap.getString("patientNameLabel.text")); // NOI18N
@@ -139,6 +159,17 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         addButton.setName("addButton"); // NOI18N
         addButton.setActionCommand("add");
         addButton.addActionListener(this);
+
+        refreshButton.setName("refreshButton"); // NOI18N
+        refreshButton.setActionCommand("refresh");
+        refreshButton.setToolTipText("Reload table");
+        refreshButton.setIcon(new ImageIcon(getClass().getResource("images/clear.png")));
+        refreshButton.addActionListener(this);
+
+        okButton.setText(resourceMap.getString("okButton.text")); // NOI18N
+        okButton.setName("okButton"); // NOI18N
+        okButton.setActionCommand("ok");
+        okButton.addActionListener(this);
 
         deleteButton.setText(resourceMap.getString("deleteButton.text")); // NOI18N
         deleteButton.setName("deleteButton"); // NOI18N
@@ -173,8 +204,10 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
                     .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
                     .addGroup(patientListPanelLayout.createSequentialGroup()
                         .addComponent(searchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(4, 4, 4)
+                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(patientListPanelLayout.createSequentialGroup()
                         .addComponent(patientLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -186,6 +219,8 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
                         .addGap(18, 18, 18)
                         .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
+                        .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -195,6 +230,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
                 .addContainerGap()
                 .addGroup(patientListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refreshButton)
                     .addComponent(searchButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(patientListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -207,6 +243,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
                     .addComponent(addButton)
                     .addComponent(editButton)
                     .addComponent(deleteButton)
+                    .addComponent(okButton)
                     .addComponent(cancelButton))
                 .addContainerGap())
         );
@@ -259,20 +296,25 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          if(c.equals("edit")){
                 if(patientTable.getSelectedRow() != -1){
                     int selectedID = (Integer.parseInt((String)patientTable.getValueAt(patientTable.getSelectedRow(), 0)));
-                    AddPatientGUI p = new AddPatientGUI(mh,c, selectedID,resourceMap);
-
                     this.dispose();
+                    AddPatientGUI p = new AddPatientGUI(mh,c, selectedID,resourceMap);
                 }
                 else
                     JOptionPane.showMessageDialog(null,"No patient selected", "Nothing entered", 2);
          }
 
-         if(c.equals("close")){
+         if(c.equals("ok")){
              this.dispose();
+             new AppointmentGUI(mh);
          }
 
          if(c.equals("cancel")){
                 showCancelDialog();
+         }
+
+         if(c.equals("refresh")){
+                reloadTable();
+                displayPatientsList();
          }
 
          if(c.equals("search")){
@@ -282,7 +324,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
              else
              {
                  reloadTable();
-                printResults(v);
+                 printResults(v);
              }
          }
     }
@@ -331,8 +373,8 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         }
         else if (value == JOptionPane.YES_OPTION)
         {
-            new AppointmentGUI(mh);
             this.dispose();
+            new AppointmentGUI(mh);
         }
     }
 }

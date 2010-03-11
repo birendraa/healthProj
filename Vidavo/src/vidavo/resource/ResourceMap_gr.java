@@ -31,6 +31,7 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 //Save/Cancel Buttons
                 {"saveButton.text", "Αποθύκευση"},
                 {"cancelButton.text", "Ακύρωση"},
+                {"okButton.text", "OK"},
                 
 
                 //Radio Buttons
