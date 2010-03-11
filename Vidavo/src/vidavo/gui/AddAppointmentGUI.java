@@ -7,6 +7,7 @@ import java.beans.PropertyChangeListener;
 import java.util.ListResourceBundle;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class AddAppointmentGUI extends javax.swing.JFrame {
@@ -14,7 +15,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
     private ManagerHolder mh;
     private java.util.ListResourceBundle resourceMap;
 
-    private javax.swing.JButton addNewPatientButton;
+    private javax.swing.JButton selectPatientButton;
     private com.toedter.calendar.JDateChooser appointmentDateChooser;
     private javax.swing.JToggleButton cancelButton;
     private javax.swing.JComboBox categoryComboBox;
@@ -43,6 +44,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
     private javax.swing.JTextField titleTextField;
     private com.toedter.calendar.JDateChooser untilDateChooser;
     private javax.swing.JLabel untilLabel;
+    private JLabel patientNameLabel;
 
     public AddAppointmentGUI(ManagerHolder mh, java.util.ListResourceBundle resourceMap) {
         this.mh = mh;
@@ -62,7 +64,6 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
         titleLabel = new javax.swing.JLabel();
         titleTextField = new javax.swing.JTextField();
         patientLabel = new javax.swing.JLabel();
-        patientComboBox = new javax.swing.JComboBox();
         timeLabel = new javax.swing.JLabel();
         hourTextField = new javax.swing.JTextField();
         timeSeperatorLabel = new javax.swing.JLabel();
@@ -78,12 +79,13 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
         untilDateChooser = new com.toedter.calendar.JDateChooser();
         facilityLabel = new javax.swing.JLabel();
         facilityTextField = new javax.swing.JTextField();
-        addNewPatientButton = new javax.swing.JButton();
+        selectPatientButton = new javax.swing.JButton();
         commentsLabel = new javax.swing.JLabel();
         commentsTextField = new javax.swing.JTextField();
         saveButton = new javax.swing.JButton();
         findAvailableButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JToggleButton();
+        patientNameLabel = new javax.swing.JLabel();
 
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -106,19 +108,18 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
         repeatsCheckBox.setText(resourceMap.getString("repeatsCheckBox.text"));
         untilLabel.setText(resourceMap.getString("untilLabel.text"));
         facilityLabel.setText(resourceMap.getString("facilityLabel.text"));
-        addNewPatientButton.setText(resourceMap.getString("addNewPatientButton.text"));
+        selectPatientButton.setText(resourceMap.getString("selectPatientButton.text"));
         commentsLabel.setText(resourceMap.getString("commentsLabel.text"));
         saveButton.setText(resourceMap.getString("saveButton.text"));
         findAvailableButton.setText(resourceMap.getString("findAvailableButton.text"));
         cancelButton.setText(resourceMap.getString("cancelButton.text"));
 
-        categoryComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        patientComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        dayTimeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        repeatsComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        repeatsComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        categoryComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "In Office", "Out of Office", "Visit Out of Office" }));
+        dayTimeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AM", "PM" }));
+        repeatsComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Every", "Once Per", }));
+        repeatsComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Weekday", "Weekend", "Month", "Other Day" }));
 
-        addNewPatientButton.addActionListener(new java.awt.event.ActionListener() {
+        selectPatientButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addNewPatientButtonActionPerformed(evt);
             }
@@ -151,7 +152,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(addNewPatientButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                            .addComponent(selectPatientButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(categoryLabel)
@@ -160,7 +161,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
                                     .addComponent(patientLabel))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(patientComboBox, 0, 126, Short.MAX_VALUE)
+                                    .addComponent(patientNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                                     .addComponent(appointmentDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                                     .addComponent(facilityTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                                     .addComponent(categoryComboBox, 0, 126, Short.MAX_VALUE)
@@ -252,11 +253,11 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(patientLabel)
-                        .addComponent(patientComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(untilLabel))
+                        .addComponent(untilLabel)
+                        .addComponent(patientNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(untilDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(addNewPatientButton)
+                .addComponent(selectPatientButton)
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(commentsLabel)
@@ -265,13 +266,14 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveButton)
                     .addComponent(findAvailableButton)
-                    .addComponent(cancelButton)))
+                    .addComponent(cancelButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pack();
     }
 
     private void addNewPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        new AddPatientGUI(mh,"add",-1,resourceMap);
+        new PatientListGUI(mh);
         this.dispose();
     }
 
