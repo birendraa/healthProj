@@ -354,7 +354,7 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
                 {"repeatsCheckBox.text","Repeats"},
                 {"untilLabel.text","Until :"},
                 {"facilityLabel.text","Facility :"},
-                {"addNewPatientButton.text","Add New Patient"},
+                {"selectPatientButton.text","Select Patient"},
                 {"commentsLabel.text","Comments :"},
                 {"saveButton.text","Save"},
                 {"findAvailableButton.text","Find Available"},

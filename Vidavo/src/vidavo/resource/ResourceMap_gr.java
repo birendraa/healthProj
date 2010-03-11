@@ -287,7 +287,7 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"repeatsCheckBox.text","Επαναλαμβάνετε"},
                 {"untilLabel.text","Μέχρι :"},
                 {"facilityLabel.text","Υποδομή :"},
-                {"addNewPatientButton.text","Προσθήκη Ασθενή"},
+                {"selectPatientButton.text","Επιλογή Ασθενή"},
                 {"commentsLabel.text","Σχόλια :"},
                 {"findAvailableButton.text","Ελεύθερες Ώρες"},
                 
