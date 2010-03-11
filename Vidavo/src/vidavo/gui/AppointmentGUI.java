@@ -234,8 +234,8 @@ public class AppointmentGUI extends javax.swing.JFrame{
     }
 
     private void addAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        new AddAppointmentGUI();
-        this.setEnabled(false);
+        new AddAppointmentGUI(mh);
+        this.dispose();
     }
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
