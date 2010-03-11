@@ -5,11 +5,17 @@
 
 package vidavo.gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import javax.swing.JFileChooser;
+import vidavo.util.ImageFilter;
+
 /**
  *
  * @author Serban
  */
-public class PhotosPane extends javax.swing.JPanel{
+public class PhotosPane extends javax.swing.JPanel implements ActionListener{
 
     private javax.swing.JButton browseButton;
     private javax.swing.JLabel listLabel;
@@ -51,6 +57,16 @@ public class PhotosPane extends javax.swing.JPanel{
         openButton.setText(resourceMap.getString("openButton.text"));
         removeButton.setText(resourceMap.getString("removeButton.text"));
         renameLabel.setText(resourceMap.getString("renameLabel.text"));
+
+        browseButton.addActionListener(this);
+        savePhotoButton.addActionListener(this);
+        openButton.addActionListener(this);
+        removeButton.addActionListener(this);
+
+        browseButton.setActionCommand("browse");
+        savePhotoButton.setActionCommand("save");
+        openButton.setActionCommand("open");
+        removeButton.setActionCommand("remove");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -103,5 +119,37 @@ public class PhotosPane extends javax.swing.JPanel{
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>
+
+    public void actionPerformed(ActionEvent e) {
+         String action = e.getActionCommand();
+
+         if (action.equals("browse")){
+            JFileChooser fc = new JFileChooser();
+            fc.addChoosableFileFilter(new ImageFilter());
+            fc.setAcceptAllFileFilterUsed(false);
+            fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            fc.setMultiSelectionEnabled(false);
+            int returnVal = fc.showOpenDialog(this);
+            fc.updateUI();
+
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file = fc.getSelectedFile();
+            //This is where a real application would open the file.
+            System.out.println("Opening: " + file.getName() + "." + "\n");
+        } else {
+            System.out.println("Open command cancelled by user." + "\n");
+        }
+
+         }
+         if (action.equals("save")){
+
+         }
+         if (action.equals("open")){
+
+         }
+         if (action.equals("remove")){
+
+         }
+    }
 
 }
