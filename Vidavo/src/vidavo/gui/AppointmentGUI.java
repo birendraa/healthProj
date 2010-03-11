@@ -251,6 +251,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
     }
 
     private void patientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        mh.setOrigin("AppointmentGUI");
         new PatientListGUI(this.mh);
         this.dispose();
     }

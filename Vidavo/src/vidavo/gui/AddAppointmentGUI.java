@@ -33,7 +33,6 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
     private javax.swing.JLabel timeSeperatorLabel;
     private javax.swing.JLabel minutesLabel;
     private javax.swing.JTextField minutesTextField;
-    private javax.swing.JComboBox patientComboBox;
     private javax.swing.JLabel patientLabel;
     private javax.swing.JCheckBox repeatsCheckBox;
     private javax.swing.JComboBox repeatsComboBox1;
@@ -113,6 +112,8 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
         saveButton.setText(resourceMap.getString("saveButton.text"));
         findAvailableButton.setText(resourceMap.getString("findAvailableButton.text"));
         cancelButton.setText(resourceMap.getString("cancelButton.text"));
+
+        patientNameLabel.setText(mh.getPatientName());
 
         categoryComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "In Office", "Out of Office", "Visit Out of Office" }));
         dayTimeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AM", "PM" }));
@@ -273,6 +274,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
     }
 
     private void addNewPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        mh.setOrigin("AddAppointmentGUI");
         new PatientListGUI(mh);
         this.dispose();
     }

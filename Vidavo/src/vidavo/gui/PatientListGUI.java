@@ -166,6 +166,9 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         refreshButton.setIcon(new ImageIcon(getClass().getResource("images/clear.png")));
         refreshButton.addActionListener(this);
 
+        if(!mh.getOrigin().equals("AddAppointmentGUI"))
+            okButton.setEnabled(false);
+
         okButton.setText(resourceMap.getString("okButton.text")); // NOI18N
         okButton.setName("okButton"); // NOI18N
         okButton.setActionCommand("ok");
@@ -304,8 +307,13 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          }
 
          if(c.equals("ok")){
-             this.dispose();
-             new AppointmentGUI(mh);
+            if(patientTable.getSelectedRow() >= 0){
+                mh.setPatientId(Integer.parseInt((String)patientTable.getValueAt(patientTable.getSelectedRow(), 0)));
+                mh.setPatientName(((String)patientTable.getValueAt(patientTable.getSelectedRow(), 1)) + " " +
+                     ((String)patientTable.getValueAt(patientTable.getSelectedRow(), 2)));
+            }
+            this.dispose();
+            new AddAppointmentGUI(mh, resourceMap);
          }
 
          if(c.equals("cancel")){
@@ -321,9 +329,8 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
              Vector v = pm.searchPatient(searchTextField.getText());
              if(v.size() == 0)
                 JOptionPane.showMessageDialog(null, "No patient with " + searchTextField.getText() + " last name found!","Error message", 2);
-             else
-             {
-                 reloadTable();
+             else{
+                reloadTable();
                  printResults(v);
              }
          }
@@ -348,7 +355,6 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
 
 
     private void showCancelDialog(){
-
         final JDialog dialog = new JDialog(this, "Exit", true);
         final JOptionPane op = new JOptionPane("Are you sure you want to close the window? ", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
         dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
@@ -367,14 +373,18 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         dialog.setResizable(false);
         dialog.setVisible(true);
         int value = ((Integer) op.getValue()).intValue();
-        if (value == JOptionPane.NO_OPTION)
-        {
+        if (value == JOptionPane.NO_OPTION){
             dialog.dispose();
         }
-        else if (value == JOptionPane.YES_OPTION)
-        {
-            this.dispose();
-            new AppointmentGUI(mh);
+        else if (value == JOptionPane.YES_OPTION){
+            if(!mh.getOrigin().equals("AddAppointmentGUI")){
+                this.dispose();
+                new AppointmentGUI(mh);
+            }
+            else{
+                this.dispose();
+                new AddAppointmentGUI(mh, resourceMap);
+            }
         }
     }
 }
