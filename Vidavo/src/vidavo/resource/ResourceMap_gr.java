@@ -274,7 +274,22 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"howOftenLabel.text", "Συχνότητα Γυμναστικής"},
                 {"otherHabitsLabel.text", "Άλλες Συνήθειες"},
                 
-
+                //Add Appointment Window
+                {"categoryLabel.text","Κατηγορία :"},
+                {"dateLabel.text","Ημερομηνία :"},
+                {"titleLabel.text","Τίτλος :"},
+                {"patientLabel.text","Ασθενής :"},
+                {"timeLabel.text","Ώρα :"},
+                {"timeSeperatorLabel.text",":"},
+                {"durationLabel.text","Διάρκεια :"},
+                {"minutesLabel.text","λεπτά"},
+                {"repeatsCheckBox.text","Επαναλαμβάνετε"},
+                {"untilLabel.text","Μέχρι :"},
+                {"facilityLabel.text"," :"},
+                {"addNewPatientButton.text","Προσθήκη Ασθενή"},
+                {"commentsLabel.text","Σχόλια :"},
+                {"findAvailableButton.text","Ελεύθερες Ώρες"},
+                
                 //Appointments Window
                 {"patientNotesLabel.text","Σημειώσεις Ασθενή :"},
                 {"selectButton.text","Επιλογή"},
@@ -283,8 +298,6 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"patientsButton.text","Ασθενείς"},
                 {"removeAppointmentButton.text","Αφαίρεση Ραντεβού"},
                 {"printButton.text","Εκτύπωση"},
-
-                //Add Appointment Window
             };
     };
 
