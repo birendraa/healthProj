@@ -10,6 +10,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import vidavo.pojos.*;
 
 /**
@@ -44,7 +46,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
     private JLabel firstNLabel;
     private JTextField firstNTextField;
     private JPanel habitsPane;
-    private JPanel photosPane;
+    private PhotosPane photosPane;
     private JPanel immunizationHistoryPane;
     private JPanel surgeryHistoryPane;
     private JPanel personalInfoPane;
@@ -113,7 +115,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         chronicMedicationsPane = new JPanel();
         chronicDiseasesPane = new JPanel();
         contactsPane = new JPanel();
-        photosPane = new JPanel();
         personalInfoPane = new JPanel();
         firstNLabel = new JLabel();
         firstNTextField = new JTextField();
@@ -150,6 +151,20 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         addPatientTabbedPane.addTab("Habits", habitsPane);
         addPatientTabbedPane.addTab("Photos", photosPane);
         addPatientTabbedPane.addTab("Contact", contactsPane);
+
+        addPatientTabbedPane.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                if (addPatientTabbedPane.getSelectedIndex()==7){
+                    PersonalInfoPane pi1 = (PersonalInfoPane) personalInfoPane;
+                    pi = pi1.getPersonalinfo();
+                    if (!pi.getLastName().isEmpty() && !pi.getFirstName().isEmpty() && !Integer.toString(pi.getInsuranceIdNumber()).equals("0"))
+                        photosPane.setPatientDirectoryName(pi.getLastName() + " " + pi.getFirstName() + " " + pi.getInsuranceIdNumber());
+                    else
+                        photosPane.setPatientDirectoryName("");
+                    photosPane.populateList();
+                }
+            }
+        });
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
