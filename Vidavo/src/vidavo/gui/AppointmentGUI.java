@@ -71,7 +71,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
         helpMenu = new javax.swing.JMenu();
 
 //        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));     
+        resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
         
         model = new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -234,7 +234,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
     }
 
     private void addAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        new AddAppointmentGUI(mh);
+        new AddAppointmentGUI(mh,resourceMap);
         this.dispose();
     }
 

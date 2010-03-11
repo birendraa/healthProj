@@ -342,6 +342,7 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
                 {"otherHabitsLabel.text","Other Habits :"},
 
                 //Add Appointment Window
+                {"addAppointment.title","Add Appointment"},
                 {"categoryLabel.text","Category :"},
                 {"dateLabel.text","Date :"},
                 {"titleLabel.text","Title :"},

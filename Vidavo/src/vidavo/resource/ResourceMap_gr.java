@@ -275,6 +275,7 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"otherHabitsLabel.text", "Άλλες Συνήθειες"},
                 
                 //Add Appointment Window
+                {"addAppointment.title","Προσθήκη Ραντεβού"},
                 {"categoryLabel.text","Κατηγορία :"},
                 {"dateLabel.text","Ημερομηνία :"},
                 {"titleLabel.text","Τίτλος :"},
@@ -285,7 +286,7 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"minutesLabel.text","λεπτά"},
                 {"repeatsCheckBox.text","Επαναλαμβάνετε"},
                 {"untilLabel.text","Μέχρι :"},
-                {"facilityLabel.text"," :"},
+                {"facilityLabel.text","Υποδομή :"},
                 {"addNewPatientButton.text","Προσθήκη Ασθενή"},
                 {"commentsLabel.text","Σχόλια :"},
                 {"findAvailableButton.text","Ελεύθερες Ώρες"},

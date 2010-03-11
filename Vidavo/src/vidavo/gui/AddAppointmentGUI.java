@@ -44,8 +44,9 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser untilDateChooser;
     private javax.swing.JLabel untilLabel;
 
-    public AddAppointmentGUI(ManagerHolder mh) {
+    public AddAppointmentGUI(ManagerHolder mh, java.util.ListResourceBundle resourceMap) {
         this.mh = mh;
+        this.resourceMap = resourceMap;
         initComponents();
         this.setVisible(true);
         this.setResizable(false);
@@ -91,9 +92,8 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
                 showCancelDialog();
             }
         });
-
-        resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
-        this.setTitle(resourceMap.getString("patientList.title"));
+        
+        this.setTitle(resourceMap.getString("addAppointment.title"));
 
         categoryLabel.setText(resourceMap.getString("categoryLabel.text"));
         dateLabel.setText(resourceMap.getString("dateLabel.text"));
@@ -265,8 +265,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveButton)
                     .addComponent(findAvailableButton)
-                    .addComponent(cancelButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cancelButton)))
         );
         pack();
     }
