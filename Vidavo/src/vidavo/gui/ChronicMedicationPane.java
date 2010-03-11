@@ -556,7 +556,7 @@ public class ChronicMedicationPane extends JPanel{
                     .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane4)
                         .addComponent(nameOfMedicationLabel)))
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         chronicMedicationMainPaneLayout.setVerticalGroup(
             chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -713,7 +713,7 @@ public class ChronicMedicationPane extends JPanel{
                 .addGroup(chronicMedicationMainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chronicMedicationRadioButton17)
                     .addComponent(chronicMedicationRadioButton18))
-                .addGap(115, 115, 115))
+                .addGap(10, 10, 10))
         );
 
         chronicMedicationScrollPane.setViewportView(chronicMedicationMainPane);
@@ -1005,8 +1005,6 @@ public class ChronicMedicationPane extends JPanel{
                         ormones,vitamines,sidiros,antiallergikaFarmaka,
                         chronicMedicationTextField04.getText(),
                         chronicMedicationTextField05.getText()
-
-
                         );
     }
 
