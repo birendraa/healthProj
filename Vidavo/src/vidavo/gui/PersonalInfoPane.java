@@ -190,9 +190,9 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
         profTextField.setText("");
         insuranceTextField.setText("");
         amkaTextField.setText("");
-        tameioComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "O.G.A.", "ΔΗΜΟΣΙΟ ", "O.A.E.E. - T.E.B.E.",
-        "Ι.Κ.Α.", "ΤΕΑΠΑΠ ΔΕΗ Τ.Α.Υ.Τ.Ε.Κ.Ω.", "ΤΑΠΕΠΑ", "ΕΥΔΑΠ", "ΤΑΠ Ε.Τ.Ε ( Τ.Α.Υ.Τ.Ε.Κ.Ω.)",
-        "ΕΔΟΕΑΠ", "ΗΛΠΑΠ ( Τ.Α.Υ.Τ.Ε.Κ.Ω )", "(ΤΑΤΤΑ) ΕΤΑΠ ΜΜΕ", "Τ.Σ.Α.Υ.", "Τ.Α.Ε.", "Τ.Σ.Μ.Ε.Δ.Ε.",
+        tameioComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "O.G.A.", "DIMOSIO", "O.A.E.E. - T.E.V.E.",
+        "I.K.A.", "TEAPAP DEI T.A.Y.T.E.K.O.", "TAPEPA", "EYDAP", "TAP E.T.E",
+        "EDOEAP", "ILPAP", "(TATTA) ETAP", "T.S.A.Y.", "T.A.E.", "T.S.M.E.D.E.",
         "KEA - EEEKE"}));
 
         picturePanel.setBorder(new javax.swing.border.MatteBorder(null));
