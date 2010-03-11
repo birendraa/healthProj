@@ -4,6 +4,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ListResourceBundle;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -11,7 +12,8 @@ import javax.swing.JOptionPane;
 public class AddAppointmentGUI extends javax.swing.JFrame {
 
     private ManagerHolder mh;
-    
+    private java.util.ListResourceBundle resourceMap;
+
     private javax.swing.JButton addNewPatientButton;
     private com.toedter.calendar.JDateChooser appointmentDateChooser;
     private javax.swing.JToggleButton cancelButton;
@@ -27,7 +29,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
     private javax.swing.JTextField facilityTextField;
     private javax.swing.JButton findAvailableButton;
     private javax.swing.JTextField hourTextField;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel timeSeperatorLabel;
     private javax.swing.JLabel minutesLabel;
     private javax.swing.JTextField minutesTextField;
     private javax.swing.JComboBox patientComboBox;
@@ -46,6 +48,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
         this.mh = mh;
         initComponents();
         this.setVisible(true);
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
 
@@ -61,7 +64,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
         patientComboBox = new javax.swing.JComboBox();
         timeLabel = new javax.swing.JLabel();
         hourTextField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        timeSeperatorLabel = new javax.swing.JLabel();
         minutesTextField = new javax.swing.JTextField();
         dayTimeComboBox = new javax.swing.JComboBox();
         durationLabel = new javax.swing.JLabel();
@@ -89,62 +92,50 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
             }
         });
 
-        categoryLabel.setText("Category :");
+        resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
+        this.setTitle(resourceMap.getString("patientList.title"));
+
+        categoryLabel.setText(resourceMap.getString("categoryLabel.text"));
+        dateLabel.setText(resourceMap.getString("dateLabel.text"));
+        titleLabel.setText(resourceMap.getString("titleLabel.text"));
+        patientLabel.setText(resourceMap.getString("patientLabel.text"));
+        timeLabel.setText(resourceMap.getString("timeLabel.text"));
+        timeSeperatorLabel.setText(resourceMap.getString("timeSeperatorLabel.text"));
+        durationLabel.setText(resourceMap.getString("durationLabel.text"));
+        minutesLabel.setText(resourceMap.getString("minutesLabel.text"));
+        repeatsCheckBox.setText(resourceMap.getString("repeatsCheckBox.text"));
+        untilLabel.setText(resourceMap.getString("untilLabel.text"));
+        facilityLabel.setText(resourceMap.getString("facilityLabel.text"));
+        addNewPatientButton.setText(resourceMap.getString("addNewPatientButton.text"));
+        commentsLabel.setText(resourceMap.getString("commentsLabel.text"));
+        saveButton.setText(resourceMap.getString("saveButton.text"));
+        findAvailableButton.setText(resourceMap.getString("findAvailableButton.text"));
+        cancelButton.setText(resourceMap.getString("cancelButton.text"));
 
         categoryComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        dateLabel.setText("Date :");
-
-        titleLabel.setText("Title :");
-
-        patientLabel.setText("Patient :");
-
         patientComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        timeLabel.setText("Time :");
-
-        jLabel1.setText(":");
-
         dayTimeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        durationLabel.setText("Duration :");
-
-        minutesLabel.setText("minutes");
-
-        repeatsCheckBox.setText("Repeats");
-
         repeatsComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         repeatsComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        untilLabel.setText("Until :");
-
-        facilityLabel.setText("Facility :");
-
-        addNewPatientButton.setText("Add New Patient");
         addNewPatientButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addNewPatientButtonActionPerformed(evt);
             }
         });
-
-        commentsLabel.setText("Comments :");
-
-        saveButton.setText("Save");
+        
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
             }
         });
 
-        findAvailableButton.setText("Find Available");
         findAvailableButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 findAvailableButtonActionPerformed(evt);
             }
         });
 
-        cancelButton.setText("Cancel");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 showCancelDialog();
@@ -187,7 +178,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(hourTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel1)))
+                                        .addComponent(timeSeperatorLabel)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(minutesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -251,7 +242,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
                             .addComponent(minutesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(timeLabel)
                             .addComponent(hourTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
+                            .addComponent(timeSeperatorLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(minutesLabel)
@@ -281,7 +272,8 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
     }
 
     private void addNewPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        new AddPatientGUI(mh,"add",-1,resourceMap);
+        this.dispose();
     }
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {

@@ -242,7 +242,6 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
 
          if(c.equals("add")){
                 new AddPatientGUI(mh,c,-1,resourceMap);
-
                 this.dispose();
          }
 

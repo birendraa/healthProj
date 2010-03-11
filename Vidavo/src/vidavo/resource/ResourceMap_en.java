@@ -342,7 +342,22 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
                 {"otherHabitsLabel.text","Other Habits :"},
 
                 //Add Appointment Window
-                
+                {"categoryLabel.text","Category :"},
+                {"dateLabel.text","Date :"},
+                {"titleLabel.text","Title :"},
+                {"patientLabel.text","Patient :"},
+                {"timeLabel.text","Time :"},
+                {"timeSeperatorLabel.text",":"},
+                {"durationLabel.text","Duration :"},
+                {"minutesLabel.text","minutes"},
+                {"repeatsCheckBox.text","Repeats"},
+                {"untilLabel.text","Until :"},
+                {"facilityLabel.text","Facility :"},
+                {"addNewPatientButton.text","Add New Patient"},
+                {"commentsLabel.text","Comments :"},
+                {"saveButton.text","Save"},
+                {"findAvailableButton.text","Find Available"},
+                {"cancelButton.text","Cancel"},
 
                 //Appointments Window
                 {"patientNotesLabel.text","Patient Notes :"},
