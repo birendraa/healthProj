@@ -20,6 +20,8 @@ import vidavo.pojos.*;
  */
 public class PersonalInfoPane extends javax.swing.JPanel implements ActionListener{
 
+    private com.toedter.calendar.JDateChooser birthDateChooser;
+    private com.toedter.calendar.JDateChooser firstVisitChooser;
     private JLabel addressLabel;
     private JLabel addressNumLabel;
     private JTextField addressNumTextField;
@@ -27,7 +29,6 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
     private JLabel amkaLabel;
     private JTextField amkaTextField;
     private JLabel birthDateLabel;
-    private JTextField birthDateTextField;
     private JLabel cellLabel;
     private JTextField cellTextField;
     private JLabel childrenLabel;
@@ -48,8 +49,6 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
     private JTextField heightTextField;
     private JLabel homeLabel;
     private JTextField homeTextField;
-    private JLabel idLabel;
-    private JLabel idLabel2;
     private JPanel infoPane;
     private JLabel insuranceLabel;
     private JTextField insuranceTextField;
@@ -69,7 +68,6 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
     private JLabel profLabel;
     private JTextField profTextField;
     private JLabel firstVisitLabel;
-    private JTextField firstVisitTextField;
     private JLabel regionLabel;
     private JTextField regionTextField;
     private JRadioButton singleRadioButton;
@@ -79,8 +77,6 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
     private JTextField weightTextField;
     private JLabel workLabel;
     private JTextField workTextField;
-    private JLabel ageLabel;
-    private JTextField ageTextField;
 
     private int patientID = 0;
     private String mode;
@@ -99,7 +95,6 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
 
     private void initPane(){
         infoPane = new JPanel();
-        idLabel = new JLabel();
         firstNLabel = new JLabel();
         middleNLabel = new JLabel();
         lastNLabel = new JLabel();
@@ -120,7 +115,6 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
         countryTextField = new JTextField();
         postalCTextField = new JTextField();
         citizenshipTextField = new JTextField();
-        idLabel2 = new JLabel();
         heightLabel = new JLabel();
         weightLabel = new JLabel();
         maleRadioButton = new JRadioButton();
@@ -135,10 +129,10 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
         firstVisitLabel = new JLabel();
         childrenLabel = new JLabel();
         childrenSpinner = new JSpinner(new SpinnerNumberModel (0,0,9999,1));
-        firstVisitTextField = new JTextField();
+        firstVisitChooser = new com.toedter.calendar.JDateChooser();
         heightTextField = new JTextField();
         weightTextField = new JTextField();
-        birthDateTextField = new JTextField();
+        birthDateChooser = new com.toedter.calendar.JDateChooser();
         profTextField = new JTextField();
         insuranceTextField = new JTextField();
         amkaTextField = new JTextField();
@@ -157,11 +151,7 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
         faxTextField = new JTextField();
         mailLabel = new JLabel();
         mailTextField = new JTextField();
-        ageLabel = new JLabel();
-        ageTextField = new JTextField();
 
-
-        idLabel.setText("ID* :");
         firstNLabel.setText("First Name* :");
         middleNLabel.setText("Middle Name:");
         lastNLabel.setText("Last Name* :");
@@ -195,18 +185,15 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
         tameioLabel.setText("Tameio* :");
         firstVisitLabel.setText("First Visit:");
         childrenLabel.setText("Children:");
-        firstVisitTextField.setText("");
         heightTextField.setText("");
         weightTextField.setText("");
-        birthDateTextField.setText("");
         profTextField.setText("");
         insuranceTextField.setText("");
         amkaTextField.setText("");
-        tameioComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ageLabel.setText("Age:");
-        ageTextField.setText("");
-
-        idLabel2.setText(Integer.toString(patientID));
+        tameioComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "O.G.A.", "ΔΗΜΟΣΙΟ ", "O.A.E.E. - T.E.B.E.",
+        "Ι.Κ.Α.", "ΤΕΑΠΑΠ ΔΕΗ Τ.Α.Υ.Τ.Ε.Κ.Ω.", "ΤΑΠΕΠΑ", "ΕΥΔΑΠ", "ΤΑΠ Ε.Τ.Ε ( Τ.Α.Υ.Τ.Ε.Κ.Ω.)",
+        "ΕΔΟΕΑΠ", "ΗΛΠΑΠ ( Τ.Α.Υ.Τ.Ε.Κ.Ω )", "(ΤΑΤΤΑ) ΕΤΑΠ ΜΜΕ", "Τ.Σ.Α.Υ.", "Τ.Α.Ε.", "Τ.Σ.Μ.Ε.Δ.Ε.",
+        "KEA - EEEKE"}));
 
         picturePanel.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -245,7 +232,6 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
                     .addComponent(lastNLabel)
                     .addComponent(middleNLabel)
                     .addComponent(firstNLabel)
-                    .addComponent(idLabel)
                     .addComponent(cityLabel)
                     .addComponent(regionLabel)
                     .addComponent(countryLabel)
@@ -253,8 +239,7 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
                     .addComponent(citizenshipLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(idLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(citizenshipTextField)
+                    .addComponent(citizenshipTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(postalCTextField)
                     .addComponent(countryTextField)
                     .addComponent(cityTextField)
@@ -276,8 +261,7 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
                             .addComponent(childrenLabel)
                             .addComponent(weightLabel)
                             .addComponent(maleRadioButton)
-                            .addComponent(marriedRadioButton)
-                            .addComponent(ageLabel))
+                            .addComponent(marriedRadioButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(infoPaneLayout.createSequentialGroup()
                         .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -290,17 +274,13 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
                             .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(weightTextField)
                                 .addComponent(childrenSpinner)
-                                .addComponent(firstVisitTextField)
+                                .addComponent(firstVisitChooser)
                                 .addComponent(tameioComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(amkaTextField)
                                 .addComponent(insuranceTextField)
                                 .addComponent(profTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                                .addGroup(infoPaneLayout.createSequentialGroup()
-                                    .addComponent(heightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                .addGroup(infoPaneLayout.createSequentialGroup()
-                                    .addComponent(birthDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addComponent(heightTextField)
+                                .addComponent(birthDateChooser))
                             .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(singleRadioButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(femaleRadioButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -314,9 +294,7 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPaneLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(pictureButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(94, 94, 94))))
-                    .addGroup(infoPaneLayout.createSequentialGroup()
-                        .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(94, 94, 94)))
                         .addContainerGap())))
         );
         infoPaneLayout.setVerticalGroup(
@@ -324,8 +302,6 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
             .addGroup(infoPaneLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idLabel)
-                    .addComponent(idLabel2)
                     .addComponent(heightLabel)
                     .addComponent(heightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(patientPhotoLabel))
@@ -353,7 +329,7 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
                         .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addressLabel)
                             .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(birthDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(birthDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(birthDateLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -384,7 +360,7 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
                             .addComponent(postalCLabel)
                             .addComponent(postalCTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(firstVisitLabel)
-                            .addComponent(firstVisitTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(firstVisitChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(citizenshipLabel)
@@ -397,9 +373,6 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pictureButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ageLabel)
-                    .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -497,7 +470,6 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
 
    public void loadPatientInfo(PersonalInfo pi){
 
-          idLabel2.setText(Integer.toString(pi.getPiId()));
           firstNTextField.setText(pi.getFirstName());
           middleNTextField.setText(pi.getMiddleName());
           lastNTextField.setText(pi.getLastName());
@@ -521,7 +493,8 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
           else
               singleRadioButton.setSelected(true);
 
-          birthDateTextField.setText(pi.getBirthDate().toString());
+          birthDateChooser.setDate(pi.getBirthDate());
+//          birthDateChooser.setText(pi.getBirthDate().toString());
           profTextField.setText(pi.getProfession());
           insuranceTextField.setText(pi.getInsurrance());
           amkaTextField.setText(Integer.toString(pi.getInsuranceIdNumber()));
@@ -532,7 +505,8 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
                 break;
           }
           tameioComboBox.setSelectedIndex(selectedItem);
-          firstVisitTextField.setText((pi.getFirstVisit()).toString());
+          firstVisitChooser.setDate(pi.getFirstVisit());
+//          firstVisitChooser.setText((pi.getFirstVisit()).toString());
           childrenSpinner.setValue(pi.getChildren());
           homeTextField.setText(Integer.toString(pi.getHomeNumber()));
           workTextField.setText(Integer.toString(pi.getWorkNumber()));
@@ -605,23 +579,20 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
             }
 
 
-            DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             Date birthD = new Date();
             Date firstV = new Date();
-            try
-        {
-             if(birthDateTextField.getText().equals(""))
-                 birthD = df.parse("0000-00-00");
-             else
-             birthD = df.parse(birthDateTextField.getText());
-             if(firstVisitTextField.getText().equals(""))
-                 firstV = df.parse("0000-00-00");
-             else
-             firstV = df.parse(firstVisitTextField.getText());
-
-
-        } catch (ParseException ex)
-        {
+        try{
+            if(birthDateChooser.getDate() == null)
+                birthD = df.parse("0000-00-00");
+            else
+                birthD = df.parse(df.format(birthDateChooser.getDate().getTime()));
+            if(firstVisitChooser.getDate() == null)
+                firstV = df.parse("0000-00-00");
+            else
+                firstV = df.parse(df.format(firstVisitChooser.getDate().getTime()));
+        }
+        catch (ParseException ex){
             ex.printStackTrace();
         }
 
