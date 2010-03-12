@@ -302,7 +302,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         else if (value == JOptionPane.YES_OPTION)
         {
             this.dispose();
-            new AppointmentGUI(mh);
+            new PatientListGUI(mh);
         }
     }
 
