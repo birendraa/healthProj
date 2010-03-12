@@ -293,6 +293,7 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"findAvailableButton.text","Ελεύθερες Ώρες"},
                 
                 //Appointments Window
+                {"appointments.title","΄Ραντεβού"},
                 {"patientNotesLabel.text","Σημειώσεις Ασθενή :"},
                 {"selectButton.text","Επιλογή"},
                 {"addAppointmentButton.text","Προσθήκη Ραντεβού"},

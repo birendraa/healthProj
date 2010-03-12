@@ -122,6 +122,8 @@ public class AppointmentGUI extends javax.swing.JFrame{
         menuBar.add(helpMenu);
         setJMenuBar(menuBar);
 
+        this.setTitle(resourceMap.getString("appointments.title"));
+
         patientNotesLabel.setText((resourceMap.getString("patientNotesLabel.text")));
         fileMenu.setText((resourceMap.getString("fileMenu.text")));
         englishMenuItem.setText((resourceMap.getString("englishMenuItem.text")));
