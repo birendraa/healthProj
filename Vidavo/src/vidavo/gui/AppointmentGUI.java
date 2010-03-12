@@ -278,7 +278,6 @@ public class AppointmentGUI extends javax.swing.JFrame{
     }
 
     private void addAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        new AddAppointmentGUI(mh);
         this.setEnabled(false);
         mh.setPatientId(0);
         mh.setPatientName("");
