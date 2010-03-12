@@ -1,12 +1,15 @@
 
 package vidavo.gui;
 
+import java.util.ListResourceBundle;
+
 public class ManagerHolder {
     private AppointmentManager am;
     private PatientManager pm;
     private String origin;
     private String patientName;
     private int patientId;
+    private ListResourceBundle resourceMap;
 
     public ManagerHolder(AppointmentManager am, PatientManager pm) {
         this.am = am;
@@ -14,6 +17,7 @@ public class ManagerHolder {
         this.origin = "";
         this.patientId = 0;
         this.patientName = "";
+        this.resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
     }
 
     public AppointmentManager getAm() {
@@ -54,5 +58,16 @@ public class ManagerHolder {
 
     public void setPatientName(String patientName) {
         this.patientName = patientName;
+    }
+
+    public ListResourceBundle getResourceMap() {
+        return resourceMap;
+    }
+
+    public void changeLanguage(String lang){
+        if(lang.equals("English"))
+            this.resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
+        else if(lang.equals("Greek"))
+            this.resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("gr"));
     }
 }

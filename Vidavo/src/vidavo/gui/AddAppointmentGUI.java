@@ -45,9 +45,9 @@ public class AddAppointmentGUI extends javax.swing.JFrame {
     private javax.swing.JLabel untilLabel;
     private JLabel patientNameLabel;
 
-    public AddAppointmentGUI(ManagerHolder mh, java.util.ListResourceBundle resourceMap) {
+    public AddAppointmentGUI(ManagerHolder mh) {
         this.mh = mh;
-        this.resourceMap = resourceMap;
+        this.resourceMap = mh.getResourceMap();
         initComponents();
         this.setVisible(true);
         this.setResizable(false);

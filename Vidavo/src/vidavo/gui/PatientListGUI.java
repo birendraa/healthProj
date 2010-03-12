@@ -30,8 +30,8 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
     private javax.swing.JButton addButton;
     private javax.swing.JButton refreshButton;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenu fileMenu, quitMenu, helpMenu;
-    private javax.swing.JMenuItem aboutMenuItem, quitMenuItem;
+    private javax.swing.JMenu fileMenu, quitMenu, helpMenu, languageMenu;
+    private javax.swing.JMenuItem aboutMenuItem, quitMenuItem, englishMenuItem, greekMenuItem;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton editButton;
@@ -50,6 +50,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         super();
         this.mh = mh;
         this.pm = mh.getPm();
+        this.resourceMap = mh.getResourceMap();
         initComponents();
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -80,38 +81,57 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         refreshButton = new javax.swing.JButton();
         searchTextField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
+        englishMenuItem = new javax.swing.JMenuItem();
+        greekMenuItem= new javax.swing.JMenuItem();
+        languageMenu = new javax.swing.JMenu();
+        fileMenu = new javax.swing.JMenu();
 
-        resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         this.setTitle(resourceMap.getString("patientList.title"));
         
-        
         // MENU
-        menuBar = new JMenuBar();
         
-        fileMenu = new JMenu(resourceMap.getString("fileMenu.text"));
-        fileMenu.add(new JSeparator());
+        englishMenuItem.setText((resourceMap.getString("englishMenuItem.text")));
+        greekMenuItem.setText((resourceMap.getString("greekMenuItem.text")));
+        languageMenu.setText((resourceMap.getString("languageMenu.text")));
 
+        englishMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mh.changeLanguage("English");
+                redrawGUI();
+            }
+        });
+
+        greekMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mh.changeLanguage("Greek");
+                redrawGUI();
+            }
+        });
+        
+//        fileMenu.add(new JSeparator());
 
         quitMenuItem = new JMenuItem(resourceMap.getString("quitMenuItem.text"),KeyEvent.VK_E);
         quitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
         quitMenuItem.setActionCommand("quit");
         quitMenuItem.addActionListener(this);
-        fileMenu.add(quitMenuItem);
 
         helpMenu = new JMenu(resourceMap.getString("helpMenu.text"));
         
         aboutMenuItem = new JMenuItem(resourceMap.getString("aboutMenuItem.text"));
         aboutMenuItem.setActionCommand("about");
         aboutMenuItem.addActionListener(this);        
+
+        languageMenu.add(englishMenuItem);
+        languageMenu.add(greekMenuItem);
+        fileMenu.add(quitMenuItem);
         helpMenu.add(aboutMenuItem);
-
         menuBar.add(fileMenu);
+        menuBar.add(languageMenu);
         menuBar.add(helpMenu);
+        setJMenuBar(menuBar);
 
-        this.setJMenuBar(menuBar);
-
-        
+        fileMenu.setText((resourceMap.getString("fileMenu.text")));
         
         patientListPanel.setName("patientListPanel"); // NOI18N
         tableScrollPane.setName("tableScrollPane"); // NOI18N
@@ -149,7 +169,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         });
 	patientTable.setSelectionModel(listSelectionModel);
 
-        patientLabel.setText(resourceMap.getString("patientLabel.text.in.list")); // NOI18N
+        patientLabel.setText(resourceMap.getString("patientLabel.text")); // NOI18N
         patientLabel.setName("patientLabel"); // NOI18N
 
         patientNameLabel.setText(resourceMap.getString("patientNameLabel.text")); // NOI18N
@@ -281,7 +301,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          }
 
          if(c.equals("add")){
-                new AddPatientGUI(mh,c,-1,resourceMap);
+                new AddPatientGUI(mh,c,-1);
                 this.dispose();
          }
 
@@ -300,7 +320,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
                 if(patientTable.getSelectedRow() != -1){
                     int selectedID = (Integer.parseInt((String)patientTable.getValueAt(patientTable.getSelectedRow(), 0)));
                     this.dispose();
-                    AddPatientGUI p = new AddPatientGUI(mh,c, selectedID,resourceMap);
+                    AddPatientGUI p = new AddPatientGUI(mh,c, selectedID);
                 }
                 else
                     JOptionPane.showMessageDialog(null,"No patient selected", "Nothing entered", 2);
@@ -313,7 +333,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
                      ((String)patientTable.getValueAt(patientTable.getSelectedRow(), 2)));
             }
             this.dispose();
-            new AddAppointmentGUI(mh, resourceMap);
+            new AddAppointmentGUI(mh);
          }
 
          if(c.equals("cancel")){
@@ -383,8 +403,13 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
             }
             else{
                 this.dispose();
-                new AddAppointmentGUI(mh, resourceMap);
+                new AddAppointmentGUI(mh);
             }
         }
+    }
+
+    private void redrawGUI(){
+        new PatientListGUI(this.mh);
+        this.dispose();
     }
 }

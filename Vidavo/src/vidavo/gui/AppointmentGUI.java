@@ -21,8 +21,11 @@ public class AppointmentGUI extends javax.swing.JFrame{
     private javax.swing.JMenu fileMenu;
     private javax.swing.JButton selectButton;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenu languageMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem quitMenuItem;
+    private javax.swing.JMenuItem englishMenuItem;
+    private javax.swing.JMenuItem greekMenuItem;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JScrollPane tableScrollPane;
     private javax.swing.JScrollPane patientNoteScrollPane;
@@ -36,6 +39,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
     private DefaultTableModel model;
     
     public AppointmentGUI(ManagerHolder mh){
+        this.resourceMap = mh.getResourceMap();
         initComponents();
         this.mh = mh;
         this.addWindowListener(new WindowAdapter() {
@@ -67,11 +71,11 @@ public class AppointmentGUI extends javax.swing.JFrame{
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         quitMenuItem = new javax.swing.JMenuItem();
+        englishMenuItem = new javax.swing.JMenuItem();
+        greekMenuItem= new javax.swing.JMenuItem();
+        languageMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
-
-//        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
         
         model = new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,15 +113,21 @@ public class AppointmentGUI extends javax.swing.JFrame{
 
         patientNoteScrollPane.setViewportView(patientNotesTextArea);
 
+        languageMenu.add(englishMenuItem);
+        languageMenu.add(greekMenuItem);
         fileMenu.add(quitMenuItem);
         helpMenu.add(aboutMenuItem);
         menuBar.add(fileMenu);
+        menuBar.add(languageMenu);
         menuBar.add(helpMenu);
         setJMenuBar(menuBar);
 
         patientNotesLabel.setText((resourceMap.getString("patientNotesLabel.text")));
         fileMenu.setText((resourceMap.getString("fileMenu.text")));
+        englishMenuItem.setText((resourceMap.getString("englishMenuItem.text")));
+        greekMenuItem.setText((resourceMap.getString("greekMenuItem.text")));
         quitMenuItem.setText((resourceMap.getString("quitMenuItem.text")));
+        languageMenu.setText((resourceMap.getString("languageMenu.text")));
         helpMenu.setText((resourceMap.getString("helpMenu.text")));
         selectButton.setText((resourceMap.getString("selectButton.text")));
         addAppointmentButton.setText((resourceMap.getString("addAppointmentButton.text")));
@@ -138,7 +148,21 @@ public class AppointmentGUI extends javax.swing.JFrame{
                 quitMenuItemActionPerformed(evt);
             }
         });
-
+        
+        englishMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mh.changeLanguage("English");
+                redrawGUI();
+            }
+        });
+        
+        greekMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mh.changeLanguage("Greek");
+                redrawGUI();
+            }
+        });
+        
         selectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goButtonActionPerformed(evt);
@@ -236,7 +260,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
     private void addAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {
         mh.setPatientId(0);
         mh.setPatientName("");
-        new AddAppointmentGUI(mh,resourceMap);
+        new AddAppointmentGUI(mh);
         this.dispose();
     }
 
@@ -305,5 +329,10 @@ public class AppointmentGUI extends javax.swing.JFrame{
             //Save data
             this.dispose();
         }
+    }
+
+    private void redrawGUI(){
+        new AppointmentGUI(this.mh);
+        this.dispose();
     }
 }

@@ -300,6 +300,11 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"patientsButton.text","Ασθενείς"},
                 {"removeAppointmentButton.text","Αφαίρεση Ραντεβού"},
                 {"printButton.text","Εκτύπωση"},
+
+                //Language Menu
+                {"languageMenu.text","Language"},
+                {"greekMenuItem.text","Greek"},
+                {"englishMenuItem.text","English"},
             };
     };
 

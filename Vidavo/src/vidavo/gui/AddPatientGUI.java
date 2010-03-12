@@ -60,12 +60,12 @@ public class AddPatientGUI extends JFrame implements ActionListener{
      * @param pm
      * @param selectedID
      */
-    public AddPatientGUI(ManagerHolder mh, String mode,int id, java.util.ListResourceBundle rm){
+    public AddPatientGUI(ManagerHolder mh, String mode,int id){
 
         super();
         this.mh = mh;
         this.pm = mh.getPm();
-        this.resourceMap = rm;
+        this.resourceMap = mh.getResourceMap();
         this.mode = mode;
         patientId = id;
         if(mode.equals("edit"))

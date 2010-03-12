@@ -369,6 +369,11 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
                 {"patientsButton.text","My Patients"},
                 {"removeAppointmentButton.text","Remove Appointment"},
                 {"printButton.text","Print"},
+
+                //Language Menu
+                {"languageMenu.text","Language"},
+                {"greekMenuItem.text","Greek"},
+                {"englishMenuItem.text","English"},
             };
     };
 
