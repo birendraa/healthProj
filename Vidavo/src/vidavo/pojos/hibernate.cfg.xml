@@ -11,6 +11,7 @@
     <mapping resource="vidavo/pojos/Contacts.hbm.xml"/>
     <mapping resource="vidavo/pojos/ChronicDiseases.hbm.xml"/>
     <mapping resource="vidavo/pojos/Immunizations.hbm.xml"/>
+    <mapping resource="vidavo/pojos/Appointments.hbm.xml"/>
     <mapping resource="vidavo/pojos/FamilyHistory.hbm.xml"/>
     <mapping resource="vidavo/pojos/SurgicalHistory.hbm.xml"/>
     <mapping resource="vidavo/pojos/ChronicMedication.hbm.xml"/>

@@ -3,12 +3,20 @@ package vidavo.gui;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.print.PrinterException;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.Date;
 import java.util.ListResourceBundle;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import vidavo.pojos.Appointments;
+import vidavo.pojos.Patients;
+import vidavo.pojos.PersonalInfo;
 
 public class AppointmentGUI extends javax.swing.JFrame{
 
@@ -37,11 +45,18 @@ public class AppointmentGUI extends javax.swing.JFrame{
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTextField;
     private DefaultTableModel model;
+
+    private AppointmentManager am;
+    private Date date;
+    private Vector appointments;
     
-    public AppointmentGUI(ManagerHolder mh){
+    public AppointmentGUI(ManagerHolder mh){      
+        this.mh = mh;
+        am = mh.getAm();
+        date = new Date();
+        appointments = new Vector();
         this.resourceMap = mh.getResourceMap();
         initComponents();
-        this.mh = mh;
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -56,6 +71,8 @@ public class AppointmentGUI extends javax.swing.JFrame{
     private void initComponents() {
         
         dateChooser = new com.toedter.calendar.JDateChooser();
+        dateChooser.setDateFormatString("yyyy-MM-dd");
+        dateChooser.setDate(date);
         selectButton = new javax.swing.JButton();
         addAppointmentButton = new javax.swing.JButton();
         searchTextField = new javax.swing.JTextField();
@@ -191,7 +208,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
 
         removeAppointmentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removePatientButtonActionPerformed(evt);
+                removeAppointmentButtonActionPerformed(evt);
             }
         });
 
@@ -257,9 +274,12 @@ public class AppointmentGUI extends javax.swing.JFrame{
         );
 
         pack();
+        this.displayAppointments(false);
     }
 
     private void addAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        new AddAppointmentGUI(mh);
+        this.setEnabled(false);
         mh.setPatientId(0);
         mh.setPatientName("");
         new AddAppointmentGUI(mh);
@@ -275,7 +295,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
     }
     
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        displayAppointments(true);
     }
 
     private void patientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,24 +305,54 @@ public class AppointmentGUI extends javax.swing.JFrame{
     }
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        Vector v = am.searchAppointment(searchTextField.getText());
+        refreshTable();
+        System.out.println(v.size());
+        for(int i = 0; i < v.size(); i++){
+                this.model.insertRow(i,new Object[]{((Appointments)v.get(i)).getTime(),am.getFLName((Appointments)v.get(i))});}
     }
 
     private void printButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        try {
+            appointmentTable.print();
+        } catch (PrinterException ex) {
+            Logger.getLogger(AppointmentGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    private void removePatientButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    private void removeAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        if(appointmentTable.getSelectedRow() != -1)
+        {
+            Appointments app = new Appointments();
+            int id = Integer.parseInt(appointments.get(appointmentTable.getSelectedRow()*4).toString());
+            app = am.getAppointment(id);
+            am.removeAppointment(app);
+            displayAppointments(true);
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Please select an appointment to be deleted", "Error message", 2);
+        
     }
 
-    public void displayAppointments(java.sql.Date date){
-            vidavo.Appointment ap = new vidavo.Appointment();
-            vidavo.AppointmentList al = this.mh.getAm().getAl();
-            for(int i = 1; i <= al.size(); i++){
-//                if()
-//                    this.model.insertRow(this.appointmentTable.getRowCount(), new Object[]{});
-            }
+    public void displayAppointments(Boolean b){
+        refreshTable();
+        if(b == true)
+        {
+            appointments = am.getAppointments(dateChooser.getDate());
+        }
+        else
+        {
+            appointments = am.getAppointments(date);
+        }
+       
+     for(int i = 0; i < appointments.size()/4; i++){
+                this.model.insertRow(i,new Object[]{appointments.get(i * 4 + 1).toString(),appointments.get(i * 4 + 2).toString() + " " + appointments.get(i * 4 + 3).toString()});}
+    }
+
+    public void refreshTable()
+    {
+        while(model.getRowCount() != 0)
+                    model.removeRow(0);
     }
 
     private void showCloseDialog(){

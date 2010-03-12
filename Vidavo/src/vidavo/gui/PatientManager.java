@@ -392,4 +392,28 @@ public class PatientManager {
         return immun;
     }
 
+    public boolean existsAmka(int insuranceIdNumber) {
+        s = HibernateUtil.getSessionFactory().openSession();
+        tx = s.beginTransaction();
+
+        List person = s.createQuery("from PersonalInfo pi where pi.insuranceIdNumber = " + insuranceIdNumber).list();
+        try {
+      tx.commit();
+      s.close();
+    } catch (RuntimeException e) {
+      if (tx != null && tx.isActive()) {
+        try {
+          tx.rollback();
+        } catch (HibernateException e1) {
+          logger.debug("Error rolling back transaction");
+        }
+        throw e;
+      }       
+    }
+        if(person.size() == 0)
+            return false;
+
+      return true;
+    }
+
 }

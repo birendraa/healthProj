@@ -245,9 +245,16 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         else{
         if(mode.equals("add"))
         {
+            if(pm.existsAmka(pi.getInsuranceIdNumber()) == true)
+        {
+            JOptionPane.showMessageDialog(null, "AMKA is not unique! Enter unique AMKA number","Error message", 2);
+        }
+            else
+            {
             pm.createPatient(pi,sh,fh,contacts,cm,cd,habits,immun);
             this.dispose();
             new PatientListGUI(mh);
+            }
         }
         else
         {

@@ -26,6 +26,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
     private ManagerHolder mh;
     private PatientManager pm;
     private ListResourceBundle resourceMap;
+    private boolean isFromApp;
 
     private javax.swing.JButton addButton;
     private javax.swing.JButton refreshButton;
@@ -50,6 +51,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         super();
         this.mh = mh;
         this.pm = mh.getPm();
+        isFromApp = false;
         this.resourceMap = mh.getResourceMap();
         initComponents();
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -65,6 +67,25 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         this.setLocationRelativeTo(null);
     }
 
+    public PatientListGUI(ManagerHolder mh,boolean isFromApp){
+        super();
+        this.mh = mh;
+        this.pm = mh.getPm();
+        this.isFromApp = true;
+        this.resourceMap = mh.getResourceMap();
+        initComponents();
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                showCancelDialog();
+            }
+        });
+        this.displayPatientsList();
+        this.pack();
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
+    }
 
     public void initComponents(){
         menuBar = new javax.swing.JMenuBar();
@@ -78,6 +99,8 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         editButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
         okButton = new javax.swing.JButton();
+        if(isFromApp == false)
+            okButton.setEnabled(false);
         refreshButton = new javax.swing.JButton();
         searchTextField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
@@ -327,17 +350,18 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          }
 
          if(c.equals("ok")){
-            if(patientTable.getSelectedRow() >= 0){
-                mh.setPatientId(Integer.parseInt((String)patientTable.getValueAt(patientTable.getSelectedRow(), 0)));
-                mh.setPatientName(((String)patientTable.getValueAt(patientTable.getSelectedRow(), 1)) + " " +
-                     ((String)patientTable.getValueAt(patientTable.getSelectedRow(), 2)));
-            }
-            this.dispose();
-            new AddAppointmentGUI(mh);
+            if(patientTable.getSelectedRow() != -1){
+                    int selectedID = (Integer.parseInt((String)patientTable.getValueAt(patientTable.getSelectedRow(), 0)));
+                    Patients p = pm.getPatient(selectedID);
+                    new AddAppointmentGUI (mh,p);
+                    this.dispose();
+             }
+                else
+                    JOptionPane.showMessageDialog(null,"No patient selected", "Nothing entered", 2);
          }
 
          if(c.equals("cancel")){
-                showCancelDialog();
+                showCancelDialog();   
          }
 
          if(c.equals("refresh")){
