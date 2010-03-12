@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11.3.2010 18:33: by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="vidavo.pojos.Patients" table="patients" catalog="vidavo">
+        <id name="patientId" type="int">
+            <column name="patientID" />
+            <generator class="increment" />
+        </id>
+        <set name="personalInfos" inverse="true" cascade="all" >
+            <key>
+                <column name="piID" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="vidavo.pojos.PersonalInfo" />
+        </set>
+        <set name="chronicMedications" inverse="true" cascade="all">
+            <key>
+                <column name="cmID" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="vidavo.pojos.ChronicMedication" />
+        </set>
+        <set name="chronicDiseaseses" inverse="true" cascade="all">
+            <key>
+                <column name="chID" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="vidavo.pojos.ChronicDiseases" />
+        </set>
+        <set name="familyHistories" inverse="true" cascade="all">
+            <key>
+                <column name="fhID" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="vidavo.pojos.FamilyHistory" />
+        </set>
+        <set name="appointmentses" inverse="true" cascade="all">
+            <key>
+                <column name="Patient" not-null="true" />
+            </key>
+            <one-to-many class="vidavo.pojos.Appointments" />
+        </set>
+        <set name="contactses" inverse="true" cascade="all">
+            <key>
+                <column name="contactID" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="vidavo.pojos.Contacts" />
+        </set>
+        <set name="habitses" inverse="true" cascade="all">
+            <key>
+                <column name="habitsID" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="vidavo.pojos.Habits" />
+        </set>
+        <set name="immunizationses" inverse="true" cascade="all">
+            <key>
+                <column name="immunID" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="vidavo.pojos.Immunizations" />
+        </set>
+        <set name="surgicalHistories" inverse="true" cascade="all">
+            <key>
+                <column name="shID" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="vidavo.pojos.SurgicalHistory" />
+        </set>
+    </class>
+</hibernate-mapping>

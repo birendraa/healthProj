@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11.3.2010 18:33: by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="vidavo.pojos.Habits" table="habits" catalog="vidavo">
+        <id name="habitsId" type="int">
+            <column name="habitsID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="patients" class="vidavo.pojos.Patients" update="false" insert="false" fetch="select">
+            <column name="habitsID" not-null="true" unique="true" />
+        </many-to-one>
+        <property name="smoker" type="string">
+            <column name="Smoker" length="10" />
+        </property>
+        <property name="howLongSmoke" type="string">
+            <column name="HowLongSmoke" length="10" />
+        </property>
+        <property name="tea" type="string">
+            <column name="Tea" length="10" />
+        </property>
+        <property name="coffee" type="string">
+            <column name="Coffee" length="10" />
+        </property>
+        <property name="softdrinks" type="string">
+            <column name="Softdrinks" length="10" />
+        </property>
+        <property name="caffeinePerDay" type="string">
+            <column name="CaffeinePerDay" length="10" />
+        </property>
+        <property name="saltUsage" type="string">
+            <column name="SaltUsage" length="10" />
+        </property>
+        <property name="sugarUsage" type="string">
+            <column name="SugarUsage" length="10" />
+        </property>
+        <property name="diet" type="string">
+            <column name="Diet" length="10" />
+        </property>
+        <property name="foodHabits" type="string">
+            <column name="FoodHabits" length="250" />
+        </property>
+        <property name="alcoholPerDay" type="string">
+            <column name="AlcoholPerDay" length="100" />
+        </property>
+        <property name="alcoholPerWeek" type="string">
+            <column name="AlcoholPerWeek" length="100" />
+        </property>
+        <property name="useOfDrugs" type="string">
+            <column name="UseOfDrugs" length="10" />
+        </property>
+        <property name="useOfMedication" type="string">
+            <column name="UseOfMedication" length="10" />
+        </property>
+        <property name="exercise" type="string">
+            <column name="Exercise" length="10" />
+        </property>
+        <property name="exerciseType" type="string">
+            <column name="ExerciseType" length="100" />
+        </property>
+        <property name="exerciseHowOften" type="string">
+            <column name="ExerciseHowOften" length="50" />
+        </property>
+        <property name="otherHabits" type="string">
+            <column name="OtherHabits" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11.3.2010 18:33: by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="vidavo.pojos.SurgicalHistory" table="surgical_history" catalog="vidavo">
+        <id name="shId" type="int">
+            <column name="shID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="patients" class="vidavo.pojos.Patients" update="false" insert="false" fetch="select">
+            <column name="shID" not-null="true" unique="true" />
+        </many-to-one>
+        <property name="descriptionOfSurgery" type="string">
+            <column name="DescriptionOfSurgery" length="65535" />
+        </property>
+        <property name="hospitalName" type="string">
+            <column name="HospitalName" length="50" />
+        </property>
+        <property name="reasonOfHospitalization" type="string">
+            <column name="ReasonOfHospitalization" length="65535" />
+        </property>
+        <property name="finalDiagnosis" type="string">
+            <column name="FinalDiagnosis" length="65535" />
+        </property>
+        <property name="doctorsName" type="string">
+            <column name="DoctorsName" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>
