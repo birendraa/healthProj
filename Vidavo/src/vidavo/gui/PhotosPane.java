@@ -168,9 +168,7 @@ public class PhotosPane extends javax.swing.JPanel implements ActionListener, Li
             path = fc.getSelectedFile().toPath();
             this.selectPhotoTextField.setText(path.toString());
             this.renameTextField.setText(path.getName().toString());
-        } else {
-            System.out.println("Open command cancelled by user." + "\n");
-        }
+        } 
 
          }
          if (action.equals("save")){
@@ -190,19 +188,22 @@ public class PhotosPane extends javax.swing.JPanel implements ActionListener, Li
 
          }
          if (action.equals("open")){
-             if (!photosList.isSelectionEmpty())
+            if (!photosList.isSelectionEmpty())
             try {
                  java.awt.Desktop.getDesktop().open(new File(patientDirectoryName + "/" + photosList.getSelectedValue().toString()));
             } catch (IOException ex) {
-
+                ex.printStackTrace();
             }
          }
          if (action.equals("remove")){
-
+            if (!photosList.isSelectionEmpty()){
+                 File temp = new File(patientDirectoryName + "/" + photosList.getSelectedValue().toString());
+                 temp.delete();
+            }
          }
          populateList();
-
     }
+    
 
     public String getPatientDirectoryName() {
         return patientDirectoryName;
@@ -238,43 +239,18 @@ public class PhotosPane extends javax.swing.JPanel implements ActionListener, Li
     public void populateList() {
 
         File dir = new File(patientDirectoryName);
-
-        String[] children = dir.list();
-        if (children == null) {
-            // Either dir does not exist or is not a directory
-        } else {
-            for (int i=0; i<children.length; i++) {
-                // Get filename of file or directory
-                String filename = children[i];
-            }
-        }
-
-        // It is also possible to filter the list of returned files.
-        // This example does not return any files that start with `.'.
-        FilenameFilter filter = new FilenameFilter() {
-            public boolean accept(File dir, String name) {
-                return !name.startsWith(".");
-            }
-        };
-        children = dir.list(filter);
-
-
-        // The list of files can also be retrieved as File objects
-        File[] files = dir.listFiles();
-
-        // This filter only returns directories
         FileFilter fileFilter = new FileFilter() {
             public boolean accept(File file) {
                 return !file.isDirectory();
             }
         };
-        files = dir.listFiles(fileFilter);
+        File[] files = dir.listFiles(fileFilter);
 
-        DefaultListModel model = new DefaultListModel();
-            if (files.length > 0){
-            for (int i=0; i<files.length; i++){
-                model.addElement(files[i].getName());
-            }
+        if (files != null){
+            DefaultListModel model = new DefaultListModel();
+            if (files.length > 0)
+                for (int i=0; i<files.length; i++)
+                    model.addElement(files[i].getName());    
             photosList.setModel(model);
         }
     }

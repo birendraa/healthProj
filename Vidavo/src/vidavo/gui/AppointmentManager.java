@@ -2,11 +2,8 @@
 package vidavo.gui;
 
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
-import vidavo.AppointmentList;
-import vidavo.pojos.Appointments;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -17,8 +14,6 @@ import vidavo.util.HibernateUtil;
 
 public class AppointmentManager {
     
-    private AppointmentList al;
-    private DatabaseManager db;
     private Transaction tx;
     private Session s;
     final static Logger logger = LoggerFactory.getLogger(PatientManager.class);
@@ -26,25 +21,7 @@ public class AppointmentManager {
     private List list;
 
     public AppointmentManager(){
-        db = new DatabaseManager();
-        al = new AppointmentList();
         app = new Appointments();
-    }
-
-    public AppointmentList getAl() {
-        return al;
-    }
-
-    public void setAl(AppointmentList al) {
-        this.al = al;
-    }
-
-    public DatabaseManager getDb() {
-        return db;
-    }
-
-    public void setDb(DatabaseManager db) {
-        this.db = db;
     }
 
     public void addAppointment(Appointments app)

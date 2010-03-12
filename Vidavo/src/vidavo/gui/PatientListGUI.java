@@ -182,12 +182,13 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         listSelectionModel.addListSelectionListener(new ListSelectionListener() {
 
             public void valueChanged(ListSelectionEvent e) {
-                    ListSelectionModel lsm = (ListSelectionModel)e.getSource();
+                ListSelectionModel lsm = (ListSelectionModel)e.getSource();
+                if (!lsm.isSelectionEmpty()){
                     int position = lsm.getAnchorSelectionIndex();
                     String fname = (String)model.getValueAt(position, 2);
                     String lname = (String)model.getValueAt(position, 1);
                     patientNameLabel.setText(lname + " " + fname);
-
+                }
             }
         });
 	patientTable.setSelectionModel(listSelectionModel);
@@ -332,7 +333,8 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
             if(patientTable.getSelectedRow() != -1){
              pm.deletePatient(Integer.parseInt(model.getValueAt(patientTable.getSelectedRow(), 0).toString()));
              reloadTable();
-               displayPatientsList();
+             displayPatientsList();
+             patientNameLabel.setText(resourceMap.getString("patientNameLabel.text"));
             }
             else
                     JOptionPane.showMessageDialog(null,"No patient was selected!", "Error Message", 2);
