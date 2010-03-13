@@ -160,4 +160,58 @@ public class AppointmentManager {
     {
         return list;
     }
+
+        boolean compareWithNextAppointment(Appointments app,Appointments app1) {
+        
+        s = HibernateUtil.getSessionFactory().openSession();
+        //tx = s.beginTransaction();
+        boolean b = true;
+
+        System.out.println(app.getDate() + "muuuuuuuu");
+        List appointments = s.createQuery("from Appointments a where date = '"  + (app.getDate().getYear()+1900) + "-" + (app.getDate().getMonth()+1) + "-" + (app.getDate().getDate()) + "' order by a.time").list();
+        //tx.commit();
+        s.close();
+
+        for(int i = 0; i < appointments.size(); i++)
+        {
+            Appointments apps = new Appointments ();
+            apps =(Appointments)appointments.get(i);
+            Appointments temp = new Appointments ();
+            temp.setTime(new Date ((apps.getDate().getYear()), (apps.getDate().getMonth()), (apps.getDate().getDate()), apps.getTime().getHours(), (apps.getTime().getMinutes() + apps.getDuration()) ));
+
+            if(i != appointments.size() -1)
+                {
+                    if(((compareTo((Date)app1.getTime(),(Date)apps.getTime()) < 0 && compareTo(((Date)app.getTime()),(Date)apps.getTime()) < 0))|| (compareTo((Date)app.getTime(),(Date)temp.getTime()) > 0 && compareTo(((Date)app1.getTime()),(Date)temp.getTime()) > 0))
+                    {
+                        continue;
+                    }
+                    else
+                        return false;             
+            }
+    }
+        return b;
+        }
+        public int compareTo(Date d1,Date d2)
+        {
+            
+            int result = 0;
+            if(d1.getHours() < d2.getHours())
+            {
+                result = -1;
+            }
+
+            else if(d1.getHours() == d2.getHours())
+            {
+                if(d1.getMinutes() > d2.getMinutes())
+                    result = 1;
+                else if(d1.getMinutes() == d2.getMinutes())
+                result = 0;
+                else
+                    result = -1;
+            }
+
+            else if(d1.getHours() > d2.getHours())
+                result = 1;
+            return result;
+        }
 }

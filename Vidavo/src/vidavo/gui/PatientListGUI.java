@@ -429,7 +429,8 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
             }
             else{
                 this.dispose();
-                new AddAppointmentGUI(mh);
+                Patients p = null;
+                new AddAppointmentGUI(mh,p);
             }
         }
     }

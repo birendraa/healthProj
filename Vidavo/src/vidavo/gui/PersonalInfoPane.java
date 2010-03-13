@@ -498,13 +498,7 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
           profTextField.setText(pi.getProfession());
           insuranceTextField.setText(pi.getInsurrance());
           amkaTextField.setText(Integer.toString(pi.getInsuranceIdNumber()));
-
-          int selectedItem;
-          for(selectedItem = 0; selectedItem <= tameioComboBox.getItemCount(); selectedItem++){
-              if(pi.getInsuranceType().equals(tameioComboBox.getItemAt(selectedItem)))
-                break;
-          }
-          tameioComboBox.setSelectedIndex(selectedItem);
+          tameioComboBox.setSelectedItem(pi.getInsuranceType().toString());
           firstVisitChooser.setDate(pi.getFirstVisit());
 //          firstVisitChooser.setText((pi.getFirstVisit()).toString());
           childrenSpinner.setValue(pi.getChildren());

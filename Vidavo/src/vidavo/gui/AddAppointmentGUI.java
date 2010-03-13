@@ -499,15 +499,44 @@ public Appointments getAppointment() throws NullPointerException,NumberFormatExc
                     JOptionPane.showMessageDialog(null, "Time has not been set for the appointment", "Error Message", 2);
                 else if(pat == null)
                     JOptionPane.showMessageDialog(null, "Patient has not been selected", "Error Message", 2);
+                else if(isAvailable(app) != true)
+                {
+                    JOptionPane.showMessageDialog(null, "Appointment duration is too long", "Error Message", 2);
+                }
                 else
                 {
                 am.addAppointment(app);
+                this.dispose();
+                new AppointmentGUI(mh);
                 }
 
             }
             catch (NumberFormatException nfe)
             {
-                JOptionPane.showMessageDialog(null, "Enter only digits in the duration field", "Error Message", 2);
+                try
+                {
+                    if(!hourTextField.getText().equals("") && !minutesTextField.getText().equals(""))
+                    {
+                    Integer.parseInt(hourTextField.getText());
+                    Integer.parseInt(minutesTextField.getText());
+                    }
+                    else if(hourTextField.getText().equals("") && minutesTextField.getText().equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "Enter hour for the appointment", "Error Message", 2);
+                    }
+                    else{
+                        try
+                {   if(!durationTextField.getText().equals(""))
+                    Integer.parseInt(durationTextField.getText());
+                    else
+                        JOptionPane.showMessageDialog(null, "Enter the duration of the appointment", "Error Message", 2);
+                }
+                catch(NumberFormatException nf){
+                JOptionPane.showMessageDialog(null, "Enter only digits in the duration field", "Error Message", 2);}
+                    }
+                }
+                catch(NumberFormatException nf){
+                JOptionPane.showMessageDialog(null, "Enter only digits in the time field", "Error Message", 2);}
             }
         }
 
@@ -581,19 +610,9 @@ public Appointments getAppointment() throws NullPointerException,NumberFormatExc
         tempList.add(categoryComboBox.getSelectedIndex());
         date = appointmentDateChooser.getDate();
         tempList.add((Date)date);
-        System.out.println(date);
         tempList.add(titleTextField.getText());
-        appTime = new Date();
-        if(hourTextField.getText().equals("") || minutesTextField.getText().equals(""))
-        {
-             appTime = null;
-        }
-        else
-        {
-           appTime.setHours(Integer.parseInt(hourTextField.getText()));
-           appTime.setMinutes(Integer.parseInt(minutesTextField.getText()));
-        }
-        tempList.add((Date)appTime);
+        tempList.add(hourTextField.getText());
+        tempList.add(minutesTextField.getText());
         tempList.add(dayTimeComboBox.getSelectedIndex());
         tempList.add(durationTextField.getText());
         if(repeatsCheckBox.isSelected() == true)
@@ -614,34 +633,29 @@ public Appointments getAppointment() throws NullPointerException,NumberFormatExc
         date = (Date)tempList.get(1);
         appointmentDateChooser.setDate(date);
         titleTextField.setText(tempList.get(2).toString());
-        appTime = (Date) tempList.get(3);
 
-        try{
-            hourTextField.setText(Integer.toString(appTime.getHours()));
-            minutesTextField.setText(Integer.toString(appTime.getMinutes()));
-        }
-        catch(NullPointerException n)
-        {
-            hourTextField.setText("");
-            minutesTextField.setText("");
-        }
-            
+            hourTextField.setText(tempList.get(3).toString());
+            minutesTextField.setText(tempList.get(4).toString());
 
-        dayTimeComboBox.setSelectedIndex(Integer.parseInt(tempList.get(4).toString()));
-        durationTextField.setText(tempList.get(5).toString());
-        System.out.println(tempList.get(6).toString());
-        if (tempList.get(6).toString().equals("true"))
+        dayTimeComboBox.setSelectedIndex(Integer.parseInt(tempList.get(5).toString()));
+        durationTextField.setText(tempList.get(6).toString());
+        System.out.println(tempList.get(7).toString());
+        if (tempList.get(7).toString().equals("true"))
         {
             repeatsCheckBox.setSelected(true);
         }
         else
             repeatsCheckBox.setSelected(false);
-        repeatsComboBox1.setSelectedIndex(Integer.parseInt(tempList.get(7).toString()));
-        repeatsComboBox2.setSelectedIndex(Integer.parseInt(tempList.get(8).toString()));
-        commentsTextField.setText(tempList.get(9).toString());
-        PersonalInfo pi = mh.getPm().getSelectedPatient(pat.getPatientId());
+        repeatsComboBox1.setSelectedIndex(Integer.parseInt(tempList.get(8).toString()));
+        repeatsComboBox2.setSelectedIndex(Integer.parseInt(tempList.get(9).toString()));
+        commentsTextField.setText(tempList.get(10).toString());
+        PersonalInfo pi = new PersonalInfo();
+        if(pat != null)
+        {
+         pi= mh.getPm().getSelectedPatient(pat.getPatientId());
 
         patientNameLabel.setText(pi.getFirstName() + " " + pi.getLastName());
+        }
     }
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -649,7 +663,57 @@ public Appointments getAppointment() throws NullPointerException,NumberFormatExc
     }
 
     private void findAvailableButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        Vector apps = am.getAppointments(appointmentDateChooser.getDate());
+            Vector freeTimes = new Vector();
+            Appointments a = new Appointments();
+            Appointments a1 = new Appointments();
+
+            s = HibernateUtil.getSessionFactory().openSession();
+       // tx = s.beginTransaction();
+            for(int i = 0; i < apps.size() / 4; i++)
+            {
+                if(i>0 && i != apps.size() / 4 - 1)
+                {
+                a = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i - 1)*4).toString()));
+                if(i < apps.size()/4 - 1)
+                a1 = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i-1)*4 + 4).toString()));
+                }
+
+                else if(i==0 || i == (apps.size() / 4 - 1))
+                {
+                    a = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i)*4).toString()));
+//                if(i < apps.size()/4 - 1)
+//                a1 = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i)*4 + 4).toString()));
+
+                }
+
+                if(i == 0)
+                freeTimes.add("00:00:00 - " + a.getTime().toString());
+
+                else if(i < apps.size()/4 - 1)
+                {
+                   int bla = a.getTime().getMinutes();
+                   int bla1 = a.getDuration();
+                   a.getTime().setMinutes(bla + bla1);
+                   //freeTimes.add("Hours: " + Integer.toString(a.getTime().getHours()) +"   Minutes:  " +(a.getTime().getMinutes() + a.getDuration() )+ " - " + a1.getTime().toString());
+                    freeTimes.add( a.getTime().toString() + " - " + a1.getTime().toString());
+                }
+
+                else if(i == apps.size()/4 - 1)
+                {
+                     freeTimes.add(a.getTime().toString() +" -00:00:00");
+                }
+
+
+            }
+        // tx.commit();
+        s.close();
+
+             for(int i = 0; i < freeTimes.size(); i++)
+            {
+              System.out.println(freeTimes.get(i).toString() + "\n");
+             }
+
     }
 
     private void showCancelDialog() {
@@ -678,5 +742,17 @@ public Appointments getAppointment() throws NullPointerException,NumberFormatExc
             this.dispose();
             new AppointmentGUI(mh);
         }
+    }
+
+    private boolean isAvailable(Appointments app) {
+
+        Appointments temp = new Appointments();
+        //temp.setTime(new Date (app.getTime().getTime()));
+        //temp.setDate(new Date(app.getDate().getDate()));
+        //temp.setDate((Date)app.getDate().clone());
+        temp.setTime(new Date ((app.getDate().getYear()), (app.getDate().getMonth()), (app.getDate().getDate()), app.getTime().getHours(), (app.getTime().getMinutes() + app.getDuration()) ));
+                //temp.getTime().setMinutes(app.getDuration() +app.getTime().getMinutes());
+        //System.out.println(temp.getDate());
+        return am.compareWithNextAppointment(app,temp);
     }
 }
