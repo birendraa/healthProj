@@ -54,6 +54,8 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         isFromApp = false;
         this.resourceMap = mh.getResourceMap();
         initComponents();
+        if(!mh.getOrigin().equals("AddAppointmentGUI"))
+            okButton.setEnabled(false);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -99,8 +101,6 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         editButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
         okButton = new javax.swing.JButton();
-        if(isFromApp == false)
-            okButton.setEnabled(false);
         refreshButton = new javax.swing.JButton();
         searchTextField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
@@ -209,9 +209,6 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         refreshButton.setToolTipText("Reload table");
         refreshButton.setIcon(new ImageIcon(getClass().getResource("images/clear.png")));
         refreshButton.addActionListener(this);
-
-        if(!mh.getOrigin().equals("AddAppointmentGUI"))
-            okButton.setEnabled(false);
 
         okButton.setText(resourceMap.getString("okButton.text")); // NOI18N
         okButton.setName("okButton"); // NOI18N
