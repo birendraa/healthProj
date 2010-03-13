@@ -1,5 +1,25 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
+DROP TABLE IF EXISTS `appointments`;
+CREATE TABLE `appointments` (
+  `AppointmentId` int(20) NOT NULL,
+  `Category` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `Date` date NOT NULL,
+  `Title` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `Patient` int(20) NOT NULL,
+  `Time` time NOT NULL,
+  `Am_Pm` varchar(10) CHARACTER SET latin1 DEFAULT NULL,
+  `Duration` int(11) NOT NULL,
+  `Repetition` varchar(10) CHARACTER SET latin1 DEFAULT NULL,
+  `Every` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `Workday` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `Comments` text CHARACTER SET latin1,
+  PRIMARY KEY (`AppointmentId`),
+  KEY `AppointmentFK` (`Patient`),
+  CONSTRAINT `AppointmentFK` FOREIGN KEY (`Patient`) REFERENCES `patients` (`patientID`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 DROP TABLE IF EXISTS `Personal_Info`;
 
 CREATE TABLE `Personal_Info` (
