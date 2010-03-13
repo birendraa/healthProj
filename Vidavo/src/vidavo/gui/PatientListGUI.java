@@ -69,26 +69,6 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
         this.setLocationRelativeTo(null);
     }
 
-    public PatientListGUI(ManagerHolder mh,boolean isFromApp){
-        super();
-        this.mh = mh;
-        this.pm = mh.getPm();
-        this.isFromApp = true;
-        this.resourceMap = mh.getResourceMap();
-        initComponents();
-        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                showCancelDialog();
-            }
-        });
-        this.displayPatientsList();
-        this.pack();
-        this.setVisible(true);
-        this.setLocationRelativeTo(null);
-    }
-
     public void initComponents(){
         menuBar = new javax.swing.JMenuBar();
         patientListPanel = new javax.swing.JPanel();
