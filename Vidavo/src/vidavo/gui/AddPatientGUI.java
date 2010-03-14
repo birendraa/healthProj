@@ -253,11 +253,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
             {
                 pm.createPatient(pi,sh,fh,contacts,cm,cd,habits,immun);
                 this.dispose();
-                if (patientId > 0)
-                {      
-                    new PatientListGUI(mh);
-                }
-                new PatientListGUI(mh,true);
+                new PatientListGUI(mh);
             }
         }
         else
