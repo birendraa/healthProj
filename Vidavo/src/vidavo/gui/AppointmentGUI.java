@@ -93,27 +93,15 @@ public class AppointmentGUI extends javax.swing.JFrame{
         languageMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
+
+//        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
+
         
         model = new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"08:00", null},
-                {"09:00", null},
-                {"10:00", null},
-                {"11:00", null},
-                {"12:00", null},
-                {"13:00", null},
-                {"14:00", null},
-                {"15:00", null},
-                {"16:00", null},
-                {"17:00", null},
-                {"18:00", null},
-                {"19:00", null},
-                {"20:00", null},
-                {"21:00", null},
-                {null, null}
-            },
+            new Object [][] {},
             new String [] {
-                "Hour", "Description"
+                "Hour", "Duration","Description"
             }
         );
         appointmentTable = new javax.swing.JTable(model){
@@ -344,8 +332,8 @@ public class AppointmentGUI extends javax.swing.JFrame{
             appointments = am.getAppointments(date);
         }
        
-     for(int i = 0; i < appointments.size()/4; i++){
-                this.model.insertRow(i,new Object[]{appointments.get(i * 4 + 1).toString(),appointments.get(i * 4 + 2).toString() + " " + appointments.get(i * 4 + 3).toString()});}
+     for(int i = 0; i < appointments.size()/5; i++){
+                this.model.insertRow(i,new Object[]{appointments.get(i * 5 + 1).toString(),appointments.get(i*5+2).toString(),appointments.get(i * 5 + 3).toString() + " " + appointments.get(i * 5 + 4).toString()});}
     }
 
     public void refreshTable()

@@ -306,6 +306,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame implements ActionListe
         saveButton.setName("saveButton"); // NOI18N
         saveButton.setText("Save");
         saveButton.addActionListener(this);
+       
 
 //        findAvailableButton.setText(resourceMap.getString("findAvailableButton.text")); // NOI18N
         findAvailableButton.setName("findAvailableButton"); // NOI18N
@@ -453,7 +454,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame implements ActionListe
     private void addNewPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {
         mh.setOrigin("AddAppointmentGUI");
         saveInfo();
-        new PatientListGUI(mh,true);
+        new PatientListGUI(mh);
         this.dispose();
     }
 public Appointments getAppointment() throws NullPointerException,NumberFormatException
@@ -461,6 +462,8 @@ public Appointments getAppointment() throws NullPointerException,NumberFormatExc
     SimpleDateFormat tm = new SimpleDateFormat("hh:mm");
     appTime = new Date();
     date = appointmentDateChooser.getDate();
+        //jTextField3.setText("blaa");
+        
 
         if(hourTextField.getText().equals("") || minutesTextField.getText().equals(""))
         {
@@ -485,6 +488,7 @@ public Appointments getAppointment() throws NullPointerException,NumberFormatExc
             appTime,dayTimeComboBox.getSelectedItem().toString(),Integer.parseInt(durationTextField.getText()),repeats,
             repeatsComboBox1.getSelectedItem().toString(),repeatsComboBox2.getSelectedItem().toString(),commentsTextField.getText());
 }
+        
 
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Save"))
@@ -509,6 +513,7 @@ public Appointments getAppointment() throws NullPointerException,NumberFormatExc
                 this.dispose();
                 new AppointmentGUI(mh);
                 }
+        
 
             }
             catch (NumberFormatException nfe)
@@ -549,27 +554,28 @@ public Appointments getAppointment() throws NullPointerException,NumberFormatExc
 
             s = HibernateUtil.getSessionFactory().openSession();
        // tx = s.beginTransaction();
-            for(int i = 0; i < apps.size() / 4; i++)
+            for(int i = 0; i < apps.size() / 5; i++)
             {
-                if(i>0 && i != apps.size() / 4 - 1)
+                if(i>0 && i != apps.size() / 5 - 1)
                 {
-                a = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i - 1)*4).toString()));
-                if(i < apps.size()/4 - 1)
-                a1 = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i-1)*4 + 4).toString()));
+                a = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i - 1)*5).toString()));
+                if(i < apps.size()/5 - 1)
+                a1 = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i-1)*5 + 5).toString()));
                 }
 
-                else if(i==0 || i == (apps.size() / 4 - 1))
+                else if(i==0 || i == (apps.size() / 5 - 1))
                 {
-                    a = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i)*4).toString()));
+                    a = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i)*5).toString()));
 //                if(i < apps.size()/4 - 1)
 //                a1 = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i)*4 + 4).toString()));
+        
 
                 }
 
                 if(i == 0)
                 freeTimes.add("00:00:00 - " + a.getTime().toString());
 
-                else if(i < apps.size()/4 - 1)
+                else if(i < apps.size()/5 - 1)
                 {
                    int bla = a.getTime().getMinutes();
                    int bla1 = a.getDuration();
@@ -578,7 +584,7 @@ public Appointments getAppointment() throws NullPointerException,NumberFormatExc
                     freeTimes.add( a.getTime().toString() + " - " + a1.getTime().toString());
                 }
                 
-                else if(i == apps.size()/4 - 1)
+                else if(i == apps.size()/5 - 1)
                 {
                      freeTimes.add(a.getTime().toString() +" -00:00:00");
                 }
@@ -602,6 +608,7 @@ public Appointments getAppointment() throws NullPointerException,NumberFormatExc
 //            jTextField3.setFocusable(false);
 //
 //    }
+        
 
     public void saveInfo() {
        // new PatientListGUI(this.mh,true);
@@ -627,6 +634,7 @@ public Appointments getAppointment() throws NullPointerException,NumberFormatExc
        // this.dispose();
 
     }
+        
 
     private void loadInfo(List tempList) {
         categoryComboBox.setSelectedIndex(Integer.parseInt(tempList.get(0).toString()));
@@ -670,18 +678,18 @@ public Appointments getAppointment() throws NullPointerException,NumberFormatExc
 
             s = HibernateUtil.getSessionFactory().openSession();
        // tx = s.beginTransaction();
-            for(int i = 0; i < apps.size() / 4; i++)
+            for(int i = 0; i < apps.size() / 5; i++)
             {
-                if(i>0 && i != apps.size() / 4 - 1)
+                if(i>0 && i != apps.size() / 5 - 1)
                 {
-                a = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i - 1)*4).toString()));
-                if(i < apps.size()/4 - 1)
-                a1 = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i-1)*4 + 4).toString()));
+                a = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i - 1)*5).toString()));
+                if(i < apps.size()/5 - 1)
+                a1 = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i-1)*5 + 5).toString()));
                 }
 
-                else if(i==0 || i == (apps.size() / 4 - 1))
+                else if(i==0 || i == (apps.size() / 5 - 1))
                 {
-                    a = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i)*4).toString()));
+                    a = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i)*5).toString()));
 //                if(i < apps.size()/4 - 1)
 //                a1 = (Appointments) s.load(Appointments.class, Integer.parseInt(apps.get((i)*4 + 4).toString()));
 
@@ -690,7 +698,7 @@ public Appointments getAppointment() throws NullPointerException,NumberFormatExc
                 if(i == 0)
                 freeTimes.add("00:00:00 - " + a.getTime().toString());
 
-                else if(i < apps.size()/4 - 1)
+                else if(i < apps.size()/5 - 1)
                 {
                    int bla = a.getTime().getMinutes();
                    int bla1 = a.getDuration();
@@ -699,7 +707,7 @@ public Appointments getAppointment() throws NullPointerException,NumberFormatExc
                     freeTimes.add( a.getTime().toString() + " - " + a1.getTime().toString());
                 }
 
-                else if(i == apps.size()/4 - 1)
+                else if(i == apps.size()/5 - 1)
                 {
                      freeTimes.add(a.getTime().toString() +" -00:00:00");
                 }

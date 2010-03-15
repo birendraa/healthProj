@@ -87,6 +87,7 @@ public class AppointmentManager {
         app = (Appointments)appointments.get(i);
         oneRow.add(app.getAppointmentId());
         oneRow.add(app.getTime());
+        oneRow.add(app.getDuration());
         id = app.getPatients().getPatientId();
         getPI(id,oneRow);
     }
