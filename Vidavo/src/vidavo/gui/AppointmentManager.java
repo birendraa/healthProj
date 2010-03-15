@@ -179,15 +179,12 @@ public class AppointmentManager {
             Appointments temp = new Appointments ();
             temp.setTime(new Date ((apps.getDate().getYear()), (apps.getDate().getMonth()), (apps.getDate().getDate()), apps.getTime().getHours(), (apps.getTime().getMinutes() + apps.getDuration()) ));
 
-            if(i != appointments.size() -1)
-                {
-                    if(((compareTo((Date)app1.getTime(),(Date)apps.getTime()) < 0 && compareTo(((Date)app.getTime()),(Date)apps.getTime()) < 0))|| (compareTo((Date)app.getTime(),(Date)temp.getTime()) > 0 && compareTo(((Date)app1.getTime()),(Date)temp.getTime()) > 0))
-                    {
-                        continue;
-                    }
-                    else
-                        return false;             
+            if(((compareTo((Date)app1.getTime(),(Date)apps.getTime()) < 0 && compareTo(((Date)app.getTime()),(Date)apps.getTime()) < 0))|| (compareTo((Date)app.getTime(),(Date)temp.getTime()) > 0 && compareTo(((Date)app1.getTime()),(Date)temp.getTime()) > 0))
+            {
+                continue;
             }
+            else
+                return false;   
     }
         return b;
         }
