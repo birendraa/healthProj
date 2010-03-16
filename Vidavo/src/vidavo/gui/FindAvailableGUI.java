@@ -4,6 +4,10 @@ package vidavo.gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Scrollbar;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -13,9 +17,16 @@ import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import vidavo.pojos.Appointments;
 import vidavo.util.ListInterface;
 import vidavo.util.ReferenceBasedList;
@@ -70,7 +81,13 @@ public class FindAvailableGUI extends javax.swing.JFrame {
         mainScrollPane = new javax.swing.JScrollPane();
         mainPanel = new javax.swing.JPanel();
 
-//        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                showCancelDialog();
+            }
+        });
 
         startDateLabel.setText(resourceMap.getString("startDateLabel.text"));
         forLabel.setText(resourceMap.getString("forLabel.text"));
@@ -152,20 +169,14 @@ public class FindAvailableGUI extends javax.swing.JFrame {
         if(ManagerHolder.isInteger(daysTextField.getText())){
             ReferenceBasedList [] appsTimeArray = getAppointmentsTimeArray();
             ReferenceBasedList [] appsDurationArray = getAppointmentsDurationArray();
-//                 System.out.println("=======appsTimeArray.length========");
-//                 System.out.println(appsTimeArray.length);
-//                 System.out.println("==================");
-//                 System.out.println("=======appsDurationArray.length========");
-//                 System.out.println(appsDurationArray.length);
-//                 System.out.println("==================");
+            
             mainScrollPane.getViewport().add(mainPanel);
             mainScrollPane.setBounds(0, 60, 455, mainPanel.getHeight());
 
             for(int i = 0; i < appsTimeArray.length; i++){
                 javax.swing.JPanel jPanel = new javax.swing.JPanel();
                 populatePanel(jPanel, appsTimeArray[i], appsDurationArray[i]);
-//                System.out.println((ReferenceBasedList)appsTimeArray[i].get(i));
-//                System.out.println(appsDurationArray[i]);
+
 //            mainScrollPane.setBounds(mainPanel.getX(), mainPanel.getY(), mainPanel.getWidth(), mainPanel.getHeight());
 //            mainScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
                 mainPanel.add(jPanel);
@@ -225,7 +236,7 @@ public class FindAvailableGUI extends javax.swing.JFrame {
             if(tempTime + appDuration <= amFinishTime){
                 if(tempTime + appDuration <= unavailableTime || counter == unavailableTimes.size() + 1){
                     if(tempTime + appDuration == amFinishTime){
-                        amRefList.append(getHoursANDMinutes(new Time((tempTime - 7200 + appDuration) * 1000).toString()));
+                        amRefList.append(new JButton(getHoursANDMinutes(new Time((tempTime - 7200 + appDuration) * 1000).toString())));
                         tempTime = pmStartTime;
                     }
                     else{
@@ -285,6 +296,21 @@ public class FindAvailableGUI extends javax.swing.JFrame {
         }
         amList = new JList(refBasedListToStringArray(amRefList));
         pmList = new JList(refBasedListToStringArray(pmRefList));
+
+        amList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        pmList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        amList.addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent e) {
+                listItemClicked(e);
+            }
+        });
+
+        pmList.addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent e) {
+                listItemClicked(e);
+            }
+        });
 
         pmLabel.setText(resourceMap.getString("pmLabel.text"));
         panel.add(pmLabel);
@@ -387,7 +413,35 @@ public class FindAvailableGUI extends javax.swing.JFrame {
         return s;
     }
 
-    private void timeButtonClicked(java.awt.event.ActionEvent evt) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    private void listItemClicked(ListSelectionEvent e) {
+        System.out.println(((JList)e.getSource()).getSelectedValue());
+    }
+
+    private void showCancelDialog() {
+        final JDialog dialog = new JDialog(this, "Exit", true);
+        final JOptionPane op = new JOptionPane("Are you sure you want to close the window? ", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
+        dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        dialog.setContentPane(op);
+        dialog.setResizable(false);
+        op.addPropertyChangeListener(new PropertyChangeListener(){
+            public void propertyChange(PropertyChangeEvent e){
+                String prop = e.getPropertyName();
+                if (dialog.isVisible() && (e.getSource() == op) && (prop.equals(JOptionPane.VALUE_PROPERTY))) {
+                    dialog.setVisible(false);
+                }
+            }
+        });
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setResizable(false);
+        dialog.setVisible(true);
+        int value = ((Integer) op.getValue()).intValue();
+        if (value == JOptionPane.NO_OPTION){
+            dialog.dispose();
+        }
+        else if (value == JOptionPane.YES_OPTION){
+            this.dispose();
+            new AddAppointmentGUI(mh);
+        }
     }
 }
