@@ -440,8 +440,6 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
                 this.dispose();
                 new AppointmentGUI(mh);
                 }
-
-
             }
             catch (NumberFormatException nfe)
             {

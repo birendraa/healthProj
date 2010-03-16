@@ -85,9 +85,6 @@ public class AppointmentManager {
         tx = s.beginTransaction();
         List appointments =
             s.createQuery("from Appointments as app where app.date = '" + (date.getYear()+1900) + "-" + (date.getMonth()+1) + "-" + (date.getDate()) + "' order by app.time").list();
-                 System.out.println("=======appointments.size2========");
-                 System.out.println(appointments.size());
-                 System.out.println("==================");
         tx.commit();
         s.close();
         return appointments;

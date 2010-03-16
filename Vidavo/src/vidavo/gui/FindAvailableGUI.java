@@ -4,6 +4,7 @@ package vidavo.gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Scrollbar;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,15 +37,21 @@ public class FindAvailableGUI extends javax.swing.JFrame {
     private ManagerHolder mh;
     private int appDuration;
 
-    private final int amStartTime = 830;
-    private final int amFinishTime = 1200;
-    private final int pmStartTime = 1300;
-    private final int pmFinishTime = 2000;
+    // 8:30
+    private final int amStartTime = 30600;
+    // 12:00
+    private final int amFinishTime = 43200;
+    // 13:00
+    private final int pmStartTime = 46800;
+    // 20:00
+    private final int pmFinishTime = 72000;
+    // + 2 hours gmt for greek time
+    private final int greekGmtTimeInSeconds = 7200;
 
     public FindAvailableGUI(ManagerHolder mh, int appDuration) {
         this.resourceMap = mh.getResourceMap();
         this.mh = mh;
-        this.appDuration = appDuration;
+        this.appDuration = appDuration * 60;
         initComponents();
         this.setVisible(true);
         this.setResizable(false);
@@ -207,30 +214,29 @@ public class FindAvailableGUI extends javax.swing.JFrame {
         int unavailableTime = 0;
         int unavailableAppDuration = 0;
         int counter = 1;
-        
+
         while(tempTime < pmFinishTime){
             if(counter <= unavailableTimes.size()){
-                unavailableTime = getTimeInInt(unavailableTimes.get(counter).toString());
-                System.out.println(unavailableTimes.get(counter).toString());
-                unavailableAppDuration = Integer.parseInt(durations.get(counter).toString());
+                unavailableTime = Integer.parseInt(unavailableTimes.get(counter).toString());
+                unavailableAppDuration = Integer.parseInt(durations.get(counter).toString()) * 60;
                 counter++;
             }
             if(tempTime + appDuration <= amFinishTime){
                 if(tempTime + appDuration <= unavailableTime || counter == unavailableTimes.size() + 1){
                     if(tempTime + appDuration == amFinishTime){
-                        amRefList.append(Integer.toString(tempTime + appDuration));
+                        amRefList.append(getHoursANDMinutes(new Time((tempTime - 7200 + appDuration) * 1000).toString()));
                         tempTime = pmStartTime;
                     }
                     else{
                         if(tempTime + appDuration == unavailableTime){
-                            amRefList.append(Integer.toString(tempTime));
+                            amRefList.append(getHoursANDMinutes(new Time((tempTime - 7200) * 1000).toString()));
                             tempTime += appDuration + unavailableAppDuration;
                         }
                         else{
-                            amRefList.append(Integer.toString(tempTime));
+                            amRefList.append(getHoursANDMinutes(new Time((tempTime - 7200) * 1000).toString()));
                             tempTime += appDuration;
                             if(tempTime + appDuration >= amFinishTime){
-                                amRefList.append(Integer.toString(tempTime));
+                                amRefList.append(getHoursANDMinutes(new Time((tempTime - 7200) * 1000).toString()));
                             }
                         }
                     }
@@ -238,10 +244,10 @@ public class FindAvailableGUI extends javax.swing.JFrame {
                 else if (tempTime + appDuration > unavailableTime){
                     if(tempTime + appDuration < amFinishTime){
                         tempTime = unavailableTime + unavailableAppDuration;
-                        amRefList.append(Integer.toString(tempTime));
+//                        amRefList.append(Integer.toString(tempTime));
                     }
                     else if(tempTime + appDuration >= amFinishTime){
-                        amRefList.append(Integer.toString(tempTime));
+                        amRefList.append(getHoursANDMinutes(new Time((tempTime - 7200) * 1000).toString()));
                         tempTime = pmStartTime;
                     }
                 }
@@ -249,19 +255,19 @@ public class FindAvailableGUI extends javax.swing.JFrame {
             else{
                 if(tempTime + appDuration <= unavailableTime || counter == unavailableTimes.size() + 1){
                     if(tempTime + appDuration == pmFinishTime){
-                        pmRefList.append(Integer.toString(tempTime + appDuration));
+                        pmRefList.append(getHoursANDMinutes(new Time((tempTime - 7200 + appDuration) * 1000).toString()));
                         tempTime = pmFinishTime;
                     }
                     else{
                         if(tempTime + appDuration == unavailableTime){
-                            pmRefList.append(Integer.toString(tempTime));
+                            pmRefList.append(getHoursANDMinutes(new Time((tempTime - 7200) * 1000).toString()));
                             tempTime += appDuration + unavailableAppDuration;
                         }
                         else{
-                            pmRefList.append(Integer.toString(tempTime));
+                            pmRefList.append(getHoursANDMinutes(new Time((tempTime - 7200) * 1000).toString()));
                             tempTime += appDuration;
                             if(tempTime + appDuration >= pmFinishTime){
-                                pmRefList.append(Integer.toString(tempTime));
+                                pmRefList.append(getHoursANDMinutes(new Time((tempTime - 7200) * 1000).toString()));
                             }
                         }
                     }
@@ -269,7 +275,7 @@ public class FindAvailableGUI extends javax.swing.JFrame {
                 else if (tempTime + appDuration > unavailableTime){
                     if(tempTime + appDuration < pmFinishTime){
                         tempTime = unavailableTime + unavailableAppDuration;
-                        amRefList.append(Integer.toString(tempTime));
+                        pmRefList.append(getHoursANDMinutes(new Time((tempTime - 7200) * 1000).toString()));
                     }
                     else if(tempTime + appDuration >= pmFinishTime){
                         tempTime = pmStartTime;
@@ -307,11 +313,11 @@ public class FindAvailableGUI extends javax.swing.JFrame {
         Date tempDate = dateChooser.getDate();
         
         while(counter <= appsArray.length){
-            Vector appointments = mh.getAm().getAppointments(tempDate);
+            List appointments = mh.getAm().getAppointmentsDuration(tempDate);
             ReferenceBasedList list = new ReferenceBasedList();
-            
-            for(int i = 0; i < appointments.size()/4; i++){
-                 list.append(appointments.get(i * 4 + 1).toString());
+
+            for(int i = 0; i < appointments.size(); i++){
+                list.append(((Appointments)appointments.get(i)).getTime().getTime()/1000 + greekGmtTimeInSeconds);
             }
             appsArray[counter-1] = list;
             
@@ -355,20 +361,22 @@ public class FindAvailableGUI extends javax.swing.JFrame {
         return appsArray;
     }
 
-    private int getTimeInInt(String s){
+    private String getHoursANDMinutes(String s){
         String str = "";
         int counter = 0;
         for(int i = 0; i < s.length(); i++){
-            if(s.charAt(i) == ':')
-                counter++;
-            if(s.charAt(i) != '0' && i == 0)
+            if(s.charAt(i) == ':' && counter == 0){
                 str += s.charAt(i);
-            else if(s.charAt(i) != ':' && counter <= 1)
+                counter++;
+            }
+            else if(s.charAt(i) == ':' && counter != 0)
+                counter++;
+            if(s.charAt(i) != ':' && counter <= 1)
                 str += s.charAt(i);
             if(counter == 2)
                 break;
         }
-        return Integer.parseInt(str);
+        return str;
     }
 
     public String [] refBasedListToStringArray(ReferenceBasedList rfbl){
