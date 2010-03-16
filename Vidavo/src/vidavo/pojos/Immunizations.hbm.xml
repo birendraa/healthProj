@@ -1,51 +1,50 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 11.3.2010 18:33: by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="vidavo.pojos.Immunizations" table="immunizations" catalog="vidavo">
-        <id name="immunId" type="int">
-            <column name="immunID" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="patients" class="vidavo.pojos.Patients" update="false" insert="false" fetch="select">
-            <column name="immunID" not-null="true" unique="true" />
-        </many-to-one>
-        <property name="bloodType" type="string">
-            <column name="BloodType" length="5" />
-        </property>
-        <property name="bloodDonor" type="string">
-            <column name="BloodDonor" length="10" />
-        </property>
-        <property name="bloodBank" type="string">
-            <column name="BloodBank" length="50" />
-        </property>
-        <property name="bloodContageousDiseases" type="string">
-            <column name="BloodContageousDiseases" length="50" />
-        </property>
-        <property name="bleedingProlems" type="string">
-            <column name="BleedingProlems" length="10" />
-        </property>
-        <property name="doritisMielouOston" type="string">
-            <column name="DoritisMielouOston" length="10" />
-        </property>
-        <property name="kidneyDonor" type="string">
-            <column name="KidneyDonor" length="10" />
-        </property>
-        <property name="doritisAllonOrganon" type="string">
-            <column name="DoritisAllonOrganon" length="50" />
-        </property>
-        <property name="allergies" type="string">
-            <column name="Allergies" length="50" />
-        </property>
-        <property name="allergiesToDrugs" type="string">
-            <column name="AllergiesToDrugs" length="50" />
-        </property>
-        <property name="poorCirculation" type="string">
-            <column name="PoorCirculation" length="10" />
-        </property>
-        <property name="stigma" type="string">
-            <column name="Stigma" length="10" />
-        </property>
-    </class>
+  <class catalog="vidavo" name="vidavo.pojos.Immunizations" table="immunizations">
+    <id name="immunId" type="int">
+      <column name="immunID"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="vidavo.pojos.Patients" fetch="select" insert="false" name="patients" update="false">
+      <column name="immunID" not-null="true" unique="true"/>
+    </many-to-one>
+    <property name="bloodType" type="string">
+      <column length="5" name="BloodType"/>
+    </property>
+    <property name="bloodDonor" type="string">
+      <column length="10" name="BloodDonor"/>
+    </property>
+    <property name="bloodBank" type="string">
+      <column length="50" name="BloodBank"/>
+    </property>
+    <property name="bloodContageousDiseases" type="string">
+      <column length="50" name="BloodContageousDiseases"/>
+    </property>
+    <property name="bleedingProlems" type="string">
+      <column length="10" name="BleedingProlems"/>
+    </property>
+    <property name="doritisMielouOston" type="string">
+      <column length="10" name="DoritisMielouOston"/>
+    </property>
+    <property name="kidneyDonor" type="string">
+      <column length="10" name="KidneyDonor"/>
+    </property>
+    <property name="doritisAllonOrganon" type="string">
+      <column length="50" name="DoritisAllonOrganon"/>
+    </property>
+    <property name="allergies" type="string">
+      <column length="50" name="Allergies"/>
+    </property>
+    <property name="allergiesToDrugs" type="string">
+      <column length="50" name="AllergiesToDrugs"/>
+    </property>
+    <property name="poorCirculation" type="string">
+      <column length="10" name="PoorCirculation"/>
+    </property>
+    <property name="stigma" type="string">
+      <column length="10" name="Stigma"/>
+    </property>
+  </class>
 </hibernate-mapping>

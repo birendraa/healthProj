@@ -20,6 +20,16 @@ public class ManagerHolder {
         this.resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
     }
 
+    public static boolean isInteger(String s){
+        try{
+            Integer.parseInt(s);
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+    }
+
     public AppointmentManager getAm() {
         return am;
     }

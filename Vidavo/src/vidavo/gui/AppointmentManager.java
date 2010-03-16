@@ -80,17 +80,30 @@ public class AppointmentManager {
         return displayResult(appointments);
     }
 
+    List getAppointmentsDuration(Date date) {
+        s = HibernateUtil.getSessionFactory().openSession();
+        tx = s.beginTransaction();
+        List appointments =
+            s.createQuery("from Appointments as app where app.date = '" + (date.getYear()+1900) + "-" + (date.getMonth()+1) + "-" + (date.getDate()) + "' order by app.time").list();
+                 System.out.println("=======appointments.size2========");
+                 System.out.println(appointments.size());
+                 System.out.println("==================");
+        tx.commit();
+        s.close();
+        return appointments;
+    }
+
     private Vector displayResult(List appointments) {
         Vector <Object> oneRow = new Vector<Object>();
         int id = 0;
         for(int i = 0; i < appointments.size(); i++) {
-        app = (Appointments)appointments.get(i);
-        oneRow.add(app.getAppointmentId());
-        oneRow.add(app.getTime());
-        oneRow.add(app.getDuration());
-        id = app.getPatients().getPatientId();
-        getPI(id,oneRow);
-    }
+            app = (Appointments)appointments.get(i);
+            oneRow.add(app.getAppointmentId());
+            oneRow.add(app.getTime());
+            oneRow.add(app.getDuration());
+            id = app.getPatients().getPatientId();
+            getPI(id,oneRow);
+        }
         return oneRow;
     }
 

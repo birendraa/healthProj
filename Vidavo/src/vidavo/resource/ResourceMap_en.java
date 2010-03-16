@@ -375,6 +375,15 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
                 {"languageMenu.text","Language"},
                 {"greekMenuItem.text","Greek"},
                 {"englishMenuItem.text","English"},
+
+                //Find Available
+                {"startDateLabel.text","Start Date :"},
+                {"forLabel.text","for"},
+                {"daysLabel.text","days"},
+                {"searchButton.text","Search"},
+                {"availableTimesLabel.text","Available Times"},
+                {"pmLabel.text","PM"},
+                {"amLabel.text","AM"},
             };
     };
 

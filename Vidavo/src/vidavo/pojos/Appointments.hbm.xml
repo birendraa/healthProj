@@ -1,45 +1,44 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 11.3.2010 18:33: by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="vidavo.pojos.Appointments" table="appointments" catalog="vidavo">
-        <id name="appointmentId" type="int">
-            <column name="AppointmentId" />
-            <generator class="increment" />
-        </id>
-        <many-to-one name="patients" class="vidavo.pojos.Patients" fetch="select">
-            <column name="Patient" not-null="true" />
-        </many-to-one>
-        <property name="category" type="string">
-            <column name="Category" length="50" />
-        </property>
-        <property name="date" type="date">
-            <column name="Date" length="10" not-null="true" />
-        </property>
-        <property name="title" type="string">
-            <column name="Title" length="50" />
-        </property>
-        <property name="time" type="time">
-            <column name="Time" length="8" not-null="true" />
-        </property>
-        <property name="amPm" type="string">
-            <column name="Am_Pm" length="10" />
-        </property>
-        <property name="duration" type="int">
-            <column name="Duration" not-null="true" />
-        </property>
-        <property name="repetition" type="string">
-            <column name="Repetition" length="10" />
-        </property>
-        <property name="every" type="string">
-            <column name="Every" length="50" />
-        </property>
-        <property name="workday" type="string">
-            <column name="Workday" length="50" />
-        </property>
-        <property name="comments" type="string">
-            <column name="Comments" length="65535" />
-        </property>
-    </class>
+  <class catalog="vidavo" name="vidavo.pojos.Appointments" table="appointments">
+    <id name="appointmentId" type="int">
+      <column name="AppointmentId"/>
+      <generator class="increment"/>
+    </id>
+    <many-to-one class="vidavo.pojos.Patients" fetch="select" name="patients">
+      <column name="Patient" not-null="true"/>
+    </many-to-one>
+    <property name="category" type="string">
+      <column length="50" name="Category"/>
+    </property>
+    <property name="date" type="date">
+      <column length="10" name="Date" not-null="true"/>
+    </property>
+    <property name="title" type="string">
+      <column length="50" name="Title"/>
+    </property>
+    <property name="time" type="time">
+      <column length="8" name="Time" not-null="true"/>
+    </property>
+    <property name="amPm" type="string">
+      <column length="10" name="Am_Pm"/>
+    </property>
+    <property name="duration" type="int">
+      <column name="Duration" not-null="true"/>
+    </property>
+    <property name="repetition" type="string">
+      <column length="10" name="Repetition"/>
+    </property>
+    <property name="every" type="string">
+      <column length="50" name="Every"/>
+    </property>
+    <property name="workday" type="string">
+      <column length="50" name="Workday"/>
+    </property>
+    <property name="comments" type="string">
+      <column length="65535" name="Comments"/>
+    </property>
+  </class>
 </hibernate-mapping>

@@ -297,7 +297,7 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"patientNotesLabel.text","Σημειώσεις Ασθενή :"},
                 {"selectButton.text","Επιλογή"},
                 {"addAppointmentButton.text","Προσθήκη Ραντεβού"},
-                {"searchButton.text","Έρευνα"},
+                {"searchButton.text","Εύρεση"},
                 {"patientsButton.text","Ασθενείς"},
                 {"removeAppointmentButton.text","Αφαίρεση Ραντεβού"},
                 {"printButton.text","Εκτύπωση"},
@@ -306,6 +306,15 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"languageMenu.text","Language"},
                 {"greekMenuItem.text","Greek"},
                 {"englishMenuItem.text","English"},
+
+                //Find Available
+                {"startDateLabel.text","Αρχική Ημερομηνία :"},
+                {"forLabel.text","για"},
+                {"daysLabel.text","μερες"},
+                {"searchButton.text","Εύρεση"},
+                {"availableTimesLabel.text","Διαθέσιμες Ώρες"},
+                {"pmLabel.text","ΜΜ"},
+                {"amLabel.text","ΠΜ"},
             };
     };
 
