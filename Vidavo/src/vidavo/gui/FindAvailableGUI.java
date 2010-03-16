@@ -217,7 +217,8 @@ public class FindAvailableGUI extends javax.swing.JFrame {
 
         while(tempTime < pmFinishTime){
             if(counter <= unavailableTimes.size()){
-                unavailableTime = Integer.parseInt(unavailableTimes.get(counter).toString());
+                unavailableTime = Integer.parseInt(unavailableTimes.get(counter).toString()) / 100;
+                unavailableTime = unavailableTime * 100;
                 unavailableAppDuration = Integer.parseInt(durations.get(counter).toString()) * 60;
                 counter++;
             }
@@ -244,7 +245,6 @@ public class FindAvailableGUI extends javax.swing.JFrame {
                 else if (tempTime + appDuration > unavailableTime){
                     if(tempTime + appDuration < amFinishTime){
                         tempTime = unavailableTime + unavailableAppDuration;
-//                        amRefList.append(Integer.toString(tempTime));
                     }
                     else if(tempTime + appDuration >= amFinishTime){
                         amRefList.append(getHoursANDMinutes(new Time((tempTime - 7200) * 1000).toString()));
