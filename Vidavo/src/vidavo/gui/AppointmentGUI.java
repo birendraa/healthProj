@@ -295,7 +295,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
         refreshTable();
         System.out.println(v.size());
         for(int i = 0; i < v.size(); i++){
-                this.model.insertRow(i,new Object[]{((Appointments)v.get(i)).getTime(),am.getFLName((Appointments)v.get(i))});}
+                this.model.insertRow(i,new Object[]{((Appointments)v.get(i)).getTime(),((Appointments)v.get(i)).getDuration(),am.getFLName((Appointments)v.get(i))});}
     }
 
     private void printButtonActionPerformed(java.awt.event.ActionEvent evt) {

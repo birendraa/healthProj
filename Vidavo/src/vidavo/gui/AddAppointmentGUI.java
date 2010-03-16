@@ -358,28 +358,28 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
     public void saveInfo() {
        // new PatientListGUI(this.mh,true);
         tempList = new LinkedList();
-        tempList.add(categoryComboBox.getSelectedIndex());
+        tempList.add(categoryComboBox.getSelectedItem());
         date = appointmentDateChooser.getDate();
         tempList.add((Date)date);
         tempList.add(titleTextField.getText());
         tempList.add(hourTextField.getText());
         tempList.add(minutesTextField.getText());
-        tempList.add(dayTimeComboBox.getSelectedIndex());
+        tempList.add(dayTimeComboBox.getSelectedItem());
         tempList.add(durationTextField.getText());
         if(repeatsCheckBox.isSelected() == true)
             repeats = "true";
         else
             repeats = "false";
         tempList.add(repeats);
-        tempList.add(repeatsComboBox1.getSelectedIndex());
-        tempList.add(repeatsComboBox2.getSelectedIndex());
+        tempList.add(repeatsComboBox1.getSelectedItem());
+        tempList.add(repeatsComboBox2.getSelectedItem());
         tempList.add(commentsTextField.getText());
         am.setTempInfo(tempList);
        // this.dispose();
     }
 
     private void loadInfo(List tempList) {
-        categoryComboBox.setSelectedIndex(Integer.parseInt(tempList.get(0).toString()));
+        categoryComboBox.setSelectedItem(tempList.get(0).toString());
         date = (Date)tempList.get(1);
         appointmentDateChooser.setDate(date);
         titleTextField.setText(tempList.get(2).toString());
@@ -395,13 +395,13 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
             hourTextField.setText(tempList.get(3).toString());
             minutesTextField.setText(tempList.get(4).toString());
 
-        dayTimeComboBox.setSelectedIndex(Integer.parseInt(tempList.get(4).toString()));
+        dayTimeComboBox.setSelectedItem(tempList.get(4).toString());
         durationTextField.setText(tempList.get(5).toString());
         System.out.println(tempList.get(6).toString());
         if (tempList.get(6).toString().equals("true")){
 
         }
-        dayTimeComboBox.setSelectedIndex(Integer.parseInt(tempList.get(5).toString()));
+        dayTimeComboBox.setSelectedItem(tempList.get(5).toString());
         durationTextField.setText(tempList.get(6).toString());
         System.out.println(tempList.get(7).toString());
         if (tempList.get(7).toString().equals("true")){
@@ -409,8 +409,8 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
         }
         else
             repeatsCheckBox.setSelected(false);
-        repeatsComboBox1.setSelectedIndex(Integer.parseInt(tempList.get(8).toString()));
-        repeatsComboBox2.setSelectedIndex(Integer.parseInt(tempList.get(9).toString()));
+        repeatsComboBox1.setSelectedItem(tempList.get(8).toString());
+        repeatsComboBox2.setSelectedItem(tempList.get(9).toString());
         commentsTextField.setText(tempList.get(10).toString());
         PersonalInfo pi = new PersonalInfo();
         if(pat != null){
@@ -420,22 +420,56 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
     }
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        Appointments app = new Appointments();
-        try{
-            app = getAppointment();
-            if(app.getDate() == null)
-                JOptionPane.showMessageDialog(null, "Date has not been set for the appointment", "Error Message", 2);
-            else if(app.getTime() == null)
-                JOptionPane.showMessageDialog(null, "Time has not been set for the appointment", "Error Message", 2);
-            else if(pat == null)
-                JOptionPane.showMessageDialog(null, "Patient has not been selected", "Error Message", 2);
-            else{
-            am.addAppointment(app);
+            Appointments app = new Appointments();
+            try
+            {
+                app = getAppointment();
+                if(app.getDate() == null)
+                    JOptionPane.showMessageDialog(null, "Date has not been set for the appointment", "Error Message", 2);
+                else if(app.getTime() == null)
+                    JOptionPane.showMessageDialog(null, "Time has not been set for the appointment", "Error Message", 2);
+                else if(pat == null)
+                    JOptionPane.showMessageDialog(null, "Patient has not been selected", "Error Message", 2);
+                else if(isAvailable(app) != true)
+                {
+                    JOptionPane.showMessageDialog(null, "Appointment duration is too long", "Error Message", 2);
+                }
+                else
+                {
+                am.addAppointment(app);
+                this.dispose();
+                new AppointmentGUI(mh);
+                }
+
+
             }
-        }
-        catch (NumberFormatException nfe){
-            JOptionPane.showMessageDialog(null, "Enter only digits in the duration field", "Error Message", 2);
-        }
+            catch (NumberFormatException nfe)
+            {
+                try
+                {
+                    if(!hourTextField.getText().equals("") && !minutesTextField.getText().equals(""))
+                    {
+                    Integer.parseInt(hourTextField.getText());
+                    Integer.parseInt(minutesTextField.getText());
+                    }
+                    else if(hourTextField.getText().equals("") && minutesTextField.getText().equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "Enter hour for the appointment", "Error Message", 2);
+                    }
+                    else{
+                        try
+                {   if(!durationTextField.getText().equals(""))
+                    Integer.parseInt(durationTextField.getText());
+                    else
+                        JOptionPane.showMessageDialog(null, "Enter the duration of the appointment", "Error Message", 2);
+                }
+                catch(NumberFormatException nf){
+                JOptionPane.showMessageDialog(null, "Enter only digits in the duration field", "Error Message", 2);}
+                    }
+                }
+                catch(NumberFormatException nf){
+                JOptionPane.showMessageDialog(null, "Enter only digits in the time field", "Error Message", 2);}
+            }
     }
 
     private void findAvailableButtonActionPerformed(java.awt.event.ActionEvent evt) {

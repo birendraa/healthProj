@@ -2,13 +2,14 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="vidavo"/>
-  <table-filter match-name="family_history"/>
-  <table-filter match-name="chronic_diseases"/>
   <table-filter match-name="personal_info"/>
-  <table-filter match-name="habits"/>
-  <table-filter match-name="contacts"/>
+  <table-filter match-name="chronic_diseases"/>
+  <table-filter match-name="immunizations"/>
   <table-filter match-name="patients"/>
   <table-filter match-name="chronic_medication"/>
   <table-filter match-name="surgical_history"/>
-  <table-filter match-name="immunizations"/>
+  <table-filter match-name="habits"/>
+  <table-filter match-name="contacts"/>
+  <table-filter match-name="appointments"/>
+  <table-filter match-name="family_history"/>
 </hibernate-reverse-engineering>
