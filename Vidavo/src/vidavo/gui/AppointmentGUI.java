@@ -100,8 +100,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
         
         model = new javax.swing.table.DefaultTableModel(
             new Object [][] {},
-            new String [] {
-                "Hour", "Duration","Description"
+            new String [] {"Hour", "Duration" ,"Description"
             }
         );
         appointmentTable = new javax.swing.JTable(model){
@@ -308,8 +307,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
     }
 
     private void removeAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        if(appointmentTable.getSelectedRow() != -1)
-        {
+        if(appointmentTable.getSelectedRow() != -1){
             Appointments app = new Appointments();
             int id = Integer.parseInt(appointments.get(appointmentTable.getSelectedRow()*4).toString());
             app = am.getAppointment(id);
@@ -323,23 +321,19 @@ public class AppointmentGUI extends javax.swing.JFrame{
 
     public void displayAppointments(Boolean b){
         refreshTable();
-        if(b == true)
-        {
+        if(b == true){
             appointments = am.getAppointments(dateChooser.getDate());
         }
-        else
-        {
+        else{
             appointments = am.getAppointments(date);
         }
-       
      for(int i = 0; i < appointments.size()/5; i++){
                 this.model.insertRow(i,new Object[]{appointments.get(i * 5 + 1).toString(),appointments.get(i*5+2).toString(),appointments.get(i * 5 + 3).toString() + " " + appointments.get(i * 5 + 4).toString()});}
     }
 
-    public void refreshTable()
-    {
+    public void refreshTable(){
         while(model.getRowCount() != 0)
-                    model.removeRow(0);
+            model.removeRow(0);
     }
 
     private void showCloseDialog(){
