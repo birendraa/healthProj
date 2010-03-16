@@ -374,7 +374,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
         tempList.add(repeatsComboBox1.getSelectedIndex());
         tempList.add(repeatsComboBox2.getSelectedIndex());
         tempList.add(commentsTextField.getText());
-//        am.setTempInfo(tempList);
+        am.setTempInfo(tempList);
        // this.dispose();
     }
 
@@ -470,15 +470,15 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
         }
     }
 
-//    private boolean isAvailable(Appointments app) {
-//
-//        Appointments temp = new Appointments();
-//        //temp.setTime(new Date (app.getTime().getTime()));
-//        //temp.setDate(new Date(app.getDate().getDate()));
-//        //temp.setDate((Date)app.getDate().clone());
-//        temp.setTime(new Date ((app.getDate().getYear()), (app.getDate().getMonth()), (app.getDate().getDate()), app.getTime().getHours(), (app.getTime().getMinutes() + app.getDuration()) ));
-//                //temp.getTime().setMinutes(app.getDuration() +app.getTime().getMinutes());
-//        //System.out.println(temp.getDate());
-//        return am.compareWithNextAppointment(app,temp);
-//    }
+    private boolean isAvailable(Appointments app) {
+
+        Appointments temp = new Appointments();
+        //temp.setTime(new Date (app.getTime().getTime()));
+        //temp.setDate(new Date(app.getDate().getDate()));
+        //temp.setDate((Date)app.getDate().clone());
+        temp.setTime(new Date ((app.getDate().getYear()), (app.getDate().getMonth()), (app.getDate().getDate()), app.getTime().getHours(), (app.getTime().getMinutes() + app.getDuration()) ));
+                //temp.getTime().setMinutes(app.getDuration() +app.getTime().getMinutes());
+        //System.out.println(temp.getDate());
+        return am.compareWithNextAppointment(app,temp);
+    }
 }
