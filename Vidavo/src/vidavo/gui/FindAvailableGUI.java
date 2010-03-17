@@ -228,30 +228,33 @@ public class FindAvailableGUI extends javax.swing.JFrame {
         int unavailableTime = 0;
         int unavailableAppDuration = 0;
         int counter = 1;
+        boolean overlapUnavailable = true;
 
         while(tempTime < pmFinishTime){
-            if(counter <= unavailableTimes.size()){
+            if(counter <= unavailableTimes.size() && overlapUnavailable == true){
                 unavailableTime = Integer.parseInt(unavailableTimes.get(counter).toString()) / 100;
                 unavailableTime = unavailableTime * 100;
                 unavailableAppDuration = Integer.parseInt(durations.get(counter).toString()) * 60;
                 counter++;
+                overlapUnavailable = false;
             }
             if(tempTime + appDuration <= amFinishTime){
                 if(tempTime + appDuration <= unavailableTime || counter == unavailableTimes.size() + 1){
                     if(tempTime + appDuration == amFinishTime){
-                        amRefList.append(new JButton(getHoursANDMinutes(new Time((tempTime - 7200 + appDuration) * 1000).toString())));
+                        amRefList.append(new JButton(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds + appDuration) * 1000).toString())));
                         tempTime = pmStartTime;
                     }
                     else{
                         if(tempTime + appDuration == unavailableTime){
-                            amRefList.append(getHoursANDMinutes(new Time((tempTime - 7200) * 1000).toString()));
+                            amRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString()));
                             tempTime += appDuration + unavailableAppDuration;
                         }
                         else{
-                            amRefList.append(getHoursANDMinutes(new Time((tempTime - 7200) * 1000).toString()));
+                            amRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString()));
                             tempTime += appDuration;
                             if(tempTime + appDuration >= amFinishTime){
-                                amRefList.append(getHoursANDMinutes(new Time((tempTime - 7200) * 1000).toString()));
+                                amRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString()));
+                                tempTime = pmStartTime;
                             }
                         }
                     }
@@ -259,9 +262,10 @@ public class FindAvailableGUI extends javax.swing.JFrame {
                 else if (tempTime + appDuration > unavailableTime){
                     if(tempTime + appDuration < amFinishTime){
                         tempTime = unavailableTime + unavailableAppDuration;
+                        overlapUnavailable = true;
                     }
                     else if(tempTime + appDuration >= amFinishTime){
-                        amRefList.append(getHoursANDMinutes(new Time((tempTime - 7200) * 1000).toString()));
+                        amRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString()));
                         tempTime = pmStartTime;
                     }
                 }
@@ -269,19 +273,19 @@ public class FindAvailableGUI extends javax.swing.JFrame {
             else{
                 if(tempTime + appDuration <= unavailableTime || counter == unavailableTimes.size() + 1){
                     if(tempTime + appDuration == pmFinishTime){
-                        pmRefList.append(getHoursANDMinutes(new Time((tempTime - 7200 + appDuration) * 1000).toString()));
+                        pmRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds + appDuration) * 1000).toString()));
                         tempTime = pmFinishTime;
                     }
                     else{
                         if(tempTime + appDuration == unavailableTime){
-                            pmRefList.append(getHoursANDMinutes(new Time((tempTime - 7200) * 1000).toString()));
+                            pmRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString()));
                             tempTime += appDuration + unavailableAppDuration;
                         }
                         else{
-                            pmRefList.append(getHoursANDMinutes(new Time((tempTime - 7200) * 1000).toString()));
+                            pmRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString()));
                             tempTime += appDuration;
                             if(tempTime + appDuration >= pmFinishTime){
-                                pmRefList.append(getHoursANDMinutes(new Time((tempTime - 7200) * 1000).toString()));
+                                pmRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString()));
                             }
                         }
                     }
@@ -289,10 +293,10 @@ public class FindAvailableGUI extends javax.swing.JFrame {
                 else if (tempTime + appDuration > unavailableTime){
                     if(tempTime + appDuration < pmFinishTime){
                         tempTime = unavailableTime + unavailableAppDuration;
-                        pmRefList.append(getHoursANDMinutes(new Time((tempTime - 7200) * 1000).toString()));
+                        overlapUnavailable = true;
                     }
                     else if(tempTime + appDuration >= pmFinishTime){
-                        tempTime = pmStartTime;
+                        tempTime = pmFinishTime;
                     }
                 }
             }
