@@ -30,6 +30,7 @@ import javax.swing.event.ListSelectionListener;
 import vidavo.pojos.Appointments;
 import vidavo.util.ListInterface;
 import vidavo.util.ReferenceBasedList;
+import vidavo.util.ScrollablePanel;
 
 public class FindAvailableGUI extends javax.swing.JFrame {
 
@@ -59,10 +60,11 @@ public class FindAvailableGUI extends javax.swing.JFrame {
     // + 2 hours gmt for greek time
     private final int greekGmtTimeInSeconds = 7200;
 
-    public FindAvailableGUI(ManagerHolder mh, int appDuration) {
+    public FindAvailableGUI(ManagerHolder mh) {
         this.resourceMap = mh.getResourceMap();
         this.mh = mh;
-        this.appDuration = appDuration * 60;
+        this.appDuration = Integer.parseInt(this.mh.getAm().getAppDuration());
+        this.appDuration *= 60;
         initComponents();
         this.setVisible(true);
         this.setResizable(false);
@@ -170,8 +172,8 @@ public class FindAvailableGUI extends javax.swing.JFrame {
             ReferenceBasedList [] appsTimeArray = getAppointmentsTimeArray();
             ReferenceBasedList [] appsDurationArray = getAppointmentsDurationArray();
             
-            mainScrollPane.getViewport().add(mainPanel);
-            mainScrollPane.setBounds(0, 60, 455, mainPanel.getHeight());
+//            mainScrollPane.getViewport().add(mainPanel);
+            mainScrollPane.setBounds(0, 60, mainPanel.getWidth(), mainPanel.getHeight());
 
             for(int i = 0; i < appsTimeArray.length; i++){
                 javax.swing.JPanel jPanel = new javax.swing.JPanel();
@@ -179,6 +181,7 @@ public class FindAvailableGUI extends javax.swing.JFrame {
 
 //            mainScrollPane.setBounds(mainPanel.getX(), mainPanel.getY(), mainPanel.getWidth(), mainPanel.getHeight());
 //            mainScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+            mainScrollPane.setHorizontalScrollBar(new JScrollBar());
                 mainPanel.add(jPanel);
                 jPanel.setBounds(x, 0, width, Short.MAX_VALUE);
                 x += width;
@@ -414,7 +417,13 @@ public class FindAvailableGUI extends javax.swing.JFrame {
     }
 
     private void listItemClicked(ListSelectionEvent e) {
-        System.out.println(((JList)e.getSource()).getSelectedValue());
+        String temp = ((String) ((JList)e.getSource()).getSelectedValue());
+        String hour = temp.substring(0, 2);
+        String minutes = temp.substring(3);
+        this.mh.getAm().setHour(hour);
+        this.mh.getAm().setMinutes(minutes);
+        new AddAppointmentGUI(mh);
+        this.dispose();
     }
 
     private void showCancelDialog() {
@@ -440,8 +449,8 @@ public class FindAvailableGUI extends javax.swing.JFrame {
             dialog.dispose();
         }
         else if (value == JOptionPane.YES_OPTION){
-            this.dispose();
             new AddAppointmentGUI(mh);
+            this.dispose();
         }
     }
 }

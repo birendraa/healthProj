@@ -84,6 +84,8 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
         this.mh = mh;
         this.resourceMap = mh.getResourceMap();
         initComponents();
+        saveInfo();
+        loadInfo(tempList);
         this.setVisible(true);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -374,7 +376,14 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
         tempList.add(repeatsComboBox1.getSelectedItem());
         tempList.add(repeatsComboBox2.getSelectedItem());
         tempList.add(commentsTextField.getText());
+        if(ManagerHolder.isInteger(hourTextField.getText()))
+            am.setHour(hourTextField.getText());
+        if(ManagerHolder.isInteger(minutesTextField.getText()))
+            am.setMinutes(minutesTextField.getText());
+        if(ManagerHolder.isInteger(durationTextField.getText()))
+            am.setAppDuration(durationTextField.getText());
         am.setTempInfo(tempList);
+
        // this.dispose();
     }
 
@@ -417,6 +426,8 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
             pi= mh.getPm().getSelectedPatient(pat.getPatientId());
             patientNameLabel.setText(pi.getFirstName() + " " + pi.getLastName());
         }
+        hourTextField.setText(this.mh.getAm().getHour());
+        minutesTextField.setText(this.mh.getAm().getMinutes());
     }
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -471,7 +482,13 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
     }
 
     private void findAvailableButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        new FindAvailableGUI(mh, Integer.parseInt(durationTextField.getText()));
+        if(!durationTextField.getText().equals("") && ManagerHolder.isInteger(durationTextField.getText())){
+            saveInfo();
+            new FindAvailableGUI(mh);
+            this.dispose();
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Please enter a valid appointment duration.", "Find Available Error", JOptionPane.ERROR_MESSAGE);
     }
 
     private void showCancelDialog() {

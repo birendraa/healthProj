@@ -19,9 +19,39 @@ public class AppointmentManager {
     final static Logger logger = LoggerFactory.getLogger(PatientManager.class);
     private Appointments app;
     private List list;
+    private String hour;
+    private String minutes;
+    private String appDuration;
 
     public AppointmentManager(){
         app = new Appointments();
+        this.hour = "";
+        this.minutes = "";
+        this.appDuration = "";
+    }
+
+    public String getAppDuration() {
+        return appDuration;
+    }
+
+    public void setAppDuration(String appDuration) {
+        this.appDuration = appDuration;
+    }
+    
+    public String getHour() {
+        return hour;
+    }
+
+    public void setHour(String hour) {
+        this.hour = hour;
+    }
+
+    public String getMinutes() {
+        return minutes;
+    }
+
+    public void setMinutes(String minutes) {
+        this.minutes = minutes;
     }
 
     public void addAppointment(Appointments app)
