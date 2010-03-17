@@ -168,8 +168,10 @@ public class FindAvailableGUI extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {
         if(ManagerHolder.isInteger(daysTextField.getText()) && !daysTextField.getText().equals("0") &&
-                !dateChooser.getDate().toString().isEmpty() && dateChooser.getDate().toString().length() > 6)
+                !dateChooser.getDate().toString().isEmpty() && dateChooser.getDate().toString().length() > 6){
+            mainPanel.removeAll();
             createPanels();
+        }
         else
             JOptionPane.showMessageDialog(null, "Please enter a valid date and number of days to search.", "Invalid parameters", JOptionPane.ERROR_MESSAGE);
     }
@@ -269,6 +271,8 @@ public class FindAvailableGUI extends javax.swing.JFrame {
                     }
                     else if(tempTime + appDuration < amFinishTime){
                         if(tempTime + appDuration == unavailableTime){
+                            //
+                            amRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString()));
                             tempTime += appDuration + unavailableAppDuration;
                             if(tempTime == amFinishTime)
                                 tempTime = pmStartTime;
@@ -279,6 +283,19 @@ public class FindAvailableGUI extends javax.swing.JFrame {
                             tempTime += appDuration;
                             if(tempTime + appDuration > amFinishTime){
                                 tempTime = pmStartTime;
+                            }
+                            if(tempTime + appDuration == unavailableTime){
+                                //
+                                amRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString()));
+                                tempTime += appDuration + unavailableAppDuration;
+                                if(tempTime == amFinishTime)
+                                    tempTime = pmStartTime;
+                            }
+                            else if(tempTime + appDuration > unavailableTime){
+                                overlapsUnavailable = true;
+                                tempTime += appDuration + unavailableAppDuration;
+                                if(tempTime == amFinishTime)
+                                    tempTime = pmStartTime;
                             }
                         }
                     }
@@ -306,6 +323,8 @@ public class FindAvailableGUI extends javax.swing.JFrame {
                     }
                     else if(tempTime + appDuration < pmFinishTime){
                         if(tempTime + appDuration == unavailableTime){
+                            //
+                            pmRefList.append(new JButton(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString())));
                             tempTime += appDuration + unavailableAppDuration;
                             if(tempTime == pmFinishTime)
                                 break;
@@ -316,6 +335,19 @@ public class FindAvailableGUI extends javax.swing.JFrame {
                             tempTime += appDuration;
                             if(tempTime + appDuration > pmFinishTime){
                                 break;
+                            }
+                            if(tempTime + appDuration == unavailableTime){
+                                //
+                                pmRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString()));
+                                tempTime += appDuration + unavailableAppDuration;
+                                if(tempTime == pmFinishTime)
+                                    break;
+                            }
+                            else if(tempTime + appDuration > unavailableTime){
+                                overlapsUnavailable = true;
+                                tempTime += appDuration + unavailableAppDuration;
+                                if(tempTime == pmFinishTime)
+                                    break;
                             }
                         }
                     }
