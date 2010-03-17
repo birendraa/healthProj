@@ -130,6 +130,9 @@ public class AppointmentManager {
             oneRow.add(app.getDuration());
             id = app.getPatients().getPatientId();
             getPI(id,oneRow);
+            oneRow.add(app.getCategory());
+            oneRow.add(app.getTitle());
+            oneRow.add(app.getComments());
         }
         return oneRow;
     }

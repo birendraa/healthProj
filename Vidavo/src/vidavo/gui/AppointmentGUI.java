@@ -13,6 +13,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import vidavo.pojos.Appointments;
 import vidavo.pojos.Patients;
@@ -100,7 +103,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
         
         model = new javax.swing.table.DefaultTableModel(
             new Object [][] {},
-            new String [] {"Hour", "Duration" ,"Description"
+            new String [] {"Hour", "Duration" ,"Description","Category","Title","Comments"
             }
         );
         appointmentTable = new javax.swing.JTable(model){
@@ -111,9 +114,29 @@ public class AppointmentGUI extends javax.swing.JFrame{
         };
         appointmentTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         tableScrollPane.setViewportView(appointmentTable);
+                ListSelectionModel listSelectionModel = appointmentTable.getSelectionModel();
+        listSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        listSelectionModel.addListSelectionListener(new ListSelectionListener() {
+
+            public void valueChanged(ListSelectionEvent e) {
+                ListSelectionModel lsm = (ListSelectionModel)e.getSource();
+                if (!lsm.isSelectionEmpty()){
+                    int position = lsm.getAnchorSelectionIndex();
+                    String category = (String)model.getValueAt(position, 3);
+                    String title = (String)model.getValueAt(position, 4);
+                    String comments = (String)model.getValueAt(position, 5);
+                    patientNotesTextArea.setText("Category: " +category + "\nTitle: " + title +"\nComments: " + comments);
+
+                }
+            }
+        });
+        appointmentTable.setSelectionModel(listSelectionModel);
+
 
         patientNotesTextArea.setColumns(20);
         patientNotesTextArea.setRows(5);
+        patientNotesTextArea.setEditable(false);
+        
 
         patientNoteScrollPane.setViewportView(patientNotesTextArea);
 
@@ -262,6 +285,8 @@ public class AppointmentGUI extends javax.swing.JFrame{
 
         pack();
         this.displayAppointments(false);
+
+	
     }
 
     private void addAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -293,9 +318,8 @@ public class AppointmentGUI extends javax.swing.JFrame{
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Vector v = am.searchAppointment(searchTextField.getText());
         refreshTable();
-        System.out.println(v.size());
         for(int i = 0; i < v.size(); i++){
-                this.model.insertRow(i,new Object[]{((Appointments)v.get(i)).getTime(),((Appointments)v.get(i)).getDuration(),am.getFLName((Appointments)v.get(i))});}
+                this.model.insertRow(i,new Object[]{((Appointments)v.get(i)).getTime(),((Appointments)v.get(i)).getDuration(),am.getFLName((Appointments)v.get(i)),((Appointments)v.get(i)).getCategory(),((Appointments)v.get(i)).getTitle(),((Appointments)v.get(i)).getComments()});}
     }
 
     private void printButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -309,7 +333,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
     private void removeAppointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {
         if(appointmentTable.getSelectedRow() != -1){
             Appointments app = new Appointments();
-            int id = Integer.parseInt(appointments.get(appointmentTable.getSelectedRow()*4).toString());
+            int id = Integer.parseInt(appointments.get(appointmentTable.getSelectedRow()*8).toString());
             app = am.getAppointment(id);
             am.removeAppointment(app);
             displayAppointments(true);
@@ -327,8 +351,8 @@ public class AppointmentGUI extends javax.swing.JFrame{
         else{
             appointments = am.getAppointments(date);
         }
-     for(int i = 0; i < appointments.size()/5; i++){
-                this.model.insertRow(i,new Object[]{appointments.get(i * 5 + 1).toString(),appointments.get(i*5+2).toString(),appointments.get(i * 5 + 3).toString() + " " + appointments.get(i * 5 + 4).toString()});}
+     for(int i = 0; i < appointments.size()/8; i++){
+                this.model.insertRow(i,new Object[]{appointments.get(i * 8 + 1).toString(),appointments.get(i*8+2).toString(),appointments.get(i * 8 + 3).toString() + " " + appointments.get(i * 8 + 4).toString(),appointments.get(i * 8 + 5).toString(),appointments.get(i * 8 + 6).toString(),appointments.get(i * 8 + 7).toString()});}
     }
 
     public void refreshTable(){
