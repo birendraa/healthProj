@@ -363,7 +363,7 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
 
                 //Appointments Window
                 {"appointments.title","Appointments"},
-                {"patientNotesLabel.text","Patient Notes :"},
+                {"patientNotesLabel.text","Appointment Notes :"},
                 {"selectButton.text","Select"},
                 {"addAppointmentButton.text","Add Appointment"},
                 {"searchButton.text","Search"},

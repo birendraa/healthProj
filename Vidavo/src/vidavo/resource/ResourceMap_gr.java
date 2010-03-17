@@ -294,7 +294,7 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 
                 //Appointments Window
                 {"appointments.title","΄Ραντεβού"},
-                {"patientNotesLabel.text","Σημειώσεις Ασθενή :"},
+                {"patientNotesLabel.text","Σημειώσεις Ραντεβού :"},
                 {"selectButton.text","Επιλογή"},
                 {"addAppointmentButton.text","Προσθήκη Ραντεβού"},
                 {"searchButton.text","Εύρεση"},
