@@ -243,34 +243,40 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         }
 
         else{
-        if(mode.equals("add"))
-        {
-            if(pm.existsAmka(pi.getInsuranceIdNumber()) == true)
-        {
+                pi.setPiId(patientId);
+            if(pm.existsAmka(pi) == true)
+            {
             JOptionPane.showMessageDialog(null, "AMKA is not unique! Enter unique AMKA number","Error message", 2);
-        }
+            }
             else
             {
+                if(mode.equals("add"))
+                {
                 pm.createPatient(pi,sh,fh,contacts,cm,cd,habits,immun);
                 this.dispose();
                 new PatientListGUI(mh);
+                }
+                else
+                {
+                    Patients p = pm.getPatient(patientId);
+                    pi.setPiId(p.getPatientId());
+                    sh.setShId(p.getPatientId());
+                    fh.setFhId(p.getPatientId());
+                    contacts.setContactId(p.getPatientId());
+                    cm.setCmId(p.getPatientId());
+                    cd.setChId(p.getPatientId());
+                    habits.setHabitsId(p.getPatientId());
+                    immun.setImmunId(p.getPatientId());
+                    pm.editPatient(p,pi,sh,fh,contacts,cm,cd,habits,immun);
+                    this.dispose();
+                    new PatientListGUI(mh);
+                }
             }
-        }
-        else
-        {
-            Patients p = pm.getPatient(patientId);
-            pi.setPiId(p.getPatientId());
-            sh.setShId(p.getPatientId());
-            fh.setFhId(p.getPatientId());
-            contacts.setContactId(p.getPatientId());
-            cm.setCmId(p.getPatientId());
-            cd.setChId(p.getPatientId());
-            habits.setHabitsId(p.getPatientId());
-            immun.setImmunId(p.getPatientId());
-            pm.editPatient(p,pi,sh,fh,contacts,cm,cd,habits,immun);
-            this.dispose();
-            new PatientListGUI(mh);
-        }
+        //}
+       // else
+        //{
+            
+        //}
         }
         }
         catch(NumberFormatException nfe)

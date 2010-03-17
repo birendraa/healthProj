@@ -30,7 +30,7 @@ import javax.swing.event.ListSelectionListener;
 import vidavo.pojos.Appointments;
 import vidavo.util.ListInterface;
 import vidavo.util.ReferenceBasedList;
-import vidavo.util.ScrollablePanel;
+//import vidavo.util.ScrollablePanel;
 
 public class FindAvailableGUI extends javax.swing.JFrame {
 

@@ -392,7 +392,8 @@ public class PatientManager {
         return immun;
     }
 
-    public boolean existsAmka(int insuranceIdNumber) {
+    public boolean existsAmka(PersonalInfo perI) {
+        int insuranceIdNumber = perI.getInsuranceIdNumber();
         s = HibernateUtil.getSessionFactory().openSession();
         tx = s.beginTransaction();
 
@@ -412,8 +413,13 @@ public class PatientManager {
     }
         if(person.size() == 0)
             return false;
-
-      return true;
+        else
+        {
+            if(((PersonalInfo)person.get(0)).getPiId() == perI.getPiId())
+                return false;
+            else
+                return true;
+        }
     }
 
 }

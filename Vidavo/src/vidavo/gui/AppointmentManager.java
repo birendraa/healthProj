@@ -158,7 +158,7 @@ public class AppointmentManager {
     }
 
     Vector searchAppointment(String lastName) {
-        Appointments app = new Appointments();
+       // Appointments app = new Appointments();
         s = HibernateUtil.getSessionFactory().openSession();
         tx = s.beginTransaction();
         
