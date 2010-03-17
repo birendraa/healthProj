@@ -10,9 +10,11 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.Time;
 import java.text.DateFormat;
+import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -60,11 +62,11 @@ public class FindAvailableGUI extends javax.swing.JFrame {
     // + 2 hours gmt for greek time
     private final int greekGmtTimeInSeconds = 7200;
 
+    private final int Day_IN_MILLIS = 1000 * 60 * 60 * 24;
+
     public FindAvailableGUI(ManagerHolder mh) {
         this.resourceMap = mh.getResourceMap();
         this.mh = mh;
-        this.appDuration = Integer.parseInt(this.mh.getAm().getAppDuration());
-        this.appDuration *= 60;
         initComponents();
         this.setVisible(true);
         this.setResizable(false);
@@ -72,6 +74,9 @@ public class FindAvailableGUI extends javax.swing.JFrame {
     }
 
     private void initComponents() {
+
+        this.appDuration = Integer.parseInt(this.mh.getAm().getAppDuration());
+        this.appDuration *= 60;
 
         startDateLabel = new javax.swing.JLabel();
         dateChooser = new com.toedter.calendar.JDateChooser();
@@ -162,7 +167,11 @@ public class FindAvailableGUI extends javax.swing.JFrame {
     }
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        createPanels();
+        if(ManagerHolder.isInteger(daysTextField.getText()) && !daysTextField.getText().equals("0") &&
+                !dateChooser.getDate().toString().isEmpty() && dateChooser.getDate().toString().length() > 6)
+            createPanels();
+        else
+            JOptionPane.showMessageDialog(null, "Please enter a valid date and number of days to search.", "Invalid parameters", JOptionPane.ERROR_MESSAGE);
     }
 
     private void createPanels(){
@@ -177,7 +186,8 @@ public class FindAvailableGUI extends javax.swing.JFrame {
 
             for(int i = 0; i < appsTimeArray.length; i++){
                 javax.swing.JPanel jPanel = new javax.swing.JPanel();
-                populatePanel(jPanel, appsTimeArray[i], appsDurationArray[i]);
+                Date d = new Date(dateChooser.getDate().getTime() + (Day_IN_MILLIS * i + 1));
+                populatePanel(jPanel, d,appsTimeArray[i], appsDurationArray[i]);
 
 //            mainScrollPane.setBounds(mainPanel.getX(), mainPanel.getY(), mainPanel.getWidth(), mainPanel.getHeight());
 //            mainScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -189,7 +199,7 @@ public class FindAvailableGUI extends javax.swing.JFrame {
         }
     }
 
-    private void populatePanel(javax.swing.JPanel panel, ReferenceBasedList unavailableTimes, ReferenceBasedList durations){
+    private void populatePanel(javax.swing.JPanel panel, Date date, ReferenceBasedList unavailableTimes, ReferenceBasedList durations){
         panel.setLayout(null);
 
         javax.swing.JLabel amLabel = new javax.swing.JLabel();
@@ -202,13 +212,19 @@ public class FindAvailableGUI extends javax.swing.JFrame {
         javax.swing.JSeparator separator = new javax.swing.JSeparator();
         javax.swing.JLabel pmLabel = new javax.swing.JLabel();
 
-        appDayLabel.setText("A");
-        panel.add(appDayLabel);
-        appDayLabel.setBounds(10, 0, 57, 14);
+        String[] weekdays = new DateFormatSymbols().getWeekdays();
+        GregorianCalendar calDate = new GregorianCalendar(Integer.parseInt(new SimpleDateFormat("yyyy").format(date)),
+                Integer.parseInt(new SimpleDateFormat("MM").format(date)),
+                Integer.parseInt(new SimpleDateFormat("dd").format(date)));
 
-        dayDateLabel.setText("B");
+        appDayLabel.setText(weekdays[date.getDay() + 1]);
+        panel.add(appDayLabel);
+        appDayLabel.setBounds(10, 0, 80, 14);
+
+        dayDateLabel.setText(new SimpleDateFormat("yyyy").format(date) + "-" + new SimpleDateFormat("MM").format(date) +
+                "-" + new SimpleDateFormat("dd").format(date));
         panel.add(dayDateLabel);
-        dayDateLabel.setBounds(10, 20, 57, 14);
+        dayDateLabel.setBounds(10, 20, 80, 14);
 
         pmLabel.setText(resourceMap.getString("pmLabel.text"));
         panel.add(pmLabel);
@@ -341,7 +357,6 @@ public class FindAvailableGUI extends javax.swing.JFrame {
     private ReferenceBasedList [] getAppointmentsTimeArray(){
         ReferenceBasedList [] appsArray = new ReferenceBasedList [Integer.parseInt(daysTextField.getText())];
         int counter = 1;
-        final int Day_IN_MILLIS = 1000 * 60 * 60 * 24;
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Date tempDate = dateChooser.getDate();
         
@@ -369,7 +384,6 @@ public class FindAvailableGUI extends javax.swing.JFrame {
     private ReferenceBasedList [] getAppointmentsDurationArray(){
         ReferenceBasedList [] appsArray = new ReferenceBasedList [Integer.parseInt(daysTextField.getText())];
         int counter = 1;
-        int MILLIS_IN_DAY = 1000 * 60 * 60 * 24;
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Date tempDate = dateChooser.getDate();
 
@@ -383,7 +397,7 @@ public class FindAvailableGUI extends javax.swing.JFrame {
             appsArray[counter-1] = list;
 
             counter++;
-            String s = df.format(tempDate.getTime() + (MILLIS_IN_DAY));
+            String s = df.format(tempDate.getTime() + (Day_IN_MILLIS));
             try {
                 tempDate = df.parse(s);
             }
