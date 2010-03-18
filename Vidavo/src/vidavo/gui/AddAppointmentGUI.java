@@ -77,8 +77,6 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
         this.mh = mh;
         this.resourceMap = mh.getResourceMap();
         initComponents();
-        saveInfo();
-        loadInfo(tempList);
         this.setVisible(true);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -327,7 +325,9 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
         tempList.add(titleTextField.getText());
         tempList.add(hourTextField.getText());
         tempList.add(minutesTextField.getText());
+
         tempList.add(durationTextField.getText());
+        
         tempList.add(commentsTextField.getText());
 //        if(ManagerHolder.isInteger(hourTextField.getText()))
 //            am.setHour(hourTextField.getText());
