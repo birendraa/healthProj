@@ -46,20 +46,14 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
     private javax.swing.JLabel commentsLabel;
     private javax.swing.JTextField commentsTextField;
     private javax.swing.JLabel dateLabel;
-    private javax.swing.JComboBox dayTimeComboBox;
     private javax.swing.JLabel durationLabel;
     private javax.swing.JTextField durationTextField;
-    private javax.swing.JLabel facilityLabel;
-    private javax.swing.JTextField facilityTextField;
     private javax.swing.JButton findAvailableButton;
     private javax.swing.JTextField hourTextField;
     private javax.swing.JLabel timeSeperatorLabel;
     private javax.swing.JLabel minutesLabel;
     private javax.swing.JTextField minutesTextField;
     private javax.swing.JLabel patientLabel;
-    private javax.swing.JCheckBox repeatsCheckBox;
-    private javax.swing.JComboBox repeatsComboBox1;
-    private javax.swing.JComboBox repeatsComboBox2;
     private javax.swing.JButton saveButton;
     private javax.swing.JLabel timeLabel;
     private javax.swing.JLabel titleLabel;
@@ -71,7 +65,6 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
     private String str;
     private Date appTime;
     private Date date;
-    private String repeats;
     private Patients pat;
     private List tempList;
     private Session s;
@@ -117,17 +110,11 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
         hourTextField = new javax.swing.JTextField();
         timeSeperatorLabel = new javax.swing.JLabel();
         minutesTextField = new javax.swing.JTextField();
-        dayTimeComboBox = new javax.swing.JComboBox();
         durationLabel = new javax.swing.JLabel();
         durationTextField = new javax.swing.JTextField();
         minutesLabel = new javax.swing.JLabel();
-        repeatsCheckBox = new javax.swing.JCheckBox();
-        repeatsComboBox1 = new javax.swing.JComboBox();
-        repeatsComboBox2 = new javax.swing.JComboBox();
         untilLabel = new javax.swing.JLabel();
         untilDateChooser = new com.toedter.calendar.JDateChooser();
-        facilityLabel = new javax.swing.JLabel();
-        facilityTextField = new javax.swing.JTextField();
         selectPatientButton = new javax.swing.JButton();
         commentsLabel = new javax.swing.JLabel();
         commentsTextField = new javax.swing.JTextField();
@@ -156,9 +143,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
         timeSeperatorLabel.setText(resourceMap.getString("timeSeperatorLabel.text"));
         durationLabel.setText(resourceMap.getString("durationLabel.text"));
         minutesLabel.setText(resourceMap.getString("minutesLabel.text"));
-        repeatsCheckBox.setText(resourceMap.getString("repeatsCheckBox.text"));
         untilLabel.setText(resourceMap.getString("untilLabel.text"));
-        facilityLabel.setText(resourceMap.getString("facilityLabel.text"));
         selectPatientButton.setText(resourceMap.getString("selectPatientButton.text"));
         commentsLabel.setText(resourceMap.getString("commentsLabel.text"));
         saveButton.setText(resourceMap.getString("saveButton.text"));
@@ -168,9 +153,6 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
         patientNameLabel.setText(mh.getPatientName());
 
         categoryComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "In Office", "Out of Office", "Visit Out of Office" }));
-        dayTimeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AM", "PM" }));
-        repeatsComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Every", "Once Per", }));
-        repeatsComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Weekday", "Weekend", "Month", "Other Day" }));
 
         selectPatientButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,13 +192,11 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(categoryLabel)
                                     .addComponent(dateLabel)
-                                    .addComponent(facilityLabel)
                                     .addComponent(patientLabel))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(patientNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                                     .addComponent(appointmentDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                                    .addComponent(facilityTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                                     .addComponent(categoryComboBox, 0, 126, Short.MAX_VALUE)
                                     .addComponent(titleTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -239,20 +219,14 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
                                     .addComponent(durationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(minutesLabel)
-                                    .addComponent(dayTimeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(minutesLabel)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(28, 28, 28)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(repeatsCheckBox)
-                                    .addComponent(untilLabel))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(untilDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(repeatsComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(repeatsComboBox2, 0, 78, Short.MAX_VALUE))))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(commentsLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -280,19 +254,13 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
                             .addComponent(dateLabel)
                             .addComponent(appointmentDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(facilityLabel)
-                            .addComponent(facilityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(titleLabel)
-                            .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(repeatsComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(repeatsComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(repeatsCheckBox)))
+                            .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dayTimeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(minutesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(timeLabel)
                             .addComponent(hourTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -306,9 +274,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(patientLabel)
-                        .addComponent(untilLabel)
-                        .addComponent(patientNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(untilDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(patientNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(selectPatientButton)
                 .addGap(11, 11, 11)
@@ -344,17 +310,12 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
            appTime.setMinutes(Integer.parseInt(minutesTextField.getText()));
         }
 
-        if(repeatsCheckBox.isSelected() == true)
-            repeats = "true";
-        else
-            repeats = "false";
         Patients patient = new Patients();
         if(pat != null)
             patient.setPatientId(pat.getPatientId());
         //dayTimeComboBox.getSelectedItem().toString(),
         return new Appointments(patient,categoryComboBox.getSelectedItem().toString(),date,titleTextField.getText(),
-                appTime,dayTimeComboBox.getSelectedItem().toString(),Integer.parseInt(durationTextField.getText()),repeats,
-                repeatsComboBox1.getSelectedItem().toString(),repeatsComboBox2.getSelectedItem().toString(),commentsTextField.getText());
+                appTime,Integer.parseInt(durationTextField.getText()),commentsTextField.getText());
     }
 
     public void saveInfo() {
@@ -366,22 +327,14 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
         tempList.add(titleTextField.getText());
         tempList.add(hourTextField.getText());
         tempList.add(minutesTextField.getText());
-        tempList.add(dayTimeComboBox.getSelectedItem());
         tempList.add(durationTextField.getText());
-        if(repeatsCheckBox.isSelected() == true)
-            repeats = "true";
-        else
-            repeats = "false";
-        tempList.add(repeats);
-        tempList.add(repeatsComboBox1.getSelectedItem());
-        tempList.add(repeatsComboBox2.getSelectedItem());
         tempList.add(commentsTextField.getText());
-        if(ManagerHolder.isInteger(hourTextField.getText()))
-            am.setHour(hourTextField.getText());
-        if(ManagerHolder.isInteger(minutesTextField.getText()))
-            am.setMinutes(minutesTextField.getText());
-        if(ManagerHolder.isInteger(durationTextField.getText()))
-            am.setAppDuration(durationTextField.getText());
+//        if(ManagerHolder.isInteger(hourTextField.getText()))
+//            am.setHour(hourTextField.getText());
+//        if(ManagerHolder.isInteger(minutesTextField.getText()))
+//            am.setMinutes(minutesTextField.getText());
+//        if(ManagerHolder.isInteger(durationTextField.getText()))
+//            am.setAppDuration(durationTextField.getText());
         am.setTempInfo(tempList);
 
        // this.dispose();
@@ -401,33 +354,18 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
             hourTextField.setText("");
             minutesTextField.setText("");
         }
-            hourTextField.setText(tempList.get(3).toString());
-            minutesTextField.setText(tempList.get(4).toString());
+        hourTextField.setText(tempList.get(3).toString());
+        minutesTextField.setText(tempList.get(4).toString());
 
-        dayTimeComboBox.setSelectedItem(tempList.get(4).toString());
         durationTextField.setText(tempList.get(5).toString());
-        System.out.println(tempList.get(6).toString());
-        if (tempList.get(6).toString().equals("true")){
-
-        }
-        dayTimeComboBox.setSelectedItem(tempList.get(5).toString());
-        durationTextField.setText(tempList.get(6).toString());
-        System.out.println(tempList.get(7).toString());
-        if (tempList.get(7).toString().equals("true")){
-            repeatsCheckBox.setSelected(true);
-        }
-        else
-            repeatsCheckBox.setSelected(false);
-        repeatsComboBox1.setSelectedItem(tempList.get(8).toString());
-        repeatsComboBox2.setSelectedItem(tempList.get(9).toString());
-        commentsTextField.setText(tempList.get(10).toString());
+        commentsTextField.setText(tempList.get(6).toString());
         PersonalInfo pi = new PersonalInfo();
         if(pat != null){
             pi= mh.getPm().getSelectedPatient(pat.getPatientId());
             patientNameLabel.setText(pi.getFirstName() + " " + pi.getLastName());
         }
-        hourTextField.setText(this.mh.getAm().getHour());
-        minutesTextField.setText(this.mh.getAm().getMinutes());
+//        hourTextField.setText(this.mh.getAm().getHour());
+//        minutesTextField.setText(this.mh.getAm().getMinutes());
     }
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {
