@@ -420,7 +420,8 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
     }
 
     private void findAvailableButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        if(!durationTextField.getText().equals("") && ManagerHolder.isInteger(durationTextField.getText())){
+        if(!durationTextField.getText().equals("") && ManagerHolder.isInteger(durationTextField.getText()) &&
+                Integer.parseInt(durationTextField.getText()) > 0){
             saveInfo();
             new FindAvailableGUI(mh);
             this.dispose();
