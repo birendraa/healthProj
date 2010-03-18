@@ -75,7 +75,7 @@ public class FindAvailableGUI extends javax.swing.JFrame {
 
     private void initComponents() {
 
-        this.appDuration = Integer.parseInt(this.mh.getAm().getAppDuration());
+        this.appDuration = Integer.parseInt((String)this.mh.getAm().getTempInfo().get(5));
         this.appDuration *= 60;
 
         startDateLabel = new javax.swing.JLabel();
@@ -189,7 +189,7 @@ public class FindAvailableGUI extends javax.swing.JFrame {
             for(int i = 0; i < appsTimeArray.length; i++){
                 javax.swing.JPanel jPanel = new javax.swing.JPanel();
                 Date d = new Date(dateChooser.getDate().getTime() + (Day_IN_MILLIS * i + 1));
-                populatePanel(jPanel, d,appsTimeArray[i], appsDurationArray[i]);
+                populatePanel(jPanel, i, d,appsTimeArray[i], appsDurationArray[i]);
 
 //            mainScrollPane.setBounds(mainPanel.getX(), mainPanel.getY(), mainPanel.getWidth(), mainPanel.getHeight());
 //            mainScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -201,8 +201,9 @@ public class FindAvailableGUI extends javax.swing.JFrame {
         }
     }
 
-    private void populatePanel(javax.swing.JPanel panel, Date date, ReferenceBasedList unavailableTimes, ReferenceBasedList durations){
+    private void populatePanel(javax.swing.JPanel panel, int panelId, Date date, ReferenceBasedList unavailableTimes, ReferenceBasedList durations){
         panel.setLayout(null);
+        panel.setName(Integer.toString(panelId));
 
         javax.swing.JLabel amLabel = new javax.swing.JLabel();
         javax.swing.JLabel appDayLabel = new javax.swing.JLabel();
@@ -489,8 +490,10 @@ public class FindAvailableGUI extends javax.swing.JFrame {
         String temp = ((String) ((JList)e.getSource()).getSelectedValue());
         String hour = temp.substring(0, 2);
         String minutes = temp.substring(3);
-        this.mh.getAm().setHour(hour);
-        this.mh.getAm().setMinutes(minutes);
+        int daysForward = Integer.parseInt(((JList)e.getSource()).getParent().getParent().getParent().getName());
+        this.mh.getAm().getTempInfo().set(1, new Date(dateChooser.getDate().getTime() + Day_IN_MILLIS * daysForward));
+        this.mh.getAm().getTempInfo().set(3, hour);
+        this.mh.getAm().getTempInfo().set(4, minutes);
         new AddAppointmentGUI(mh);
         this.dispose();
     }
