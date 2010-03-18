@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18.3.2010 19:46: by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="vidavo.pojos.ChronicDiseases" table="chronic_diseases" catalog="vidavo">
+        <id name="chId" type="int">
+            <column name="chID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="patients" class="vidavo.pojos.Patients" update="false" insert="false" fetch="select">
+            <column name="chID" not-null="true" unique="true" />
+        </many-to-one>
+        <property name="chroniaVroxitida" type="string">
+            <column name="ChroniaVroxitida" length="10" />
+        </property>
+        <property name="vactiriakesPneumonies" type="string">
+            <column name="VactiriakesPneumonies" length="100" />
+        </property>
+        <property name="pathiseisPneumonwn" type="string">
+            <column name="PathiseisPneumonwn" length="100" />
+        </property>
+        <property name="aneurismaPneumonikisArtirias" type="string">
+            <column name="AneurismaPneumonikisArtirias" length="100" />
+        </property>
+        <property name="diataraxesArtiriwn" type="string">
+            <column name="DiataraxesArtiriwn" length="100" />
+        </property>
+        <property name="allergikoAsthma" type="string">
+            <column name="AllergikoAsthma" length="10" />
+        </property>
+        <property name="anapneustikiAneparkeia" type="string">
+            <column name="AnapneustikiAneparkeia" length="10" />
+        </property>
+        <property name="anapneustiras" type="string">
+            <column name="Anapneustiras" length="10" />
+        </property>
+        <property name="kardiopatheia" type="string">
+            <column name="Kardiopatheia" length="10" />
+        </property>
+        <property name="aneurismaKardias" type="string">
+            <column name="AneurismaKardias" length="10" />
+        </property>
+        <property name="kardiakiArithmia" type="string">
+            <column name="KardiakiArithmia" length="100" />
+        </property>
+        <property name="vimatodotis" type="string">
+            <column name="Vimatodotis" length="10" />
+        </property>
+        <property name="emfragma" type="string">
+            <column name="Emfragma" length="10" />
+        </property>
+        <property name="egefaliko" type="string">
+            <column name="Egefaliko" length="10" />
+        </property>
+        <property name="thromvosiAgeiwn" type="string">
+            <column name="ThromvosiAgeiwn" length="10" />
+        </property>
+        <property name="stenosiAortikisValvidas" type="string">
+            <column name="StenosiAortikisValvidas" length="10" />
+        </property>
+        <property name="aneparkeiaAortikisValvidas" type="string">
+            <column name="AneparkeiaAortikisValvidas" length="10" />
+        </property>
+        <property name="ageiakesPathiseis" type="string">
+            <column name="AgeiakesPathiseis" length="100" />
+        </property>
+        <property name="ypotasi" type="string">
+            <column name="Ypotasi" length="10" />
+        </property>
+        <property name="ypertasi" type="string">
+            <column name="Ypertasi" length="10" />
+        </property>
+        <property name="allesMorfesYpotasis" type="string">
+            <column name="AllesMorfesYpotasis" length="100" />
+        </property>
+        <property name="diavitis" type="string">
+            <column name="Diavitis" length="10" />
+        </property>
+        <property name="nososYpatos" type="string">
+            <column name="NososYpatos" length="100" />
+        </property>
+        <property name="ipatikiAneparkeia" type="string">
+            <column name="IpatikiAneparkeia" length="10" />
+        </property>
+        <property name="nefrikiAneparkeia" type="string">
+            <column name="NefrikiAneparkeia" length="10" />
+        </property>
+        <property name="mixanimaAimokatharsis" type="string">
+            <column name="MixanimaAimokatharsis" length="10" />
+        </property>
+        <property name="elkos" type="string">
+            <column name="Elkos" length="10" />
+        </property>
+        <property name="diataraxesEderou" type="string">
+            <column name="DiataraxesEderou" length="10" />
+        </property>
+        <property name="diataraxesNeurikouSistimatos" type="string">
+            <column name="DiataraxesNeurikouSistimatos" length="100" />
+        </property>
+        <property name="erpitikoEkzema" type="string">
+            <column name="ErpitikoEkzema" length="10" />
+        </property>
+        <property name="ipatitida" type="string">
+            <column name="Ipatitida" length="100" />
+        </property>
+        <property name="leuxaimia" type="string">
+            <column name="Leuxaimia" length="10" />
+        </property>
+        <property name="eleipsiSidirou" type="string">
+            <column name="EleipsiSidirou" length="10" />
+        </property>
+        <property name="poliomuelitida" type="string">
+            <column name="Poliomuelitida" length="10" />
+        </property>
+        <property name="thiroeidismos" type="string">
+            <column name="Thiroeidismos" length="10" />
+        </property>
+        <property name="morfiThiroeidi" type="string">
+            <column name="MorfiThiroeidi" length="100" />
+        </property>
+        <property name="allesChroniesAstheneies" type="string">
+            <column name="AllesChroniesAstheneies" length="200" />
+        </property>
+    </class>
+</hibernate-mapping>

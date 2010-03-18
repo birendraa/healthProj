@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18.3.2010 19:46: by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="vidavo.pojos.Immunizations" table="immunizations" catalog="vidavo">
+        <id name="immunId" type="int">
+            <column name="immunID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="patients" class="vidavo.pojos.Patients" update="false" insert="false" fetch="select">
+            <column name="immunID" not-null="true" unique="true" />
+        </many-to-one>
+        <property name="bloodType" type="string">
+            <column name="BloodType" length="5" />
+        </property>
+        <property name="bloodDonor" type="string">
+            <column name="BloodDonor" length="10" />
+        </property>
+        <property name="bloodBank" type="string">
+            <column name="BloodBank" length="50" />
+        </property>
+        <property name="bloodContageousDiseases" type="string">
+            <column name="BloodContageousDiseases" length="50" />
+        </property>
+        <property name="bleedingProlems" type="string">
+            <column name="BleedingProlems" length="10" />
+        </property>
+        <property name="doritisMielouOston" type="string">
+            <column name="DoritisMielouOston" length="10" />
+        </property>
+        <property name="kidneyDonor" type="string">
+            <column name="KidneyDonor" length="10" />
+        </property>
+        <property name="doritisAllonOrganon" type="string">
+            <column name="DoritisAllonOrganon" length="50" />
+        </property>
+        <property name="allergies" type="string">
+            <column name="Allergies" length="50" />
+        </property>
+        <property name="allergiesToDrugs" type="string">
+            <column name="AllergiesToDrugs" length="50" />
+        </property>
+        <property name="poorCirculation" type="string">
+            <column name="PoorCirculation" length="10" />
+        </property>
+        <property name="stigma" type="string">
+            <column name="Stigma" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>
