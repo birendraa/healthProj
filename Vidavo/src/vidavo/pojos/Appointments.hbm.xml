@@ -22,20 +22,8 @@
     <property name="time" type="time">
       <column length="8" name="Time" not-null="true"/>
     </property>
-    <property name="amPm" type="string">
-      <column length="10" name="Am_Pm"/>
-    </property>
     <property name="duration" type="int">
       <column name="Duration" not-null="true"/>
-    </property>
-    <property name="repetition" type="string">
-      <column length="10" name="Repetition"/>
-    </property>
-    <property name="every" type="string">
-      <column length="50" name="Every"/>
-    </property>
-    <property name="workday" type="string">
-      <column length="50" name="Workday"/>
     </property>
     <property name="comments" type="string">
       <column length="65535" name="Comments"/>

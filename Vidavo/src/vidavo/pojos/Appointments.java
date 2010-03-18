@@ -16,11 +16,7 @@ public class Appointments  implements java.io.Serializable {
      private Date date;
      private String title;
      private Date time;
-     private String amPm;
      private int duration;
-     private String repetition;
-     private String every;
-     private String workday;
      private String comments;
 
     public Appointments() {
@@ -34,18 +30,14 @@ public class Appointments  implements java.io.Serializable {
         this.time = time;
         this.duration = duration;
     }
-    public Appointments( Patients patients, String category, Date date, String title, Date time, String amPm, int duration, String repetition, String every, String workday, String comments) {
+    public Appointments( Patients patients, String category, Date date, String title, Date time, int duration, String comments) {
        this.appointmentId = appointmentId;
        this.patients = patients;
        this.category = category;
        this.date = date;
        this.title = title;
        this.time = time;
-       this.amPm = amPm;
        this.duration = duration;
-       this.repetition = repetition;
-       this.every = every;
-       this.workday = workday;
        this.comments = comments;
     }
    
@@ -91,13 +83,6 @@ public class Appointments  implements java.io.Serializable {
     public void setTime(Date time) {
         this.time = time;
     }
-    public String getAmPm() {
-        return this.amPm;
-    }
-    
-    public void setAmPm(String amPm) {
-        this.amPm = amPm;
-    }
     public int getDuration() {
         return this.duration;
     }
@@ -105,27 +90,7 @@ public class Appointments  implements java.io.Serializable {
     public void setDuration(int duration) {
         this.duration = duration;
     }
-    public String getRepetition() {
-        return this.repetition;
-    }
     
-    public void setRepetition(String repetition) {
-        this.repetition = repetition;
-    }
-    public String getEvery() {
-        return this.every;
-    }
-    
-    public void setEvery(String every) {
-        this.every = every;
-    }
-    public String getWorkday() {
-        return this.workday;
-    }
-    
-    public void setWorkday(String workday) {
-        this.workday = workday;
-    }
     public String getComments() {
         return this.comments;
     }
