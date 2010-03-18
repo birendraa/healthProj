@@ -267,7 +267,7 @@ public class FindAvailableGUI extends javax.swing.JFrame {
             if(tempTime + appDuration <= amFinishTime){
                 if(tempTime + appDuration <= unavailableTime){
                     if(tempTime + appDuration == amFinishTime){
-                        amRefList.append(new JButton(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString())));
+                        amRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString()));
                         tempTime = pmStartTime;
                     }
                     else if(tempTime + appDuration < amFinishTime){
@@ -319,13 +319,13 @@ public class FindAvailableGUI extends javax.swing.JFrame {
             else if(tempTime + appDuration <= pmFinishTime){
                 if(tempTime + appDuration <= unavailableTime){
                     if(tempTime + appDuration == pmFinishTime){
-                        pmRefList.append(new JButton(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString())));
+                        pmRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString()));
                         break;
                     }
                     else if(tempTime + appDuration < pmFinishTime){
                         if(tempTime + appDuration == unavailableTime){
                             //
-                            pmRefList.append(new JButton(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString())));
+                            pmRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString()));
                             tempTime += appDuration + unavailableAppDuration;
                             if(tempTime == pmFinishTime)
                                 break;
