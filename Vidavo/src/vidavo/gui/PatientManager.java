@@ -393,7 +393,7 @@ public class PatientManager {
     }
 
     public boolean existsAmka(PersonalInfo perI) {
-        int insuranceIdNumber = perI.getInsuranceIdNumber();
+        long insuranceIdNumber = perI.getInsuranceIdNumber();
         s = HibernateUtil.getSessionFactory().openSession();
         tx = s.beginTransaction();
 

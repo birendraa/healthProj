@@ -157,7 +157,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                 if (addPatientTabbedPane.getSelectedIndex()==7){
                     PersonalInfoPane pi1 = (PersonalInfoPane) personalInfoPane;
                     pi = pi1.getPersonalinfo();
-                    if (!pi.getLastName().isEmpty() && !pi.getFirstName().isEmpty() && !Integer.toString(pi.getInsuranceIdNumber()).equals("0"))
+                    if (!pi.getLastName().isEmpty() && !pi.getFirstName().isEmpty() && !Long.toString(pi.getInsuranceIdNumber()).equals("0"))
                         photosPane.setPatientDirectoryName(pi.getLastName() + " " + pi.getFirstName() + " " + pi.getInsuranceIdNumber());
                     else
                         photosPane.setPatientDirectoryName("");
@@ -231,7 +231,10 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         {
             JOptionPane.showMessageDialog(null, "Missing mandatory information! Please Enter patient's AMKA!","Error message", 2);
         }
-
+        else if(Long.toString(pi.getInsuranceIdNumber()).length() < 11 || Long.toString(pi.getInsuranceIdNumber()).length() > 11)
+        {
+            JOptionPane.showMessageDialog(null, "AMKA number has to be 11 digits exactly","Error message", 2);
+        }
         else if(pi.getInsurrance().equals(""))
         {
             JOptionPane.showMessageDialog(null, "Missing mandatory information! Please Enter patient's insurance!","Error message", 2);
@@ -281,6 +284,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         }
         catch(NumberFormatException nfe)
         {
+            nfe.printStackTrace();
             JOptionPane.showMessageDialog(null, "Enter only digits!","Error message", 2);
         }}
 

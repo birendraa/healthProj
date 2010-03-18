@@ -497,7 +497,7 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
 //          birthDateChooser.setText(pi.getBirthDate().toString());
           profTextField.setText(pi.getProfession());
           insuranceTextField.setText(pi.getInsurrance());
-          amkaTextField.setText(Integer.toString(pi.getInsuranceIdNumber()));
+          amkaTextField.setText(Long.toString(pi.getInsuranceIdNumber()));
           tameioComboBox.setSelectedItem(pi.getInsuranceType().toString());
           firstVisitChooser.setDate(pi.getFirstVisit());
 //          firstVisitChooser.setText((pi.getFirstVisit()).toString());
@@ -596,7 +596,7 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
                Integer.parseInt(postalCTextField.getText()),citizenshipTextField.getText(),
                Integer.parseInt(heightTextField.getText()),Float.parseFloat(weightTextField.getText()),
                sex,marital,birthD,profTextField.getText(),insuranceTextField.getText(),
-               tameioComboBox.getSelectedItem().toString(),Integer.parseInt(amkaTextField.getText()),
+               tameioComboBox.getSelectedItem().toString(),Long.parseLong(amkaTextField.getText()),
                firstV,Integer.parseInt(childrenSpinner.getValue().toString()),
                Integer.parseInt(homeTextField.getText()),Integer.parseInt(cellTextField.getText()),
                Integer.parseInt(workTextField.getText()),
