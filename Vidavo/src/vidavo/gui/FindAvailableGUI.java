@@ -167,13 +167,15 @@ public class FindAvailableGUI extends javax.swing.JFrame {
     }
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        if(ManagerHolder.isInteger(daysTextField.getText()) && !daysTextField.getText().equals("0") &&
-                !dateChooser.getDate().toString().isEmpty() && dateChooser.getDate().toString().length() > 6){
-            mainPanel.removeAll();
-            createPanels();
-        }
+        if(dateChooser.getDate() != null && Long.toString(dateChooser.getDate().getTime()).length() > 10)
+            if(ManagerHolder.isInteger(daysTextField.getText()) && !daysTextField.getText().equals("0")){
+                mainPanel.removeAll();
+                createPanels();
+            }
+            else
+                JOptionPane.showMessageDialog(null, "Please enter a valid number of days.", "Invalid Days", JOptionPane.ERROR_MESSAGE);
         else
-            JOptionPane.showMessageDialog(null, "Please enter a valid date and number of days to search.", "Invalid parameters", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please enter a valid date.", "Invalid Date", JOptionPane.ERROR_MESSAGE);
     }
 
     private void createPanels(){
