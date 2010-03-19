@@ -60,7 +60,8 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
     private javax.swing.JTextField titleTextField;
     private com.toedter.calendar.JDateChooser untilDateChooser;
     private javax.swing.JLabel untilLabel;
-    private JLabel patientNameLabel;
+    private JLabel patientFirstNameLabel;
+    private JLabel patientLastNameLabel;
     private AppointmentManager am;
     private String str;
     private Date appTime;
@@ -119,7 +120,8 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
         saveButton = new javax.swing.JButton();
         findAvailableButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JToggleButton();
-        patientNameLabel = new javax.swing.JLabel();
+        patientFirstNameLabel = new javax.swing.JLabel();
+        patientLastNameLabel = new javax.swing.JLabel();
         appointmentDateChooser.setDateFormatString("yyyy-MM-dd");
         //appointmentDateChooser.getCalendarButton();
 
@@ -148,7 +150,8 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
         findAvailableButton.setText(resourceMap.getString("findAvailableButton.text"));
         cancelButton.setText(resourceMap.getString("cancelButton.text"));
 
-        patientNameLabel.setText(mh.getPatientName());
+        patientFirstNameLabel.setText(mh.getPatientName());
+        patientLastNameLabel.setText(mh.getPatientName());
 
         categoryComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "In Office", "Out of Office", "Visit Out of Office" }));
 
@@ -193,7 +196,8 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
                                     .addComponent(patientLabel))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(patientNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                                    .addComponent(patientFirstNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                                    .addComponent(patientLastNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                                     .addComponent(appointmentDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                                     .addComponent(categoryComboBox, 0, 126, Short.MAX_VALUE)
                                     .addComponent(titleTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)))
@@ -272,7 +276,11 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(patientLabel)
-                        .addComponent(patientNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(patientFirstNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(patientLastNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(selectPatientButton)
                 .addGap(11, 11, 11)
@@ -362,7 +370,8 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
         PersonalInfo pi = new PersonalInfo();
         if(pat != null){
             pi= mh.getPm().getSelectedPatient(pat.getPatientId());
-            patientNameLabel.setText(pi.getFirstName() + " " + pi.getLastName());
+            patientFirstNameLabel.setText(pi.getFirstName());
+            patientLastNameLabel.setText(pi.getLastName());
         }
 //        hourTextField.setText(this.mh.getAm().getHour());
 //        minutesTextField.setText(this.mh.getAm().getMinutes());

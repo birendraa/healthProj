@@ -95,7 +95,7 @@ public class FindAvailableGUI extends javax.swing.JFrame {
                 showCancelDialog();
             }
         });
-
+        
         startDateLabel.setText(resourceMap.getString("startDateLabel.text"));
         forLabel.setText(resourceMap.getString("forLabel.text"));
         daysLabel.setText(resourceMap.getString("daysLabel.text"));
