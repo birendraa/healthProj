@@ -7,12 +7,20 @@ package vidavo.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.nio.file.Path;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.*;
 import vidavo.pojos.*;
+import vidavo.util.ImageFilter;
+import vidavo.util.ImagePreview;
 
 /**
  *
@@ -52,7 +60,7 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
     private JPanel infoPane;
     private JLabel insuranceLabel;
     private JTextField insuranceTextField;
-    private JPanel picturePanel;
+    private ImagePreview picturePanel;
     private JLabel lastNLabel;
     private JTextField lastNTextField;
     private JLabel mailLabel;
@@ -81,6 +89,8 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
     private int patientID = 0;
     private String mode;
     private PersonalInfo pi;
+    private Path path;
+    private String patientDirectoryName;
 
     public PersonalInfoPane(String mode,PersonalInfo pi){
         super();
@@ -90,6 +100,13 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
         {
             this.pi = pi;
             loadPatientInfo(pi);
+        }
+        updateDirectoryName();
+        File userPhoto;
+        if (!this.patientDirectoryName.equals("photos\\")){
+            userPhoto = new File(this.patientDirectoryName + "\\" + "personalPhoto.jpg");
+            if (userPhoto.exists())
+                picturePanel.loadImage(userPhoto.getPath());
         }
     }
 
@@ -137,7 +154,7 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
         insuranceTextField = new JTextField();
         amkaTextField = new JTextField();
         tameioComboBox = new JComboBox();
-        picturePanel = new JPanel();
+        picturePanel = new ImagePreview();
         patientPhotoLabel = new JLabel();
         pictureButton = new JButton();
         communicationNumPane = new JPanel();
@@ -218,7 +235,9 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
         );
 
         patientPhotoLabel.setText("Patient Photo:");
-        pictureButton.setText("Take Photo:");
+        pictureButton.setText("Browse for Photo");
+        pictureButton.addActionListener(this);
+        pictureButton.setActionCommand("picture");
 
         javax.swing.GroupLayout infoPaneLayout = new javax.swing.GroupLayout(infoPane);
         infoPane.setLayout(infoPaneLayout);
@@ -293,7 +312,7 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
                                 .addContainerGap(25, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPaneLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pictureButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pictureButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(94, 94, 94)))
                         .addContainerGap())))
         );
@@ -389,6 +408,18 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
         mailLabel.setText("E-mail:");
         mailTextField.setText("");
 
+
+        javax.swing.GroupLayout previewPanelLayout = new javax.swing.GroupLayout(picturePanel);
+        picturePanel.setLayout(previewPanelLayout);
+        previewPanelLayout.setHorizontalGroup(
+            previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        previewPanelLayout.setVerticalGroup(
+            previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout communicationNumPaneLayout = new javax.swing.GroupLayout(communicationNumPane);
         communicationNumPane.setLayout(communicationNumPaneLayout);
         communicationNumPaneLayout.setHorizontalGroup(
@@ -466,7 +497,36 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
     }
 
     public void actionPerformed(ActionEvent e) {
-        String action = e.getActionCommand();}
+        String action = e.getActionCommand();
+        if (action.equals("picture")){
+                JFileChooser fc = new JFileChooser("Browse");
+                fc.setAcceptAllFileFilterUsed(false);
+                fc.addChoosableFileFilter(new ImageFilter());
+                fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                fc.setMultiSelectionEnabled(false);
+                int returnVal = fc.showOpenDialog(this);
+                fc.updateUI();
+                updateDirectoryName();
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                path = fc.getSelectedFile().toPath();
+                File userDir;
+                if (!this.patientDirectoryName.equals("photos\\")){
+                    userDir = new File(patientDirectoryName);
+                    if (!userDir.exists())
+                         userDir.mkdirs();
+                    try {
+                        copyFile(new File(path.toString()), new File(patientDirectoryName + "\\" + "personalPhoto.jpg"));
+                        picturePanel.loadImage(getPatientDirectoryName() + "\\" + "personalPhoto.jpg");
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+                else
+                    javax.swing.JOptionPane.showMessageDialog(this,"Please enter a name and the AMKA in the personal info tab and select a photo","Error",javax.swing.JOptionPane.ERROR_MESSAGE);
+
+            }
+        }
+    }
 
    public void loadPatientInfo(PersonalInfo pi){
 
@@ -603,4 +663,40 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
                Integer.parseInt(faxTextField.getText()),
                mailTextField.getText());
             }
+
+   private static void copyFile(File sourceFile, File destFile)
+                throws IOException {
+        if (!sourceFile.exists()) {
+                return;
+        }
+        if (!destFile.exists()) {
+                destFile.createNewFile();
+        }
+        FileChannel source = null;
+        FileChannel destination = null;
+        source = new FileInputStream(sourceFile).getChannel();
+        destination = new FileOutputStream(destFile).getChannel();
+        if (destination != null && source != null) {
+                destination.transferFrom(source, 0, source.size());
+        }
+        if (source != null) {
+                source.close();
+        }
+        if (destination != null) {
+                destination.close();
+        }
+    }
+       public String getPatientDirectoryName() {
+        return patientDirectoryName;
+    }
+
+    public void setPatientDirectoryName(String patientDirectoryName) {
+        this.patientDirectoryName = "photos\\" + patientDirectoryName.trim();
+    }
+    private void updateDirectoryName(){
+            if (!pi.getLastName().isEmpty() && !pi.getFirstName().isEmpty() && !Long.toString(pi.getInsuranceIdNumber()).equals("0"))
+                        this.setPatientDirectoryName(pi.getLastName() + " " + pi.getFirstName() + " " + pi.getInsuranceIdNumber());
+                    else
+                        this.setPatientDirectoryName("");
+    }
    }
