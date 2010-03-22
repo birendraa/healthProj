@@ -69,6 +69,7 @@ public class FindAvailableGUI extends javax.swing.JFrame {
         this.mh = mh;
         initComponents();
         this.setVisible(true);
+        this.setSize(708, 415);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
@@ -142,7 +143,7 @@ public class FindAvailableGUI extends javax.swing.JFrame {
                         .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
                     .addComponent(availableTimesLabel))
                 .addContainerGap())
-            .addComponent(mainScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
+            .addComponent(mainScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,12 +169,13 @@ public class FindAvailableGUI extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {
         if(dateChooser.getDate() != null && Long.toString(dateChooser.getDate().getTime()).length() > 10)
-            if(ManagerHolder.isInteger(daysTextField.getText()) && !daysTextField.getText().equals("0")){
+            if(ManagerHolder.isInteger(daysTextField.getText()) && Integer.parseInt(daysTextField.getText()) > 0 &&
+            Integer.parseInt(daysTextField.getText()) <= 7){
                 mainPanel.removeAll();
                 createPanels();
             }
             else
-                JOptionPane.showMessageDialog(null, "Please enter a valid number of days.", "Invalid Days", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please enter a valid number of days. Maximum is 7.", "Invalid Days", JOptionPane.ERROR_MESSAGE);
         else
             JOptionPane.showMessageDialog(null, "Please enter a valid date.", "Invalid Date", JOptionPane.ERROR_MESSAGE);
     }
@@ -185,16 +187,13 @@ public class FindAvailableGUI extends javax.swing.JFrame {
             ReferenceBasedList [] appsTimeArray = getAppointmentsTimeArray();
             ReferenceBasedList [] appsDurationArray = getAppointmentsDurationArray();
             
-//            mainScrollPane.getViewport().add(mainPanel);
-            mainScrollPane.setBounds(0, 60, mainPanel.getWidth(), mainPanel.getHeight());
+            mainScrollPane.setBounds(0, 60, 710, 330);
 
             for(int i = 0; i < appsTimeArray.length; i++){
                 javax.swing.JPanel jPanel = new javax.swing.JPanel();
                 Date d = new Date(dateChooser.getDate().getTime() + (Day_IN_MILLIS * i + 1));
                 populatePanel(jPanel, i, d,appsTimeArray[i], appsDurationArray[i]);
 
-//            mainScrollPane.setBounds(mainPanel.getX(), mainPanel.getY(), mainPanel.getWidth(), mainPanel.getHeight());
-//            mainScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
             mainScrollPane.setHorizontalScrollBar(new JScrollBar());
                 mainPanel.add(jPanel);
                 jPanel.setBounds(x, 0, width, Short.MAX_VALUE);
@@ -286,19 +285,6 @@ public class FindAvailableGUI extends javax.swing.JFrame {
                             if(tempTime + appDuration > amFinishTime){
                                 tempTime = pmStartTime;
                             }
-//                            if(tempTime + appDuration == unavailableTime){
-//                                //
-//                                amRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString()));
-//                                tempTime += appDuration + unavailableAppDuration;
-//                                if(tempTime == amFinishTime)
-//                                    tempTime = pmStartTime;
-//                            }
-//                            else if(tempTime + appDuration > unavailableTime){
-//                                overlapsUnavailable = true;
-//                                tempTime += appDuration + unavailableAppDuration;
-//                                if(tempTime == amFinishTime)
-//                                    tempTime = pmStartTime;
-//                            }
                         }
                     }
                     else if(tempTime + appDuration > amFinishTime)
@@ -338,19 +324,6 @@ public class FindAvailableGUI extends javax.swing.JFrame {
                             if(tempTime + appDuration > pmFinishTime){
                                 break;
                             }
-//                            if(tempTime + appDuration == unavailableTime){
-//                                //
-//                                pmRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString()));
-//                                tempTime += appDuration + unavailableAppDuration;
-//                                if(tempTime == pmFinishTime)
-//                                    break;
-//                            }
-//                            else if(tempTime + appDuration > unavailableTime){
-//                                overlapsUnavailable = true;
-//                                tempTime += appDuration + unavailableAppDuration;
-//                                if(tempTime == pmFinishTime)
-//                                    break;
-//                            }
                         }
                     }
                     else if(tempTime + appDuration > pmFinishTime)
