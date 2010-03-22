@@ -383,14 +383,14 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
             {
                 app = getAppointment();
                 if(app.getDate() == null)
-                    JOptionPane.showMessageDialog(null, "Date has not been set for the appointment", "Error Message", 2);
+                    JOptionPane.showMessageDialog(null, resourceMap.getString("dateNotSet.text"), "Error Message", 2);
                 else if(app.getTime() == null)
-                    JOptionPane.showMessageDialog(null, "Time has not been set for the appointment", "Error Message", 2);
+                    JOptionPane.showMessageDialog(null, resourceMap.getString("timeNotSet.text"), "Error Message", 2);
                 else if(pat == null)
-                    JOptionPane.showMessageDialog(null, "Patient has not been selected", "Error Message", 2);
+                    JOptionPane.showMessageDialog(null, resourceMap.getString("patientNotSelected.text"), "Error Message", 2);
                 else if(isAvailable(app) != true)
                 {
-                    JOptionPane.showMessageDialog(null, "Appointment duration is too long", "Error Message", 2);
+                    JOptionPane.showMessageDialog(null, resourceMap.getString("longAppDuration.text"), "Error Message", 2);
                 }
                 else
                 {
@@ -410,21 +410,21 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
                     }
                     else if(hourTextField.getText().equals("") && minutesTextField.getText().equals(""))
                     {
-                        JOptionPane.showMessageDialog(null, "Enter hour for the appointment", "Error Message", 2);
+                        JOptionPane.showMessageDialog(null, resourceMap.getString("hourEmpty.text"), "Error Message", 2);
                     }
                     else{
                         try
                 {   if(!durationTextField.getText().equals(""))
                     Integer.parseInt(durationTextField.getText());
                     else
-                        JOptionPane.showMessageDialog(null, "Enter the duration of the appointment", "Error Message", 2);
+                        JOptionPane.showMessageDialog(null, resourceMap.getString("emptyDuration.text"), "Error Message", 2);
                 }
                 catch(NumberFormatException nf){
-                JOptionPane.showMessageDialog(null, "Enter only digits in the duration field", "Error Message", 2);}
+                JOptionPane.showMessageDialog(null, resourceMap.getString("durationNotDigits.text"), "Error Message", 2);}
                     }
                 }
                 catch(NumberFormatException nf){
-                JOptionPane.showMessageDialog(null, "Enter only digits in the time field", "Error Message", 2);}
+                JOptionPane.showMessageDialog(null, resourceMap.getString("timeNotDigits.text"), "Error Message", 2);}
             }
     }
 
@@ -436,12 +436,12 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
             this.dispose();
         }
         else
-            JOptionPane.showMessageDialog(null, "Please enter a valid appointment duration.", "Find Available Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, resourceMap.getString("invalidDuration.text"), "Find Available Error", JOptionPane.ERROR_MESSAGE);
     }
 
     private void showCancelDialog() {
         final JDialog dialog = new JDialog(this, "Exit", true);
-        final JOptionPane op = new JOptionPane("Are you sure you want to close the window? ", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
+        final JOptionPane op = new JOptionPane(resourceMap.getString("closeWindow.text"), JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
         dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         dialog.setContentPane(op);
         dialog.setResizable(false);

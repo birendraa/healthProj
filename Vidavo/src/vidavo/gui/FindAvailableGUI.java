@@ -486,7 +486,7 @@ public class FindAvailableGUI extends javax.swing.JFrame {
 
     private void showCancelDialog() {
         final JDialog dialog = new JDialog(this, "Exit", true);
-        final JOptionPane op = new JOptionPane("Are you sure you want to close the window? ", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
+        final JOptionPane op = new JOptionPane(resourceMap.getString("closeWindow.text"), JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
         dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         dialog.setContentPane(op);
         dialog.setResizable(false);

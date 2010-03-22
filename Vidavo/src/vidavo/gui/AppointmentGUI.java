@@ -339,7 +339,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
             displayAppointments(true);
         }
         else
-            JOptionPane.showMessageDialog(null, "Please select an appointment to be deleted", "Error message", 2);
+            JOptionPane.showMessageDialog(null, resourceMap.getString("appointmentNotSelected.text"), "Error message", 2);
         
     }
 
@@ -362,7 +362,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
 
     private void showCloseDialog(){
         final JDialog dialog = new JDialog(this, "Exit", true);
-        final JOptionPane op = new JOptionPane("Are you sure you want to close the window? ", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
+        final JOptionPane op = new JOptionPane(resourceMap.getString("closeWindow.text"), JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
         dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         dialog.setContentPane(op);
         dialog.setResizable(false);

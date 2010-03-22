@@ -314,7 +314,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
              patientNameLabel.setText(resourceMap.getString("patientNameLabel.text"));
             }
             else
-                    JOptionPane.showMessageDialog(null,"No patient was selected!", "Error Message", 2);
+                    JOptionPane.showMessageDialog(null,resourceMap.getString("patientNotSelected.text"), "Error Message", 2);
 
          }
 
@@ -325,7 +325,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
                     AddPatientGUI p = new AddPatientGUI(mh,c, selectedID);
                 }
                 else
-                    JOptionPane.showMessageDialog(null,"No patient selected", "Nothing entered", 2);
+                    JOptionPane.showMessageDialog(null,resourceMap.getString("patientNotSelected.text"), "Nothing entered", 2);
          }
 
          if(c.equals("ok")){
@@ -336,7 +336,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
                     this.dispose();
              }
                 else
-                    JOptionPane.showMessageDialog(null,"No patient selected", "Nothing entered", 2);
+                    JOptionPane.showMessageDialog(null,resourceMap.getString("patientNotSelected.text"), "Nothing entered", 2);
          }
 
          if(c.equals("cancel")){
@@ -351,7 +351,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          if(c.equals("search")){
              Vector v = pm.searchPatient(searchTextField.getText());
              if(v.size() == 0)
-                JOptionPane.showMessageDialog(null, "No patient with " + searchTextField.getText() + " last name found!","Error message", 2);
+                JOptionPane.showMessageDialog(null, resourceMap.getString("noPatientWith.text") + searchTextField.getText() + resourceMap.getString("lastNameFound.text"),"Error message", 2);
              else{
                 reloadTable();
                  printResults(v);
@@ -379,7 +379,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
 
     private void showCancelDialog(){
         final JDialog dialog = new JDialog(this, "Exit", true);
-        final JOptionPane op = new JOptionPane("Are you sure you want to close the window? ", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
+        final JOptionPane op = new JOptionPane(resourceMap.getString("closeWindow.text"), JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
         dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         dialog.setContentPane(op);
         dialog.setResizable(false);

@@ -215,37 +215,37 @@ public class AddPatientGUI extends JFrame implements ActionListener{
 
         if(pi.getFirstName().equals(""))
         {
-            JOptionPane.showMessageDialog(null, "Missing mandatory information! Please Enter patient's first name!","Error message", 2);
+            JOptionPane.showMessageDialog(null, resourceMap.getString("noFirstName.text"),"Error message", 2);
         }
 
         else if(pi.getLastName().equals(""))
         {
-            JOptionPane.showMessageDialog(null, "Missing mandatory information! Please Enter patient's last name!","Error message", 2);
+            JOptionPane.showMessageDialog(null, resourceMap.getString("noLastName.text"),"Error message", 2);
         }
 
         else if(pi.getInsuranceIdNumber() == 0)
         {
-            JOptionPane.showMessageDialog(null, "Missing mandatory information! Please Enter patient's AMKA!","Error message", 2);
+            JOptionPane.showMessageDialog(null, resourceMap.getString("noAMKA.text"),"Error message", 2);
         }
         else if(Long.toString(pi.getInsuranceIdNumber()).length() < 11 || Long.toString(pi.getInsuranceIdNumber()).length() > 11)
         {
-            JOptionPane.showMessageDialog(null, "AMKA number has to be 11 digits exactly","Error message", 2);
+            JOptionPane.showMessageDialog(null, resourceMap.getString("invalidAMKA.text"),"Error message", 2);
         }
         else if(pi.getInsurrance().equals(""))
         {
-            JOptionPane.showMessageDialog(null, "Missing mandatory information! Please Enter patient's insurance!","Error message", 2);
+            JOptionPane.showMessageDialog(null, resourceMap.getString("noInsurance.text"),"Error message", 2);
         }
 
         else if(pi.getInsuranceType().equals(""))
         {
-            JOptionPane.showMessageDialog(null, "Missing mandatory information! Please Enter patient's Tameio!","Error message", 2);
+            JOptionPane.showMessageDialog(null, resourceMap.getString("noTameio.text"),"Error message", 2);
         }
 
         else{
                 pi.setPiId(patientId);
             if(pm.existsAmka(pi) == true)
             {
-            JOptionPane.showMessageDialog(null, "AMKA is not unique! Enter unique AMKA number","Error message", 2);
+            JOptionPane.showMessageDialog(null, resourceMap.getString("notUniqueAMKA.text"),"Error message", 2);
             }
             else
             {
@@ -276,7 +276,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         catch(NumberFormatException nfe)
         {
             nfe.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Enter only digits!","Error message", 2);
+            JOptionPane.showMessageDialog(null, resourceMap.getString("notDigits.text"),"Error message", 2);
         }}
 
         if (action.equals("Cancel")){
@@ -286,7 +286,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
     private void showCancelDialog(){
 
         final JDialog dialog = new JDialog(this, "Exit", true);
-        final JOptionPane op = new JOptionPane("Are you sure you want to close the window? ", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
+        final JOptionPane op = new JOptionPane(resourceMap.getString("closeWindow.text"), JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
         dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         dialog.setContentPane(op);
         dialog.setResizable(false);

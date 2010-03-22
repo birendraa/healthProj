@@ -385,6 +385,32 @@ public class ResourceMap_en extends java.util.ListResourceBundle {
                 {"availableTimesLabel.text","Available Times"},
                 {"pmLabel.text","PM"},
                 {"amLabel.text","AM"},
+
+                //JOptionPane Messages
+                {"closeWindow.text","Are you sure you want to close the window? "},
+                {"appointmentNotSelected.text","Please select an appointment to be deleted"},
+                {"patientNotSelected.text","No patient is selected!"},
+                {"noPatientWith.text","No patient with "},
+                {"lastNameFound.text"," last name found!"},
+                //
+                {"dateNotSet.text","Date has not been set for the appointment"},
+                {"longAppDuration.text","Appointment duration is too long"},
+                {"hourEmpty.text","Enter hour for the appointment"},
+                {"emptyDuration.text","Enter the duration of the appointment"},
+                {"durationNotDigits.text","Enter only digits in the duration field"},
+                {"timeNotDigits.text","Enter only digits in the time field"},
+                {"invalidDuration.text","Please enter a valid appointment duration."},
+                //
+                {"noFirstName.text","Missing mandatory information! Please Enter patient's first name!"},
+                {"noLastName.text","Missing mandatory information! Please Enter patient's last name!"},
+                {"noAMKA.text","Missing mandatory information! Please Enter patient's AMKA!"},
+                {"invalidAMKA.text","AMKA number has to be 11 digits exactly"},
+                {"noInsurance.text","Missing mandatory information! Please Enter patient's insurance!"},
+                {"noTameio.text","Missing mandatory information! Please Enter patient's Tameio!"},
+                {"notUniqueAMKA.text","AMKA is not unique! Enter unique AMKA number"},
+                {"notDigits.text","Enter only digits!"},
+                //
+                {"savePhotoError.text","You need to enter the first name, last name, AMKA and photo location before the file can be saved."},
             };
     };
 

@@ -316,6 +316,32 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"availableTimesLabel.text","Διαθέσιμες Ώρες"},
                 {"pmLabel.text","ΜΜ"},
                 {"amLabel.text","ΠΜ"},
+
+                //JOptionPane Messages
+                {"closeWindow.text","Θέλετε να κλείσετε το παράθυρο?"},
+                {"appointmentNotSelected.text","Επιλέξτε ραντεβού για διαγραφή."},
+                {"patientNotSelected.text","Επιλέξτε Ασθενή."},
+                {"noPatientWith.text","Κανένας Ασθενής με "},
+                {"lastNameFound.text"," επίθετο"},
+                //
+                {"dateNotSet.text","Επιλέξτε ημερομηνία ραντεβού."},
+                {"longAppDuration.text","Μεγάλη διάρκεια ραντεβού."},
+                {"hourEmpty.text","Επιλέξτε ώρα ραντεβού."},
+                {"emptyDuration.text","Επιλέξτε διάρκεια ραντεβού."},
+                {"durationNotDigits.text","Η διάρκεια πρέπει να είναι αριθμός!"},
+                {"timeNotDigits.text","Η ώρα πρέπει να είναι αριθμός!"},
+                {"invalidDuration.text","Η διάρκεια πρέπει να είναι αριθμός!"},
+                //
+                {"noFirstName.text","Ελειπές πληροφορίες! Παρακαλώ πληκτολογίστε το Όνομα του ασθενή!"},
+                {"noLastName.text","Ελειπές πληροφορίες! Παρακαλώ πληκτολογίστε το Επίθετο του ασθενή!"},
+                {"noAMKA.text","Ελειπές πληροφορίες! Παρακαλώ πληκτολογίστε το ΑΜΚΑ του ασθενή!"},
+                {"invalidAMKA.text","Το ΑΜΚΑ πρέπει να είναι ακριβώς 11 ψηφία."},
+                {"noInsurance.text","Ελειπές πληροφορίες! Παρακαλώ πληκτολογίστε την Ασφάλεια του ασθενή!"},
+                {"noTameio.text","Ελειπές πληροφορίες! Παρακαλώ επιλέξτε το ταμείο του ασθενή!"},
+                {"notUniqueAMKA.text","AMKA is not unique! Ο ΑΜΚΑ δεν είναι μοναδικός αριθμός!"},
+                {"notDigits.text","Πληκτολογίστε μόνο ψηφία."},
+                //
+                {"savePhotoError.text","Παρακαλώ ελέξτε τις πληροφορίες του ασθενή και την τοποθεσία που θα αποθηκευτεί η εικόνα."},
             };
     };
 
