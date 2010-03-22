@@ -181,7 +181,6 @@ public class AppointmentManager {
         //tx = s.beginTransaction();
         boolean b = true;
 
-        System.out.println(app.getDate() + "muuuuuuuu");
         List appointments = s.createQuery("from Appointments a where date = '"  + (app.getDate().getYear()+1900) + "-" + (app.getDate().getMonth()+1) + "-" + (app.getDate().getDate()) + "' order by a.time").list();
         //tx.commit();
         s.close();
@@ -193,7 +192,7 @@ public class AppointmentManager {
             Appointments temp = new Appointments ();
             temp.setTime(new Date ((apps.getDate().getYear()), (apps.getDate().getMonth()), (apps.getDate().getDate()), apps.getTime().getHours(), (apps.getTime().getMinutes() + apps.getDuration()) ));
 
-            if(((compareTo((Date)app1.getTime(),(Date)apps.getTime()) < 0 && compareTo(((Date)app.getTime()),(Date)apps.getTime()) < 0))|| (compareTo((Date)app.getTime(),(Date)temp.getTime()) > 0 && compareTo(((Date)app1.getTime()),(Date)temp.getTime()) > 0))
+            if(((compareTo((Date)app1.getTime(),(Date)apps.getTime()) <= 0 && compareTo(((Date)app.getTime()),(Date)apps.getTime()) < 0))|| (compareTo((Date)app.getTime(),(Date)temp.getTime()) >= 0 && compareTo(((Date)app1.getTime()),(Date)temp.getTime()) > 0))
             {
                 continue;
             }
