@@ -96,7 +96,8 @@ public class FindAvailableGUI extends javax.swing.JFrame {
                 showCancelDialog();
             }
         });
-        
+
+        this.setTitle(resourceMap.getString("findAvailable.title"));
         startDateLabel.setText(resourceMap.getString("startDateLabel.text"));
         forLabel.setText(resourceMap.getString("forLabel.text"));
         daysLabel.setText(resourceMap.getString("daysLabel.text"));
@@ -303,7 +304,7 @@ public class FindAvailableGUI extends javax.swing.JFrame {
                         }
                     }
                     else if(tempTime + appDuration == amFinishTime){
-                        amRefList.append(new JButton(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString())));
+                        amRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString()));
                         tempTime = pmStartTime;
                     }
                     else if(tempTime + appDuration > amFinishTime){
