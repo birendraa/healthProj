@@ -96,10 +96,6 @@ public class AppointmentGUI extends javax.swing.JFrame{
         languageMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
-
-//        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        resourceMap = (ListResourceBundle) java.util.ResourceBundle.getBundle("vidavo.resource.ResourceMap", new java.util.Locale("en"));
-
         
         model = new javax.swing.table.DefaultTableModel(
             new Object [][] {},
