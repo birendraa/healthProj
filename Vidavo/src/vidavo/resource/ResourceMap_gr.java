@@ -308,6 +308,7 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 {"englishMenuItem.text","English"},
 
                 //Find Available
+                {"findAvailable.title","Διαθέσιμα Ραντεβού"},
                 {"startDateLabel.text","Αρχική Ημερομηνία :"},
                 {"forLabel.text","για"},
                 {"daysLabel.text","μερες"},
