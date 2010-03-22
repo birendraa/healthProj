@@ -258,10 +258,14 @@ public class FindAvailableGUI extends javax.swing.JFrame {
             }
             // Appointments exist
             else if(counter <= unavailableTimes.size() && overlapsUnavailable == true){
-                unavailableTime = Integer.parseInt(unavailableTimes.get(counter).toString()) / 100;
-                unavailableTime = unavailableTime * 100;
+                unavailableTime = Integer.parseInt(unavailableTimes.get(counter).toString()) / 10;
+                unavailableTime = unavailableTime * 10;
                 unavailableAppDuration = Integer.parseInt(durations.get(counter).toString()) * 60;
                 counter++;
+                System.out.println(unavailableTime);
+                System.out.println(unavailableAppDuration);
+                System.out.println(getHoursANDMinutes(new Time((unavailableTime - greekGmtTimeInSeconds) * 1000).toString()));
+                System.out.println(getHoursANDMinutes(new Time((unavailableTime + unavailableAppDuration - greekGmtTimeInSeconds) * 1000).toString()));
                 overlapsUnavailable = false;
             }
 
@@ -294,6 +298,9 @@ public class FindAvailableGUI extends javax.swing.JFrame {
                     overlapsUnavailable = true;
                     if(tempTime + appDuration < amFinishTime){
                         tempTime = unavailableTime + unavailableAppDuration;
+                        if(tempTime + appDuration > amFinishTime){
+                            tempTime = pmStartTime;
+                        }
                     }
                     else if(tempTime + appDuration == amFinishTime){
                         amRefList.append(new JButton(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString())));
@@ -333,6 +340,9 @@ public class FindAvailableGUI extends javax.swing.JFrame {
                     overlapsUnavailable = true;
                     if(tempTime + appDuration < pmFinishTime){
                         tempTime = unavailableTime + unavailableAppDuration;
+                        if(tempTime + appDuration > pmFinishTime){
+                            break;
+                        }
                     }
                     else if(tempTime + appDuration == pmFinishTime){
                         pmRefList.append(getHoursANDMinutes(new Time((tempTime - greekGmtTimeInSeconds) * 1000).toString()));
