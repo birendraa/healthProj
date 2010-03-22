@@ -102,12 +102,12 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
             loadPatientInfo(pi);
         }
         updateDirectoryName();
-        File userPhoto;
-        if (!this.patientDirectoryName.equals("photos\\")){
-            userPhoto = new File(this.patientDirectoryName + "\\" + "personalPhoto.jpg");
-            if (userPhoto.exists())
-                picturePanel.loadImage(userPhoto.getPath());
-        }
+            File userPhoto;
+            if (!this.patientDirectoryName.equals("photos\\")){
+                userPhoto = new File(this.patientDirectoryName + "\\" + "personalPhoto.jpg");
+                if (userPhoto.exists())
+                    picturePanel.loadImage(userPhoto.getPath());
+            }
     }
 
     private void initPane(){
@@ -522,7 +522,7 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
                     }
                 }
                 else
-                    javax.swing.JOptionPane.showMessageDialog(this,"Please enter a name and the AMKA in the personal info tab and select a photo","Error",javax.swing.JOptionPane.ERROR_MESSAGE);
+                    javax.swing.JOptionPane.showMessageDialog(this,"You need to enter the first name, last name, AMKA and photo location before the file can be saved.","Please complete the information",javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
             }
         }
@@ -694,9 +694,11 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
         this.patientDirectoryName = "photos\\" + patientDirectoryName.trim();
     }
     private void updateDirectoryName(){
-            if (!pi.getLastName().isEmpty() && !pi.getFirstName().isEmpty() && !Long.toString(pi.getInsuranceIdNumber()).equals("0"))
-                        this.setPatientDirectoryName(pi.getLastName() + " " + pi.getFirstName() + " " + pi.getInsuranceIdNumber());
-                    else
-                        this.setPatientDirectoryName("");
+        if (pi == null)
+            pi = this.getPersonalinfo();
+        if (!pi.getLastName().isEmpty() && !pi.getFirstName().isEmpty() && !Long.toString(pi.getInsuranceIdNumber()).equals("0"))
+            this.setPatientDirectoryName(pi.getLastName() + " " + pi.getFirstName() + " " + pi.getInsuranceIdNumber());
+        else
+            this.setPatientDirectoryName("");
     }
    }

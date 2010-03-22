@@ -184,7 +184,7 @@ public class PhotosPane extends javax.swing.JPanel implements ActionListener, Li
                 }
             }
             else
-                javax.swing.JOptionPane.showMessageDialog(this,"Please enter a name and the AMKA in the personal info tab and select a photo","Error",javax.swing.JOptionPane.ERROR_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,"You need to enter the first name, last name, AMKA and photo location before the file can be saved.","Please complete the information",javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
          }
          if (action.equals("open")){
