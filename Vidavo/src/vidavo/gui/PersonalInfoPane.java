@@ -100,14 +100,14 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
         {
             this.pi = pi;
             loadPatientInfo(pi);
-        }
-        updateDirectoryName();
+            updateDirectoryName();
             File userPhoto;
             if (!this.patientDirectoryName.equals("photos\\")){
                 userPhoto = new File(this.patientDirectoryName + "\\" + "personalPhoto.jpg");
                 if (userPhoto.exists())
                     picturePanel.loadImage(userPhoto.getPath());
             }
+        }
     }
 
     private void initPane(){
@@ -506,8 +506,8 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
                 fc.setMultiSelectionEnabled(false);
                 int returnVal = fc.showOpenDialog(this);
                 fc.updateUI();
-                updateDirectoryName();
             if (returnVal == JFileChooser.APPROVE_OPTION) {
+                updateDirectoryName();
                 path = fc.getSelectedFile().toPath();
                 File userDir;
                 if (!this.patientDirectoryName.equals("photos\\")){
@@ -694,10 +694,10 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
         this.patientDirectoryName = "photos\\" + patientDirectoryName.trim();
     }
     private void updateDirectoryName(){
-        if (pi == null)
-            pi = this.getPersonalinfo();
-        if (!pi.getLastName().isEmpty() && !pi.getFirstName().isEmpty() && !Long.toString(pi.getInsuranceIdNumber()).equals("0"))
-            this.setPatientDirectoryName(pi.getLastName() + " " + pi.getFirstName() + " " + pi.getInsuranceIdNumber());
+        PersonalInfo pinfo;
+        pinfo = this.getPersonalinfo();
+        if (!pinfo.getLastName().isEmpty() && !pinfo.getFirstName().isEmpty() && !Long.toString(pinfo.getInsuranceIdNumber()).equals("0"))
+            this.setPatientDirectoryName(pinfo.getLastName() + " " + pinfo.getFirstName() + " " + pinfo.getInsuranceIdNumber());
         else
             this.setPatientDirectoryName("");
     }

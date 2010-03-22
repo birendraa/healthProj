@@ -5,10 +5,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -275,11 +271,6 @@ public class AddPatientGUI extends JFrame implements ActionListener{
                     new PatientListGUI(mh);
                 }
             }
-        //}
-       // else
-        //{
-            
-        //}
         }
         }
         catch(NumberFormatException nfe)
