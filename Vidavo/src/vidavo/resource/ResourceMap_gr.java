@@ -37,6 +37,9 @@ public class ResourceMap_gr extends java.util.ListResourceBundle {
                 //Radio Buttons
                 {"yesRadioButton.text", "Ναι"},
                 {"noRadioButton.text", "Όχι"},
+                {"muchRadioButton.text" , "Πολύ"},
+                {"littleRadioButton.text", "Λίγο"},
+                {"noneRadioButton.text", "Καθόλου"},
 
 
                 //Save/Cancel Buttons
