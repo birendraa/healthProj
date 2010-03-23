@@ -182,10 +182,10 @@ public class HabitsPane extends JPanel {
         smokerLabel.setText(resourceMap.getString("smokerLabel.text")); // NOI18N
         smokerLabel.setName("smokerLabel"); // NOI18N
 
-        smokerYRadioButton.setText(resourceMap.getString("smokerYRadioButton.text")); // NOI18N
+        smokerYRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
         smokerYRadioButton.setName("smokerYRadioButton"); // NOI18N
 
-        smokerNRadioButton.setText(resourceMap.getString("smokerNRadioButton.text")); // NOI18N
+        smokerNRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
         smokerNRadioButton.setName("smokerNRadioButton"); // NOI18N
 
         smokeLongLabel.setText(resourceMap.getString("smokeLongLabel.text")); // NOI18N
@@ -197,28 +197,28 @@ public class HabitsPane extends JPanel {
         teaLabel.setText(resourceMap.getString("teaLabel.text")); // NOI18N
         teaLabel.setName("teaLabel"); // NOI18N
 
-        teaYRadioButton.setText(resourceMap.getString("teaYRadioButton.text")); // NOI18N
+        teaYRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
         teaYRadioButton.setName("teaYRadioButton"); // NOI18N
 
-        teaNRadioButton.setText(resourceMap.getString("teaNRadioButton.text")); // NOI18N
+        teaNRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
         teaNRadioButton.setName("teaNRadioButton"); // NOI18N
 
         coffeeLabel.setText(resourceMap.getString("coffeeLabel.text")); // NOI18N
         coffeeLabel.setName("coffeeLabel"); // NOI18N
 
-        coffeeYRadioButton.setText(resourceMap.getString("coffeeYRadioButton.text")); // NOI18N
+        coffeeYRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
         coffeeYRadioButton.setName("coffeeYRadioButton"); // NOI18N
 
-        coffeeNRadioButton.setText(resourceMap.getString("coffeeNRadioButton.text")); // NOI18N
+        coffeeNRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
         coffeeNRadioButton.setName("coffeeNRadioButton"); // NOI18N
 
         softDrinksLabel.setText(resourceMap.getString("softDrinksLabel.text")); // NOI18N
         softDrinksLabel.setName("softDrinksLabel"); // NOI18N
 
-        softDrinksYRadioButton.setText(resourceMap.getString("softDrinksYRadioButton.text")); // NOI18N
+        softDrinksYRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
         softDrinksYRadioButton.setName("softDrinksYRadioButton"); // NOI18N
 
-        softDrinksNRadioButton.setText(resourceMap.getString("softDrinksNRadioButton.text")); // NOI18N
+        softDrinksNRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
         softDrinksNRadioButton.setName("softDrinksNRadioButton"); // NOI18N
 
         caffeinePDLabel.setText(resourceMap.getString("caffeinePDLabel.text")); // NOI18N
@@ -230,34 +230,34 @@ public class HabitsPane extends JPanel {
         saltUsageLabel.setText(resourceMap.getString("saltUsageLabel.text")); // NOI18N
         saltUsageLabel.setName("saltUsageLabel"); // NOI18N
 
-        sugarUsageMRadioButton.setText(resourceMap.getString("sugarUsageMRadioButton.text")); // NOI18N
+        sugarUsageMRadioButton.setText(resourceMap.getString("muchRadioButton.text")); // NOI18N
         sugarUsageMRadioButton.setName("sugarUsageMRadioButton"); // NOI18N
 
-        saltUsageLRadioButton.setText(resourceMap.getString("saltUsageLRadioButton.text")); // NOI18N
+        saltUsageLRadioButton.setText(resourceMap.getString("littleRadioButton.text")); // NOI18N
         saltUsageLRadioButton.setName("saltUsageLRadioButton"); // NOI18N
 
-        saltUsageNRadioButton.setText(resourceMap.getString("saltUsageNRadioButton.text")); // NOI18N
+        saltUsageNRadioButton.setText(resourceMap.getString("noneRadioButton.text")); // NOI18N
         saltUsageNRadioButton.setName("saltUsageNRadioButton"); // NOI18N
 
         sugarUsageLabel.setText(resourceMap.getString("sugarUsageLabel.text")); // NOI18N
         sugarUsageLabel.setName("sugarUsageLabel"); // NOI18N
 
-        saltUsageMRadioButton.setText(resourceMap.getString("saltUsageMRadioButton.text")); // NOI18N
+        saltUsageMRadioButton.setText(resourceMap.getString("muchRadioButton.text")); // NOI18N
         saltUsageMRadioButton.setName("saltUsageMRadioButton"); // NOI18N
 
-        sugarUsageLRadioButton.setText(resourceMap.getString("sugarUsageLRadioButton.text")); // NOI18N
+        sugarUsageLRadioButton.setText(resourceMap.getString("littleRadioButton.text")); // NOI18N
         sugarUsageLRadioButton.setName("sugarUsageLRadioButton"); // NOI18N
 
-        sugarUsageNRadioButton.setText(resourceMap.getString("sugarUsageNRadioButton.text")); // NOI18N
+        sugarUsageNRadioButton.setText(resourceMap.getString("noneRadioButton.text")); // NOI18N
         sugarUsageNRadioButton.setName("sugarUsageNRadioButton"); // NOI18N
 
         dietLabel.setText(resourceMap.getString("dietLabel.text")); // NOI18N
         dietLabel.setName("dietLabel"); // NOI18N
 
-        dietYRadioButton.setText(resourceMap.getString("dietYRadioButton.text")); // NOI18N
+        dietYRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
         dietYRadioButton.setName("dietYRadioButton"); // NOI18N
 
-        dietNRadioButton.setText(resourceMap.getString("dietNRadioButton.text")); // NOI18N
+        dietNRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
         dietNRadioButton.setName("dietNRadioButton"); // NOI18N
 
         foodHabitsLabel.setText(resourceMap.getString("foodHabitsLabel.text")); // NOI18N
@@ -275,7 +275,7 @@ public class HabitsPane extends JPanel {
         //alcoholPWTextField.setText(resourceMap.getString("alcoholPWTextField.text")); // NOI18N
         alcoholPWTextField.setName("alcoholPWTextField"); // NOI18N
 
-        useDrugsNRadioButton.setText(resourceMap.getString("useDrugsNRadioButton.text")); // NOI18N
+        useDrugsNRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
         useDrugsNRadioButton.setName("useDrugsNRadioButton"); // NOI18N
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
@@ -288,25 +288,25 @@ public class HabitsPane extends JPanel {
         useDrugsLabel.setText(resourceMap.getString("useDrugsLabel.text")); // NOI18N
         useDrugsLabel.setName("useDrugsLabel"); // NOI18N
 
-        useDrugsYRadioButton.setText(resourceMap.getString("useDrugsYRadioButton.text")); // NOI18N
+        useDrugsYRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
         useDrugsYRadioButton.setName("useDrugsYRadioButton"); // NOI18N
 
         useMedicationLabel.setText(resourceMap.getString("useMedicationLabel.text")); // NOI18N
         useMedicationLabel.setName("useMedicationLabel"); // NOI18N
 
-        useMedicationYRadioButton.setText(resourceMap.getString("useMedicationYRadioButton.text")); // NOI18N
+        useMedicationYRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
         useMedicationYRadioButton.setName("useMedicationYRadioButton"); // NOI18N
 
-        useMedicationNRadioButton.setText(resourceMap.getString("useMedicationNRadioButton.text")); // NOI18N
+        useMedicationNRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
         useMedicationNRadioButton.setName("useMedicationNRadioButton"); // NOI18N
 
         excerciseLabel.setText(resourceMap.getString("excerciseLabel.text")); // NOI18N
         excerciseLabel.setName("excerciseLabel"); // NOI18N
 
-        excerciseYRadioButton.setText(resourceMap.getString("excerciseYRadioButton.text")); // NOI18N
+        excerciseYRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
         excerciseYRadioButton.setName("excerciseYRadioButton"); // NOI18N
 
-        excerciseNRadioButton.setText(resourceMap.getString("excerciseNRadioButton.text")); // NOI18N
+        excerciseNRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
         excerciseNRadioButton.setName("excerciseNRadioButton"); // NOI18N
 
         excerciseHabitsLabel.setText(resourceMap.getString("excerciseHabitsLabel.text")); // NOI18N

@@ -159,10 +159,10 @@ public class ImmunizationsPane extends JPanel{
 //        bloodTypeTextField.setText(resourceMap.getString("bloodTypeTextField.text")); // NOI18N
         bloodTypeTextField.setName("bloodTypeTextField"); // NOI18N
         
-        yesBloodDonorRadioButton.setText(resourceMap.getString("yesBloodDonorRadioButton.text")); // NOI18N
+        yesBloodDonorRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
         yesBloodDonorRadioButton.setName("yesBloodDonorRadioButton"); // NOI18N
 
-        noBloodDonorRadioButton.setText(resourceMap.getString("noBloodDonorRadioButton.text")); // NOI18N
+        noBloodDonorRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
         noBloodDonorRadioButton.setName("noBloodDonorRadioButton"); // NOI18N
 
 //        bloodBankTextField.setText(resourceMap.getString("bloodBankTextField.text")); // NOI18N
@@ -171,22 +171,22 @@ public class ImmunizationsPane extends JPanel{
 //        bloodCDTextField.setText(resourceMap.getString("bloodCDTextField.text")); // NOI18N
         bloodCDTextField.setName("bloodCDTextField"); // NOI18N
 
-        yesBleedingRadioButton.setText(resourceMap.getString("yesBleedingRadioButton.text")); // NOI18N
+        yesBleedingRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
         yesBleedingRadioButton.setName("yesBleedingRadioButton"); // NOI18N
 
-        noBleedingRadioButton.setText(resourceMap.getString("noBleedingRadioButton.text")); // NOI18N
+        noBleedingRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
         noBleedingRadioButton.setName("noBleedingRadioButton"); // NOI18N
 
-        yesDoritisMORadioButton.setText(resourceMap.getString("yesDoritisMORadioButton.text")); // NOI18N
+        yesDoritisMORadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
         yesDoritisMORadioButton.setName("yesDoritisMORadioButton"); // NOI18N
 
-        noDoritisMORadioButton.setText(resourceMap.getString("noDoritisMORadioButton.text")); // NOI18N
+        noDoritisMORadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
         noDoritisMORadioButton.setName("noDoritisMORadioButton"); // NOI18N
 
-        yesKidneyDonorRadioButton.setText(resourceMap.getString("yesKidneyDonorRadioButton.text")); // NOI18N
+        yesKidneyDonorRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
         yesKidneyDonorRadioButton.setName("yesKidneyDonorRadioButton"); // NOI18N
 
-        noKidneyDonorRadioButton.setText(resourceMap.getString("noKidneyDonorRadioButton.text")); // NOI18N
+        noKidneyDonorRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
         noKidneyDonorRadioButton.setName("noKidneyDonorRadioButton"); // NOI18N
 
 //        doritisAOTextField.setText(resourceMap.getString("doritisAOTextField.text")); // NOI18N
@@ -198,16 +198,16 @@ public class ImmunizationsPane extends JPanel{
 //        allergiesToDrugsTextField.setText(resourceMap.getString("allergiesToDrugsTextField.text")); // NOI18N
         allergiesToDrugsTextField.setName("allergiesToDrugsTextField"); // NOI18N
 
-        yesCirculationRadioButton.setText(resourceMap.getString("yesCirculationRadioButton.text")); // NOI18N
+        yesCirculationRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
         yesCirculationRadioButton.setName("yesCirculationRadioButton"); // NOI18N
 
-        noCirculationRadioButton.setText(resourceMap.getString("noCirculationRadioButton.text")); // NOI18N
+        noCirculationRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
         noCirculationRadioButton.setName("noCirculationRadioButton"); // NOI18N
 
-        yesStigmaRadioButton.setText(resourceMap.getString("yesStigmaRadioButton.text")); // NOI18N
+        yesStigmaRadioButton.setText(resourceMap.getString("yesRadioButton.text")); // NOI18N
         yesStigmaRadioButton.setName("yesStigmaRadioButton"); // NOI18N
 
-        noStigmaRadioButton.setText(resourceMap.getString("noStigmaRadioButton.text")); // NOI18N
+        noStigmaRadioButton.setText(resourceMap.getString("noRadioButton.text")); // NOI18N
         noStigmaRadioButton.setName("noStigmaRadioButton"); // NOI18N
 
 javax.swing.GroupLayout immunizationsPaneLayout = new javax.swing.GroupLayout(this);
