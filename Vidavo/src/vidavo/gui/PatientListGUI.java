@@ -332,7 +332,8 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
             if(patientTable.getSelectedRow() != -1){
                     int selectedID = (Integer.parseInt((String)patientTable.getValueAt(patientTable.getSelectedRow(), 0)));
                     Patients p = pm.getPatient(selectedID);
-                    new AddAppointmentGUI (mh,p);
+                    mh.getAm().getTempInfo().set(7, p);
+                    new AddAppointmentGUI (mh);
                     this.dispose();
              }
                 else
@@ -407,7 +408,8 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
             else{
                 this.dispose();
                 Patients p = null;
-                new AddAppointmentGUI(mh,p);
+                mh.getAm().getTempInfo().set(7, p);
+                new AddAppointmentGUI(mh);
             }
         }
     }

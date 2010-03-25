@@ -480,7 +480,7 @@ public class FindAvailableGUI extends javax.swing.JFrame {
         this.mh.getAm().getTempInfo().set(1, new Date(dateChooser.getDate().getTime() + Day_IN_MILLIS * daysForward));
         this.mh.getAm().getTempInfo().set(3, hour);
         this.mh.getAm().getTempInfo().set(4, minutes);
-        new AddAppointmentGUI(mh, null);
+        new AddAppointmentGUI(mh);
         this.dispose();
     }
 
@@ -507,7 +507,7 @@ public class FindAvailableGUI extends javax.swing.JFrame {
             dialog.dispose();
         }
         else if (value == JOptionPane.YES_OPTION){
-            new AddAppointmentGUI(mh, null);
+            new AddAppointmentGUI(mh);
             this.dispose();
         }
     }

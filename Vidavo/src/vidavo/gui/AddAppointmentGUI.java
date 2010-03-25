@@ -76,17 +76,6 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
         am = mh.getAm();
         pat = null;
         this.mh = mh;
-        this.resourceMap = mh.getResourceMap();
-        initComponents();
-        this.setVisible(true);
-        this.setResizable(false);
-        this.setLocationRelativeTo(null);
-    }
-    public AddAppointmentGUI(ManagerHolder mh, Patients p) {
-
-        this.mh = mh;
-        am = mh.getAm();
-        this.pat = p;
         tempList= am.getTempInfo();
         this.resourceMap = mh.getResourceMap();
         initComponents();
@@ -337,6 +326,7 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
         tempList.add(durationTextField.getText());
         
         tempList.add(commentsTextField.getText());
+        tempList.add(pat);
 //        if(ManagerHolder.isInteger(hourTextField.getText()))
 //            am.setHour(hourTextField.getText());
 //        if(ManagerHolder.isInteger(minutesTextField.getText()))
@@ -349,32 +339,38 @@ public class AddAppointmentGUI extends javax.swing.JFrame{
     }
 
     private void loadInfo(List tempList) {
-        categoryComboBox.setSelectedItem(tempList.get(0).toString());
-        date = (Date)tempList.get(1);
-        appointmentDateChooser.setDate(date);
-        titleTextField.setText(tempList.get(2).toString());
-
         try{
-            hourTextField.setText(Integer.toString(appTime.getHours()));
-            minutesTextField.setText(Integer.toString(appTime.getMinutes()));
-        }
-        catch(NullPointerException n){
-            hourTextField.setText("");
-            minutesTextField.setText("");
-        }
-        hourTextField.setText(tempList.get(3).toString());
-        minutesTextField.setText(tempList.get(4).toString());
+            categoryComboBox.setSelectedItem(tempList.get(0).toString());
+            date = (Date)tempList.get(1);
+            appointmentDateChooser.setDate(date);
+            titleTextField.setText(tempList.get(2).toString());
 
-        durationTextField.setText(tempList.get(5).toString());
-        commentsTextField.setText(tempList.get(6).toString());
-        PersonalInfo pi = new PersonalInfo();
-        if(pat != null){
-            pi= mh.getPm().getSelectedPatient(pat.getPatientId());
-            patientFirstNameLabel.setText(pi.getFirstName());
-            patientLastNameLabel.setText(pi.getLastName());
+            try{
+                hourTextField.setText(Integer.toString(appTime.getHours()));
+                minutesTextField.setText(Integer.toString(appTime.getMinutes()));
+            }
+            catch(NullPointerException n){
+                hourTextField.setText("");
+                minutesTextField.setText("");
+            }
+            hourTextField.setText(tempList.get(3).toString());
+            minutesTextField.setText(tempList.get(4).toString());
+
+            durationTextField.setText(tempList.get(5).toString());
+            commentsTextField.setText(tempList.get(6).toString());
+            PersonalInfo pi = new PersonalInfo();
+            pat = (Patients) tempList.get(7);
+            if(pat != null){
+                pi= mh.getPm().getSelectedPatient(pat.getPatientId());
+                patientFirstNameLabel.setText(pi.getFirstName());
+                patientLastNameLabel.setText(pi.getLastName());
+            }
+    //        hourTextField.setText(this.mh.getAm().getHour());
+    //        minutesTextField.setText(this.mh.getAm().getMinutes());
         }
-//        hourTextField.setText(this.mh.getAm().getHour());
-//        minutesTextField.setText(this.mh.getAm().getMinutes());
+        catch(Exception e){
+            
+        }
     }
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {

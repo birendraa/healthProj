@@ -289,6 +289,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
         this.setEnabled(false);
         mh.setPatientId(0);
         mh.setPatientName("");
+        mh.getAm().setTempInfo(null);
         new AddAppointmentGUI(mh);
         this.dispose();
     }
