@@ -1,27 +1,23 @@
 
 package vidavo.gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.print.PrinterException;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.Date;
-import java.util.ListResourceBundle;
-import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
-import javax.swing.ListSelectionModel;
+import java.util.*;
+import javax.swing.*;
+import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import vidavo.pojos.Appointments;
-import vidavo.pojos.Patients;
-import vidavo.pojos.PersonalInfo;
 
-public class AppointmentGUI extends javax.swing.JFrame{
+public class AppointmentGUI extends javax.swing.JFrame implements ActionListener{
 
     private ManagerHolder mh;
     private ListResourceBundle resourceMap;
@@ -162,17 +158,12 @@ public class AppointmentGUI extends javax.swing.JFrame{
         printButton.setText((resourceMap.getString("printButton.text")));
         aboutMenuItem.setText(resourceMap.getString("aboutMenuItem.text"));
 
-        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aboutMenuItemActionPerformed(evt);
-            }
-        });
+        aboutMenuItem.addActionListener(this);
+        aboutMenuItem.setActionCommand("about");
 
-        quitMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quitMenuItemActionPerformed(evt);
-            }
-        });
+        quitMenuItem.addActionListener(this);
+        quitMenuItem.setActionCommand("quit");
+        quitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
         
         englishMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -323,7 +314,7 @@ public class AppointmentGUI extends javax.swing.JFrame{
         try {
             appointmentTable.print();
         } catch (PrinterException ex) {
-            Logger.getLogger(AppointmentGUI.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }
 
@@ -388,5 +379,103 @@ public class AppointmentGUI extends javax.swing.JFrame{
     private void redrawGUI(){
         new AppointmentGUI(this.mh);
         this.dispose();
+    }
+
+    @Override
+        public void actionPerformed(ActionEvent e) {
+
+         String c = e.getActionCommand();
+
+         if (e.getActionCommand().equals("quit")) {
+            this.dispose();
+         }
+
+         if (e.getActionCommand().equals("about")) {
+            this.showAboutDialog();
+         }
+    }
+
+private void showAboutDialog() {
+        JLabel boskoLabel = new JLabel();
+        JLabel copyLabel = new JLabel();
+        JLabel designLabel = new JLabel();
+        JLabel logoLabel = new JLabel();
+        JLabel nameLabel = new JLabel();
+        JButton okButton = new JButton();
+        JLabel sanjaLabel = new JLabel();
+        JLabel serbanLabel = new JLabel();
+        JLabel minasLabel = new JLabel();
+        JLabel thanosLabel = new JLabel();
+        final JDialog dialog = new JDialog(this,"About",true);
+
+        boskoLabel.setText("Bosko Zerajik");
+        sanjaLabel.setText("Sanja Jankolovska");
+        serbanLabel.setText("Serban Mogos");
+        minasLabel.setText("Minas Akepsimas");
+        thanosLabel.setText("Thanos Irodotou");
+        copyLabel.setText("© ModernBit");
+        designLabel.setText("Design and code by:");
+        nameLabel.setText("Appointments Manager v0.1 rev.200");
+        okButton.setText("Close");
+        okButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+        okButton.setHorizontalTextPosition(SwingConstants.CENTER);
+        okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dialog.dispose();
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(dialog.getContentPane());
+        dialog.getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(designLabel)
+                    .addComponent(boskoLabel)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(logoLabel)
+                        .addComponent(nameLabel)
+                        .addComponent(copyLabel)
+                        .addComponent(serbanLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(sanjaLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(thanosLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(minasLabel, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logoLabel)
+                .addGap(18, 18, 18)
+                .addComponent(nameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(copyLabel)
+                .addGap(31, 31, 31)
+                .addComponent(designLabel)
+                .addGap(18, 18, 18)
+                .addComponent(minasLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(thanosLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sanjaLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(serbanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(boskoLabel)
+                .addGap(18, 18, 18)
+                .addComponent(okButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        dialog.pack();
+        dialog.setLocationRelativeTo(this);
+        dialog.setResizable(false);
+        dialog.setVisible(true);
     }
 }

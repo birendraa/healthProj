@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 18.3.2010 19:46: by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="vidavo.pojos.ChronicMedication" table="chronic_medication" catalog="vidavo">
+    <class name="vidavo.pojos.ChronicMedication" table="chronic_medication" catalog="vidavoappmanager">
         <id name="cmId" type="int">
             <column name="cmID" />
             <generator class="assigned" />

@@ -298,7 +298,7 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
          }
 
          if (e.getActionCommand().equals("about")) {
-            //this.showAboutDialog();
+            this.showAboutDialog();
          }
 
          if(c.equals("add")){
@@ -417,5 +417,89 @@ public class PatientListGUI extends javax.swing.JFrame implements ActionListener
     private void redrawGUI(){
         new PatientListGUI(this.mh);
         this.dispose();
+    }
+
+    private void showAboutDialog() {
+        JLabel boskoLabel = new JLabel();
+        JLabel copyLabel = new JLabel();
+        JLabel designLabel = new JLabel();
+        JLabel logoLabel = new JLabel();
+        JLabel nameLabel = new JLabel();
+        JButton okButton = new JButton();
+        JLabel sanjaLabel = new JLabel();
+        JLabel serbanLabel = new JLabel();
+        JLabel minasLabel = new JLabel();
+        JLabel thanosLabel = new JLabel();
+        final JDialog dialog = new JDialog(this,"About",true);
+
+        boskoLabel.setText("Bosko Zerajik");
+        sanjaLabel.setText("Sanja Jankolovska");
+        serbanLabel.setText("Serban Mogos");
+        minasLabel.setText("Minas Akepsimas");
+        thanosLabel.setText("Thanos Irodotou");
+        copyLabel.setText("© ModernBit");
+        designLabel.setText("Design and code by:");
+        nameLabel.setText("Appointments Manager v0.1 rev.200");
+        okButton.setText("Close");
+        okButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+        okButton.setHorizontalTextPosition(SwingConstants.CENTER);
+        okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dialog.dispose();
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(dialog.getContentPane());
+        dialog.getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(designLabel)
+                    .addComponent(boskoLabel)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(logoLabel)
+                        .addComponent(nameLabel)
+                        .addComponent(copyLabel)
+                        .addComponent(serbanLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(sanjaLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(thanosLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(minasLabel, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logoLabel)
+                .addGap(18, 18, 18)
+                .addComponent(nameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(copyLabel)
+                .addGap(31, 31, 31)
+                .addComponent(designLabel)
+                .addGap(18, 18, 18)
+                .addComponent(minasLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(thanosLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sanjaLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(serbanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(boskoLabel)
+                .addGap(18, 18, 18)
+                .addComponent(okButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        dialog.pack();
+        dialog.setLocationRelativeTo(this);
+        dialog.setResizable(false);
+        dialog.setVisible(true);
     }
 }

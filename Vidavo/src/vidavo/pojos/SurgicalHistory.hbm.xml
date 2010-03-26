@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 18.3.2010 19:46: by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="vidavo.pojos.SurgicalHistory" table="surgical_history" catalog="vidavo">
+    <class name="vidavo.pojos.SurgicalHistory" table="surgical_history" catalog="vidavoappmanager">
         <id name="shId" type="int">
             <column name="shID" />
             <generator class="assigned" />
