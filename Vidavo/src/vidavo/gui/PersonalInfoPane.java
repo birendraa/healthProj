@@ -92,9 +92,12 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
     private Path path;
     private String patientDirectoryName;
 
-    public PersonalInfoPane(String mode,PersonalInfo pi){
+   	private java.util.ListResourceBundle resourceMap;
+
+    public PersonalInfoPane(java.util.ListResourceBundle rm, String mode,PersonalInfo pi){
         super();
         this.mode = mode;
+        this.resourceMap = rm;
         initPane();
         if(mode.equals("edit"))
         {
@@ -169,44 +172,29 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
         mailLabel = new JLabel();
         mailTextField = new JTextField();
 
-        firstNLabel.setText("First Name* :");
-        middleNLabel.setText("Middle Name:");
-        lastNLabel.setText("Last Name* :");
-        addressLabel.setText("Address:");
-        addressNumLabel.setText("Address Number:");
-        cityLabel.setText("City:");
-        regionLabel.setText("State/Region:");
-        countryLabel.setText("Country:");
-        postalCLabel.setText("Postal Code:");
-        citizenshipLabel.setText("Citizenship:");
-        addressNumTextField.setText("");
-        addressTextField.setText("");
-        lastNTextField.setText("");
-        middleNTextField.setText("");
-        firstNTextField.setText("");
-        cityTextField.setText("");
-        regionTextField.setText("");
-        countryTextField.setText("");
-        postalCTextField.setText("");
-        citizenshipTextField.setText("");
-        heightLabel.setText("Height (cm)");
-        weightLabel.setText("Weight (kg)");
-        maleRadioButton.setText("Male");
-        femaleRadioButton.setText("Female");
-        marriedRadioButton.setText("Married");
-        singleRadioButton.setText("Single");
-        birthDateLabel.setText("Birth Date:");
-        profLabel.setText("Profession:");
-        insuranceLabel.setText("Insurance* :");
-        amkaLabel.setText("AMKA* :");
-        tameioLabel.setText("Tameio* :");
-        firstVisitLabel.setText("First Visit:");
-        childrenLabel.setText("Children:");
-        heightTextField.setText("");
-        weightTextField.setText("");
-        profTextField.setText("");
-        insuranceTextField.setText("");
-        amkaTextField.setText("");
+        firstNLabel.setText(resourceMap.getString("firstNLabel.text"));
+        middleNLabel.setText(resourceMap.getString("middleNLabel.text"));
+        lastNLabel.setText(resourceMap.getString("lastNLabel.text"));
+        addressLabel.setText(resourceMap.getString("addressLabel.text"));
+        addressNumLabel.setText(resourceMap.getString("addressNumLabel.text"));
+        cityLabel.setText(resourceMap.getString("cityLabel.text"));
+        regionLabel.setText(resourceMap.getString("regionLabel.text"));
+        countryLabel.setText(resourceMap.getString("countryLabel.text"));
+        postalCLabel.setText(resourceMap.getString("postalCLabel.text"));
+        citizenshipLabel.setText(resourceMap.getString("citizenshipLabel.text"));
+        heightLabel.setText(resourceMap.getString("heightLabel.text"));
+        weightLabel.setText(resourceMap.getString("weightLabel.text"));
+        maleRadioButton.setText(resourceMap.getString("maleRadioButton.text"));
+        femaleRadioButton.setText(resourceMap.getString("femaleRadioButton.text"));
+        marriedRadioButton.setText(resourceMap.getString("marriedRadioButton.text"));
+        singleRadioButton.setText(resourceMap.getString("singleRadioButton.text"));
+        birthDateLabel.setText(resourceMap.getString("birthDateLabel.text"));
+        profLabel.setText(resourceMap.getString("profLabel.text"));
+        insuranceLabel.setText(resourceMap.getString("insuranceLabel.text"));
+        amkaLabel.setText(resourceMap.getString("amkaLabel.text"));
+        tameioLabel.setText(resourceMap.getString("tameioLabel.text"));
+        firstVisitLabel.setText(resourceMap.getString("firstVisitLabel.text"));
+        childrenLabel.setText(resourceMap.getString("childrenLabel.text"));
         tameioComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "O.G.A.", "DIMOSIO", "O.A.E.E. - T.E.V.E.",
         "I.K.A.", "TEAPAP DEI T.A.Y.T.E.K.O.", "TAPEPA", "EYDAP", "TAP E.T.E",
         "EDOEAP", "ILPAP", "(TATTA) ETAP", "T.S.A.Y.", "T.A.E.", "T.S.M.E.D.E.",
@@ -234,8 +222,8 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
             .addGap(0, 266, Short.MAX_VALUE)
         );
 
-        patientPhotoLabel.setText("Patient Photo:");
-        pictureButton.setText("Browse for Photo");
+        patientPhotoLabel.setText(resourceMap.getString("patientPhotoLabel.text"));
+        pictureButton.setText(resourceMap.getString("pictureButton.text"));
         pictureButton.addActionListener(this);
         pictureButton.setActionCommand("picture");
 
@@ -395,18 +383,13 @@ public class PersonalInfoPane extends javax.swing.JPanel implements ActionListen
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        communicationNumPane.setBorder(javax.swing.BorderFactory.createTitledBorder("Communication Numbers")); // NOI18N
+        communicationNumPane.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("communicationNumPane.title"))); // NOI18N
 
-        homeLabel.setText("Home:");
-        workLabel.setText("Work:");
-        homeTextField.setText("");
-        workTextField.setText("");
-        cellLabel.setText("Cell Phone:");
-        faxLabel.setText("Fax");
-        cellTextField.setText("");
-        faxTextField.setText("");
-        mailLabel.setText("E-mail:");
-        mailTextField.setText("");
+        homeLabel.setText(resourceMap.getString("homeLabel.text"));
+        workLabel.setText(resourceMap.getString("workLabel.text"));
+        cellLabel.setText(resourceMap.getString("faxLabel.text"));
+        faxLabel.setText(resourceMap.getString("cellLabel.text"));
+        mailLabel.setText(resourceMap.getString("emailLabel.text"));
 
 
         javax.swing.GroupLayout previewPanelLayout = new javax.swing.GroupLayout(picturePanel);

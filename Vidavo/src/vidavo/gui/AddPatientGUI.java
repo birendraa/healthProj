@@ -124,7 +124,7 @@ public class AddPatientGUI extends JFrame implements ActionListener{
         photosPane = new PhotosPane(resourceMap);
 
         immunizationHistoryPane = new ImmunizationsPane(resourceMap,mode,immun);
-        personalInfoPane = new PersonalInfoPane(mode,pi);
+        personalInfoPane = new PersonalInfoPane(resourceMap,mode,pi);
         saveButton = new JButton();
         cancelButton = new JButton();
 
